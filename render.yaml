@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: prediction-market
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
