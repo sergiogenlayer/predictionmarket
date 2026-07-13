@@ -1,3 +1,5 @@
+import asyncio
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -5,6 +7,10 @@ from fastapi.responses import FileResponse, Response
 from starlette.middleware.base import BaseHTTPMiddleware
 from database import engine, Base
 from routers import auth_router, markets_router, users_router
+from tokengate import config as tokengate_config
+from tokengate import models as tokengate_models  # noqa: F401 (register tables)
+from tokengate import router as tokengate_router
+from tokengate.recheck import recheck_loop
 import os
 
 Base.metadata.create_all(bind=engine)
@@ -22,6 +28,13 @@ app.add_middleware(
 app.include_router(auth_router.router)
 app.include_router(markets_router.router)
 app.include_router(users_router.router)
+app.include_router(tokengate_router.router)
+
+
+@app.on_event("startup")
+async def start_tokengate_recheck():
+    if tokengate_config.is_configured():
+        app.state.tokengate_recheck = asyncio.create_task(recheck_loop())
 
 # Serve frontend static files if built
 frontend_dist = os.path.join(os.path.dirname(__file__), "..", "frontend", "dist")

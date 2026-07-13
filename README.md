@@ -9,6 +9,7 @@ A full-stack prediction market application where users can create markets, trade
 - **Portfolio Tracking**: View your positions and their current value
 - **Leaderboard**: Compete with other traders
 - **Play Money**: Every user starts with $1,000
+- **Telegram Token Gate**: NFT-gated private Telegram group for holders (see [backend/tokengate/README.md](backend/tokengate/README.md))
 
 ## Tech Stack
 
