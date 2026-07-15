@@ -74,6 +74,15 @@
   .co b.n{flex:none; width:20px; height:20px; border-radius:50%; background:var(--accent); color:#fff; font-family:var(--mono); font-size:11.5px; display:grid; place-items:center; margin-top:1px}
   .co strong{color:var(--ink)}
   .cap{font-family:var(--mono); font-size:11.5px; color:var(--ink-2); margin:8px 2px 0}
+  .dev{font-family:var(--mono); font-size:10px; font-weight:700; letter-spacing:.06em; padding:2px 7px; border-radius:5px; white-space:nowrap; vertical-align:1px}
+  .dev.xs{background:#DCFCE7; color:#15803D}
+  .dev.s{background:#FEF3C7; color:#B45309}
+  .dev.p2{background:var(--accent-soft); color:var(--accent)}
+  @media (prefers-color-scheme: dark){ .dev.xs{background:#14321F; color:#6EE7A0} .dev.s{background:#3A2B10; color:#FBBF24} }
+  :root[data-theme="dark"] .dev.xs{background:#14321F; color:#6EE7A0}
+  :root[data-theme="dark"] .dev.s{background:#3A2B10; color:#FBBF24}
+  :root[data-theme="light"] .dev.xs{background:#DCFCE7; color:#15803D}
+  :root[data-theme="light"] .dev.s{background:#FEF3C7; color:#B45309}
 
   /* =================================================================
      MOCKUP FRAMES — Rally real UI (light), single-theme on purpose
@@ -225,14 +234,14 @@
 <div class="wrap">
 
 <header class="masthead">
-  <span class="eyebrow">app.rally.fun · creator flow + brand flow · julio 2026 · v3</span>
-  <h1>Dos journeys, cero fricción: creator y brand de punta a punta</h1>
-  <p class="lede">Cada etapa de los dos flows con su fricción actual, el fix propuesto y el principio de psicología que lo justifica. Construido sobre la UI real de Rally y <strong>sin tocar el protocolo</strong>: pot, periods, misiones, evaluación, curvas y deposit funcionan exactamente igual. Solo cambia la experiencia alrededor.</p>
+  <span class="eyebrow">app.rally.fun · creator flow + brand flow · julio 2026 · v4</span>
+  <h1>Dos flows, fixes mínimos: máximo impacto con el menor coste de dev</h1>
+  <p class="lede">Cada etapa de los dos flows con su fricción, el fix y su <strong>coste de desarrollo</strong>: <span class="dev xs">XS</span> = frontend/config/plantillas, sin backend nuevo · <span class="dev s">S</span> = backend pequeño (un endpoint, un flag) · <span class="dev p2">FASE 2</span> = se recorta del MVP. Sin tocar el protocolo, sin AI obligatoria, sin features que no sean un plus grande.</p>
   <div class="meta-row">
     <span class="meta-chip">protocolo intacto</span>
+    <span class="meta-chip">mvp sin backend nuevo donde se pueda</span>
     <span class="meta-chip">línea gráfica Rally actual</span>
-    <span class="meta-chip">solo valores reales del producto</span>
-    <span class="meta-chip">fricción → fix → psicología</span>
+    <span class="meta-chip">solo valores reales</span>
   </div>
 </header>
 
@@ -249,7 +258,7 @@
 
   <div class="flow">
     <div class="fstep"><span class="fk">DESCUBRE</span><div class="fbox"><div class="ft">Network</div><div class="fd">Explore actual + badge Verified / Community</div></div></div>
-    <div class="fstep"><span class="fk">PREPARA</span><div class="fbox"><div class="ft">Rules → checklist</div><div class="fd">Pre-check de Wingston antes de pagar</div></div></div>
+    <div class="fstep"><span class="fk">PREPARA</span><div class="fbox"><div class="ft">Rules → checklist</div><div class="fd">Rules check gratis antes de pagar</div></div></div>
     <div class="fstep"><span class="fk">SUBMIT</span><div class="fbox"><div class="ft">Tweet URL</div><div class="fd">100 RLP o ETH (~$1.20) · igual que hoy</div></div></div>
     <div class="fstep"><span class="fk">SCORE</span><div class="fbox"><div class="ft">AI Evaluation</div><div class="fd">Timeline de estado + feedback accionable</div></div></div>
     <div class="fstep"><span class="fk">COBRA</span><div class="fbox"><div class="ft">Leaderboard → rewards</div><div class="fd">Projected rewards por periodo · igual que hoy</div></div></div>
@@ -258,16 +267,16 @@
   <div class="tbl-scroll"><table>
     <thead><tr><th style="width:15%">Etapa</th><th style="width:30%">Fricción hoy</th><th style="width:32%">Fix (solo UI)</th><th>Psicología</th></tr></thead>
     <tbody>
-      <tr><td><strong>Descubrir</strong></td><td class="now">Todas las campañas parecen iguales; no distingues partner de comunidad ni sabes si eres elegible hasta entrar</td><td class="fix">Badge ✔ Verified / Community en la card; el filtro "Eligible" que ya existe, elevado a chip visible</td><td class="psy"><b>FLUENCY</b>Decisión en 3 datos (pot · tiempo · carril): menos carga cognitiva, más clicks de entrada</td></tr>
-      <tr><td><strong>Preparar</strong></td><td class="now">10+ reglas en prosa ("no em dashes", "no empezar con mención"…). Pagas 100 RLP <em>antes</em> de saber si tu post las cumple</td><td class="fix"><strong>Pre-check gratuito de Wingston</strong>: pega tu borrador/URL y las reglas se convierten en checklist verificada antes de pagar</td><td class="psy"><b>LOSS AVERSION</b>El miedo a perder 100 RLP frena más que el coste. Convertir riesgo en confianza = más submissions (north star)</td></tr>
-      <tr><td><strong>Submit</strong></td><td class="now">Tras pagar, silencio: cola ~4 min sin estado ni aviso</td><td class="fix">Timeline visible (Submitted → In queue → Scored) + "notify me" cuando llegue el score</td><td class="psy"><b>GOAL GRADIENT</b>Progreso visible mantiene al usuario en la app durante la espera en vez de perderlo</td></tr>
-      <tr><td><strong>Score</strong></td><td class="now">Los gauges dicen el qué (0.2 en Replies) pero no el <em>cómo mejorar</em></td><td class="fix">Una línea de Wingston bajo los gauges: qué gate falló y qué haría subir el score en el próximo post</td><td class="psy"><b>ATTRIBUTION</b>Feedback accionable convierte un score bajo en reto, no en abandono. El peak-end del flow es el score: diseñarlo como momento</td></tr>
-      <tr><td><strong>Cobrar</strong></td><td class="now">Projected rewards ya existe y funciona</td><td class="fix">Sin cambios — solo notificación al cierre del periodo</td><td class="psy"><b>PEAK-END</b>Cerrar el ciclo con el cobro notificado alimenta el hábito de volver</td></tr>
+      <tr><td><strong>Descubrir</strong></td><td class="now">Todas las campañas parecen iguales; no distingues partner de comunidad ni sabes si eres elegible hasta entrar</td><td class="fix">Badge ✔ Verified / Community en la card (un flag que ya implica el carril) <span class="dev xs">XS</span></td><td class="psy"><b>FLUENCY</b>Decisión en 3 datos (pot · tiempo · carril): menos carga cognitiva, más clicks de entrada</td></tr>
+      <tr><td><strong>Preparar</strong></td><td class="now">10+ reglas en prosa ("no em dashes", "no empezar con mención"…). Pagas 100 RLP <em>antes</em> de saber si tu post las cumple</td><td class="fix"><strong>Pre-check de reglas antes de pagar.</strong> MVP: checks mecánicos en el cliente — regex sobre el tweet (quote correcto, menciones, em dashes, no empezar con mención) <span class="dev xs">XS</span> · el aviso de originalidad con AI <span class="dev p2">FASE 2</span></td><td class="psy"><b>LOSS AVERSION</b>El miedo a perder 100 RLP frena más que el coste. Convertir riesgo en confianza = más submissions (north star)</td></tr>
+      <tr><td><strong>Submit</strong></td><td class="now">Tras pagar, silencio: cola ~4 min sin estado ni aviso</td><td class="fix">Timeline visible (Submitted → In queue → Scored) — los estados ya existen en el backend, solo se pintan <span class="dev xs">XS</span></td><td class="psy"><b>GOAL GRADIENT</b>Progreso visible mantiene al usuario en la app durante la espera en vez de perderlo</td></tr>
+      <tr><td><strong>Score</strong></td><td class="now">Los gauges dicen el qué (0.2 en Replies) pero no el <em>cómo mejorar</em></td><td class="fix">Una línea bajo los gauges generada por plantilla desde los scores que ya llegan: gate más bajo + consejo fijo asociado. Sin LLM <span class="dev xs">XS</span></td><td class="psy"><b>ATTRIBUTION</b>Feedback accionable convierte un score bajo en reto, no en abandono. El peak-end del flow es el score: diseñarlo como momento</td></tr>
+      <tr><td><strong>Cobrar</strong></td><td class="now">Projected rewards ya existe y funciona</td><td class="fix">Sin cambios. Las notificaciones de cierre van con el feature de Notifications que ya está en vuestro roadmap — aquí no se duplica <span class="dev p2">ROADMAP</span></td><td class="psy"><b>PEAK-END</b>Cerrar el ciclo con el cobro notificado alimenta el hábito de volver</td></tr>
     </tbody>
   </table></div>
 
   <h3>El momento clave: pre-check antes de pagar</h3>
-  <p>Es el fix con mejor ratio impacto/esfuerzo de todo el flow. Las reglas ya son verificables (quote correcto, menciones, formato, originalidad); Wingston las comprueba <strong>gratis, antes del pago</strong>. El check es orientativo — la AI Evaluation sigue mandando y el protocolo no cambia — pero elimina el miedo que hoy frena la primera submission.</p>
+  <p>El mejor ratio impacto/esfuerzo de todo el doc. La mayoría de las reglas de una misión son <strong>mecánicamente verificables con el texto del tweet</strong>: quote al post correcto, menciones presentes, sin em dashes, no empezar con mención. Eso es regex en el cliente — <strong>ni backend nuevo ni AI</strong>. El check es orientativo (la AI Evaluation sigue mandando), pero elimina el miedo a perder 100 RLP que hoy frena la primera submission. La parte AI (aviso de originalidad, en ámbar en el mockup) es fase 2 con Wingston.</p>
 
   <figure class="frame narrow" role="img" aria-label="Mockup: pre-check de Wingston en la misión antes de pagar">
     <div class="bar"><i></i><i></i><i></i><span class="url">app.rally.fun/campaigns/internet-court-is-here</span></div>
@@ -285,12 +294,12 @@
           <div class="inp ph" style="display:flex; justify-content:space-between"><span>Paste your tweet URL here</span><span>⎘</span></div>
 
           <div class="prefly" style="margin-top:14px">
-            <div class="ph">✦ Wingston checked your post <span class="free">FREE · BEFORE YOU PAY</span></div>
+            <div class="ph">✓ Rules check <span class="free">FREE · BEFORE YOU PAY</span></div>
             <div class="pchecks">
               <div class="pc ok"><i>✓</i><span><b>Quotes the GenLayer post</b> — correct link detected</span></div>
               <div class="pc ok"><i>✓</i><span><b>Mentions @GenLayer and @courtofinternet</b></span></div>
               <div class="pc ok"><i>✓</i><span><b>No em dashes · doesn’t start with a mention</b></span></div>
-              <div class="pc warn"><i>!</i><span><b>Originality could score low</b> — your take reads close to the example. Add your own angle before submitting.</span></div>
+              <div class="pc warn"><i>!</i><span><b>Originality could score low</b> — your take reads close to the example. <em>(fase 2 · Wingston)</em></span></div>
             </div>
           </div>
 
@@ -298,15 +307,15 @@
           <div class="payrow on"><span class="radio"></span><span>Pay with RLP<small>Use your Rally balance · Available: 180000 RLP</small></span><span class="amt">100 RLP</span></div>
           <div class="payrow"><span class="radio"></span><span>Pay with ETH<small>Pay from your wallet · Network: Base</small></span><span class="amt">0.0007 ETH (~$1.20)</span></div>
           <div style="margin-top:14px"><button class="btn-blue" style="width:100%">Submit tweet · 100 RLP</button></div>
-          <div class="queue">Queue is empty. Estimated processing time: ~4min · Wingston’s check is advisory — final scoring happens in AI Evaluation.</div>
+          <div class="queue">Queue is empty. Estimated processing time: ~4min · The rules check is advisory — final scoring happens in AI Evaluation.</div>
         </div>
       </div>
     </div></div>
   </figure>
-  <figcaption class="cap">Mockup C1 · La pantalla de submit actual + pre-check de Wingston. Las reglas dejan de ser prosa y pasan a ser una checklist resuelta.</figcaption>
+  <figcaption class="cap">Mockup C1 · La pantalla de submit actual + rules check. MVP: 3 checks verdes por regex en el cliente. La fila ámbar (AI) es fase 2.</figcaption>
 
   <div class="callouts">
-    <div class="co"><b class="n">1</b><span><strong>El pre-check vive dentro del paso 2 actual</strong> — el stepper de 3 pasos (Read the rules / Submit / AI Evaluation) no cambia.</span></div>
+    <div class="co"><b class="n">1</b><span><strong>Dev: solo frontend.</strong> Las reglas ya están estructuradas por misión; los checks son regex sobre el texto del tweet (la URL ya se pega aquí). El stepper de 3 pasos no cambia.</span></div>
     <div class="co"><b class="n">2</b><span><strong>"FREE · BEFORE YOU PAY"</strong> es el mensaje: el usuario entiende que arriesga 0 hasta que decide. El warning ámbar no bloquea — informa.</span></div>
     <div class="co"><b class="n">3</b><span><strong>Honestidad calibrada:</strong> "advisory — final scoring happens in AI Evaluation". Ni promete ni engaña; el protocolo decide.</span></div>
   </div>
@@ -332,13 +341,13 @@
             <div class="ring eng"><div class="rc">0.2</div><div class="rl">Replies</div></div>
             <div class="ring eng"><div class="rc">0.4</div><div class="rl">Impressions</div></div>
           </div>
-          <div class="wingtip"><b>✦ Wingston:</b> Your core gates passed comfortably — Originality (0.6) is what’s holding your points back. Engagement grows over the period: reply to people quoting the same post to lift Replies from 0.2. You’re #14 on the leaderboard; top 10 currently projects ~13 USDC.</div>
-          <div style="display:flex; gap:10px; margin-top:14px"><button class="btn-line">🔔 Notify me on rank changes</button><button class="btn-green">✦ Ask Wingston how to improve</button></div>
+          <div class="wingtip"><b>Your weakest area: Originality (0.6).</b> Posts that add a personal angle score higher on this gate. Engagement metrics keep growing during the period — replies and impressions update as your post gets traction. You’re #14 on the leaderboard.</div>
+          <div style="display:flex; gap:10px; margin-top:14px"><button class="btn-green">✦ Ask Wingston how to improve</button></div>
         </div>
       </div>
     </div></div>
   </figure>
-  <figcaption class="cap">Mockup C2 · Mismos gauges de siempre + timeline de estado + una línea de feedback accionable. El score pasa de veredicto a coaching.</figcaption>
+  <figcaption class="cap">Mockup C2 · Mismos gauges + timeline de estados que ya existen + una línea de feedback <strong>por plantilla</strong> (gate más bajo → consejo fijo; datos que ya llegan al frontend). El botón de Wingston ya existe en el producto.</figcaption>
 </section>
 
 <!-- ============================================================ -->
@@ -347,7 +356,7 @@
   <p>El onboarding actual de un proyecto (Partner Campaign Guide) exige <strong>~7 contactos con el equipo, 3 Google Docs y 2 Looms</strong>: pedir acceso por email, esperar a que Rally cree la organización, redactar la campaña en un doc-plantilla, mandarla a revisión, definir el pool por Telegram, coordinar announcements y ver dos vídeos para aprender a subirla. Cada handoff es un punto donde el brand se enfría. La propuesta: <strong>todo el guide se convierte en una checklist dentro del producto</strong>, y el equipo pasa de cuello de botella a opción premium.</p>
 
   <div class="flow">
-    <div class="fstep"><span class="fk">ACCEDE</span><div class="fbox"><div class="ft">Org self-serve</div><div class="fd">Crea tu organización e invita a tu equipo — sin esperar a Rally</div></div></div>
+    <div class="fstep"><span class="fk">ACCEDE</span><div class="fbox"><div class="ft">Request access in-app</div><div class="fd">Formulario en producto → aprobación en 1 click del equipo</div></div></div>
     <div class="fstep"><span class="fk">REDACTA</span><div class="fbox"><div class="ft">Wizard con defaults</div><div class="fd">El doc-plantilla vive en el producto; review de Rally opcional, 1 click</div></div></div>
     <div class="fstep"><span class="fk">FONDEA</span><div class="fbox"><div class="ft">Pot &amp; Duration</div><div class="fd">USDC, tu token, o + Rally Points por encima — igual que hoy</div></div></div>
     <div class="fstep"><span class="fk">LANZA</span><div class="fbox"><div class="ft">Launch kit</div><div class="fd">Announcement pack + fecha + amplificación de Rally</div></div></div>
@@ -357,11 +366,11 @@
   <div class="tbl-scroll"><table>
     <thead><tr><th style="width:15%">Etapa</th><th style="width:30%">Fricción hoy (Partner Guide)</th><th style="width:32%">Fix (solo UI)</th><th>Psicología</th></tr></thead>
     <tbody>
-      <tr><td><strong>Acceso</strong></td><td class="now">Emails al equipo → Rally crea la org a mano → confirmación → login. Días de espera antes de tocar nada</td><td class="fix">"Create your organization": nombre, logo, invitar emails del equipo. Acceso al dashboard al instante</td><td class="psy"><b>MOMENTUM</b>El interés del brand es máximo el día 0. Cada día de espera lo gasta</td></tr>
-      <tr><td><strong>Redactar</strong></td><td class="now">Copiar un Google Doc plantilla, redactar fuera del producto, enviarlo a review por Telegram, 2 Looms para aprender a subirlo</td><td class="fix">El wizard con defaults ES la plantilla (AI Template + "See participant view"). "Request Rally review" opcional desde el propio draft</td><td class="psy"><b>ZEIGARNIK</b>Una checklist con el paso 1 ya en verde pide ser terminada. Un doc externo, no</td></tr>
-      <tr><td><strong>Fondear</strong></td><td class="now">La estructura del pool se decide en conversaciones sueltas</td><td class="fix">Pot &amp; Duration ya lo resuelve: USDC / tu token / capa de Rally Points encima, con resumen de deposit visible</td><td class="psy"><b>CLARITY = TRUST</b>Ver qué depositas y cuándo elimina la incertidumbre que hoy resuelve un humano</td></tr>
-      <tr><td><strong>Lanzar</strong></td><td class="now">Coordinación de announcements ad hoc (X, Discord, TG, partners) por Telegram</td><td class="fix">Launch kit: announcement pack pre-escrito por canal, fecha alineada, y "Request Rally amplification" (la creator network) en 1 click</td><td class="psy"><b>DEFAULT EFFECT</b>Copy listo para pegar se publica; copy por escribir se pospone</td></tr>
-      <tr><td><strong>Crecer</strong></td><td class="now">Community (pools &gt; $2,000) y Ambassador Program se activan "avisando al equipo"; gestión interna invisible</td><td class="fix">Dos cards en el dashboard con elegibilidad visible y activación en 1 click. La edición (pfp, banner, links) ya es self-serve hoy</td><td class="psy"><b>VISIBLE UPSELL</b>Un feature que no se ve no se pide. La card con "You're eligible ✓" se vende sola</td></tr>
+      <tr><td><strong>Acceso</strong></td><td class="now">Emails al equipo → Rally crea la org a mano → confirmación → login. Días de espera antes de tocar nada</td><td class="fix">MVP: formulario "Request access" en el producto (nombre org + emails) → un click de aprobación en el Admin que ya existe <span class="dev s">S</span> · self-serve completo <span class="dev p2">FASE 2</span></td><td class="psy"><b>MOMENTUM</b>El interés del brand es máximo el día 0. Cada día de espera lo gasta</td></tr>
+      <tr><td><strong>Redactar</strong></td><td class="now">Copiar un Google Doc plantilla, redactar fuera del producto, enviarlo a review por Telegram, 2 Looms para aprender a subirlo</td><td class="fix">El wizard ES la plantilla: los defaults de Evaluation/Targeting son presets de config <span class="dev xs">XS</span> · "Request Rally review" = botón que notifica al equipo con el link del draft <span class="dev xs">XS</span></td><td class="psy"><b>ZEIGARNIK</b>Una checklist con el paso 1 ya en verde pide ser terminada. Un doc externo, no</td></tr>
+      <tr><td><strong>Fondear</strong></td><td class="now">La estructura del pool se decide en conversaciones sueltas</td><td class="fix">Nada nuevo: Pot &amp; Duration ya lo resuelve (USDC / tu token / capa de Rally Points). Solo el resumen de deposit visible en el paso <span class="dev xs">XS</span></td><td class="psy"><b>CLARITY = TRUST</b>Ver qué depositas y cuándo elimina la incertidumbre que hoy resuelve un humano</td></tr>
+      <tr><td><strong>Lanzar</strong></td><td class="now">Coordinación de announcements ad hoc (X, Discord, TG, partners) por Telegram</td><td class="fix">Launch kit: plantillas fijas con variables del draft (título, pot, link) — sin AI <span class="dev xs">XS</span> · "Request Rally amplification" = notificación al equipo <span class="dev xs">XS</span></td><td class="psy"><b>DEFAULT EFFECT</b>Copy listo para pegar se publica; copy por escribir se pospone</td></tr>
+      <tr><td><strong>Crecer</strong></td><td class="now">Community (pools &gt; $2,000) y Ambassador Program se activan "avisando al equipo"; gestión interna invisible</td><td class="fix">Dos cards estáticas con elegibilidad calculada del pot + botón "Request activation" que notifica al equipo. La activación sigue siendo interna, como hoy <span class="dev xs">XS</span></td><td class="psy"><b>VISIBLE UPSELL</b>Un feature que no se ve no se pide. La card con "You're eligible ✓" se vende sola</td></tr>
     </tbody>
   </table></div>
 
@@ -384,7 +393,7 @@
       </div>
       <div class="wgrid">
         <div class="chk">
-          <div class="chkrow"><span class="cnum done">✓</span><div><div class="ct">Create your organization</div><div class="cd">GenLayer · 3 teammates invited (ana@, daniel@, sergio@)</div></div></div>
+          <div class="chkrow"><span class="cnum done">✓</span><div><div class="ct">Organization access</div><div class="cd">GenLayer · requested in-app, approved by Rally · 3 teammates added</div></div></div>
           <div class="chkrow active"><span class="cnum now">2</span><div><div class="ct">Draft your campaign</div><div class="cd">The setup guide lives inside the wizard now — defaults applied, AI Template available. Optional: request a review from the Rally team before launch.</div></div><span class="cta"><button class="btn-blue">Continue draft</button></span></div>
           <div class="chkrow"><span class="cnum todo">3</span><div><div class="ct">Fund your reward pool</div><div class="cd">USDC, your project’s token, or layer Rally Points on top to boost participation.</div></div></div>
           <div class="chkrow"><span class="cnum todo">4</span><div><div class="ct">Launch &amp; announce</div><div class="cd">Your launch kit: ready-made announcements, launch date, and Rally amplification.</div></div></div>
@@ -404,12 +413,12 @@
       </div>
     </div></div>
   </figure>
-  <figcaption class="cap">Mockup B1 · Los 4 pasos del Partner Guide, dentro del producto. El equipo deja de ser requisito y pasa a ser opción visible.</figcaption>
+  <figcaption class="cap">Mockup B1 · Los 4 pasos del Partner Guide, dentro del producto. Dev: una página de checklist (estado derivado de datos que ya existen: org, draft, deposit) + el formulario de request de acceso.</figcaption>
 
   <div class="callouts">
-    <div class="co"><b class="n">1</b><span><strong>El paso 1 nace en verde</strong> (la org se crea al registrarse): efecto Zeigarnik — una lista empezada se termina.</span></div>
+    <div class="co"><b class="n">1</b><span><strong>El paso 1 nace en verde</strong> en cuanto Rally aprueba el request: efecto Zeigarnik — una lista empezada se termina. El request sustituye a los emails, no al control del equipo.</span></div>
     <div class="co"><b class="n">2</b><span><strong>"Talk to the team" siempre visible pero nunca bloqueante.</strong> El proceso white-glove de Ana no desaparece: se convierte en el carril premium.</span></div>
-    <div class="co"><b class="n">3</b><span><strong>"See participant view" sustituye a los 2 Looms:</strong> si necesitas un vídeo para usar el producto, el problema es del producto.</span></div>
+    <div class="co"><b class="n">3</b><span><strong>"See participant view" (ya existe) sustituye a los 2 Looms:</strong> si necesitas un vídeo para usar el producto, el problema es del producto.</span></div>
   </div>
 
   <h3>Launch kit: los announcements dejan de vivir en Telegram</h3>
@@ -438,7 +447,7 @@
       </div>
     </div></div>
   </figure>
-  <figcaption class="cap">Mockup B2 · Announcement pack por canal + fecha + amplificación de Rally en un click. El copy listo se publica; el copy por escribir se pospone.</figcaption>
+  <figcaption class="cap">Mockup B2 · Announcement pack = plantillas fijas con variables del draft (título, pot, link) — sin AI. La fecha usa el start date que ya existe; "amplification" es una notificación al equipo.</figcaption>
 
   <h3>Crecer: Community y Ambassador Program, visibles y a un click</h3>
   <figure class="frame narrow" role="img" aria-label="Mockup: activación de Community y Ambassador Program">
@@ -454,7 +463,7 @@
             <div class="gf"><i>✓</i><span>All your campaigns and leaderboards in one place</span></div>
             <div class="gf"><i>✓</i><span>Members follow your project and get notified of new campaigns</span></div>
           </div>
-          <button class="btn-blue">Activate Community</button>
+          <button class="btn-blue">Request activation</button>
         </div>
         <div class="gcard">
           <div class="gh">⭐ Ambassador Program</div>
@@ -465,33 +474,54 @@
             <div class="gf"><i>✓</i><span>Whitelisted campaigns only your ambassadors can join</span></div>
             <div class="gf"><i>✓</i><span>Per-ambassador performance analytics</span></div>
           </div>
-          <button class="btn-line">Set up program</button>
+          <button class="btn-line">Request setup</button>
         </div>
       </div>
     </div></div>
   </figure>
-  <figcaption class="cap">Mockup B3 · Los dos features opcionales del Partner Guide como cards de dashboard con elegibilidad visible ("pools &gt; $2,000" es el criterio real del guide). Un feature que no se ve, no se pide.</figcaption>
+  <figcaption class="cap">Mockup B3 · Cards estáticas con elegibilidad calculada del pot ("pools &gt; $2,000", criterio real del guide). Los botones solo notifican al equipo — la activación sigue siendo interna, exactamente como hoy. Coste: dos componentes de frontend.</figcaption>
 </section>
 
 <!-- ============================================================ -->
 <section id="s3">
   <div class="sec-head"><span class="sec-num">03</span><h2>Reglas del juego</h2></div>
   <ul class="plain">
-    <li><strong>Protocolo intacto.</strong> Pot, periods, misiones, core gates / quality / engagement, curvas Balanced–Default–Extreme, targeting, deposit y el coste de submission (100 RLP o ETH ~$1.20) no cambian. Todo lo propuesto es capa de UI, permisos y mensajería.</li>
-    <li><strong>El wizard de 6 pasos se mantiene</strong> (Basic details · Pot &amp; Duration · Missions · Evaluation · Targeting on X · Confirm &amp; Deposit) con Evaluation y Targeting pre-resueltos con los defaults actuales, editables — detallado en la iteración v2 de este doc (en la rama de git).</li>
-    <li><strong>Solo cifras reales:</strong> 500 USDC / periodo, 100 RLP por submission, $2,000 de umbral para Communities (del Partner Guide), 180000 RLP de balance. Los mínimos anti-spam de campañas Community siguen siendo decisión de config vuestra.</li>
-    <li><strong>El pre-check de Wingston es orientativo</strong> — la AI Evaluation decide. Así se comunica en pantalla.</li>
+    <li><strong>Protocolo intacto.</strong> Pot, periods, misiones, core gates / quality / engagement, curvas Balanced–Default–Extreme, targeting, deposit y el coste de submission (100 RLP o ETH ~$1.20) no cambian. Todo lo propuesto es capa de UI, mensajería y notificaciones internas al equipo.</li>
+    <li><strong>Regla de recorte:</strong> si un fix necesita backend nuevo o AI, se parte en MVP (sin) + fase 2. Si un flujo interno ya funciona a mano (activar Communities, crear orgs), el MVP solo lo hace <em>visible y pedible</em> desde el producto — no lo automatiza.</li>
+    <li><strong>El wizard de 6 pasos se mantiene</strong> con Evaluation y Targeting pre-resueltos con los defaults actuales (presets de config, editables) — detallado en la iteración v2 (historial de git).</li>
+    <li><strong>Solo cifras reales:</strong> 500 USDC / periodo, 100 RLP por submission, $2,000 de umbral para Communities (del Partner Guide). El pre-check es orientativo — la AI Evaluation decide, y así se comunica.</li>
   </ul>
 </section>
 
 <!-- ============================================================ -->
 <section id="s4">
-  <div class="sec-head"><span class="sec-num">04</span><h2>Next steps</h2></div>
+  <div class="sec-head"><span class="sec-num">04</span><h2>Plan de implementación (MVP en orden)</h2></div>
+
+  <div class="tbl-scroll"><table>
+    <thead><tr><th style="width:4%">#</th><th style="width:32%">Fix</th><th style="width:12%">Coste</th><th>Qué toca</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td class="fix">Rules check antes de pagar (creator)</td><td><span class="dev xs">XS</span></td><td class="now">Solo frontend: regex sobre el texto del tweet con las reglas ya estructuradas de la misión. Mueve el north star directamente.</td></tr>
+      <tr><td>2</td><td class="fix">Timeline de submission + línea de feedback por plantilla</td><td><span class="dev xs">XS</span></td><td class="now">Solo frontend: pinta estados y scores que el backend ya devuelve.</td></tr>
+      <tr><td>3</td><td class="fix">Checklist de brand + "Request access" in-app</td><td><span class="dev s">S</span></td><td class="now">Un formulario + aprobación en el Admin existente + página de checklist con estado derivado de datos existentes.</td></tr>
+      <tr><td>4</td><td class="fix">Launch kit (plantillas con variables + notificación al equipo)</td><td><span class="dev xs">XS</span></td><td class="now">Frontend + plantillas de copy fijas. Sin AI, sin scheduler nuevo (usa el start date existente).</td></tr>
+      <tr><td>5</td><td class="fix">Cards Community / Ambassadors con "Request activation"</td><td><span class="dev xs">XS</span></td><td class="now">Dos componentes estáticos + elegibilidad calculada del pot + notificación. La activación sigue siendo interna.</td></tr>
+      <tr><td>6</td><td class="fix">Badge ✔ Verified / Community en las cards de Explore</td><td><span class="dev xs">XS</span></td><td class="now">Un flag por proyecto (las orgs partner ya existen de facto) + un chip en la card.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Qué se ha recortado (y por qué)</h3>
   <ul class="plain">
-    <li><strong>Priorización sugerida (impacto/esfuerzo):</strong> ① pre-check de Wingston (mueve el north star directamente), ② org self-serve + checklist de brand (elimina días de espera), ③ launch kit, ④ cards de Community/Ambassadors, ⑤ badges Verified/Community en Network.</li>
-    <li><strong>Diseño (Pablo):</strong> estados del pre-check (todo verde / warnings / fallo), la card de score con la línea de Wingston, versión mobile de la checklist de brand.</li>
-    <li><strong>Dev:</strong> endpoint de pre-check (reglas ya estructuradas por misión), org self-serve con invitaciones, generación del announcement pack desde el draft (mismo motor del AI Template), flags de elegibilidad Community en dashboard.</li>
-    <li><strong>Medición:</strong> creator — conversión visita→primera submission, submissions por usuario/semana, % submissions descalificadas (debería caer con el pre-check). Brand — time-to-first-campaign (hoy: días; objetivo: 1 sesión), % de campañas lanzadas sin intervención del equipo, adopción de Community/Ambassadors.</li>
+    <li><strong>Pre-check con AI (originalidad):</strong> fase 2 — el 80% del valor está en los checks mecánicos.</li>
+    <li><strong>Org self-serve completa e invitaciones automáticas:</strong> fase 2 — el request in-app ya elimina los emails y la espera percibida.</li>
+    <li><strong>Generación de announcements con AI:</strong> innecesaria — plantillas con variables dan el mismo resultado hoy.</li>
+    <li><strong>Notificaciones nuevas (score listo, cierre de periodo, rank):</strong> no se duplican aquí — van con el feature de Notifications ya planificado en vuestro roadmap.</li>
+    <li><strong>Automatizar la activación de Communities/Ambassadors:</strong> no — el proceso interno funciona; solo le faltaba ser visible.</li>
+  </ul>
+
+  <h3>Medición</h3>
+  <ul class="plain">
+    <li><strong>Creator:</strong> conversión visita→primera submission, submissions/usuario/semana, % de submissions descalificadas (debe caer con el rules check).</li>
+    <li><strong>Brand:</strong> time-to-first-campaign (hoy: días; objetivo: 1 sesión), % de campañas lanzadas sin intervención del equipo, requests de Community/Ambassadors desde las cards.</li>
   </ul>
 </section>
 
