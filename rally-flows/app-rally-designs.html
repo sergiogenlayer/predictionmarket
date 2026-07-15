@@ -2,243 +2,249 @@
 <style>
   /* ---------- Doc shell tokens ---------- */
   :root{
-    --paper:#F7F8F2; --ink:#171B12; --ink-2:#5A614E; --line:#DDE1D0;
-    --card:#FFFFFF; --accent:#4C6B00; --accent-soft:#EAF3CE;
+    --paper:#F8F8FB; --ink:#141620; --ink-2:#5B5F72; --line:#E2E4EE;
+    --card:#FFFFFF; --accent:#2B3BE8; --accent-soft:#EDEFFE;
     --mono:ui-monospace,'SF Mono','Cascadia Code',Menlo,Consolas,monospace;
     --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
   }
   @media (prefers-color-scheme: dark){
-    :root{ --paper:#101208; --ink:#EDEFE3; --ink-2:#9AA189; --line:#2A2E1E;
-           --card:#171A0E; --accent:#C6E85C; --accent-soft:#232A10; }
+    :root{ --paper:#101118; --ink:#EAEBF2; --ink-2:#9A9EB2; --line:#282B3A;
+           --card:#181A24; --accent:#8FA0FF; --accent-soft:#1E2236; }
   }
-  :root[data-theme="dark"]{ --paper:#101208; --ink:#EDEFE3; --ink-2:#9AA189; --line:#2A2E1E;
-           --card:#171A0E; --accent:#C6E85C; --accent-soft:#232A10; }
-  :root[data-theme="light"]{ --paper:#F7F8F2; --ink:#171B12; --ink-2:#5A614E; --line:#DDE1D0;
-           --card:#FFFFFF; --accent:#4C6B00; --accent-soft:#EAF3CE; }
+  :root[data-theme="dark"]{ --paper:#101118; --ink:#EAEBF2; --ink-2:#9A9EB2; --line:#282B3A;
+           --card:#181A24; --accent:#8FA0FF; --accent-soft:#1E2236; }
+  :root[data-theme="light"]{ --paper:#F8F8FB; --ink:#141620; --ink-2:#5B5F72; --line:#E2E4EE;
+           --card:#FFFFFF; --accent:#2B3BE8; --accent-soft:#EDEFFE; }
 
   *{box-sizing:border-box; margin:0}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
-  body{
-    background:var(--paper); color:var(--ink);
-    font-family:var(--sans); line-height:1.55; font-size:16px;
-    padding:0 20px 96px;
-  }
-  .wrap{max-width:1060px; margin:0 auto}
+  body{background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.55; font-size:16px; padding:0 20px 96px}
+  .wrap{max-width:1080px; margin:0 auto}
   a{color:var(--accent)}
   a:focus-visible,button:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
 
-  /* ---------- Doc typography ---------- */
-  header.masthead{padding:64px 0 28px; border-bottom:1px solid var(--line)}
+  header.masthead{padding:60px 0 26px; border-bottom:1px solid var(--line)}
   .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent)}
-  h1{font-size:clamp(30px,4.5vw,46px); line-height:1.06; letter-spacing:-.022em; font-weight:800; text-wrap:balance; margin:14px 0 16px}
-  .lede{max-width:62ch; color:var(--ink-2); font-size:17px}
-  .meta-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:22px}
+  h1{font-size:clamp(28px,4.2vw,42px); line-height:1.08; letter-spacing:-.02em; font-weight:800; text-wrap:balance; margin:14px 0 14px}
+  .lede{max-width:64ch; color:var(--ink-2); font-size:17px}
+  .meta-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px}
   .meta-chip{font-family:var(--mono); font-size:11.5px; padding:5px 10px; border:1px solid var(--line); border-radius:999px; color:var(--ink-2); background:var(--card)}
 
-  nav.toc{display:flex; flex-wrap:wrap; gap:6px 18px; padding:18px 0; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:12.5px}
+  nav.toc{display:flex; flex-wrap:wrap; gap:6px 18px; padding:16px 0; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:12.5px}
   nav.toc a{text-decoration:none; color:var(--ink-2)}
   nav.toc a:hover{color:var(--accent)}
   nav.toc a b{color:var(--accent); font-weight:600; margin-right:5px}
 
-  section{padding:56px 0 8px}
+  section{padding:52px 0 8px}
   .sec-head{display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:baseline; margin-bottom:10px}
   .sec-num{font-family:var(--mono); font-size:13px; color:var(--accent); letter-spacing:.1em}
-  h2{font-size:clamp(22px,3vw,30px); letter-spacing:-.015em; font-weight:800; text-wrap:balance}
+  h2{font-size:clamp(21px,3vw,28px); letter-spacing:-.014em; font-weight:800; text-wrap:balance}
   h3{font-size:17px; font-weight:700; margin:26px 0 8px}
-  section > p, .sec-body > p{max-width:68ch; color:var(--ink-2); margin:8px 0}
-  section > p strong, .sec-body p strong, td strong{color:var(--ink)}
-  ul.plain{max-width:68ch; color:var(--ink-2); padding-left:20px; margin:8px 0}
+  section > p, .sec-body > p{max-width:70ch; color:var(--ink-2); margin:8px 0}
+  section > p strong, td strong{color:var(--ink)}
+  ul.plain{max-width:70ch; color:var(--ink-2); padding-left:20px; margin:8px 0}
   ul.plain li{margin:5px 0}
   ul.plain li::marker{color:var(--accent)}
 
-  .note{background:var(--accent-soft); border:1px solid var(--line); border-radius:10px; padding:14px 16px; max-width:72ch; color:var(--ink); font-size:14.5px; margin:16px 0}
+  .note{background:var(--accent-soft); border:1px solid var(--line); border-radius:10px; padding:14px 16px; max-width:74ch; color:var(--ink); font-size:14.5px; margin:16px 0}
   .note .eyebrow{display:block; margin-bottom:4px}
 
-  /* ---------- Comparison table ---------- */
   .tbl-scroll{overflow-x:auto; margin:18px 0; border:1px solid var(--line); border-radius:12px; background:var(--card)}
   table{border-collapse:collapse; width:100%; min-width:640px; font-size:14px}
   th,td{text-align:left; padding:11px 16px; border-bottom:1px solid var(--line); vertical-align:top}
   th{font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-2)}
   tr:last-child td{border-bottom:none}
-  td.now{color:var(--ink-2)}
+  td.keep{color:var(--ink-2)}
   td.new{color:var(--ink); font-weight:600}
 
-  /* ---------- Flow diagrams ---------- */
-  .flow{display:flex; gap:0; overflow-x:auto; padding:20px 4px; align-items:stretch}
+  .flow{display:flex; gap:0; overflow-x:auto; padding:18px 4px}
   .fstep{min-width:150px; flex:1; position:relative; padding:0 18px 0 0}
-  .fstep:not(:last-child)::after{
-    content:""; position:absolute; right:2px; top:26px; width:12px; height:12px;
-    border-top:2px solid var(--accent); border-right:2px solid var(--accent); transform:rotate(45deg);
-  }
+  .fstep:not(:last-child)::after{content:""; position:absolute; right:2px; top:26px; width:11px; height:11px;
+    border-top:2px solid var(--accent); border-right:2px solid var(--accent); transform:rotate(45deg)}
   .fstep .fk{font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:.1em}
   .fstep .fbox{margin-top:6px; background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 12px 10px; height:calc(100% - 24px)}
-  .fstep .ft{font-weight:700; font-size:14px; letter-spacing:-.01em}
+  .fstep .ft{font-weight:700; font-size:14px}
   .fstep .fd{font-size:12.5px; color:var(--ink-2); margin-top:4px}
-  .fstep.alt .fbox{border-style:dashed}
 
-  /* ---------- Callouts under mockups ---------- */
   .callouts{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:10px; margin:14px 0 6px}
   .co{display:flex; gap:10px; font-size:13.5px; color:var(--ink-2); background:var(--card); border:1px solid var(--line); border-radius:10px; padding:11px 12px}
-  .co b.n{flex:none; width:20px; height:20px; border-radius:50%; background:var(--accent); color:var(--paper); font-family:var(--mono); font-size:11.5px; display:grid; place-items:center; margin-top:1px}
+  .co b.n{flex:none; width:20px; height:20px; border-radius:50%; background:var(--accent); color:#fff; font-family:var(--mono); font-size:11.5px; display:grid; place-items:center; margin-top:1px}
   .co strong{color:var(--ink)}
-
-  /* =================================================================
-     MOCKUP FRAMES — deliberately single-theme (dark product UI)
-     ================================================================= */
-  .frame{
-    --m-bg:#0C0E08; --m-srf:#14180D; --m-srf2:#1A1F11; --m-line:#272D19; --m-line2:#333B21;
-    --m-ink:#F1F4E6; --m-dim:#9AA386; --m-faint:#6C755C;
-    --volt:#CDFF3D; --volt-ink:#141804;
-    --verif:#6EA8FF; --rlp:#F5C34D; --usdc:#4D9FEB; --ok:#5BDB8B; --warn:#FF7A5C;
-    margin:22px 0 4px; border:1px solid var(--line); border-radius:14px; background:#07080A;
-    overflow:hidden;
-  }
-  .frame .bar{display:flex; align-items:center; gap:8px; padding:10px 14px; border-bottom:1px solid #1B1E14; background:#0A0C07}
-  .frame .bar i{width:10px; height:10px; border-radius:50%; background:#23281A; display:inline-block}
-  .frame .bar .url{margin-left:10px; font-family:var(--mono); font-size:11.5px; color:#7C856A; background:#12150C; border:1px solid #1F2415; padding:4px 12px; border-radius:999px}
-  .frame .screen{background:var(--m-bg); color:var(--m-ink); font-size:14px; overflow-x:auto}
-  .frame .cv{min-width:920px; padding:0 0 28px}
-  .frame.narrow .cv{min-width:760px}
-
-  /* product topbar */
-  .m-top{display:flex; align-items:center; gap:22px; padding:14px 26px; border-bottom:1px solid var(--m-line)}
-  .m-logo{display:flex; align-items:center; gap:8px; font-weight:800; letter-spacing:.06em; font-size:15px}
-  .m-logo::before{content:""; width:11px; height:11px; background:var(--volt); border-radius:3px; transform:rotate(45deg)}
-  .m-nav{display:flex; gap:18px; font-size:13.5px; color:var(--m-dim)}
-  .m-nav span.on{color:var(--m-ink); font-weight:700; border-bottom:2px solid var(--volt); padding-bottom:3px}
-  .m-spacer{flex:1}
-  .m-rlp{font-family:var(--mono); font-size:12px; color:var(--rlp); border:1px solid var(--m-line2); border-radius:999px; padding:6px 12px}
-  .m-ava{width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg,#3A431F,#20240F); border:1px solid var(--m-line2)}
-  .btn-volt{background:var(--volt); color:var(--volt-ink); font-weight:800; font-size:13px; border:none; border-radius:9px; padding:9px 16px; letter-spacing:.01em}
-  .btn-ghost{background:transparent; color:var(--m-ink); border:1px solid var(--m-line2); border-radius:9px; padding:9px 14px; font-size:13px; font-weight:600}
-
-  .m-pad{padding:22px 26px 0}
-  .m-h1{font-size:26px; font-weight:800; letter-spacing:-.02em}
-  .m-sub{color:var(--m-dim); font-size:13.5px; margin-top:4px}
-
-  .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; align-items:center}
-  .chip{font-size:12.5px; padding:7px 13px; border-radius:999px; border:1px solid var(--m-line2); color:var(--m-dim)}
-  .chip.on{background:var(--m-ink); color:var(--m-bg); font-weight:700; border-color:var(--m-ink)}
-  .chip.sel{margin-left:auto}
-  .chip.dd::after{content:" ▾"; color:var(--m-faint)}
-
-  /* badges */
-  .bdg{font-family:var(--mono); font-size:10px; letter-spacing:.12em; padding:3px 8px; border-radius:5px; font-weight:700}
-  .bdg.v{background:rgba(110,168,255,.16); color:var(--verif); border:1px solid rgba(110,168,255,.35)}
-  .bdg.n{background:rgba(205,255,61,.10); color:var(--volt); border:1px solid rgba(205,255,61,.3)}
-  .bdg.live{background:rgba(91,219,139,.12); color:var(--ok); border:1px solid rgba(91,219,139,.3)}
-
-  /* featured verified cards */
-  .feat-row{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:18px}
-  .feat{border:1px solid var(--m-line2); background:linear-gradient(180deg,var(--m-srf2),var(--m-srf)); border-radius:14px; padding:18px 18px 16px; position:relative}
-  .feat .prj{display:flex; align-items:center; gap:10px}
-  .feat .plogo{width:34px; height:34px; border-radius:9px; background:#22283A; border:1px solid #33405C; display:grid; place-items:center; font-weight:800; font-size:13px; color:var(--verif)}
-  .feat .plogo.g{background:#2E2338; border-color:#4A3560; color:#C99BFF}
-  .feat .pname{font-weight:800; font-size:14px}
-  .feat .title{font-size:18px; font-weight:800; letter-spacing:-.015em; margin:12px 0 6px}
-  .feat .brief{color:var(--m-dim); font-size:12.5px; max-width:46ch}
-  .feat .stats{display:flex; gap:18px; margin-top:14px; font-family:var(--mono); font-size:11.5px; color:var(--m-dim)}
-  .feat .stats b{display:block; font-size:14px; color:var(--m-ink); letter-spacing:0}
-  .feat .stats b.pool{color:var(--usdc)} .feat .stats b.pts{color:#C99BFF}
-  .feat .corner{position:absolute; top:16px; right:16px; display:flex; gap:6px}
-
-  /* network campaign grid */
-  .cardgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:14px}
-  .ccard{border:1px solid var(--m-line); background:var(--m-srf); border-radius:13px; padding:15px 15px 13px}
-  .ccard .byline{display:flex; align-items:center; gap:8px; font-size:12px; color:var(--m-dim)}
-  .ccard .cava{width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg,#4A5426,#262B12)}
-  .ccard .sorsa{font-family:var(--mono); font-size:10.5px; color:var(--m-faint); margin-left:auto}
-  .ccard .title{font-weight:800; font-size:15px; margin:10px 0 5px; letter-spacing:-.01em}
-  .ccard .brief{font-size:12px; color:var(--m-dim); min-height:34px}
-  .ccard .foot{display:flex; align-items:baseline; gap:12px; margin-top:12px; font-family:var(--mono); font-size:11px; color:var(--m-faint)}
-  .ccard .pool{font-size:13.5px; font-weight:700; color:var(--rlp)}
-  .ccard .pool.u{color:var(--usdc)}
-  .ccard .tleft{margin-left:auto}
-
-  /* wizard */
-  .wiz-head{display:flex; align-items:center; gap:14px; padding:18px 26px 0}
-  .wiz-steps{display:flex; gap:8px; align-items:center; font-family:var(--mono); font-size:11.5px; color:var(--m-faint)}
-  .wstep{display:flex; gap:7px; align-items:center}
-  .wstep i{width:20px; height:20px; border-radius:50%; border:1px solid var(--m-line2); display:grid; place-items:center; font-style:normal; font-size:10.5px}
-  .wstep.on{color:var(--m-ink)} .wstep.on i{background:var(--volt); color:var(--volt-ink); border-color:var(--volt); font-weight:800}
-  .wstep.done i{background:var(--m-srf2); color:var(--ok); border-color:var(--ok)}
-  .wsep{width:26px; height:1px; background:var(--m-line2)}
-  .wiz-body{display:grid; grid-template-columns:1.55fr 1fr; gap:22px; padding:20px 26px 0}
-  .wq{font-size:21px; font-weight:800; letter-spacing:-.015em; margin-bottom:14px; text-wrap:balance}
-  .field{margin-bottom:16px}
-  .flabel{font-family:var(--mono); font-size:10.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--m-faint); display:flex; justify-content:space-between; margin-bottom:7px}
-  .flabel .hint{letter-spacing:0; text-transform:none}
-  .input{background:var(--m-srf); border:1px solid var(--m-line2); border-radius:10px; padding:12px 14px; font-size:14.5px; color:var(--m-ink)}
-  .input.big{font-size:17px; font-weight:700}
-  .tarea{min-height:96px; font-size:13.5px; line-height:1.55; color:var(--m-ink)}
-  .tarea .ph{color:var(--m-faint)}
-  .assist{display:inline-flex; align-items:center; gap:7px; margin-top:8px; font-size:12.5px; color:var(--volt); border:1px dashed rgba(205,255,61,.4); border-radius:8px; padding:7px 12px}
-  .tmpl-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
-  .tmpl{font-size:12px; color:var(--m-dim); border:1px solid var(--m-line); background:var(--m-srf); padding:7px 11px; border-radius:8px}
-  .wiz-foot{display:flex; align-items:center; gap:14px; padding:20px 26px 0; border-top:1px solid var(--m-line); margin-top:22px}
-  .draft{font-family:var(--mono); font-size:11px; color:var(--m-faint)}
-
-  .seg{display:inline-flex; border:1px solid var(--m-line2); border-radius:10px; overflow:hidden}
-  .seg span{padding:9px 18px; font-size:13px; font-weight:700; color:var(--m-dim)}
-  .seg span.on{background:var(--m-ink); color:var(--m-bg)}
-  .preset-row{display:flex; gap:8px; margin-top:8px}
-  .preset{font-family:var(--mono); font-size:12px; border:1px solid var(--m-line2); border-radius:8px; padding:6px 12px; color:var(--m-dim)}
-  .dist-row{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:6px}
-  .dist{border:1px solid var(--m-line2); border-radius:11px; padding:12px; background:var(--m-srf)}
-  .dist.on{border-color:var(--volt); box-shadow:0 0 0 1px var(--volt) inset}
-  .dist .dt{font-weight:700; font-size:13px}
-  .dist .dd{font-size:11.5px; color:var(--m-dim); margin-top:3px}
-  .bars{display:flex; align-items:flex-end; gap:3px; height:34px; margin-top:10px}
-  .bars i{width:9px; background:var(--m-line2); border-radius:2px 2px 0 0}
-  .dist.on .bars i{background:var(--volt)}
-
-  .sumcard{border:1px solid var(--m-line2); border-radius:13px; background:var(--m-srf2); padding:16px}
-  .sumcard .sh{font-family:var(--mono); font-size:10.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--m-faint); margin-bottom:12px}
-  .srow{display:flex; justify-content:space-between; font-size:13px; color:var(--m-dim); padding:7px 0; border-bottom:1px dashed var(--m-line)}
-  .srow b{color:var(--m-ink); font-family:var(--mono); font-weight:600}
-  .srow.total{border-bottom:none; padding-top:12px}
-  .srow.total b{color:var(--rlp); font-size:16px; font-weight:800}
-  .escrow{font-size:11.5px; color:var(--m-faint); margin-top:12px; line-height:1.5}
-  .escrow b{color:var(--ok); font-weight:600}
-
-  .adv{border:1px solid var(--m-line); border-radius:11px; margin-top:8px}
-  .adv .arow{display:flex; align-items:center; gap:10px; padding:12px 14px; border-bottom:1px solid var(--m-line); font-size:13px; color:var(--m-dim)}
-  .adv .arow:last-child{border-bottom:none}
-  .adv .arow b{color:var(--m-ink); font-weight:600; width:150px; flex:none}
-  .adv .arow .val{margin-left:auto; font-family:var(--mono); font-size:11.5px; color:var(--m-faint)}
-
-  .success{display:flex; flex-direction:column; align-items:center; text-align:center; padding:40px 26px 16px}
-  .success .ok-ring{width:52px; height:52px; border-radius:50%; border:2px solid var(--ok); display:grid; place-items:center; color:var(--ok); font-size:22px; margin-bottom:16px}
-  .success .st{font-size:24px; font-weight:800; letter-spacing:-.02em}
-  .success .slink{font-family:var(--mono); font-size:12.5px; color:var(--volt); background:var(--m-srf); border:1px solid var(--m-line2); border-radius:999px; padding:8px 16px; margin:14px 0 6px}
-  .success .srowb{display:flex; gap:10px; margin-top:12px}
-
-  /* verified / brand */
-  .split{display:grid; grid-template-columns:1.1fr 1fr; gap:22px; padding:22px 26px 0}
-  .vcheck{border:1px solid var(--m-line2); border-radius:13px; background:var(--m-srf)}
-  .vcheck .vrow{display:flex; gap:12px; padding:14px 16px; border-bottom:1px solid var(--m-line); align-items:center}
-  .vcheck .vrow:last-child{border-bottom:none}
-  .vic{width:24px; height:24px; border-radius:50%; flex:none; display:grid; place-items:center; font-size:12px; font-family:var(--mono)}
-  .vic.done{background:rgba(91,219,139,.15); color:var(--ok); border:1px solid rgba(91,219,139,.4)}
-  .vic.now{background:rgba(205,255,61,.12); color:var(--volt); border:1px solid rgba(205,255,61,.45)}
-  .vic.todo{border:1px solid var(--m-line2); color:var(--m-faint)}
-  .vrow .vt{font-weight:700; font-size:13.5px}
-  .vrow .vd{font-size:12px; color:var(--m-dim)}
-  .benef{display:grid; gap:8px}
-  .brow{display:flex; gap:10px; font-size:13px; color:var(--m-dim); border:1px solid var(--m-line); border-radius:10px; padding:10px 13px; background:var(--m-srf)}
-  .brow b{color:var(--m-ink); font-weight:700}
-  .brow .bi{color:var(--verif); font-family:var(--mono); flex:none}
-  .kpis{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; padding:18px 26px 0}
-  .kpi{border:1px solid var(--m-line); border-radius:12px; background:var(--m-srf); padding:14px}
-  .kpi .kl{font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--m-faint)}
-  .kpi .kv{font-size:22px; font-weight:800; margin-top:6px; font-variant-numeric:tabular-nums}
-  .kpi .kd{font-size:11px; color:var(--ok); font-family:var(--mono); margin-top:3px}
-
   .cap{font-family:var(--mono); font-size:11.5px; color:var(--ink-2); margin:8px 2px 0}
 
+  /* =================================================================
+     MOCKUP FRAMES — Rally real UI (light), single-theme on purpose
+     ================================================================= */
+  .frame{
+    --r-bg:#FFFFFF; --r-ink:#12141F; --r-dim:#6B7084; --r-faint:#9CA1B4;
+    --r-line:#E7E9F3; --r-line2:#D8DBEA;
+    --r-blue:#2B3BE8; --r-blue-d:#1E2BD1;
+    --r-lav-bg:linear-gradient(120deg,#EDEFFD 0%,#F7F2FE 55%,#FDFBFF 100%);
+    --r-chip:#EBE7FB; --r-chip-ink:#7A6BD8;
+    --r-purple:linear-gradient(135deg,#7C3AED,#A855F7);
+    --r-orange:linear-gradient(135deg,#F4740C,#FB9E3C);
+    --r-green:#17A34A; --r-green-bg:#F0FAF3;
+    --r-gold:#F5A623;
+    margin:22px 0 4px; border:1px solid var(--line); border-radius:14px; background:var(--card); overflow:hidden;
+  }
+  .frame .bar{display:flex; align-items:center; gap:8px; padding:10px 14px; border-bottom:1px solid var(--line); background:var(--paper)}
+  .frame .bar i{width:10px; height:10px; border-radius:50%; background:var(--line); display:inline-block}
+  .frame .bar .url{margin-left:10px; font-family:var(--mono); font-size:11.5px; color:var(--ink-2); background:var(--card); border:1px solid var(--line); padding:4px 12px; border-radius:999px}
+  .frame .screen{background:var(--r-bg); color:var(--r-ink); font-size:14px; overflow-x:auto}
+  .frame .cv{min-width:940px; padding:0 0 26px}
+  .frame.narrow .cv{min-width:820px}
+
+  /* Rally topbar */
+  .r-top{display:flex; align-items:center; gap:20px; padding:13px 28px; background:var(--r-bg); border-bottom:1px solid var(--r-line)}
+  .r-logo{font-style:italic; font-weight:900; letter-spacing:-.02em; font-size:19px; display:flex; align-items:center; gap:6px}
+  .r-logo::before{content:"⚡"; font-style:normal; font-size:15px}
+  .r-nav{display:flex; gap:20px; font-size:13px; color:var(--r-dim); align-items:center}
+  .r-nav .on{color:var(--r-ink); font-weight:700; border-bottom:2px solid var(--r-blue); padding-bottom:4px}
+  .r-nav .dd::after{content:" ▾"; font-size:10px}
+  .r-nav sup{background:var(--r-chip); color:var(--r-chip-ink); font-size:8.5px; padding:1px 5px; border-radius:999px; font-weight:700; margin-left:2px; vertical-align:8px}
+  .r-spacer{flex:1}
+  .r-search{border:1px solid var(--r-line2); border-radius:999px; padding:7px 14px; font-size:12.5px; color:var(--r-faint); min-width:170px}
+  .btn-wing{background:var(--r-green); color:#fff; font-weight:700; font-size:12.5px; border:none; border-radius:999px; padding:8px 14px}
+  .r-user{border:1px solid var(--r-line2); border-radius:10px; padding:5px 12px; font-size:11.5px; font-weight:700; text-align:center; line-height:1.2}
+  .r-user small{display:block; font-size:8.5px; color:var(--r-chip-ink); letter-spacing:.06em}
+  .btn-wallet{background:var(--r-blue); color:#fff; font-weight:700; font-size:12.5px; border:none; border-radius:10px; padding:9px 14px}
+  .btn-blue{background:var(--r-blue); color:#fff; font-weight:700; font-size:13.5px; border:none; border-radius:10px; padding:11px 20px}
+  .btn-line{background:var(--r-bg); color:var(--r-ink); border:1px solid var(--r-line2); border-radius:10px; padding:10px 16px; font-size:13px; font-weight:600}
+
+  /* hero band */
+  .r-hero{background:var(--r-lav-bg); padding:30px 28px 0}
+  .r-h1{font-size:28px; font-weight:800; letter-spacing:-.02em}
+  .r-sub{color:var(--r-dim); font-size:13.5px; margin-top:6px; max-width:62ch}
+  .r-tabs{display:flex; gap:22px; margin-top:20px; font-size:13px; color:var(--r-dim)}
+  .r-tabs span{padding-bottom:10px}
+  .r-tabs .on{color:var(--r-blue); font-weight:700; border-bottom:2px solid var(--r-blue)}
+
+  .r-pad{padding:20px 28px 0}
+  .filters{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+  .f-search{flex:1; min-width:220px; border:1px solid var(--r-line2); border-radius:10px; padding:9px 14px; font-size:12.5px; color:var(--r-faint)}
+  .f-sel{border:1px solid var(--r-line2); border-radius:10px; padding:9px 13px; font-size:12.5px; color:var(--r-ink)}
+  .f-sel::after{content:" ⇕"; color:var(--r-faint); font-size:10px}
+  .seg-chips{display:flex; gap:8px; margin-top:14px}
+  .schip{font-size:12.5px; padding:7px 14px; border-radius:999px; border:1px solid var(--r-line2); color:var(--r-dim); font-weight:600}
+  .schip.on{background:var(--r-blue); border-color:var(--r-blue); color:#fff}
+  .schip .vd{color:#3B82F6} .schip.on .vd{color:#fff}
+
+  /* explore cards */
+  .xgrid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:18px}
+  .xcard{border:1px solid var(--r-line); border-radius:12px; overflow:hidden; background:var(--r-bg)}
+  .xban{height:96px; position:relative; display:flex; align-items:flex-start; padding:10px}
+  .xban .pot{font-family:var(--mono); font-size:12px; font-weight:700; color:#fff; display:flex; align-items:center; gap:5px}
+  .xban .pot i{font-style:normal; opacity:.85; font-size:10px}
+  .xban .ends{position:absolute; right:8px; bottom:8px; background:rgba(10,10,20,.55); color:#fff; font-size:10px; padding:3px 9px; border-radius:999px}
+  .xbody{padding:13px 14px 14px}
+  .xt{font-weight:800; font-size:14.5px; letter-spacing:-.01em; line-height:1.25}
+  .xby{display:flex; align-items:center; gap:7px; margin-top:9px; font-size:12px; color:var(--r-dim)}
+  .xava{width:20px; height:20px; border-radius:50%; background:#14161F; flex:none}
+  .xava.c1{background:linear-gradient(135deg,#F59E0B,#EF4444)} .xava.c2{background:linear-gradient(135deg,#3B82F6,#8B5CF6)} .xava.c3{background:linear-gradient(135deg,#10B981,#3B82F6)}
+  .vcheck{color:#3B82F6; font-size:12px}
+  .xfoot{display:flex; gap:6px; margin-top:11px; align-items:center}
+  .nchip{background:var(--r-chip); color:var(--r-chip-ink); font-size:10px; font-weight:700; padding:3px 9px; border-radius:999px}
+  .tchip{background:#EAF3FF; color:#2563EB; font-size:10px; font-weight:700; padding:3px 9px; border-radius:999px}
+  .tchip.comm{background:#FFF4E8; color:#D97706}
+
+  /* wizard (creation) */
+  .wsteps{display:flex; gap:10px; padding:18px 28px 0; font-size:11.5px; color:var(--r-faint)}
+  .wst{flex:1}
+  .wst .wl{margin-bottom:6px; font-weight:600; white-space:nowrap}
+  .wst .wb{height:4px; border-radius:2px; background:var(--r-line)}
+  .wst.done .wl{color:#8B90F0} .wst.done .wb{background:#C3C8F7}
+  .wst.on .wl{color:var(--r-blue); font-weight:700} .wst.on .wb{background:var(--r-blue)}
+  .wst.def .wl{color:var(--r-green)} .wst.def .wb{background:#BBE7CB}
+  .wtools{display:flex; gap:8px; justify-content:flex-end; padding:16px 28px 0}
+  .wtool{border:1px solid var(--r-line2); border-radius:9px; padding:7px 12px; font-size:12px; font-weight:600; color:var(--r-ink); background:var(--r-bg)}
+  .wtool.ai{border-color:#C9B8F5; color:#7C3AED; background:#FAF7FF}
+
+  .wgrid{display:grid; grid-template-columns:1.6fr 1fr; gap:20px; padding:18px 28px 0}
+  .wcard{border:1px solid var(--r-line); border-radius:12px; background:#FBFBFE; padding:20px}
+  .wq{font-size:19px; font-weight:800; letter-spacing:-.015em; margin-bottom:4px}
+  .wqd{font-size:12.5px; color:var(--r-dim); margin-bottom:16px}
+  .fl{font-size:12.5px; font-weight:700; margin:14px 0 4px}
+  .fl small{font-weight:400; color:var(--r-faint); margin-left:6px}
+  .fh{font-size:11.5px; color:var(--r-dim); margin-bottom:6px}
+  .inp{background:#fff; border:1px solid var(--r-line2); border-radius:9px; padding:10px 13px; font-size:13.5px; color:var(--r-ink)}
+  .inp.ph{color:var(--r-faint)}
+  .inp.area{min-height:70px; line-height:1.5; font-size:13px}
+  .tmpl-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+  .tmpl{font-size:12px; color:var(--r-ink); border:1px solid var(--r-line2); background:#fff; padding:7px 12px; border-radius:999px; font-weight:600}
+  .tmpl.more{color:var(--r-faint); border-style:dashed}
+
+  .protip{border:1px solid #BFE5CC; background:var(--r-green-bg); border-radius:12px; padding:16px}
+  .protip .pt{color:var(--r-green); font-weight:800; font-size:13px; margin-bottom:8px}
+  .protip p{font-size:12.5px; color:#3D5748; margin:0 0 10px; line-height:1.55}
+  .btn-see{background:#fff; border:1px solid var(--r-line2); border-radius:9px; padding:8px 13px; font-size:12.5px; font-weight:600}
+
+  .wfoot{display:flex; align-items:center; gap:14px; padding:18px 28px 0}
+  .wdraft{font-size:11.5px; color:var(--r-faint)}
+
+  /* pot step */
+  .tok-row{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:6px}
+  .tok{border:1px solid var(--r-line2); border-radius:11px; background:#fff; padding:13px 14px}
+  .tok.on{border-color:var(--r-blue); box-shadow:0 0 0 1px var(--r-blue) inset}
+  .tok .tt{font-weight:800; font-size:13.5px; display:flex; gap:7px; align-items:center}
+  .tok .tt i{font-style:normal; width:18px; height:18px; border-radius:50%; display:grid; place-items:center; font-size:9px; color:#fff}
+  .tok .tt i.rlp{background:#111827} .tok .tt i.usdc{background:#2775CA}
+  .tok .td{font-size:11.5px; color:var(--r-dim); margin-top:4px}
+  .amount{display:flex; align-items:center; gap:10px}
+  .amount .inp{font-size:17px; font-weight:800; max-width:220px}
+  .presets{display:flex; gap:7px; margin-top:8px}
+  .pre{font-family:var(--mono); font-size:11.5px; border:1px solid var(--r-line2); border-radius:8px; padding:5px 11px; color:var(--r-dim); background:#fff}
+  .period-viz{border:1px solid var(--r-line); border-radius:10px; background:#fff; padding:12px 14px; margin-top:8px}
+  .pv-row{display:flex; gap:8px}
+  .pv{flex:1}
+  .pv .pl{font-size:10.5px; color:var(--r-dim); margin-bottom:5px}
+  .pv .pb{height:6px; border-radius:3px; background:var(--r-line)}
+  .pv.a .pb{background:var(--r-green)}
+  .pv .pr{font-family:var(--mono); font-size:10px; color:var(--r-faint); margin-top:5px}
+
+  .sumc{border:1px solid var(--r-line); border-radius:12px; background:#fff; padding:16px}
+  .sumc .sh{font-size:12px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--r-dim); margin-bottom:10px}
+  .srow{display:flex; justify-content:space-between; font-size:13px; color:var(--r-dim); padding:7px 0; border-bottom:1px dashed var(--r-line)}
+  .srow b{color:var(--r-ink); font-family:var(--mono); font-weight:700}
+  .srow.tot{border-bottom:none; padding-top:11px}
+  .srow.tot b{font-size:16px}
+  .snote{font-size:11.5px; color:var(--r-faint); margin-top:10px; line-height:1.5}
+  .snote b{color:var(--r-green)}
+
+  /* defaults step */
+  .defrow{border:1px solid var(--r-line); border-radius:11px; background:#fff; margin-top:10px; padding:14px 16px; display:flex; gap:12px; align-items:flex-start}
+  .defrow .dic{width:26px; height:26px; border-radius:8px; background:var(--r-green-bg); border:1px solid #BFE5CC; color:var(--r-green); display:grid; place-items:center; font-size:12px; flex:none}
+  .defrow .dt{font-weight:800; font-size:13.5px}
+  .defrow .dd{font-size:12px; color:var(--r-dim); margin-top:3px; line-height:1.5}
+  .defrow .edit{margin-left:auto; font-size:12px; font-weight:700; color:var(--r-blue); white-space:nowrap}
+
+  /* confirm & success */
+  .rev{border:1px solid var(--r-line); border-radius:11px; background:#fff; padding:4px 16px; margin-top:8px}
+  .rev .rr{display:flex; justify-content:space-between; gap:16px; padding:10px 0; border-bottom:1px solid var(--r-line); font-size:12.5px; color:var(--r-dim)}
+  .rev .rr:last-child{border-bottom:none}
+  .rev .rr b{color:var(--r-ink); text-align:right}
+  .success{display:flex; flex-direction:column; align-items:center; text-align:center; padding:34px 28px 10px}
+  .ok-ring{width:50px; height:50px; border-radius:50%; background:var(--r-green-bg); border:2px solid var(--r-green); display:grid; place-items:center; color:var(--r-green); font-size:20px; margin-bottom:14px}
+  .st{font-size:22px; font-weight:800; letter-spacing:-.02em}
+  .slink{font-family:var(--mono); font-size:12px; color:var(--r-blue); background:#F4F5FE; border:1px solid var(--r-line2); border-radius:999px; padding:8px 16px; margin:12px 0 4px}
+  .srowb{display:flex; gap:10px; margin-top:12px}
+
+  /* verified */
+  .vsplit{display:grid; grid-template-columns:1fr 1fr; gap:18px; padding:20px 28px 0}
+  .vstep{border:1px solid var(--r-line); border-radius:11px; background:#fff; padding:14px 16px; display:flex; gap:12px; align-items:center}
+  .vnum{width:24px; height:24px; border-radius:50%; flex:none; display:grid; place-items:center; font-size:11px; font-weight:800; font-family:var(--mono)}
+  .vnum.done{background:var(--r-green-bg); color:var(--r-green); border:1px solid #BFE5CC}
+  .vnum.now{background:#EDEFFE; color:var(--r-blue); border:1px solid #C3C8F7}
+  .vt{font-weight:800; font-size:13.5px}
+  .vd{font-size:12px; color:var(--r-dim)}
+  .vben{display:grid; gap:8px}
+  .vb{display:flex; gap:10px; font-size:12.5px; color:var(--r-dim); border:1px solid var(--r-line); border-radius:10px; padding:10px 13px; background:#fff; align-items:baseline}
+  .vb b{color:var(--r-ink)}
+  .vb .bi{color:#3B82F6; flex:none}
+
   @media (max-width:760px){
-    .feat-row,.cardgrid,.wiz-body,.split,.kpis,.dist-row{grid-template-columns:1fr}
+    .xgrid{grid-template-columns:1fr 1fr}
+    .wgrid,.vsplit,.tok-row{grid-template-columns:1fr}
     .sec-head{grid-template-columns:1fr}
   }
 </style>
@@ -246,416 +252,407 @@
 <div class="wrap">
 
 <header class="masthead">
-  <span class="eyebrow">app.rally.fun · propuesta de producto · julio 2026</span>
-  <h1>Network: campañas permissionless y un flow de creación sin fricción</h1>
-  <p class="lede">Flow completo para <strong>creators</strong> (Network Campaigns) y <strong>brands/partners</strong> (Verified Campaigns), con diseños de las pantallas clave para iterar con Pablo y con el equipo de desarrollo. Complementa el doc "Rally.fun Updated flows" — este cubre <strong>app.rally.fun</strong>.</p>
+  <span class="eyebrow">app.rally.fun · propuesta ux · julio 2026 · v2</span>
+  <h1>Network: campañas permissionless sobre el producto actual</h1>
+  <p class="lede">Mejora de UX para <strong>creators</strong> (Community Campaigns) y <strong>brands</strong> (Verified Campaigns) construida sobre la UI y la lógica reales de Rally. <strong>Ningún cambio toca el protocolo:</strong> pot, periods, misiones, evaluación, curvas de distribución, targeting y deposit funcionan exactamente igual — cambia cómo se presentan.</p>
   <div class="meta-row">
-    <span class="meta-chip">objetivo: cualquiera puede lanzar campaña</span>
-    <span class="meta-chip">time-to-launch &lt; 2 min</span>
-    <span class="meta-chip">prize pool: RLP o USDC en escrow</span>
-    <span class="meta-chip">north star: submissions × gas</span>
+    <span class="meta-chip">protocolo intacto</span>
+    <span class="meta-chip">misma línea gráfica Rally</span>
+    <span class="meta-chip">wizard actual de 6 pasos, con defaults</span>
+    <span class="meta-chip">verificación rápida, sin burocracia</span>
   </div>
 </header>
 
 <nav class="toc" aria-label="Secciones">
-  <a href="#s1"><b>01</b>Modelo Network</a>
-  <a href="#s2"><b>02</b>Flows</a>
-  <a href="#s3"><b>03</b>Sección Network</a>
-  <a href="#s4"><b>04</b>Wizard de creación</a>
-  <a href="#s5"><b>05</b>Brands · Verified</a>
-  <a href="#s6"><b>06</b>Confianza y anti-spam</a>
-  <a href="#s7"><b>07</b>Métricas y next steps</a>
+  <a href="#s1"><b>01</b>Qué cambia y qué no</a>
+  <a href="#s2"><b>02</b>Sección Network</a>
+  <a href="#s3"><b>03</b>Crear campaña</a>
+  <a href="#s4"><b>04</b>Confirm & Deposit</a>
+  <a href="#s5"><b>05</b>Verified</a>
+  <a href="#s6"><b>06</b>Flows</a>
+  <a href="#s7"><b>07</b>Next steps</a>
 </nav>
 
 <!-- ============================================================ -->
 <section id="s1">
-  <div class="sec-head"><span class="sec-num">01</span><h2>El modelo Network: dos carriles, una sola sección</h2></div>
-  <p>Hoy solo el equipo puede montar campañas: el proceso es sales-led, técnico y tarda días. La propuesta abre la creación a cualquiera, pero separa dos carriles con expectativas distintas — sin partir la app en dos sitios. Todo vive en una sección nueva: <strong>Network</strong>.</p>
+  <div class="sec-head"><span class="sec-num">01</span><h2>Qué cambia y qué no (regla nº 1: el protocolo no se toca)</h2></div>
 
   <div class="tbl-scroll"><table>
-    <thead><tr><th style="width:24%"></th><th>Network Campaigns · permissionless</th><th>Verified Campaigns · brands & partners</th></tr></thead>
+    <thead><tr><th style="width:30%">Capa</th><th>Se queda igual (protocolo / lógica)</th><th>Cambia (solo UI)</th></tr></thead>
     <tbody>
-      <tr><td><strong>Quién crea</strong></td><td class="new">Cualquier wallet conectada (creators, comunidades, degens)</td><td class="new">Proyectos con perfil verificado (badge azul)</td></tr>
-      <tr><td><strong>Prize pool</strong></td><td class="new">RLP (mín. 5.000) o USDC (mín. 50 $) — bloqueado en escrow al crear</td><td class="new">USDC / token / points system (mín. 2.000 $ equivalente)</td></tr>
-      <tr><td><strong>Cómo se lanza</strong></td><td class="new">Wizard 3 pasos, 1 firma, live al instante</td><td class="new">Mismo wizard + extras de brand; verificación una sola vez (&lt;24 h)</td></tr>
-      <tr><td><strong>Placement</strong></td><td class="now">Grid del feed Network</td><td class="new">Hero destacado + push notification + opción Boost</td></tr>
-      <tr><td><strong>Extras</strong></td><td class="now">Leaderboard, evaluación AI, payout automático</td><td class="new">Analytics + CSV, community hub automática, ambassador program, gas sponsorship, facturación</td></tr>
-      <tr><td><strong>Fee</strong></td><td class="now">3 % del pool</td><td class="now">3 % del pool (+ pricing de features premium)</td></tr>
+      <tr><td><strong>Creación</strong></td><td class="keep">Los 6 pasos y todos sus campos: Basic details · Pot &amp; Duration · Missions · Evaluation · Targeting on X · Confirm &amp; Deposit</td><td class="new">Evaluation y Targeting llegan pre-rellenos con los defaults actuales (curva Default, weights Balanced, Everyone). Se pueden editar, pero no bloquean el camino</td></tr>
+      <tr><td><strong>Economía</strong></td><td class="keep">Pot depositado en Confirm &amp; Deposit; submission cuesta 100 RLP o ETH (~$1.20); periods y rewards per period</td><td class="new">Nada. Solo se explica mejor en pantalla (resumen vivo del deposit)</td></tr>
+      <tr><td><strong>Evaluación</strong></td><td class="keep">Core gates, quality y engagement metrics, curvas Balanced / Default / Extreme, external multiplier</td><td class="new">Nada. Los sliders quedan detrás de "Edit" para quien los necesite</td></tr>
+      <tr><td><strong>Quién crea</strong></td><td class="keep">—</td><td class="new">"Create campaign" deja de ser solo Admin: visible para cualquier usuario conectado (Community) y para proyectos con badge (Verified)</td></tr>
+      <tr><td><strong>Discovery</strong></td><td class="keep">Explore Campaigns: cards con banner, pot, ends-in, network chip</td><td class="new">La sección pasa a llamarse <strong>Network</strong> y añade filtro + badge Verified / Community sobre las mismas cards</td></tr>
     </tbody>
   </table></div>
 
-  <div class="note"><span class="eyebrow">por qué funciona</span>
-  Network resuelve el cold-start de supply (siempre hay campañas live, aunque no haya partner esa semana) y alimenta el north star: más campañas → más submissions → más gas. Verified protege el pricing de BD: la verificación no es un peaje, es el paquete de distribución y datos que un brand sí paga.</div>
+  <div class="note"><span class="eyebrow">alcance</span>
+  Todo lo propuesto es capa de presentación y permisos de acceso al wizard que ya existe (el de Campaign Management). Los mínimos de pot, límites anti-spam, etc. son decisiones de config vuestras — <strong>aquí no se fijan cifras</strong>; los mockups usan valores reales del producto (500 USDC, 40K/75K RLP, 100 RLP por submission).</div>
 </section>
 
 <!-- ============================================================ -->
 <section id="s2">
-  <div class="sec-head"><span class="sec-num">02</span><h2>Los tres flows</h2></div>
+  <div class="sec-head"><span class="sec-num">02</span><h2>Sección Network — el Explore actual con dos carriles</h2></div>
+  <p>Misma página, misma card, mismo layout. Se añaden tres cosas: el nombre <strong>Network</strong>, un filtro <strong>Verified / Community</strong> junto a los filtros existentes, y un chip de tipo en cada card (check azul para proyectos verificados, ámbar para campañas de la comunidad). El botón <strong>Create campaign</strong> aparece en la cabecera para todo el mundo.</p>
 
-  <h3>A · Creator lanza una Network Campaign</h3>
-  <div class="flow">
-    <div class="fstep"><span class="fk">ENTRADA</span><div class="fbox"><div class="ft">+ Create campaign</div><div class="fd">CTA persistente en topbar y feed Network</div></div></div>
-    <div class="fstep"><span class="fk">PASO 1</span><div class="fbox"><div class="ft">La idea</div><div class="fd">Título + brief (o plantilla / Wingston lo escribe)</div></div></div>
-    <div class="fstep"><span class="fk">PASO 2</span><div class="fbox"><div class="ft">El premio</div><div class="fd">RLP ⇄ USDC, presets de reparto y duración</div></div></div>
-    <div class="fstep"><span class="fk">PASO 3</span><div class="fbox"><div class="ft">Lanzar</div><div class="fd">1 firma: fondos a escrow y campaña live</div></div></div>
-    <div class="fstep"><span class="fk">LOOP</span><div class="fbox"><div class="ft">Compartir en X</div><div class="fd">Success screen → auto-post → tráfico de vuelta</div></div></div>
-  </div>
+  <figure class="frame" role="img" aria-label="Mockup: sección Network sobre Explore Campaigns">
+    <div class="bar"><i></i><i></i><i></i><span class="url">app.rally.fun/campaigns</span></div>
+    <div class="screen"><div class="cv">
+      <div class="r-top">
+        <span class="r-logo">RALLY</span>
+        <nav class="r-nav"><span class="on dd">Campaigns</span><span>Communities<sup>NEW</sup></span><span>Rewards</span><span>Leaderboard</span></nav>
+        <span class="r-spacer"></span>
+        <span class="r-search">🔍 Search users…</span>
+        <button class="btn-wing">✦ Wingston</button>
+        <span class="r-user">@sergiosharky<small>SUPER ADMIN</small></span>
+        <button class="btn-wallet">▣ 0x4a…eb4348</button>
+      </div>
+      <div class="r-hero">
+        <div style="display:flex; align-items:flex-start; gap:16px">
+          <div>
+            <div class="r-h1">Network</div>
+            <p class="r-sub">Discover and join promotional campaigns from Web3 projects and the Rally community. Each campaign has missions where you earn rewards by creating high-quality content on X.</p>
+          </div>
+          <span class="r-spacer"></span>
+          <button class="btn-blue">+ Create campaign</button>
+        </div>
+        <div class="r-tabs"><span class="on">All Campaigns</span><span>My Activity</span></div>
+      </div>
+      <div class="r-pad">
+        <div class="filters">
+          <span class="f-search">🔍 Search by title, goal, or address…</span>
+          <span class="f-sel">Eligible</span><span class="f-sel">All networks</span><span class="f-sel">Active &amp; Upcoming</span><span class="f-sel">Period Pot Size</span>
+        </div>
+        <div class="seg-chips">
+          <span class="schip on">All</span>
+          <span class="schip"><span class="vd">✔</span> Verified</span>
+          <span class="schip">Community</span>
+        </div>
+        <div class="xgrid">
+          <article class="xcard">
+            <div class="xban" style="background:linear-gradient(120deg,#191722,#3B2B57)"><span class="pot"><i>◎</i>500 USDC</span><span class="ends">⏱ Ends in 3 days</span></div>
+            <div class="xbody">
+              <div class="xt">Internet Court Is Here</div>
+              <div class="xby"><span class="xava"></span>@GenLayer <span class="vcheck">✔</span></div>
+              <div class="xfoot"><span class="tchip">✔ VERIFIED</span><span class="nchip">Base</span></div>
+            </div>
+          </article>
+          <article class="xcard">
+            <div class="xban" style="background:linear-gradient(120deg,#20264E,#4356C9)"><span class="pot"><i>◎</i>75K RLP</span><span class="ends">⏱ Ends in 4 days</span></div>
+            <div class="xbody">
+              <div class="xt">Why We Need GenLayer</div>
+              <div class="xby"><span class="xava"></span>@GenLayer <span class="vcheck">✔</span></div>
+              <div class="xfoot"><span class="tchip">✔ VERIFIED</span><span class="nchip">GenLayer Rally Testnet</span></div>
+            </div>
+          </article>
+          <article class="xcard">
+            <div class="xban" style="background:linear-gradient(120deg,#4A1D0E,#C2410C)"><span class="pot"><i>◎</i>40K RLP</span><span class="ends">⏱ Ends in 2 days</span></div>
+            <div class="xbody">
+              <div class="xt">Roast Your Worst Trade</div>
+              <div class="xby"><span class="xava c1"></span>@0xSofiya</div>
+              <div class="xfoot"><span class="tchip comm">COMMUNITY</span><span class="nchip">Base</span></div>
+            </div>
+          </article>
+          <article class="xcard">
+            <div class="xban" style="background:linear-gradient(120deg,#123B2E,#0E9F6E)"><span class="pot"><i>◎</i>250 USDC</span><span class="ends">⏱ Ends next week</span></div>
+            <div class="xbody">
+              <div class="xt">Explain Your Job Badly</div>
+              <div class="xby"><span class="xava c3"></span>@gomtu_xyz</div>
+              <div class="xfoot"><span class="tchip comm">COMMUNITY</span><span class="nchip">Base</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div></div>
+  </figure>
+  <figcaption class="cap">Mockup 02-A · Network = Explore Campaigns + filtro y badges de carril. Nada más se mueve.</figcaption>
 
-  <h3>B · Brand lanza una Verified Campaign</h3>
-  <div class="flow">
-    <div class="fstep"><span class="fk">UNA VEZ</span><div class="fbox"><div class="ft">Get Verified</div><div class="fd">Perfil de proyecto + X + KYB-lite · revisión &lt;24 h</div></div></div>
-    <div class="fstep"><span class="fk">CREA</span><div class="fbox"><div class="ft">Mismo wizard</div><div class="fd">+ points custom, gas sponsorship, targeting</div></div></div>
-    <div class="fstep"><span class="fk">LANZA</span><div class="fbox"><div class="ft">Launch destacado</div><div class="fd">Hero de Network + notificación a creators afines</div></div></div>
-    <div class="fstep"><span class="fk">MIDE</span><div class="fbox"><div class="ft">Dashboard</div><div class="fd">Submissions, reach, score medio, CPM, export</div></div></div>
-    <div class="fstep"><span class="fk">RETIENE</span><div class="fbox"><div class="ft">Community + ambassadors</div><div class="fd">La campaña termina; la comunidad se queda</div></div></div>
-  </div>
-
-  <h3>C · Creator participa (sin cambios estructurales, menos pasos)</h3>
-  <div class="flow">
-    <div class="fstep"><span class="fk">DESCUBRE</span><div class="fbox"><div class="ft">Feed Network</div><div class="fd">Filtros + notificaciones por intereses</div></div></div>
-    <div class="fstep"><span class="fk">DECIDE</span><div class="fbox"><div class="ft">Card → brief</div><div class="fd">Pool, token y tiempo visibles en 3 datos</div></div></div>
-    <div class="fstep"><span class="fk">PUBLICA</span><div class="fbox"><div class="ft">Postea en X</div><div class="fd">Y pega el link (o submit vía Wingston)</div></div></div>
-    <div class="fstep"><span class="fk">EVALÚA</span><div class="fbox"><div class="ft">Score AI (Sorsa)</div><div class="fd">Gas: 12 RLP por submission</div></div></div>
-    <div class="fstep"><span class="fk">COBRA</span><div class="fbox"><div class="ft">Leaderboard → claim</div><div class="fd">Payout automático al cerrar</div></div></div>
+  <div class="callouts">
+    <div class="co"><b class="n">1</b><span><strong>Create campaign en la cabecera</strong>, con el estilo de botón azul del wallet. Es el único elemento nuevo de peso en la página.</span></div>
+    <div class="co"><b class="n">2</b><span><strong>El carril se lee en la card:</strong> chip azul "✔ VERIFIED" o ámbar "COMMUNITY", junto al chip de network lavanda que ya existe. El check azul acompaña también al handle del creador.</span></div>
+    <div class="co"><b class="n">3</b><span><strong>Filtros intactos</strong> (Eligible, networks, estado, pot size) — el segmento All / Verified / Community se suma debajo, como chips.</span></div>
   </div>
 </section>
 
 <!-- ============================================================ -->
 <section id="s3">
-  <div class="sec-head"><span class="sec-num">03</span><h2>La sección Network</h2></div>
-  <p>Un solo feed con jerarquía clara: las Verified arriba (es placement que el brand paga), el grid permissionless debajo. La decisión de entrar a una campaña se toma con tres datos: <strong>pool, token y tiempo restante</strong> — siempre en el mismo sitio de la card.</p>
+  <div class="sec-head"><span class="sec-num">03</span><h2>Crear campaña — el mismo wizard, con los defaults delante</h2></div>
+  <p>El wizard de Campaign Management ya lo tiene todo (y no puede cambiar, porque mapea al protocolo). La fricción no son los pasos: es que <strong>Evaluation y Targeting exigen entender sliders y gates para poder continuar</strong>. La propuesta: los 6 pasos siguen ahí, pero 4 y 5 llegan resueltos con los defaults actuales del producto y se marcan en verde. Quien quiere afinar, edita; quien no, pasa de Missions a Confirm &amp; Deposit directamente.</p>
 
-  <figure class="frame" role="img" aria-label="Mockup: feed de la sección Network">
-    <div class="bar"><i></i><i></i><i></i><span class="url">app.rally.fun/network</span></div>
+  <h3>Basic details — con el AI Template como protagonista</h3>
+  <figure class="frame narrow" role="img" aria-label="Mockup: paso Basic details mejorado">
+    <div class="bar"><i></i><i></i><i></i><span class="url">app.rally.fun/campaigns/create</span></div>
     <div class="screen"><div class="cv">
-      <div class="m-top">
-        <span class="m-logo">RALLY</span>
-        <nav class="m-nav"><span>Home</span> <span class="on">Network</span> <span>Communities</span> <span>Leaderboard</span></nav>
-        <span class="m-spacer"></span>
-        <span class="m-rlp">◆ 12,450 RLP</span>
-        <span class="m-ava"></span>
-        <button class="btn-volt">+ Create campaign</button>
+      <div class="wtools"><span class="wtool">⬇ Import</span><span class="wtool">⧉ Export</span><span class="wtool ai">✦ AI Template</span></div>
+      <div class="wsteps">
+        <div class="wst on"><div class="wl">Basic details</div><div class="wb"></div></div>
+        <div class="wst"><div class="wl">Pot &amp; Duration</div><div class="wb"></div></div>
+        <div class="wst"><div class="wl">Missions</div><div class="wb"></div></div>
+        <div class="wst def"><div class="wl">Evaluation ✓ defaults</div><div class="wb"></div></div>
+        <div class="wst def"><div class="wl">Targeting ✓ defaults</div><div class="wb"></div></div>
+        <div class="wst"><div class="wl">Confirm &amp; Deposit</div><div class="wb"></div></div>
       </div>
-      <div class="m-pad">
-        <div class="m-h1">Network</div>
-        <div class="m-sub">Every campaign on Rally. Launch yours in under 2 minutes.</div>
-        <div class="chips">
-          <span class="chip on">All</span><span class="chip">Verified</span><span class="chip">Network</span><span class="chip">Ending soon</span><span class="chip">My communities</span>
-          <span class="chip sel dd">Chain · All</span><span class="chip dd">Reward · Any</span>
+      <div class="wgrid">
+        <div class="wcard">
+          <div class="wq">What is your campaign about?</div>
+          <div class="wqd">A name, one sentence, and you can move on. Everything else is optional here.</div>
+          <div class="fl">Publish as</div>
+          <div class="inp" style="max-width:220px">@sergiosharky ▾</div>
+          <div class="fl">Campaign Name <small>memorable beats descriptive</small></div>
+          <div class="inp">Roast Your Worst Trade</div>
+          <div class="fl">Short Description</div>
+          <div class="inp area">One tweet about the worst trade you ever made. Be honest, be specific, make it sting.</div>
+          <div class="fl">Or start from a template</div>
+          <div class="tmpl-row"><span class="tmpl">The Cringe Archive</span><span class="tmpl">Your Toxic Trait</span><span class="tmpl">The 404</span><span class="tmpl">The Delulu Take</span><span class="tmpl more">Browse all…</span></div>
+          <div class="fl" style="color:var(--r-faint)">Optional details <small>Knowledge Base · Campaign Style · Additional Information</small> <span style="float:right; color:var(--r-blue); font-weight:700; font-size:12px">Expand ▾</span></div>
         </div>
-
-        <div class="feat-row">
-          <article class="feat">
-            <div class="corner"><span class="bdg v">VERIFIED</span><span class="bdg live">LIVE</span></div>
-            <div class="prj"><span class="plogo">ZK</span><span class="pname">ZKsync</span></div>
-            <div class="title">Explain the Atlas upgrade to normies</div>
-            <div class="brief">One tweet or thread. Plain language wins. Best analogies take the pool.</div>
-            <div class="stats">
-              <span>PRIZE POOL<b class="pool">$6,000 USDC</b></span>
-              <span>ENDS IN<b>3d 12h</b></span>
-              <span>SUBMISSIONS<b>214</b></span>
-              <span>AVG SCORE<b>7.2</b></span>
-            </div>
-          </article>
-          <article class="feat">
-            <div class="corner"><span class="bdg v">VERIFIED</span><span class="bdg live">LIVE</span></div>
-            <div class="prj"><span class="plogo g">GR</span><span class="pname">Grvt</span></div>
-            <div class="title">Your best (or worst) trading story</div>
-            <div class="brief">Real stories only. Winners share the points pool + top 3 get a call with the team.</div>
-            <div class="stats">
-              <span>PRIZE POOL<b class="pts">2.5M GRVT pts</b></span>
-              <span>ENDS IN<b>5d 02h</b></span>
-              <span>SUBMISSIONS<b>96</b></span>
-              <span>AVG SCORE<b>6.8</b></span>
-            </div>
-          </article>
-        </div>
-
-        <div class="cardgrid">
-          <article class="ccard">
-            <div class="byline"><span class="cava"></span>@0xSofiya <span class="bdg n">NETWORK</span><span class="sorsa">SORSA 8.9</span></div>
-            <div class="title">Roast your worst trade</div>
-            <div class="brief">One tweet. The more it hurts, the higher it scores.</div>
-            <div class="foot"><span class="pool">8,000 RLP</span><span>42 subs</span><span class="tleft">⏱ 22h</span></div>
-          </article>
-          <article class="ccard">
-            <div class="byline"><span class="cava"></span>@gomtu_xyz <span class="bdg n">NETWORK</span><span class="sorsa">SORSA 9.1</span></div>
-            <div class="title">Explain your job badly</div>
-            <div class="brief">Describe what you do in the worst way possible.</div>
-            <div class="foot"><span class="pool u">$120 USDC</span><span>67 subs</span><span class="tleft">⏱ 2d 4h</span></div>
-          </article>
-          <article class="ccard">
-            <div class="byline"><span class="cava"></span>@basewhale.eth <span class="bdg n">NETWORK</span><span class="sorsa">SORSA 7.4</span></div>
-            <div class="title">Base memes only</div>
-            <div class="brief">Original memes about building on Base. No reposts.</div>
-            <div class="foot"><span class="pool">25,000 RLP</span><span>128 subs</span><span class="tleft">⏱ 6d</span></div>
-          </article>
-        </div>
+        <aside>
+          <div class="protip">
+            <div class="pt">Pro Tip</div>
+            <p>The more detailed and specific your campaign information, the better AI models can evaluate submissions for alignment with your goals.</p>
+            <p><strong>Short on time?</strong> Tap <strong>✦ AI Template</strong> above — Wingston drafts the description, knowledge base and mission from your title.</p>
+            <button class="btn-see">See participant view</button>
+          </div>
+        </aside>
       </div>
+      <div class="wfoot"><span class="wdraft">Draft saved automatically</span><span class="r-spacer"></span><button class="btn-blue">Continue</button></div>
     </div></div>
   </figure>
-  <figcaption class="cap">Mockup 03-A · Feed Network — Verified en hero, permissionless en grid</figcaption>
+  <figcaption class="cap">Mockup 03-A · Basic details — mismos campos; Knowledge Base, Style y Additional Info se pliegan en "Optional details"</figcaption>
 
   <div class="callouts">
-    <div class="co"><b class="n">1</b><span><strong>“+ Create campaign” siempre visible.</strong> El acto de crear deja de ser un privilegio oculto: está en la topbar en toda la app.</span></div>
-    <div class="co"><b class="n">2</b><span><strong>Hero = inventario monetizable.</strong> Las dos posiciones destacadas son de Verified; “Boost” permite a un brand comprar más tiempo ahí.</span></div>
-    <div class="co"><b class="n">3</b><span><strong>Card decidible en 3 datos.</strong> Pool, token (color: ámbar RLP, azul USDC, violeta points) y tiempo, siempre en la misma posición.</span></div>
-    <div class="co"><b class="n">4</b><span><strong>El creador de la campaña es visible</strong> (avatar + Sorsa score): la reputación existente hace de señal de confianza en las Network.</span></div>
+    <div class="co"><b class="n">1</b><span><strong>Obligatorio solo lo mínimo</strong> (name + short description). Knowledge Base, Campaign Style y Additional Information siguen ahí, plegados — mismos campos, misma API.</span></div>
+    <div class="co"><b class="n">2</b><span><strong>El AI Template ya existe</strong> — solo se le da protagonismo (botón morado + mención en el Pro Tip) porque es la salida rápida al problema de la página en blanco.</span></div>
+    <div class="co"><b class="n">3</b><span><strong>Plantillas 1-click</strong> reutilizando las campañas internas semanales: rellenan name, description y mission de golpe (vía el Import que ya existe).</span></div>
+    <div class="co"><b class="n">4</b><span><strong>El stepper ya enseña el final:</strong> Evaluation y Targeting en verde "✓ defaults". El usuario sabe desde el paso 1 que no tendrá que configurar sliders.</span></div>
+  </div>
+
+  <h3>Pot &amp; Duration — los mismos campos, con el deposit siempre a la vista</h3>
+  <figure class="frame narrow" role="img" aria-label="Mockup: paso Pot y Duration mejorado">
+    <div class="bar"><i></i><i></i><i></i><span class="url">app.rally.fun/campaigns/create</span></div>
+    <div class="screen"><div class="cv">
+      <div class="wsteps">
+        <div class="wst done"><div class="wl">Basic details</div><div class="wb"></div></div>
+        <div class="wst on"><div class="wl">Pot &amp; Duration</div><div class="wb"></div></div>
+        <div class="wst"><div class="wl">Missions</div><div class="wb"></div></div>
+        <div class="wst def"><div class="wl">Evaluation ✓ defaults</div><div class="wb"></div></div>
+        <div class="wst def"><div class="wl">Targeting ✓ defaults</div><div class="wb"></div></div>
+        <div class="wst"><div class="wl">Confirm &amp; Deposit</div><div class="wb"></div></div>
+      </div>
+      <div class="wgrid">
+        <div class="wcard">
+          <div class="wq">What’s the pot?</div>
+          <div class="wqd">Network, token and amount — the rewards engine (periods, curve) stays as it works today.</div>
+          <div class="fl">Network</div>
+          <div class="inp" style="max-width:260px">Base ▾</div>
+          <div class="fl">Token</div>
+          <div class="tok-row">
+            <div class="tok on"><div class="tt"><i class="rlp">◆</i>Rally Points (RLP)</div><div class="td">Your balance: 180.000 RLP</div></div>
+            <div class="tok"><div class="tt"><i class="usdc">$</i>USDC</div><div class="td">From your wallet · Base</div></div>
+          </div>
+          <div class="fl">Total Amount <small>(RLP)</small></div>
+          <div class="amount"><div class="inp">40.000</div><span style="font-size:12px;color:var(--r-faint)">Max</span></div>
+          <div class="presets"><span class="pre">10K</span><span class="pre">25K</span><span class="pre">40K</span><span class="pre">75K</span></div>
+          <div class="fl">Duration</div>
+          <div class="fh">1 period · 7 days — add periods to run it in rounds, like today</div>
+          <div class="period-viz">
+            <div class="pv-row">
+              <div class="pv a"><div class="pl">Period 1 · Jul 15 – Jul 22</div><div class="pb"></div><div class="pr">40.000 RLP</div></div>
+            </div>
+          </div>
+          <div class="presets"><span class="pre">1 period</span><span class="pre">2 periods</span><span class="pre">Custom…</span></div>
+        </div>
+        <aside>
+          <div class="sumc">
+            <div class="sh">Deposit on launch</div>
+            <div class="srow"><span>Pot</span><b>40.000 RLP</b></div>
+            <div class="srow"><span>Periods</span><b>1 × 7 days</b></div>
+            <div class="srow"><span>Rewards per period</span><b>40.000 RLP</b></div>
+            <div class="srow tot"><span>You deposit</span><b>40.000 RLP</b></div>
+            <p class="snote"><b>Deposited when you confirm</b> in the last step — exactly like today’s Confirm &amp; Deposit.</p>
+            <p class="snote">Participants pay their own submission fee: 100 RLP or ETH (~$1.20).</p>
+          </div>
+        </aside>
+      </div>
+      <div class="wfoot"><button class="btn-line">← Go Back</button><span class="r-spacer"></span><button class="btn-blue">Continue</button></div>
+    </div></div>
+  </figure>
+  <figcaption class="cap">Mockup 03-B · Pot &amp; Duration — token como tarjetas, periods visualizados como en el Briefing, resumen de deposit fijo a la derecha</figcaption>
+
+  <div class="callouts">
+    <div class="co"><b class="n">1</b><span><strong>Mismos parámetros del protocolo</strong> (network, token, total, periods, period duration, fechas) — solo cambia la presentación: tarjetas de token con balance visible y periods dibujados como las barras del Briefing.</span></div>
+    <div class="co"><b class="n">2</b><span><strong>El resumen responde la pregunta clave</strong> ("¿cuánto deposito y cuándo?") en cada paso, no solo al final. El deposit sigue ocurriendo en Confirm &amp; Deposit.</span></div>
+    <div class="co"><b class="n">3</b><span><strong>El coste del participante</strong> (100 RLP / ETH ~$1.20) se enseña aquí para que el creador dimensione el pot con contexto real.</span></div>
+  </div>
+
+  <h3>Evaluation + Targeting — resueltos con los defaults del producto</h3>
+  <figure class="frame narrow" role="img" aria-label="Mockup: Evaluation y Targeting con defaults aplicados">
+    <div class="bar"><i></i><i></i><i></i><span class="url">app.rally.fun/campaigns/create</span></div>
+    <div class="screen"><div class="cv">
+      <div class="wsteps">
+        <div class="wst done"><div class="wl">Basic details</div><div class="wb"></div></div>
+        <div class="wst done"><div class="wl">Pot &amp; Duration</div><div class="wb"></div></div>
+        <div class="wst done"><div class="wl">Missions</div><div class="wb"></div></div>
+        <div class="wst on"><div class="wl">Evaluation</div><div class="wb"></div></div>
+        <div class="wst on"><div class="wl">Targeting on X</div><div class="wb"></div></div>
+        <div class="wst"><div class="wl">Confirm &amp; Deposit</div><div class="wb"></div></div>
+      </div>
+      <div class="wgrid">
+        <div class="wcard">
+          <div class="wq">We’ve applied Rally’s recommended settings</div>
+          <div class="wqd">The same configuration used by most campaigns. Edit anything — every option you have today is still here.</div>
+          <div class="defrow"><span class="dic">✓</span><div><div class="dt">Distribution curve · Default</div><div class="dd">Balanced / Default / Extreme — unchanged protocol curves. Default rewards top content more, like today.</div></div><span class="edit">Edit</span></div>
+          <div class="defrow"><span class="dic">✓</span><div><div class="dt">Scoring weights · Balanced</div><div class="dd">Core gates at 1.0 (Content Alignment, Information Accuracy, Campaign Compliance, Originality) · engagement &amp; quality metrics at standard weights. Custom sliders behind Edit.</div></div><span class="edit">Edit</span></div>
+          <div class="defrow"><span class="dic">✓</span><div><div class="dt">Participation · Everyone</div><div class="dd">11.677 eligible users · unlimited submissions &amp; winners · min followers 500 · Sorsa score gate off. Whitelist &amp; Ambassadors available in Edit.</div></div><span class="edit">Edit</span></div>
+          <div class="defrow"><span class="dic">✓</span><div><div class="dt">Moderation · Rally moderator</div><div class="dd">Submission disqualification on, Rally moderator added. Add your own wallets in Edit.</div></div><span class="edit">Edit</span></div>
+        </div>
+        <aside>
+          <div class="protip">
+            <div class="pt">Pro Tip</div>
+            <p>These are the exact settings behind campaigns like <strong>Internet Court Is Here</strong>. You can ship with them as-is.</p>
+            <button class="btn-see">See participant view</button>
+          </div>
+        </aside>
+      </div>
+      <div class="wfoot"><button class="btn-line">← Go Back</button><span class="r-spacer"></span><button class="btn-blue">Continue to Confirm &amp; Deposit</button></div>
+    </div></div>
+  </figure>
+  <figcaption class="cap">Mockup 03-C · Evaluation y Targeting colapsados en 4 tarjetas-resumen editables. Los sliders, gates y requirements actuales viven detrás de cada "Edit" sin cambios.</figcaption>
+
+  <div class="callouts">
+    <div class="co"><b class="n">1</b><span><strong>Cero opciones eliminadas.</strong> Curvas, weights, external multiplier, whitelist, ambassadors, min/max followers, Sorsa gate, mods… todo accesible en Edit, idéntico a hoy.</span></div>
+    <div class="co"><b class="n">2</b><span><strong>El default se explica en una frase legible</strong>, no en 12 sliders. La prueba social ("los mismos settings que Internet Court Is Here") hace el resto.</span></div>
+    <div class="co"><b class="n">3</b><span><strong>Dos pasos se convierten en uno</strong> a efectos de esfuerzo percibido, sin fusionarlos técnicamente: el stepper los sigue mostrando por separado.</span></div>
   </div>
 </section>
 
 <!-- ============================================================ -->
 <section id="s4">
-  <div class="sec-head"><span class="sec-num">04</span><h2>El wizard: crear una campaña como quien escribe un tweet</h2></div>
-  <p>El formulario actual pide ~12 campos técnicos de golpe (token, red, curva de distribución, criterios…). El wizard lo reduce a <strong>una decisión por paso</strong>: qué se publica, qué se paga, y lanzar. Todo lo demás son defaults sensatos escondidos en “Advanced”. Objetivo medible: <strong>de idea a live en menos de 2 minutos</strong>.</p>
+  <div class="sec-head"><span class="sec-num">04</span><h2>Confirm &amp; Deposit — y un estado de éxito que distribuye</h2></div>
+  <p>El review actual ya es bueno (Rewards / Schedule / Targeting / Content). Se le añade lo que falta después: hoy, al crear, no pasa nada visible. El éxito debe empujar la campaña hacia fuera — con el mismo patrón "Copy link / Share on X" que ya usáis en el referral.</p>
 
-  <h3>Paso 1 · La idea</h3>
-  <figure class="frame narrow" role="img" aria-label="Mockup: paso 1 del wizard, la idea">
-    <div class="bar"><i></i><i></i><i></i><span class="url">app.rally.fun/create</span></div>
+  <figure class="frame narrow" role="img" aria-label="Mockup: Confirm and Deposit con success">
+    <div class="bar"><i></i><i></i><i></i><span class="url">app.rally.fun/campaigns/create</span></div>
     <div class="screen"><div class="cv">
-      <div class="wiz-head">
-        <div class="wiz-steps">
-          <span class="wstep on"><i>1</i> IDEA</span><span class="wsep"></span>
-          <span class="wstep"><i>2</i> PRIZE</span><span class="wsep"></span>
-          <span class="wstep"><i>3</i> LAUNCH</span>
-        </div>
+      <div class="wsteps">
+        <div class="wst done"><div class="wl">Basic details</div><div class="wb"></div></div>
+        <div class="wst done"><div class="wl">Pot &amp; Duration</div><div class="wb"></div></div>
+        <div class="wst done"><div class="wl">Missions</div><div class="wb"></div></div>
+        <div class="wst done"><div class="wl">Evaluation</div><div class="wb"></div></div>
+        <div class="wst done"><div class="wl">Targeting on X</div><div class="wb"></div></div>
+        <div class="wst on"><div class="wl">Confirm &amp; Deposit</div><div class="wb"></div></div>
       </div>
-      <div class="wiz-body" style="grid-template-columns:1fr">
-        <div>
-          <div class="wq">What should creators post?</div>
-          <div class="field">
-            <div class="flabel"><span>Campaign title</span><span class="hint">31/60</span></div>
-            <div class="input big">Roast your worst trade</div>
-          </div>
-          <div class="field">
-            <div class="flabel"><span>Brief — what makes a winning post?</span></div>
-            <div class="input tarea">One tweet about the worst trade you ever made. Be honest, be specific, make it sting. Bonus points for screenshots. No engagement bait.</div>
-            <span class="assist">✦ Let Wingston write it from your title</span>
-          </div>
-          <div class="field">
-            <div class="flabel"><span>Content type</span></div>
-            <div class="chips" style="margin-top:2px"><span class="chip on">Tweet</span><span class="chip">Thread</span><span class="chip">Clip / video</span></div>
-          </div>
-          <div class="field">
-            <div class="flabel"><span>Or start from a template</span></div>
-            <div class="tmpl-row"><span class="tmpl">The Cringe Archive</span><span class="tmpl">Your Toxic Trait</span><span class="tmpl">The 404</span><span class="tmpl">The Delulu Take</span><span class="tmpl">Explain Your Job Badly</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="wiz-foot">
-        <span class="draft">Draft saved · you can leave and come back</span>
-        <span class="m-spacer"></span>
-        <button class="btn-volt">Continue →</button>
-      </div>
-    </div></div>
-  </figure>
-  <figcaption class="cap">Mockup 04-A · Paso 1 — una pregunta humana, no “campaign metadata”</figcaption>
-
-  <div class="callouts">
-    <div class="co"><b class="n">1</b><span><strong>Lenguaje de persona, no de protocolo.</strong> “What should creators post?” en vez de “Campaign configuration”. Es la corrección directa al diagnóstico “app too technical”.</span></div>
-    <div class="co"><b class="n">2</b><span><strong>Wingston escribe el brief.</strong> El paso con más fricción cognitiva tiene un escape de un click; además siembra al asistente como parte del producto.</span></div>
-    <div class="co"><b class="n">3</b><span><strong>Plantillas del calendario de campañas.</strong> Las campañas internas semanales se convierten en templates 1-click: resuelven la página en blanco.</span></div>
-    <div class="co"><b class="n">4</b><span><strong>Draft autosave.</strong> Abandonar no castiga; volver es gratis.</span></div>
-  </div>
-
-  <h3>Paso 2 · El premio</h3>
-  <figure class="frame" role="img" aria-label="Mockup: paso 2 del wizard, el premio">
-    <div class="bar"><i></i><i></i><i></i><span class="url">app.rally.fun/create</span></div>
-    <div class="screen"><div class="cv">
-      <div class="wiz-head">
-        <div class="wiz-steps">
-          <span class="wstep done"><i>✓</i> IDEA</span><span class="wsep"></span>
-          <span class="wstep on"><i>2</i> PRIZE</span><span class="wsep"></span>
-          <span class="wstep"><i>3</i> LAUNCH</span>
-        </div>
-      </div>
-      <div class="wiz-body">
-        <div>
-          <div class="wq">What’s the prize?</div>
-          <div class="field">
-            <div class="flabel"><span>Reward currency</span></div>
-            <div class="seg"><span class="on">◆ RLP</span><span>$ USDC</span></div>
-          </div>
-          <div class="field">
-            <div class="flabel"><span>Prize pool</span><span class="hint">min. 5,000 RLP</span></div>
-            <div class="input big" style="max-width:260px">8,000 RLP</div>
-            <div class="preset-row"><span class="preset">5,000</span><span class="preset">10,000</span><span class="preset">25,000</span><span class="preset">50,000</span></div>
-          </div>
-          <div class="field">
-            <div class="flabel"><span>How winners split it</span></div>
-            <div class="dist-row">
-              <div class="dist on"><div class="dt">Top 10 · curve</div><div class="dd">Best post takes the biggest cut</div><div class="bars"><i style="height:100%"></i><i style="height:72%"></i><i style="height:54%"></i><i style="height:42%"></i><i style="height:33%"></i><i style="height:26%"></i><i style="height:21%"></i><i style="height:17%"></i><i style="height:14%"></i><i style="height:11%"></i></div></div>
-              <div class="dist"><div class="dt">Equal split</div><div class="dd">Every winner gets the same</div><div class="bars"><i style="height:45%"></i><i style="height:45%"></i><i style="height:45%"></i><i style="height:45%"></i><i style="height:45%"></i><i style="height:45%"></i><i style="height:45%"></i><i style="height:45%"></i><i style="height:45%"></i><i style="height:45%"></i></div></div>
-              <div class="dist"><div class="dt">Score-weighted</div><div class="dd">Proportional to AI score</div><div class="bars"><i style="height:80%"></i><i style="height:74%"></i><i style="height:66%"></i><i style="height:60%"></i><i style="height:52%"></i><i style="height:44%"></i><i style="height:38%"></i><i style="height:30%"></i><i style="height:24%"></i><i style="height:18%"></i></div></div>
-            </div>
-          </div>
-          <div class="field">
-            <div class="flabel"><span>Duration</span></div>
-            <div class="chips" style="margin-top:2px"><span class="chip">24h</span><span class="chip on">3 days</span><span class="chip">7 days</span><span class="chip">Custom</span></div>
+      <div class="wgrid">
+        <div class="wcard">
+          <div class="wq">Roast Your Worst Trade</div>
+          <div class="rev">
+            <div class="rr"><span>REWARDS</span><b>Base · RLP · 40.000 RLP</b></div>
+            <div class="rr"><span>SCHEDULE</span><b>Jul 15 – Jul 22, 2026 · 1 period × 7 days</b></div>
+            <div class="rr"><span>TARGETING</span><b>Everyone · min followers 500 · unlimited winners</b></div>
+            <div class="rr"><span>EVALUATION</span><b>Default curve · Balanced weights</b></div>
+            <div class="rr"><span>MISSIONS</span><b>1 · “Roast your worst trade”</b></div>
           </div>
         </div>
         <aside>
-          <div class="sumcard">
-            <div class="sh">You lock today</div>
-            <div class="srow"><span>Prize pool</span><b>8,000 RLP</b></div>
-            <div class="srow"><span>Platform fee · 3%</span><b>240 RLP</b></div>
-            <div class="srow total"><span>Total</span><b>8,240 RLP</b></div>
-            <p class="escrow"><b>Held in escrow on-chain.</b> Paid out automatically when the campaign ends. If nobody submits, you get every RLP back.</p>
-            <p class="escrow">Creators pay their own gas — 12 RLP per submission. Your pool goes 100% to rewards.</p>
+          <div class="sumc">
+            <div class="sh">You deposit now</div>
+            <div class="srow tot" style="padding-top:0"><span>Total</span><b>40.000 RLP</b></div>
+            <p class="snote"><b>Live immediately after deposit.</b> Rewards are distributed per period, exactly as today.</p>
+            <div style="margin-top:12px"><button class="btn-blue" style="width:100%">Create campaign</button></div>
           </div>
         </aside>
       </div>
-      <div class="wiz-foot">
-        <button class="btn-ghost">← Back</button>
-        <span class="m-spacer"></span>
-        <button class="btn-volt">Continue →</button>
-      </div>
-    </div></div>
-  </figure>
-  <figcaption class="cap">Mockup 04-B · Paso 2 — presets visuales en vez de curvas técnicas, coste total en vivo</figcaption>
-
-  <div class="callouts">
-    <div class="co"><b class="n">1</b><span><strong>RLP ⇄ USDC en un toggle.</strong> El requisito del pool permissionless es literal en la UI; mínimos visibles junto al campo, no en un error después.</span></div>
-    <div class="co"><b class="n">2</b><span><strong>Las curvas de distribución se vuelven 3 presets con dibujo.</strong> Nadie configura polinomios; se elige una forma. “Custom” vive en Advanced (paso 3).</span></div>
-    <div class="co"><b class="n">3</b><span><strong>El resumen elimina el miedo #1:</strong> qué me bloquean, qué pasa si nadie participa (refund total) y quién paga el gas. Confianza = copy, no solo contrato.</span></div>
-  </div>
-
-  <h3>Paso 3 · Lanzar (y el success)</h3>
-  <figure class="frame narrow" role="img" aria-label="Mockup: paso 3 del wizard, revisar y lanzar">
-    <div class="bar"><i></i><i></i><i></i><span class="url">app.rally.fun/create</span></div>
-    <div class="screen"><div class="cv">
-      <div class="wiz-head">
-        <div class="wiz-steps">
-          <span class="wstep done"><i>✓</i> IDEA</span><span class="wsep"></span>
-          <span class="wstep done"><i>✓</i> PRIZE</span><span class="wsep"></span>
-          <span class="wstep on"><i>3</i> LAUNCH</span>
-        </div>
-      </div>
-      <div class="wiz-body">
-        <div>
-          <div class="wq">Ready when you are.</div>
-          <div class="sumcard" style="background:var(--m-srf)">
-            <div class="sh">Review</div>
-            <div class="srow"><span>Campaign</span><b>Roast your worst trade</b></div>
-            <div class="srow"><span>Content</span><b>Tweet</b></div>
-            <div class="srow"><span>Pool</span><b>8,000 RLP · Top 10 curve</b></div>
-            <div class="srow"><span>Runs</span><b>3 days · starts now</b></div>
-          </div>
-          <div class="adv">
-            <div class="arow"><b>Advanced</b><span>optional — sensible defaults applied</span><span class="val">▾</span></div>
-            <div class="arow"><b>Eligibility</b><span>Anyone can submit</span><span class="val">min Sorsa · community-only · language</span></div>
-            <div class="arow"><b>Moderators</b><span>Just you</span><span class="val">add mods · 24h disqualify window</span></div>
-            <div class="arow"><b>Schedule</b><span>Launch immediately</span><span class="val">pick date</span></div>
-          </div>
-        </div>
-        <aside>
-          <div class="sumcard">
-            <div class="sh">One signature</div>
-            <p class="escrow" style="margin-top:0">Funds move to escrow and your campaign goes live in the same transaction. No deploy steps, no config screens.</p>
-            <div style="margin-top:14px"><button class="btn-volt" style="width:100%">Fund &amp; launch · 8,240 RLP</button></div>
-            <p class="escrow">Wallet: 0x81f…4c2 · Base</p>
-          </div>
-        </aside>
-      </div>
-      <div class="success" style="border-top:1px solid var(--m-line); margin-top:26px">
+      <div class="success" style="border-top:1px solid var(--r-line); margin-top:24px">
         <span class="ok-ring">✓</span>
-        <div class="st">You’re live.</div>
-        <span class="slink">rally.fun/c/roast-your-worst-trade</span>
-        <div class="srowb"><button class="btn-volt">Share on X</button><button class="btn-ghost">Track submissions</button></div>
+        <div class="st">Your campaign is live</div>
+        <span class="slink">app.rally.fun/campaigns/roast-your-worst-trade</span>
+        <div class="srowb"><button class="btn-line">⧉ Copy link</button><button class="btn-blue">Share on 𝕏</button></div>
       </div>
     </div></div>
   </figure>
-  <figcaption class="cap">Mockup 04-C · Paso 3 — review, Advanced colapsado, 1 firma; debajo, el estado de éxito</figcaption>
+  <figcaption class="cap">Mockup 04-A · Confirm &amp; Deposit sin cambios funcionales + success con Copy link / Share on X (patrón del referral)</figcaption>
 
   <div class="callouts">
-    <div class="co"><b class="n">1</b><span><strong>Una sola firma.</strong> Aprobar + fondear escrow + activar campaña en una tx. Cada firma extra es un punto de fuga.</span></div>
-    <div class="co"><b class="n">2</b><span><strong>Advanced es donde vive la potencia:</strong> elegibilidad (min Sorsa, solo comunidad, idioma), mods con ventana de descalificación de 24 h, programar fecha. Ninguno bloquea el camino feliz.</span></div>
-    <div class="co"><b class="n">3</b><span><strong>El success es un canal de distribución.</strong> “Share on X” pre-rellena el tweet con el link de la campaña: cada campaña nueva se promociona sola y trae usuarios de vuelta a la app.</span></div>
+    <div class="co"><b class="n">1</b><span><strong>El deposit es el mismo de hoy.</strong> Un botón, el pot sale del balance/wallet, campaña live. Sin firmas ni pasos añadidos.</span></div>
+    <div class="co"><b class="n">2</b><span><strong>Share on X pre-rellenado</strong> con el link de la campaña: cada campaña de la comunidad se promociona sola y trae tráfico de vuelta — mismo loop que el referral.</span></div>
   </div>
 </section>
 
 <!-- ============================================================ -->
 <section id="s5">
-  <div class="sec-head"><span class="sec-num">05</span><h2>Brands: Get Verified y el dashboard</h2></div>
-  <p>Para un proyecto, el wizard es el mismo — la diferencia es un paso previo que se hace <strong>una sola vez</strong> y lo que desbloquea. La verificación se presenta como upgrade de distribución y datos, no como burocracia: checklist corta, revisión en menos de 24 h, y los beneficios siempre a la vista al lado.</p>
+  <div class="sec-head"><span class="sec-num">05</span><h2>Verified — rápido, sin papeleo</h2></div>
+  <p>La verificación es solo esto: <strong>el proyecto conecta su cuenta de X y el equipo de Rally aprueba</strong>. Nada de datos de empresa. El badge desbloquea el carril Verified (check azul en la card y en el handle) y el placement que ya dais a los partners. Todo lo demás — pricing, points systems, acuerdos — sigue siendo el proceso de BD de siempre, fuera del producto.</p>
 
-  <figure class="frame" role="img" aria-label="Mockup: flujo Get Verified para brands">
+  <figure class="frame narrow" role="img" aria-label="Mockup: verificación de proyecto">
     <div class="bar"><i></i><i></i><i></i><span class="url">app.rally.fun/verify</span></div>
     <div class="screen"><div class="cv">
-      <div class="m-pad" style="padding-bottom:4px">
-        <div class="m-h1">Get Verified <span class="bdg v" style="vertical-align:6px; margin-left:6px">VERIFIED</span></div>
-        <div class="m-sub">One-time setup. Reviewed by the Rally team in under 24 hours.</div>
+      <div class="r-hero" style="padding-bottom:22px">
+        <div class="r-h1">Get the Verified badge <span class="vcheck" style="font-size:22px">✔</span></div>
+        <p class="r-sub">For projects running campaigns on Rally. Two steps, reviewed fast by the Rally team.</p>
       </div>
-      <div class="split">
-        <div class="vcheck">
-          <div class="vrow"><span class="vic done">✓</span><div><div class="vt">Project profile</div><div class="vd">Logo, banner, description, website & links</div></div></div>
-          <div class="vrow"><span class="vic done">✓</span><div><div class="vt">Verify your X account</div><div class="vd">Post a one-line proof from @yourproject</div></div></div>
-          <div class="vrow"><span class="vic now">3</span><div><div class="vt">Business details</div><div class="vd">Entity name & contact — KYB-lite, 2 minutes</div></div></div>
-          <div class="vrow"><span class="vic todo">4</span><div><div class="vt">Fund your first campaign</div><div class="vd">From $2,000 USDC equivalent — via wallet or invoice</div></div></div>
+      <div class="vsplit">
+        <div style="display:grid; gap:10px">
+          <div class="vstep"><span class="vnum done">✓</span><div><div class="vt">Connect your project’s X account</div><div class="vd">@GenLayer connected</div></div></div>
+          <div class="vstep"><span class="vnum now">2</span><div><div class="vt">Request verification</div><div class="vd">The Rally team reviews and approves your project</div></div></div>
+          <div style="padding:4px 2px"><button class="btn-blue">Request verification</button></div>
         </div>
-        <div class="benef">
-          <div class="brow"><span class="bi">◆</span><span><b>Verified badge + hero placement</b> in Network, plus push to matching creators at launch</span></div>
-          <div class="brow"><span class="bi">◆</span><span><b>Reward in your own points or token</b> — custom points systems, not just RLP/USDC</span></div>
-          <div class="brow"><span class="bi">◆</span><span><b>Campaign analytics</b> — reach, scores, CPM, creator list, CSV export</span></div>
-          <div class="brow"><span class="bi">◆</span><span><b>Community hub auto-created</b> — your campaigns, members and leaderboard persist after launch</span></div>
-          <div class="brow"><span class="bi">◆</span><span><b>Ambassador programs</b> and the option to <b>sponsor creators’ gas</b></span></div>
-          <div class="brow"><span class="bi">◆</span><span><b>Pay by invoice</b> — no wallet required for finance teams</span></div>
+        <div class="vben">
+          <div class="vb"><span class="bi">✔</span><span><b>Verified badge</b> on your campaigns and profile</span></div>
+          <div class="vb"><span class="bi">✔</span><span><b>Verified rail placement</b> in Network + eligible for featured spots</span></div>
+          <div class="vb"><span class="bi">✔</span><span><b>Your Community hub</b> keeps members and leaderboards across campaigns</span></div>
+          <div class="vb"><span class="bi">✔</span><span><b>Direct line to the Rally team</b> for custom setups (points systems, larger campaigns)</span></div>
         </div>
-      </div>
-      <div class="kpis">
-        <div class="kpi"><div class="kl">Submissions</div><div class="kv">428</div><div class="kd">▲ 12% vs last campaign</div></div>
-        <div class="kpi"><div class="kl">Total reach</div><div class="kv">2.1M</div><div class="kd">▲ 31%</div></div>
-        <div class="kpi"><div class="kl">Avg score</div><div class="kv">7.4</div><div class="kd">quality holding</div></div>
-        <div class="kpi"><div class="kl">Effective CPM</div><div class="kv">$1.90</div><div class="kd">▼ cheaper than paid social</div></div>
       </div>
     </div></div>
   </figure>
-  <figcaption class="cap">Mockup 05-A · Get Verified (checklist + beneficios) y la fila de KPIs del dashboard de campaña</figcaption>
-
-  <div class="callouts">
-    <div class="co"><b class="n">1</b><span><strong>Checklist de 4 pasos, 2 ya resueltos en onboarding.</strong> La percepción de esfuerzo baja aunque el trabajo sea el mismo.</span></div>
-    <div class="co"><b class="n">2</b><span><strong>Los beneficios se venden en paralelo</strong> — cada minuto de fricción del KYB tiene delante la razón por la que compensa.</span></div>
-    <div class="co"><b class="n">3</b><span><strong>KPIs en lenguaje de marketer:</strong> reach y CPM, no hashes ni contratos. Es la munición de BD para case studies.</span></div>
-  </div>
+  <figcaption class="cap">Mockup 05-A · Verificación en dos pasos: conectar X + aprobación del equipo. Sin formularios de empresa.</figcaption>
 </section>
 
 <!-- ============================================================ -->
 <section id="s6">
-  <div class="sec-head"><span class="sec-num">06</span><h2>Confianza y anti-spam (lo que hace viable lo permissionless)</h2></div>
-  <ul class="plain">
-    <li><strong>Escrow on-chain al crear.</strong> El pool sale de la wallet en el momento de lanzar. Una campaña listada = una campaña pagada. Refund automático si expira sin submissions.</li>
-    <li><strong>Mínimos de pool</strong> (5.000 RLP / 50 USDC) — el spam cuesta dinero. Los mínimos son un parámetro de producto, ajustables sin tocar contrato.</li>
-    <li><strong>Rate limit:</strong> máx. 3 campañas activas por wallet no verificada.</li>
-    <li><strong>Reputación visible:</strong> la card muestra el Sorsa score del creador de la campaña; opcionalmente, crear Network Campaigns puede requerir un mínimo de historial (p. ej. 3 campañas participadas).</li>
-    <li><strong>Report / denounce</strong> en cada campaña → cola de revisión; los mods + la ventana de descalificación de 24 h ya existen y se reutilizan.</li>
-    <li><strong>Contenido:</strong> filtro automático del brief al publicar (scam, phishing, impersonación de brands → bloqueo y aviso).</li>
-  </ul>
+  <div class="sec-head"><span class="sec-num">06</span><h2>Flows resumidos</h2></div>
+
+  <h3>Creator / comunidad · lanza una Community Campaign</h3>
+  <div class="flow">
+    <div class="fstep"><span class="fk">ENTRADA</span><div class="fbox"><div class="ft">+ Create campaign</div><div class="fd">Visible en Network para cualquier usuario conectado</div></div></div>
+    <div class="fstep"><span class="fk">PASOS 1–3</span><div class="fbox"><div class="ft">Basic · Pot · Missions</div><div class="fd">Con plantillas y AI Template; opcionales plegados</div></div></div>
+    <div class="fstep"><span class="fk">PASOS 4–5</span><div class="fbox"><div class="ft">Defaults aplicados</div><div class="fd">Evaluation + Targeting pre-resueltos, editables</div></div></div>
+    <div class="fstep"><span class="fk">PASO 6</span><div class="fbox"><div class="ft">Confirm &amp; Deposit</div><div class="fd">Igual que hoy · live al depositar</div></div></div>
+    <div class="fstep"><span class="fk">LOOP</span><div class="fbox"><div class="ft">Share on X</div><div class="fd">Success con link + share (patrón referral)</div></div></div>
+  </div>
+
+  <h3>Brand · lanza una Verified Campaign</h3>
+  <div class="flow">
+    <div class="fstep"><span class="fk">UNA VEZ</span><div class="fbox"><div class="ft">Verified badge</div><div class="fd">Conectar X + aprobación del equipo Rally</div></div></div>
+    <div class="fstep"><span class="fk">CREA</span><div class="fbox"><div class="ft">Mismo wizard</div><div class="fd">Con acceso a setups custom vía equipo (points, etc.)</div></div></div>
+    <div class="fstep"><span class="fk">LANZA</span><div class="fbox"><div class="ft">Carril Verified</div><div class="fd">Badge + placement en Network</div></div></div>
+    <div class="fstep"><span class="fk">MIDE</span><div class="fbox"><div class="ft">Leaderboard &amp; stats</div><div class="fd">Los que ya existen por campaña/periodo</div></div></div>
+    <div class="fstep"><span class="fk">RETIENE</span><div class="fbox"><div class="ft">Community hub</div><div class="fd">Miembros y leaderboard persisten entre campañas</div></div></div>
+  </div>
+
+  <h3>Participante · sin cambios</h3>
+  <div class="flow">
+    <div class="fstep"><span class="fk">DESCUBRE</span><div class="fbox"><div class="ft">Network</div><div class="fd">Filtro Verified / Community</div></div></div>
+    <div class="fstep"><span class="fk">JOIN</span><div class="fbox"><div class="ft">Mission → rules</div><div class="fd">Read the rules · igual que hoy</div></div></div>
+    <div class="fstep"><span class="fk">SUBMIT</span><div class="fbox"><div class="ft">Tweet URL</div><div class="fd">100 RLP o ETH (~$1.20)</div></div></div>
+    <div class="fstep"><span class="fk">EVALÚA</span><div class="fbox"><div class="ft">AI Evaluation</div><div class="fd">Core gates · quality · engagement</div></div></div>
+    <div class="fstep"><span class="fk">COBRA</span><div class="fbox"><div class="ft">Leaderboard → rewards</div><div class="fd">Projected rewards por periodo</div></div></div>
+  </div>
 </section>
 
 <!-- ============================================================ -->
 <section id="s7">
-  <div class="sec-head"><span class="sec-num">07</span><h2>Qué medir y next steps</h2></div>
-  <h3>Métricas del flow</h3>
+  <div class="sec-head"><span class="sec-num">07</span><h2>Next steps</h2></div>
   <ul class="plain">
-    <li><strong>Time-to-launch</strong> (mediana, de “+ Create” a live) — objetivo &lt; 2 min.</li>
-    <li><strong>Completion rate del wizard</strong> por paso — el paso 2 (funding) es donde vigilar el drop.</li>
-    <li><strong>Campañas/semana creadas fuera del equipo</strong> y % del total — la métrica de que “permissionless” funciona.</li>
-    <li><strong>Submissions por campaña Network vs Verified</strong> — alimenta el north star (submissions × gas).</li>
-    <li><strong>Conversión Get Verified</strong> (perfil creado → verificado → primera campaña).</li>
-  </ul>
-  <h3>Para Pablo (diseño)</h3>
-  <ul class="plain">
-    <li>Tokens de color de estas pantallas (volt / verified azul / RLP ámbar / USDC azul) contra el design system real; estados vacíos del feed Network; versión mobile del wizard (1 columna, resumen de coste como bottom-sheet).</li>
-    <li>Microcopy definitivo EN (+ KO para el track de Corea).</li>
-  </ul>
-  <h3>Para desarrollo</h3>
-  <ul class="plain">
-    <li>Factory de campañas permissionless + escrow multi-token (RLP, USDC) con fee del 3 % y refund; presets de distribución (curve / equal / weighted) sobre el cambio de contrato de pagos fijos ya planificado.</li>
-    <li>Flag <code>verified</code> a nivel de proyecto; cola de verificación admin; rate limits y mínimos como config.</li>
-    <li>Wizard con draft autosave; integración Wingston para generar briefs; share-intent de X en el success.</li>
+    <li><strong>Producto:</strong> decidir mínimos de pot y límites anti-spam para Community (son config, no protocolo — por eso este doc no fija cifras) y el criterio de aprobación Verified.</li>
+    <li><strong>Diseño (Pablo):</strong> badge Verified/Community definitivo sobre el design system; estados vacíos del filtro Community; versión mobile del wizard (stepper colapsable, resumen de deposit como bottom-sheet).</li>
+    <li><strong>Dev:</strong> exponer el wizard existente fuera de Admin con permisos por rol; presets "defaults" para Evaluation/Targeting (valores actuales); plantillas vía el Import existente; success screen con share-intent; flag <code>verified</code> por proyecto + cola de aprobación.</li>
+    <li><strong>Medición:</strong> time-to-launch del wizard, completion por paso (hoy vs. con defaults), campañas creadas fuera del equipo/semana, submissions por campaña Community vs Verified.</li>
   </ul>
   <div class="note"><span class="eyebrow">encaje con el roadmap</span>
-  Permissionless Campaigns está en el planning para la semana del 28 de julio (3–6 días de dev). Esta propuesta no añade scope nuevo a esa release: Network feed + wizard + escrow es el MVP; Verified reutiliza el pipeline de BD actual con badge y placement. Analytics, Boost y facturación pueden ir en la iteración siguiente.</div>
+  Permissionless Campaigns está previsto para la semana del 28 de julio (3–6 días). Este scope encaja: permisos sobre el wizard actual + defaults + filtro/badges en Explore + success screen. La verificación reutiliza el flujo de partners que ya gestionáis a mano.</div>
 </section>
 
 </div>
