@@ -450,11 +450,124 @@
   <p class="sdesc">La campaign page (Missions · Briefing · Leaderboard), la evaluación AI, el leaderboard y la distribución por periodos siguen igual. La secuencia Rules → Post → Get paid es la <b>capa guiada por encima</b> de lo que ya existe.</p>
 </div>
 
-<!-- ================= PARTNER FLOW ================= -->
+<!-- ================= PARTNER ONBOARDING (Pablo-diagram style) ================= -->
+<style>
+  .pd{border:1px solid var(--line); border-radius:16px; background:var(--card); padding:34px 22px 30px; margin:22px 0 0; overflow-x:auto}
+  .pd-inner{min-width:760px; max-width:860px; margin:0 auto}
+  .pd h4{text-align:center; font-size:26px; font-weight:900; margin-bottom:26px}
+  .pd-entries{display:flex; justify-content:center; gap:26px}
+  .pd-pent{width:150px; padding:22px 10px 30px; color:#fff; font-weight:700; font-size:13px; text-align:center;
+    clip-path:polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%)}
+  .pd-pent.p1{background:#7C3AED} .pd-pent.p2{background:#EC4899} .pd-pent.p3{background:#F59E0B} .pd-pent.p4{background:#10B981}
+  .pd-varrow{width:2px; height:26px; background:var(--ink); margin:0 auto; position:relative}
+  .pd-varrow::after{content:""; position:absolute; bottom:-1px; left:-4px; border:5px solid transparent; border-top-color:var(--ink)}
+  .pd-diamond{width:64px; height:64px; background:var(--ink); transform:rotate(45deg); margin:8px auto 14px; display:grid; place-items:center; border-radius:8px}
+  .pd-diamond span{transform:rotate(-45deg); color:var(--paper); font-weight:800; font-size:12px}
+  .pd-cols{display:grid; grid-template-columns:1fr 1fr 1fr; gap:22px; margin-top:6px}
+  .pd-col{display:flex; flex-direction:column; align-items:center}
+  .pd-state{width:130px; padding:16px 10px; text-align:center; font-weight:800; font-size:13px; border-radius:10px; border:2px solid transparent}
+  .pd-state.in{background:#5BCB6C; color:#fff}
+  .pd-state.out{background:#E8442E; color:#fff}
+  .pd-state.new{background:#fff; color:#12141F; border-color:#9CA1B4}
+  .pd-sq{width:132px; padding:15px 10px; background:var(--ink); color:var(--paper); font-weight:700; font-size:11.5px; text-align:center; border-radius:10px; line-height:1.35}
+  .pd-circ{width:128px; height:128px; border-radius:50%; background:var(--ink); color:var(--paper); display:grid; place-items:center; text-align:center; font-weight:700; font-size:11px; padding:12px; line-height:1.35}
+  .pd-circ small{display:block; font-weight:400; font-size:9.5px; opacity:.75; margin-top:3px}
+  .pd-dest{width:132px; height:132px; border-radius:50%; background:#FDE7F5; border:2.5px solid #EC4899; color:#12141F; display:grid; place-items:center; text-align:center; font-weight:800; font-size:11.5px; padding:12px; line-height:1.35}
+  .pd-note{font-family:var(--mono); font-size:10.5px; color:var(--ink-2); text-align:center; margin-top:16px}
+</style>
+
 <div class="flow-title" id="project">
-  <span class="ft-kicker">02 · verified campaigns · crear en una sola página</span>
+  <span class="ft-kicker">02 · qué pasa cuando un proyecto entra a la app</span>
   <h2>Partner Flow</h2>
-  <p>El partner verificado lanza <b>✔ Verified campaigns</b>: badge azul, carril destacado arriba del todo, y confianza para los creators. Crear la campaña es <b>una página, dos bloques y un botón</b>: qué quieres que publiquen + qué pagas → Deposit & launch. Lo técnico viene resuelto con los defaults de Rally, editable en "Advanced". Al depositar: live, y la Community se crea sola.</p>
+  <p>La respuesta a "un proyecto entra — ¿y ahora qué?": <b>onboarding de una sola vez que termina DENTRO del formulario de crear campaña</b>, no en un dashboard vacío. Conecta X → dice quién es (1 pantalla) → ya está creando. La verificación corre <b>en paralelo</b> y solo decide el carril (✔ Verified destacado o Network) — nunca bloquea crear.</p>
+</div>
+
+<div class="step new">
+  <span class="snum">0</span>
+  <div class="shead"><h3>El diagrama — mismo lenguaje que el doc de flows</h3><span class="stag new">ONBOARDING NUEVO</span></div>
+  <p class="sdesc">Cuatro entradas posibles, un IF de sesión, y el camino "New" en 3 burbujas que desemboca directo en Create campaign.</p>
+  <div class="pd">
+    <div class="pd-inner">
+      <h4>Partners</h4>
+      <div class="pd-entries">
+        <div class="pd-pent p1">rally.fun<br><span style="font-weight:400; font-size:10.5px">"For projects"</span></div>
+        <div class="pd-pent p2">app.rally.fun</div>
+        <div class="pd-pent p3">Campaign<br><span style="font-weight:400; font-size:10.5px">"Run one like this"</span></div>
+        <div class="pd-pent p4">Team invite<br><span style="font-weight:400; font-size:10.5px">link de Ana / BD</span></div>
+      </div>
+      <div class="pd-varrow" style="height:30px; margin-top:10px"></div>
+      <div class="pd-diamond"><span>IF</span></div>
+      <div class="pd-cols">
+        <div class="pd-col">
+          <div class="pd-state in">Logged In</div>
+          <div class="pd-varrow"></div>
+          <div class="pd-dest">+ Create campaign<br><span style="font-weight:400; font-size:10px">1 página · deposit · live</span></div>
+        </div>
+        <div class="pd-col">
+          <div class="pd-state out">Logged Out</div>
+          <div class="pd-varrow"></div>
+          <div class="pd-sq">Log in<br>X / Metamask</div>
+          <div class="pd-varrow"></div>
+          <div class="pd-dest">+ Create campaign</div>
+        </div>
+        <div class="pd-col">
+          <div class="pd-state new">New</div>
+          <div class="pd-varrow"></div>
+          <div class="pd-circ">Connect<br>X / Metamask<small>con la cuenta del proyecto</small></div>
+          <div class="pd-varrow"></div>
+          <div class="pd-circ">Creator or Project?<small>fork de rol · 2 cards</small></div>
+          <div class="pd-varrow"></div>
+          <div class="pd-circ">Tell us about<br>your project<small>1 pantalla · pfp y nombre<br>importados de X · goal · chain</small></div>
+          <div class="pd-varrow"></div>
+          <div class="pd-dest">+ Create campaign<br><span style="font-weight:400; font-size:10px">pre-rellenado con tu goal</span></div>
+        </div>
+      </div>
+      <div class="pd-note">Al completar "Tell us about your project": org + Community profile creados solos · review de ✔ Verified arranca en background (badge en &lt;24h) · nunca bloquea crear ni lanzar (sale como Network hasta el badge)</div>
+    </div>
+  </div>
+</div>
+
+<div class="step new">
+  <span class="snum">0b</span>
+  <div class="shead"><h3>Las 2 pantallas del onboarding</h3><span class="stag new">NUEVAS</span></div>
+  <p class="sdesc"><b>Fork de rol</b> (hoy la app asume que todo el mundo es creator — este es el hueco) y <b>"Tell us about your project"</b>: una sola pantalla, con pfp y nombre ya importados de X. Sus respuestas no se tiran: el <b>goal</b> elige la plantilla con la que aterriza en Create campaign.</p>
+  <figure class="frame" role="img" aria-label="Pantallas de onboarding de proyecto">
+    <div class="screen"><div class="cv" style="display:grid; grid-template-columns:1fr 1.2fr; gap:0">
+      <div style="border-right:1px solid var(--r-line); padding:30px 24px; text-align:center">
+        <div class="r-h1" style="font-size:19px">Welcome to Rally</div>
+        <p class="r-sub" style="margin:6px auto 16px">What brings you here?</p>
+        <div style="display:grid; gap:10px; max-width:280px; margin:0 auto">
+          <div style="border:1.5px solid var(--r-line2); border-radius:12px; padding:16px; text-align:left">
+            <div style="font-weight:800; font-size:13.5px; color:#12141F">🎨 I’m a creator</div>
+            <div style="font-size:11.5px; color:var(--r-dim); margin-top:3px">Earn by posting on X</div>
+          </div>
+          <div style="border:2px solid var(--r-blue); border-radius:12px; padding:16px; text-align:left; background:#F6F8FF">
+            <div style="font-weight:800; font-size:13.5px; color:#12141F">🚀 I’m a project</div>
+            <div style="font-size:11.5px; color:var(--r-dim); margin-top:3px">Run a campaign, grow your community</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:26px 26px">
+        <div class="r-h1" style="font-size:19px">Tell us about your project</div>
+        <p class="r-sub" style="margin-top:4px">One screen. We pulled what we could from your X account.</p>
+        <div style="display:flex; gap:12px; align-items:center; margin-top:14px">
+          <div style="width:44px; height:44px; border-radius:11px; background:#14161F"></div>
+          <div><div style="font-weight:800; font-size:14px; color:#12141F">GenLayer <span class="vcheck">✔ from X</span></div><div style="font-size:11px; color:var(--r-dim)">@GenLayer · imported automatically</div></div>
+        </div>
+        <div style="font-size:12px; font-weight:700; margin:14px 0 6px; color:#12141F">What do you want first?</div>
+        <div style="display:flex; gap:7px; flex-wrap:wrap">
+          <span style="background:#12141F; color:#fff; font-size:11.5px; font-weight:700; padding:7px 13px; border-radius:999px">🔥 Launch buzz</span>
+          <span style="border:1px solid var(--r-line2); color:var(--r-dim); font-size:11.5px; font-weight:700; padding:7px 13px; border-radius:999px">🌱 Community growth</span>
+          <span style="border:1px solid var(--r-line2); color:var(--r-dim); font-size:11.5px; font-weight:700; padding:7px 13px; border-radius:999px">📣 Product awareness</span>
+        </div>
+        <div style="font-size:12px; font-weight:700; margin:14px 0 6px; color:#12141F">Chain</div>
+        <div class="inp" style="max-width:220px">Base ▾</div>
+        <div style="margin-top:16px"><button class="btn-blue" style="width:100%">Continue → create your first campaign</button></div>
+        <div style="font-size:10.5px; color:var(--r-faint); margin-top:8px">Your org &amp; Community profile are created automatically · ✔ Verified review starts now (badge in &lt;24h) — you can create and launch meanwhile.</div>
+      </div>
+    </div></div>
+  </figure>
+  <figcaption class="cap">Izquierda: el fork que hoy no existe. Derecha: la única pantalla de onboarding — y su botón no lleva a un dashboard, lleva a crear la primera campaña.</figcaption>
 </div>
 
 <div class="step new">

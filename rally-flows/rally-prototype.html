@@ -254,8 +254,9 @@
     <h2>Partner flow — de cero a live en una sesión</h2>
     <p class="dl">Crear campaña = una página. La Community se crea sola.</p>
     <div class="lane">
-      <div class="node"><div class="nbox"><span class="nk">Una vez</span><div class="nt">Request access</div><div class="nd">Form in-app → aprobación del equipo → badge ✔ Verified</div></div></div>
-      <div class="node hot"><div class="nbox"><span class="nk">La clave</span><div class="nt">Create campaign · 1 página</div><div class="nd">① Qué deben publicar ② El premio · defaults en "Advanced"</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">Entra a la app</span><div class="nt">Connect X → ¿Creator o Project?</div><div class="nd">Fork de rol (hoy no existe)</div></div></div>
+      <div class="node hot"><div class="nbox"><span class="nk">1 pantalla</span><div class="nt">Tell us about your project</div><div class="nd">pfp + nombre desde X · goal · chain → org y Community creados solos · ✔ review en background</div></div></div>
+      <div class="node hot"><div class="nbox"><span class="nk">La clave</span><div class="nt">Create campaign · 1 página</div><div class="nd">Pre-rellenada según tu goal · defaults en "Advanced"</div></div></div>
       <div class="node"><div class="nbox"><span class="nk">1 depósito</span><div class="nt">Deposit &amp; launch</div><div class="nd">El deposit del protocolo, sin cambios</div></div></div>
       <div class="node pay"><div class="nbox"><span class="nk">Automático</span><div class="nt">LIVE + Community</div><div class="nd">Success con Share on X · Community creada sola</div></div></div>
       <div class="node end"><div class="nbox"><span class="nk">Después</span><div class="nt">Track &amp; grow</div><div class="nd">Leaderboard · stats · Ambassador Program</div></div></div>
@@ -444,6 +445,47 @@
       </div>
     </section>
 
+    <!-- ========== PARTNER 0: entra a la app (fork de rol) ========== -->
+    <section class="screen" id="p0">
+      <div class="pad" style="text-align:center; padding-top:38px; max-width:520px; margin:0 auto">
+        <div class="h1">Welcome to Rally</div>
+        <div class="sub" style="margin-bottom:6px">You just connected with X. What brings you here?</div>
+        <div style="display:grid; gap:10px; margin-top:16px">
+          <button class="ccard" style="padding:16px; border-width:1.5px" onclick="startFlow('creator'); toast('Camino creator → elegir campaña')">
+            <div style="font-weight:800; font-size:14px">🎨 I’m a creator</div>
+            <div style="font-size:12px; color:var(--ink-2); margin-top:3px">Earn by posting on X</div>
+          </button>
+          <button class="ccard" style="padding:16px; border:2px solid var(--blue); background:#F6F8FF" onclick="go('p0b')">
+            <div style="font-weight:800; font-size:14px">🚀 I’m a project</div>
+            <div style="font-size:12px; color:var(--ink-2); margin-top:3px">Run a campaign, grow your community</div>
+          </button>
+        </div>
+        <div class="foot-note">Este fork hoy no existe — la app asume que todo el mundo es creator.</div>
+      </div>
+    </section>
+
+    <!-- ========== PARTNER 0b: tell us about your project ========== -->
+    <section class="screen" id="p0b">
+      <div class="pad" style="max-width:560px; margin:0 auto; padding-top:26px">
+        <div class="h1">Tell us about your project</div>
+        <div class="sub">One screen. We pulled what we could from your X account.</div>
+        <div style="display:flex; gap:12px; align-items:center; margin-top:16px">
+          <div style="width:44px; height:44px; border-radius:11px; background:#14161F; flex:none"></div>
+          <div><div style="font-weight:800; font-size:14px">GenLayer <span class="vk">✔ from X</span></div><div style="font-size:11px; color:var(--ink-2)">@GenLayer · imported automatically</div></div>
+        </div>
+        <label class="fl">What do you want first?</label>
+        <div class="chiprow" style="margin-top:2px" id="goalrow">
+          <button class="chip on" onclick="pickGoal(this,'Launch buzz')">🔥 Launch buzz</button>
+          <button class="chip" onclick="pickGoal(this,'Community growth')">🌱 Community growth</button>
+          <button class="chip" onclick="pickGoal(this,'Product awareness')">📣 Product awareness</button>
+        </div>
+        <label class="fl">Chain</label>
+        <input class="inp" value="Base" readonly style="max-width:200px">
+        <div style="margin-top:16px"><button class="btn full" onclick="finishOnboarding()">Continue → create your first campaign</button></div>
+        <div class="foot-note" style="text-align:left">Your org &amp; Community profile are created automatically · ✔ Verified review starts now (badge in &lt;24h) — you can create and launch meanwhile.</div>
+      </div>
+    </section>
+
     <!-- ========== PARTNER 1: create (1 página) ========== -->
     <section class="screen" id="p1">
       <div class="hero">
@@ -589,9 +631,26 @@
 <script>
   var FLOWS = {
     creator: ['c1','c2','c3','c4'],
-    partner: ['p1','p2'],
+    partner: ['p0','p0b','p1','p2'],
     amb:     ['a1','a2']
   };
+  function pickGoal(el, goal){
+    document.querySelectorAll('#goalrow .chip').forEach(function(c){ c.classList.remove('on'); });
+    el.classList.add('on');
+    window._goal = goal;
+  }
+  function finishOnboarding(){
+    var g = window._goal || 'Launch buzz';
+    var pre = {
+      'Launch buzz': ['Internet Court Is Here','Quote the GenLayer post quoting Forbes and amplify it in your own voice. Original takes only.'],
+      'Community growth': ['Join the GenLayer movement','Tell your audience why you joined the GenLayer community. Personal stories only.'],
+      'Product awareness': ['Explain GenLayer to normies','One tweet or thread. Plain language wins. Best analogies take the pool.']
+    }[g];
+    document.getElementById('cname').value = pre[0];
+    document.getElementById('cask').value = pre[1];
+    go('p1');
+    toast('✓ Onboarded — org y Community creados · Verified en revisión · plantilla "'+g+'" pre-cargada');
+  }
   var current = 'creator';
 
   function showView(v){
