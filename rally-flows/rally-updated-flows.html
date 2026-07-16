@@ -385,96 +385,136 @@
 
 <!-- ============================================================ -->
 <section id="s3">
-  <div class="sec-head"><span class="sec-num">03</span><h2>Projects POV</h2></div>
-  <p>Las dos pantallas que cambian la vida al proyecto: la home con el Partner Guide convertido en checklist, y el launch kit. El wizard de 6 pasos (con Evaluation/Targeting en defaults) está detallado en el doc de diseños.</p>
+  <div class="sec-head"><span class="sec-num">03</span><h2>Projects POV — crear una campaña en 3 pasos</h2></div>
+  <p><strong>El qué → el pot → deposit. Ya está.</strong> Todo lo demás (evaluation, targeting, periods, knowledge base) queda con los defaults actuales detrás de un link "Advanced settings" — mismos parámetros, misma API, solo que ya no bloquean el camino. Y al depositar, <strong>la Community del proyecto se crea automáticamente</strong> — el proyecto solo la personaliza si quiere.</p>
 
-  <h3>POV 1 · Project home (el Partner Guide como checklist)</h3>
-  <figure class="frame" role="img" aria-label="Projects POV: home del proyecto con checklist">
-    <div class="bar2"><i></i><i></i><i></i><span class="url">app.rally.fun/org/genlayer</span></div>
+  <h3>POV 1 · Paso 1: el qué</h3>
+  <figure class="frame" role="img" aria-label="Projects POV: crear campaña, paso 1">
+    <div class="bar2"><i></i><i></i><i></i><span class="url">app.rally.fun/campaigns/create</span></div>
     <div class="screen"><div class="cv">
-      <div class="r-hero">
-        <div class="r-h1">Welcome, GenLayer <span class="vcheck" style="font-size:18px">✔</span></div>
-        <p class="r-sub">Launch your first campaign in four steps. The Rally team is one click away at any point.</p>
+      <div class="r-hero" style="padding-bottom:14px">
+        <div style="display:flex; gap:10px; font-family:var(--mono); font-size:11px; color:var(--r-faint)">
+          <span style="color:var(--r-blue); font-weight:700">1 · THE CAMPAIGN</span><span>›</span><span>2 · THE POT</span><span>›</span><span>3 · DEPOSIT</span>
+        </div>
       </div>
       <div class="wgrid">
         <div class="chk">
-          <div class="chkrow"><span class="cnum done">✓</span><div><div class="ct">Organization access</div><div class="cd">Requested in-app, approved by Rally · 3 teammates added</div></div></div>
-          <div class="chkrow active"><span class="cnum now">2</span><div><div class="ct">Draft your campaign</div><div class="cd">The wizard is the template — defaults applied, AI Template available. Optional: request a Rally review.</div></div><span class="cta"><button class="btn-blue">Continue draft</button></span></div>
-          <div class="chkrow"><span class="cnum todo">3</span><div><div class="ct">Fund your reward pool</div><div class="cd">USDC, your token, or layer Rally Points on top.</div></div></div>
-          <div class="chkrow"><span class="cnum todo">4</span><div><div class="ct">Launch &amp; announce</div><div class="cd">Ready-made announcements + Rally amplification.</div></div></div>
+          <div class="chkrow" style="display:block">
+            <div class="ct" style="margin-bottom:10px">What is your campaign?</div>
+            <div class="cd" style="font-weight:700; color:var(--r-ink); margin-bottom:4px">Name</div>
+            <div class="inp" style="color:var(--r-ink); font-weight:700">Internet Court Is Here</div>
+            <div class="cd" style="font-weight:700; color:var(--r-ink); margin:12px 0 4px">What should creators post?</div>
+            <div class="inp" style="color:var(--r-ink); min-height:64px; line-height:1.5">Quote the GenLayer post quoting Forbes and amplify it in your own voice. Original takes only — no empty hype.</div>
+            <div class="cd" style="margin-top:12px; color:var(--r-faint)">Advanced: knowledge base · style · extra missions · <span style="color:var(--r-blue); font-weight:700">Expand ▾</span></div>
+          </div>
         </div>
         <aside>
           <div class="team">
-            <div class="tt">Prefer white-glove?</div>
-            <p>Ana can review your draft, help structure rewards and coordinate the launch — like always.</p>
-            <button class="btn-line">💬 Talk to the team</button>
+            <div class="tt">✦ AI Template</div>
+            <p>Write just the name — Wingston drafts the description, rules and knowledge base for you. Edit and go.</p>
+            <button class="btn-line">✦ Fill it for me</button>
+          </div>
+        </aside>
+      </div>
+      <div style="display:flex; padding:16px 26px 0"><span class="r-spacer"></span><button class="btn-blue">Continue</button></div>
+    </div></div>
+  </figure>
+  <figcaption class="cap">Dos campos obligatorios: nombre y qué debe publicar el creator. El AI Template (ya existe) rellena el resto. Mismos campos de siempre bajo "Advanced".</figcaption>
+
+  <h3>POV 2 · Paso 2 y 3: el pot y deposit</h3>
+  <figure class="frame" role="img" aria-label="Projects POV: crear campaña, pot y deposit">
+    <div class="bar2"><i></i><i></i><i></i><span class="url">app.rally.fun/campaigns/create</span></div>
+    <div class="screen"><div class="cv">
+      <div class="r-hero" style="padding-bottom:14px">
+        <div style="display:flex; gap:10px; font-family:var(--mono); font-size:11px; color:var(--r-faint)">
+          <span style="color:var(--r-green); font-weight:700">✓ 1 · THE CAMPAIGN</span><span>›</span><span style="color:var(--r-blue); font-weight:700">2 · THE POT</span><span>›</span><span>3 · DEPOSIT</span>
+        </div>
+      </div>
+      <div class="wgrid">
+        <div class="chk">
+          <div class="chkrow" style="display:block">
+            <div class="ct" style="margin-bottom:10px">What’s the pot?</div>
+            <div class="payrow on"><span>USDC<small>From your wallet · Base</small></span><span class="amt">◎</span></div>
+            <div class="payrow"><span>Your project’s token<small>Any ERC-20 · optionally layer Rally Points on top</small></span></div>
+            <div class="payrow"><span>Rally Points (RLP)<small>Your balance: 180000 RLP</small></span></div>
+            <div class="cd" style="font-weight:700; color:var(--r-ink); margin:12px 0 4px">Amount &amp; duration</div>
+            <div style="display:flex; gap:8px">
+              <div class="inp" style="color:var(--r-ink); font-weight:800; font-size:16px; max-width:160px">1000</div>
+              <div class="inp" style="color:var(--r-ink)">2 periods × 7 days ▾</div>
+            </div>
+            <div class="cd" style="margin-top:12px; color:var(--r-faint)">Advanced: evaluation · targeting · schedule <span class="tchip ok">✓ RALLY DEFAULTS</span> · <span style="color:var(--r-blue); font-weight:700">Edit ▾</span></div>
+          </div>
+        </div>
+        <aside>
+          <div class="chkrow" style="display:block">
+            <div class="ct" style="margin-bottom:8px">Deposit &amp; launch</div>
+            <div class="cd" style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed var(--r-line)"><span>Pot</span><b>1000 USDC</b></div>
+            <div class="cd" style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed var(--r-line)"><span>Per period</span><b>500 USDC × 2</b></div>
+            <div class="cd" style="display:flex; justify-content:space-between; padding:6px 0"><span>Live</span><b>Immediately</b></div>
+            <div style="margin-top:12px"><button class="btn-blue" style="width:100%">Deposit &amp; launch · 1000 USDC</button></div>
           </div>
         </aside>
       </div>
     </div></div>
   </figure>
-  <figcaption class="cap">Los 4 pasos del Partner Campaign Guide, dentro del producto. Sustituye 3 Google Docs, 2 Looms y los emails de acceso.</figcaption>
+  <figcaption class="cap">Token, cantidad, duración — y el botón de deposit ya visible. Evaluation/Targeting quedan en "Rally defaults" editables. El deposit es el mismo del protocolo.</figcaption>
 
-  <h3>POV 2 · Launch kit</h3>
-  <figure class="frame" role="img" aria-label="Projects POV: launch kit">
-    <div class="bar2"><i></i><i></i><i></i><span class="url">app.rally.fun/org/genlayer/launch</span></div>
+  <h3>POV 3 · Live (con la Community creada automáticamente)</h3>
+  <figure class="frame" role="img" aria-label="Projects POV: campaña live con community automática">
+    <div class="bar2"><i></i><i></i><i></i><span class="url">app.rally.fun/campaigns/internet-court-is-here</span></div>
     <div class="screen"><div class="cv">
-      <div class="r-hero" style="padding-bottom:16px">
-        <div class="r-h1" style="font-size:20px">Launch kit — Internet Court Is Here</div>
-        <p class="r-sub">Announcement templates filled from your draft · launch date · Rally amplification.</p>
+      <div style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:36px 26px 8px">
+        <div style="width:48px; height:48px; border-radius:50%; background:var(--r-green-bg); border:2px solid var(--r-green); display:grid; place-items:center; color:var(--r-green); font-size:19px; margin-bottom:12px">✓</div>
+        <div style="font-size:22px; font-weight:800; letter-spacing:-.02em">Your campaign is live</div>
+        <div style="font-family:var(--mono); font-size:12px; color:var(--r-blue); background:#F4F5FE; border:1px solid var(--r-line2); border-radius:999px; padding:7px 15px; margin:12px 0 4px">app.rally.fun/campaigns/internet-court-is-here</div>
+        <div style="display:flex; gap:10px; margin-top:10px"><button class="btn-line">⧉ Copy link</button><button class="btn-blue">Share on 𝕏</button></div>
       </div>
-      <div class="wgrid" style="grid-template-columns:1fr 1fr">
-        <div class="chkrow" style="display:block">
-          <div class="ct" style="margin-bottom:6px">Announcement pack</div>
-          <div class="cd" style="border:1px solid var(--r-line); background:#FBFBFE; border-radius:9px; padding:11px 13px; line-height:1.55">🏛️ Internet Court is live — and so is our Rally campaign. Quote the Forbes coverage, add your take, earn from a <b style="color:var(--r-blue)">500 USDC</b> pool per period. → app.rally.fun/campaigns/internet-court-is-here</div>
-          <div style="display:flex; gap:7px; margin-top:10px"><button class="btn-line">⧉ Copy for X</button><button class="btn-line">Discord</button><button class="btn-line">Telegram</button></div>
-        </div>
-        <div class="chkrow" style="display:block">
-          <div class="ct" style="margin-bottom:6px">Timing &amp; amplification</div>
-          <div class="cd" style="display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px dashed var(--r-line)"><span>Launch date</span><b>Jul 11 · 15:00 CET</b></div>
-          <div class="cd" style="display:flex; justify-content:space-between; padding:7px 0"><span>Rally amplification</span><span class="tchip ok">✓ REQUESTED</span></div>
-          <div style="margin-top:12px"><button class="btn-blue" style="width:100%">Schedule launch</button></div>
+      <div class="mpanel" style="margin-top:20px">
+        <div class="mbody" style="display:flex; gap:14px; align-items:center">
+          <div style="width:38px; height:38px; border-radius:10px; background:#14161F; flex:none"></div>
+          <div>
+            <div style="font-weight:800; font-size:13.5px">Your GenLayer Community was created automatically <span class="tchip ok">✓ LIVE</span></div>
+            <div style="font-size:12px; color:var(--r-dim); margin-top:3px">All your campaigns, members and leaderboards live there — it persists between campaigns. Customize the banner, description and links whenever you want.</div>
+          </div>
+          <span class="r-spacer"></span>
+          <button class="btn-line">Customize →</button>
         </div>
       </div>
     </div></div>
   </figure>
-  <figcaption class="cap">Plantillas fijas con variables del draft (título, pot, link) — sin AI. La coordinación de announcements sale de Telegram.</figcaption>
+  <figcaption class="cap">El success cuenta lo que ya pasa solo: campaña live + Community creada automáticamente. Cero pasos extra — solo un "Customize" opcional y el share.</figcaption>
 </section>
 
 <!-- ============================================================ -->
 <section id="s4">
   <div class="sec-head"><span class="sec-num">04</span><h2>Projects Flow</h2></div>
-  <p>Del primer contacto a la retención. Hoy este flow son ~7 contactos con el equipo, 3 Google Docs y 2 Looms; así queda dentro del producto:</p>
+  <p>Hoy: ~7 contactos con el equipo, 3 Google Docs y 2 Looms. Propuesta: <strong>6 pantallas, y de la 2 a la 5 es una sola sesión</strong>. La Community se crea sola al depositar — no es un paso.</p>
 
   <div class="strip">
     <div class="ms"><div class="num">1</div>
       <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w60"></div><div class="hl soft" style="height:26px"></div><div class="hl half"></div></div></div>
-      <div class="lbl">Request access</div><div class="sub">Formulario in-app (org + emails) → aprobación 1-click en Admin</div><span class="tag new">NUEVO · S</span></div>
+      <div class="lbl">Request access</div><div class="sub">Formulario in-app → aprobación 1-click del equipo</div><span class="tag new">NUEVO · S</span></div>
     <div class="ms"><div class="num">2</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w40"></div><div class="hl green" style="opacity:.2; border:1px solid #17A34A; border-radius:5px"></div><div class="ln w80"></div><div class="ln w80"></div></div></div>
-      <div class="lbl">Project home</div><div class="sub">Checklist de 4 pasos (Partner Guide en producto)</div><span class="tag new">NUEVO · XS</span></div>
+      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w40"></div><div class="hl soft" style="height:20px"></div><div class="hl soft" style="height:20px"></div><div class="ln w60"></div></div></div>
+      <div class="lbl">Paso 1 · El qué</div><div class="sub">Nombre + qué deben publicar. AI Template rellena el resto</div><span class="tag new">NUEVO · XS</span></div>
     <div class="ms"><div class="num">3</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="pillrow"><span class="pill b"></span><span class="pill b"></span><span class="pill"></span><span class="pill"></span></div><div class="ln w80"></div><div class="ln w60"></div><div class="hl half"></div></div></div>
-      <div class="lbl">Wizard 6 pasos</div><div class="sub">Basic · Pot · Missions con AI Template; Evaluation/Targeting en defaults editables</div><span class="tag new">DEFAULTS · XS</span></div>
+      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="pillrow"><span class="pill b"></span><span class="pill o"></span><span class="pill"></span></div><div class="hl soft" style="height:18px"></div><div class="ln w60"></div><div class="ln w40"></div></div></div>
+      <div class="lbl">Paso 2 · El pot</div><div class="sub">Token + cantidad + duración. Defaults de evaluation/targeting detrás de "Advanced"</div><span class="tag new">NUEVO · XS</span></div>
     <div class="ms"><div class="num">4</div>
       <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w60"></div><div class="ln w80"></div><div class="hl"></div></div></div>
-      <div class="lbl">Confirm &amp; Deposit</div><div class="sub">El deposit de siempre — protocolo intacto</div><span class="tag same">IGUAL</span></div>
+      <div class="lbl">Paso 3 · Deposit</div><div class="sub">El deposit del protocolo — sin cambios</div><span class="tag same">IGUAL</span></div>
     <div class="ms"><div class="num">5</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w40"></div><div class="hl soft" style="height:26px"></div><div class="pillrow"><span class="pill"></span><span class="pill"></span><span class="pill"></span></div></div></div>
-      <div class="lbl">Launch kit</div><div class="sub">Announcements por canal + fecha + amplificación</div><span class="tag new">NUEVO · XS</span></div>
+      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="hl green" style="opacity:.2; border:1px solid #17A34A; border-radius:5px; height:20px"></div><div class="ln w80"></div><div class="hl half"></div></div></div>
+      <div class="lbl">Live + Community</div><div class="sub">Campaña live y Community creada automáticamente. Share on X + Customize opcional</div><span class="tag new">SUCCESS · XS</span></div>
     <div class="ms"><div class="num">6</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w40"></div><div class="ln w80"></div><div class="ln w80"></div><div class="ln w80"></div></div></div>
-      <div class="lbl">Track</div><div class="sub">Leaderboard y stats por periodo — los actuales</div><span class="tag same">IGUAL</span></div>
-    <div class="ms"><div class="num">7</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w60"></div><div class="hl green"></div><div class="ln w40"></div></div></div>
-      <div class="lbl">Rewards distributed</div><div class="sub">Cierre de periodo, distribución del pot — protocolo</div><span class="tag same">IGUAL</span></div>
-    <div class="ms"><div class="num">8</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="grid4"><span class="cell"></span><span class="cell"></span></div><div class="hl half"></div><div class="ln w60"></div></div></div>
-      <div class="lbl">Grow</div><div class="sub">Cards Community (&gt;$2,000) y Ambassadors → Request activation</div><span class="tag new">NUEVO · XS</span></div>
+      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w40"></div><div class="ln w80"></div><div class="ln w80"></div><div class="hl green"></div></div></div>
+      <div class="lbl">Track → Rewards</div><div class="sub">Leaderboard y distribución por periodos — protocolo intacto</div><span class="tag same">IGUAL</span></div>
   </div>
-  <p class="cap">8 pantallas: 4 nuevas (1, 2, 5, 8 — un backend pequeño y tres de frontend), el resto ya existe. El white-glove de Ana sigue disponible en cada paso.</p>
+  <p class="cap">6 pantallas. Nuevas: el request (S), los pasos 1–2 del wizard simplificado y el success (XS). El deposit, el tracking y los rewards son los de siempre. El white-glove de Ana sigue disponible en cada paso.</p>
 
-  <div class="note"><strong>Nota para Pablo:</strong> este doc sigue el formato de "2026.07.10 Rally.fun Updated flows". Las pantallas POV están listas para rediseñar en alta fidelidad; los strips de flow marcan qué es IGUAL (no tocar) y qué es NUEVO (diseñar). Referencia de patrones: contentrewards.com/discover.</div>
+  <div class="note"><strong>Cómo se simplifica el wizard sin tocar nada:</strong> los 6 pasos actuales (Basic details · Pot &amp; Duration · Missions · Evaluation · Targeting · Confirm &amp; Deposit) se reagrupan en 3 pantallas. Basic + Missions se funden en "El qué" (son los mismos campos); Evaluation y Targeting no desaparecen — quedan con los defaults de Rally detrás de "Advanced ▾", editables. Ningún parámetro del protocolo se elimina.</div>
+
+  <div class="note"><strong>Nota para Pablo:</strong> este doc sigue el formato de "2026.07.10 Rally.fun Updated flows". Las pantallas POV están listas para alta fidelidad; los strips marcan qué es IGUAL (no tocar) y qué es NUEVO (diseñar). Referencia de patrones: contentrewards.com/discover.</div>
 </section>
 
 </div>

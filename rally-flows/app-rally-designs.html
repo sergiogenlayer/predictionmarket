@@ -359,8 +359,8 @@
     <div class="fstep"><span class="fk">ACCEDE</span><div class="fbox"><div class="ft">Request access in-app</div><div class="fd">Formulario en producto → aprobación en 1 click del equipo</div></div></div>
     <div class="fstep"><span class="fk">REDACTA</span><div class="fbox"><div class="ft">Wizard con defaults</div><div class="fd">El doc-plantilla vive en el producto; review de Rally opcional, 1 click</div></div></div>
     <div class="fstep"><span class="fk">FONDEA</span><div class="fbox"><div class="ft">Pot &amp; Duration</div><div class="fd">USDC, tu token, o + Rally Points por encima — igual que hoy</div></div></div>
-    <div class="fstep"><span class="fk">LANZA</span><div class="fbox"><div class="ft">Launch kit</div><div class="fd">Announcement pack + fecha + amplificación de Rally</div></div></div>
-    <div class="fstep"><span class="fk">CRECE</span><div class="fbox"><div class="ft">Community + Ambassadors</div><div class="fd">Se activan desde el dashboard, no por Telegram</div></div></div>
+    <div class="fstep"><span class="fk">LIVE</span><div class="fbox"><div class="ft">Live + Community</div><div class="fd">Al depositar: campaña live y Community creada automáticamente</div></div></div>
+    <div class="fstep"><span class="fk">MIDE</span><div class="fbox"><div class="ft">Track → Rewards</div><div class="fd">Leaderboard y distribución por periodos — lo de siempre</div></div></div>
   </div>
 
   <div class="tbl-scroll"><table>
@@ -369,8 +369,7 @@
       <tr><td><strong>Acceso</strong></td><td class="now">Emails al equipo → Rally crea la org a mano → confirmación → login. Días de espera antes de tocar nada</td><td class="fix">MVP: formulario "Request access" en el producto (nombre org + emails) → un click de aprobación en el Admin que ya existe <span class="dev s">S</span> · self-serve completo <span class="dev p2">FASE 2</span></td><td class="psy"><b>MOMENTUM</b>El interés del brand es máximo el día 0. Cada día de espera lo gasta</td></tr>
       <tr><td><strong>Redactar</strong></td><td class="now">Copiar un Google Doc plantilla, redactar fuera del producto, enviarlo a review por Telegram, 2 Looms para aprender a subirlo</td><td class="fix">El wizard ES la plantilla: los defaults de Evaluation/Targeting son presets de config <span class="dev xs">XS</span> · "Request Rally review" = botón que notifica al equipo con el link del draft <span class="dev xs">XS</span></td><td class="psy"><b>ZEIGARNIK</b>Una checklist con el paso 1 ya en verde pide ser terminada. Un doc externo, no</td></tr>
       <tr><td><strong>Fondear</strong></td><td class="now">La estructura del pool se decide en conversaciones sueltas</td><td class="fix">Nada nuevo: Pot &amp; Duration ya lo resuelve (USDC / tu token / capa de Rally Points). Solo el resumen de deposit visible en el paso <span class="dev xs">XS</span></td><td class="psy"><b>CLARITY = TRUST</b>Ver qué depositas y cuándo elimina la incertidumbre que hoy resuelve un humano</td></tr>
-      <tr><td><strong>Lanzar</strong></td><td class="now">Coordinación de announcements ad hoc (X, Discord, TG, partners) por Telegram</td><td class="fix">Launch kit: plantillas fijas con variables del draft (título, pot, link) — sin AI <span class="dev xs">XS</span> · "Request Rally amplification" = notificación al equipo <span class="dev xs">XS</span></td><td class="psy"><b>DEFAULT EFFECT</b>Copy listo para pegar se publica; copy por escribir se pospone</td></tr>
-      <tr><td><strong>Crecer</strong></td><td class="now">Community (pools &gt; $2,000) y Ambassador Program se activan "avisando al equipo"; gestión interna invisible</td><td class="fix">Dos cards estáticas con elegibilidad calculada del pot + botón "Request activation" que notifica al equipo. La activación sigue siendo interna, como hoy <span class="dev xs">XS</span></td><td class="psy"><b>VISIBLE UPSELL</b>Un feature que no se ve no se pide. La card con "You're eligible ✓" se vende sola</td></tr>
+      <tr><td><strong>Lanzar</strong></td><td class="now">Al crear la campaña no pasa nada visible; la Community se crea automáticamente pero nadie se entera</td><td class="fix">Success screen: campaña live + "Your Community was created automatically" con botón Customize + Copy link / Share on X (patrón del referral) <span class="dev xs">XS</span></td><td class="psy"><b>PEAK-END</b>El momento de éxito cuenta lo que ya pasó solo y empuja la campaña hacia fuera</td></tr>
     </tbody>
   </table></div>
 
@@ -396,7 +395,7 @@
           <div class="chkrow"><span class="cnum done">✓</span><div><div class="ct">Organization access</div><div class="cd">GenLayer · requested in-app, approved by Rally · 3 teammates added</div></div></div>
           <div class="chkrow active"><span class="cnum now">2</span><div><div class="ct">Draft your campaign</div><div class="cd">The setup guide lives inside the wizard now — defaults applied, AI Template available. Optional: request a review from the Rally team before launch.</div></div><span class="cta"><button class="btn-blue">Continue draft</button></span></div>
           <div class="chkrow"><span class="cnum todo">3</span><div><div class="ct">Fund your reward pool</div><div class="cd">USDC, your project’s token, or layer Rally Points on top to boost participation.</div></div></div>
-          <div class="chkrow"><span class="cnum todo">4</span><div><div class="ct">Launch &amp; announce</div><div class="cd">Your launch kit: ready-made announcements, launch date, and Rally amplification.</div></div></div>
+          <div class="chkrow"><span class="cnum todo">4</span><div><div class="ct">Deposit &amp; go live</div><div class="cd">Your campaign goes live and your Community is created automatically.</div></div></div>
         </div>
         <aside>
           <div class="team">
@@ -421,65 +420,30 @@
     <div class="co"><b class="n">3</b><span><strong>"See participant view" (ya existe) sustituye a los 2 Looms:</strong> si necesitas un vídeo para usar el producto, el problema es del producto.</span></div>
   </div>
 
-  <h3>Launch kit: los announcements dejan de vivir en Telegram</h3>
-  <figure class="frame narrow" role="img" aria-label="Mockup: launch kit con announcement pack">
-    <div class="bar"><i></i><i></i><i></i><span class="url">app.rally.fun/org/genlayer/launch</span></div>
+  <h3>El success: live + Community creada automáticamente</h3>
+  <figure class="frame narrow" role="img" aria-label="Mockup: success de campaña con Community automática">
+    <div class="bar"><i></i><i></i><i></i><span class="url">app.rally.fun/campaigns/internet-court-is-here</span></div>
     <div class="screen"><div class="cv">
-      <div class="r-hero" style="padding-bottom:18px">
-        <div class="r-h1" style="font-size:22px">Launch kit — Internet Court Is Here</div>
-        <p class="r-sub">Everything to announce your campaign, generated from your draft. Edit anything before it goes out.</p>
+      <div class="success">
+        <span class="ok-ring">✓</span>
+        <div class="st">Your campaign is live</div>
+        <span class="slink">app.rally.fun/campaigns/internet-court-is-here</span>
+        <div class="srowb"><button class="btn-line">⧉ Copy link</button><button class="btn-blue">Share on 𝕏</button></div>
       </div>
-      <div class="kit">
-        <div class="kcard">
-          <div class="kt">Announcement pack</div>
-          <div class="kd">Drafted from your campaign brief — one per channel.</div>
-          <div class="draftbox">🏛️ Internet Court is live — and so is our Rally campaign.<br><br>Quote the Forbes coverage, add your own take, and earn from a <span class="hl">500 USDC</span> pool per period.<br><br>→ <span class="hl">app.rally.fun/campaigns/internet-court-is-here</span></div>
-          <div class="krow"><button class="btn-line">⧉ Copy for X</button><button class="btn-line">Discord</button><button class="btn-line">Telegram</button></div>
-        </div>
-        <div class="kcard">
-          <div class="kt">Timing &amp; amplification</div>
-          <div class="kd">Align the moment — then let the network push it.</div>
-          <div class="kmeta"><span>Launch date</span><b>Jul 11, 2026 · 15:00 CET</b></div>
-          <div class="kmeta"><span>Campaign goes live</span><b>Automatically at launch</b></div>
-          <div class="kmeta"><span>Rally amplification</span><b><span class="tchip ok">✓ REQUESTED</span> creator network + Rally channels</b></div>
-          <div style="margin-top:14px"><button class="btn-blue" style="width:100%">Schedule launch</button></div>
+      <div class="kit" style="grid-template-columns:1fr; margin-top:8px">
+        <div class="kcard" style="display:flex; gap:14px; align-items:center">
+          <div style="width:38px; height:38px; border-radius:10px; background:#14161F; flex:none"></div>
+          <div>
+            <div class="kt" style="margin-bottom:2px">Your GenLayer Community was created automatically <span class="tchip ok">✓ LIVE</span></div>
+            <div class="kd" style="margin-bottom:0">All your campaigns, members and leaderboards live there — it persists between campaigns. Customize the banner, description and links whenever you want.</div>
+          </div>
+          <span class="r-spacer" style="flex:1"></span>
+          <button class="btn-line">Customize →</button>
         </div>
       </div>
     </div></div>
   </figure>
-  <figcaption class="cap">Mockup B2 · Announcement pack = plantillas fijas con variables del draft (título, pot, link) — sin AI. La fecha usa el start date que ya existe; "amplification" es una notificación al equipo.</figcaption>
-
-  <h3>Crecer: Community y Ambassador Program, visibles y a un click</h3>
-  <figure class="frame narrow" role="img" aria-label="Mockup: activación de Community y Ambassador Program">
-    <div class="bar"><i></i><i></i><i></i><span class="url">app.rally.fun/org/genlayer/grow</span></div>
-    <div class="screen"><div class="cv">
-      <div style="height:16px"></div>
-      <div class="grow">
-        <div class="gcard">
-          <div class="gh">🏠 Community <span class="tchip ok">✓ YOU’RE ELIGIBLE</span></div>
-          <div class="gd">A permanent home for your project on Rally — available for campaigns with prize pools above $2,000. Your audience stays engaged between campaigns.</div>
-          <div class="gfeat">
-            <div class="gf"><i>✓</i><span>Edit profile picture, banner, description and links yourself</span></div>
-            <div class="gf"><i>✓</i><span>All your campaigns and leaderboards in one place</span></div>
-            <div class="gf"><i>✓</i><span>Members follow your project and get notified of new campaigns</span></div>
-          </div>
-          <button class="btn-blue">Request activation</button>
-        </div>
-        <div class="gcard">
-          <div class="gh">⭐ Ambassador Program</div>
-          <div class="gd">Build a trusted group of elite creators, fully managed through Rally — payments, analytics and exclusive campaigns included.</div>
-          <div class="gfeat">
-            <div class="gf"><i>✓</i><span>Onboard creators you already work with, or open an application call</span></div>
-            <div class="gf"><i>✓</i><span>Monthly payments managed through Rally</span></div>
-            <div class="gf"><i>✓</i><span>Whitelisted campaigns only your ambassadors can join</span></div>
-            <div class="gf"><i>✓</i><span>Per-ambassador performance analytics</span></div>
-          </div>
-          <button class="btn-line">Request setup</button>
-        </div>
-      </div>
-    </div></div>
-  </figure>
-  <figcaption class="cap">Mockup B3 · Cards estáticas con elegibilidad calculada del pot ("pools &gt; $2,000", criterio real del guide). Los botones solo notifican al equipo — la activación sigue siendo interna, exactamente como hoy. Coste: dos componentes de frontend.</figcaption>
+  <figcaption class="cap">Mockup B2 · El success cuenta lo que ya pasa solo: campaña live + Community automática. Cero pasos nuevos — un banner informativo con "Customize" opcional y el share (patrón del referral). Coste: solo frontend.</figcaption>
 </section>
 
 <!-- ============================================================ -->
@@ -487,7 +451,7 @@
   <div class="sec-head"><span class="sec-num">03</span><h2>Reglas del juego</h2></div>
   <ul class="plain">
     <li><strong>Protocolo intacto.</strong> Pot, periods, misiones, core gates / quality / engagement, curvas Balanced–Default–Extreme, targeting, deposit y el coste de submission (100 RLP o ETH ~$1.20) no cambian. Todo lo propuesto es capa de UI, mensajería y notificaciones internas al equipo.</li>
-    <li><strong>Regla de recorte:</strong> si un fix necesita backend nuevo o AI, se parte en MVP (sin) + fase 2. Si un flujo interno ya funciona a mano (activar Communities, crear orgs), el MVP solo lo hace <em>visible y pedible</em> desde el producto — no lo automatiza.</li>
+    <li><strong>Regla de recorte:</strong> si un fix necesita backend nuevo o AI, se parte en MVP (sin) + fase 2. Lo que ya pasa solo (la Community se crea automáticamente al crear campaña) no se convierte en pasos — solo se <em>cuenta</em> en el success.</li>
     <li><strong>El wizard de 6 pasos se mantiene</strong> con Evaluation y Targeting pre-resueltos con los defaults actuales (presets de config, editables) — detallado en la iteración v2 (historial de git).</li>
     <li><strong>Solo cifras reales:</strong> 500 USDC / periodo, 100 RLP por submission, $2,000 de umbral para Communities (del Partner Guide). El pre-check es orientativo — la AI Evaluation decide, y así se comunica.</li>
   </ul>
@@ -503,8 +467,8 @@
       <tr><td>1</td><td class="fix">Rules check antes de pagar (creator)</td><td><span class="dev xs">XS</span></td><td class="now">Solo frontend: regex sobre el texto del tweet con las reglas ya estructuradas de la misión. Mueve el north star directamente.</td></tr>
       <tr><td>2</td><td class="fix">Timeline de submission + línea de feedback por plantilla</td><td><span class="dev xs">XS</span></td><td class="now">Solo frontend: pinta estados y scores que el backend ya devuelve.</td></tr>
       <tr><td>3</td><td class="fix">Checklist de brand + "Request access" in-app</td><td><span class="dev s">S</span></td><td class="now">Un formulario + aprobación en el Admin existente + página de checklist con estado derivado de datos existentes.</td></tr>
-      <tr><td>4</td><td class="fix">Launch kit (plantillas con variables + notificación al equipo)</td><td><span class="dev xs">XS</span></td><td class="now">Frontend + plantillas de copy fijas. Sin AI, sin scheduler nuevo (usa el start date existente).</td></tr>
-      <tr><td>5</td><td class="fix">Cards Community / Ambassadors con "Request activation"</td><td><span class="dev xs">XS</span></td><td class="now">Dos componentes estáticos + elegibilidad calculada del pot + notificación. La activación sigue siendo interna.</td></tr>
+      <tr><td>4</td><td class="fix">Success screen: live + Community automática + Share on X</td><td><span class="dev xs">XS</span></td><td class="now">Solo frontend: cuenta lo que ya pasa solo (la Community se crea automáticamente) + share-intent.</td></tr>
+      <tr><td>5</td><td class="fix">Wizard en 3 pantallas (el qué · el pot · deposit)</td><td><span class="dev xs">XS</span></td><td class="now">Reagrupar pasos existentes: Basic + Missions = "el qué"; Evaluation/Targeting con defaults detrás de "Advanced". Mismos campos, misma API.</td></tr>
       <tr><td>6</td><td class="fix">Badge ✔ Verified / Community en las cards de Explore</td><td><span class="dev xs">XS</span></td><td class="now">Un flag por proyecto (las orgs partner ya existen de facto) + un chip en la card.</td></tr>
     </tbody>
   </table></div>
@@ -513,7 +477,7 @@
   <ul class="plain">
     <li><strong>Pre-check con AI (originalidad):</strong> fase 2 — el 80% del valor está en los checks mecánicos.</li>
     <li><strong>Org self-serve completa e invitaciones automáticas:</strong> fase 2 — el request in-app ya elimina los emails y la espera percibida.</li>
-    <li><strong>Generación de announcements con AI:</strong> innecesaria — plantillas con variables dan el mismo resultado hoy.</li>
+    <li><strong>Launch kit / announcement pack:</strong> descartado — añadía un concepto nuevo al flow. El success con Share on X cubre el 90% del caso.</li>
     <li><strong>Notificaciones nuevas (score listo, cierre de periodo, rank):</strong> no se duplican aquí — van con el feature de Notifications ya planificado en vuestro roadmap.</li>
     <li><strong>Automatizar la activación de Communities/Ambassadors:</strong> no — el proceso interno funciona; solo le faltaba ser visible.</li>
   </ul>
