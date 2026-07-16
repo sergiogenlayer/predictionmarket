@@ -208,11 +208,12 @@
 <header class="masthead">
   <span class="kicker">app.rally.fun · updated flows · para diseño · 2026.07</span>
   <h1>Updated <span class="thin">Flows</span></h1>
-  <p class="lede">Los flujos propuestos, pantalla a pantalla. La idea que ordena todo: <strong>una cosa cada vez</strong>. El creator ve una acción por pantalla (rules → post → cobra), y el partner crea la campaña en <strong>una sola página</strong>.</p>
+  <p class="lede">Los flujos propuestos, pantalla a pantalla, sobre el nuevo modelo de campañas: <strong>✔ Verified</strong> (partners y brands, con badge azul y placement destacado) y <strong>Network</strong> (permissionless: cualquiera puede lanzar una campaña fondeando el pool en RLP o USDC). Y una idea que ordena todo: <strong>una cosa cada vez</strong>.</p>
   <div class="rules-strip">
-    <span class="rule">UNA COSA CADA VEZ</span>
+    <span class="rule">✔ VERIFIED · PARTNERS</span>
+    <span class="rule">NETWORK · PERMISSIONLESS</span>
+    <span class="rule alt">Una cosa cada vez</span>
     <span class="rule alt">El protocolo no cambia — solo la experiencia</span>
-    <span class="rule alt">YA EXISTE = no rediseñar · NUEVO = diseñar</span>
   </div>
   <nav class="toc" aria-label="Flujos">
     <a href="#creator">01 CREATOR FLOW <small>rules → post → cobra</small></a>
@@ -230,9 +231,9 @@
 
 <div class="step new">
   <span class="snum">1</span>
-  <div class="shead"><h3>Elige campaña</h3><span class="stag new">CARD NUEVA</span></div>
-  <p class="sdesc">Pot · lo ya repartido · tiempo. Badge ✔ Verified / Community. Nada más en la card.</p>
-  <figure class="frame" role="img" aria-label="Pantalla: Network, elegir campaña">
+  <div class="shead"><h3>Elige campaña — dos carriles: ✔ Verified y Network</h3><span class="stag new">PANTALLA CLAVE</span></div>
+  <p class="sdesc">El modelo de campañas permissionless, visible desde el primer segundo: arriba el carril <b>✔ Verified</b> (partners y brands, cards grandes destacadas), debajo <b>Network — open to everyone</b>, donde cualquiera puede lanzar campaña. Filtros All / Verified / Network, y el <b>+ Create campaign</b> para todos. La card se decide con pot · repartido · tiempo.</p>
+  <figure class="frame" role="img" aria-label="Pantalla: campañas con carril Verified y carril Network">
     <div class="screen"><div class="cv">
       <div class="r-top">
         <span class="r-logo">RALLY</span>
@@ -241,10 +242,27 @@
         <button class="btn-wing">✦ Wingston</button>
         <button class="btn-wallet">▣ 0x4a…eb4348</button>
       </div>
-      <div class="r-pad" style="padding-top:18px">
-        <div class="xgrid">
-          <article class="xcard">
-            <div class="xban" style="background:linear-gradient(120deg,#191722,#3B2B57)"><span class="pot">◎ 500 USDC / period</span><span class="ends">⏱ 3 days</span></div>
+      <div class="r-hero" style="padding-bottom:16px">
+        <div style="display:flex; gap:16px; align-items:flex-start">
+          <div><div class="r-h1">Campaigns</div>
+          <p class="r-sub">From verified partners — or from anyone. Launch yours with a pool in RLP or USDC.</p></div>
+          <span class="r-spacer"></span>
+          <button class="btn-blue">+ Create campaign</button>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:14px">
+          <span style="background:#12141F; color:#fff; font-size:12px; font-weight:700; padding:7px 14px; border-radius:999px">All</span>
+          <span style="border:1px solid #D8DBEA; color:#2563EB; font-size:12px; font-weight:700; padding:7px 14px; border-radius:999px; background:#fff">✔ Verified</span>
+          <span style="border:1px solid #D8DBEA; color:#B45309; font-size:12px; font-weight:700; padding:7px 14px; border-radius:999px; background:#fff">Network</span>
+        </div>
+      </div>
+      <div class="r-pad">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px">
+          <span style="font-size:13px; font-weight:800; color:#12141F">✔ Verified</span>
+          <span style="font-size:11px; color:var(--r-faint)">Campaigns from verified partners</span>
+        </div>
+        <div class="xgrid" style="grid-template-columns:1fr 1fr">
+          <article class="xcard" style="border-color:#BFD7FF">
+            <div class="xban" style="background:linear-gradient(120deg,#191722,#3B2B57); height:96px"><span class="pot">◎ 500 USDC / period</span><span class="ends">⏱ 3 days</span></div>
             <div class="xbody">
               <div class="xt">Internet Court Is Here</div>
               <div class="xby"><span class="xava"></span>@GenLayer <span class="vcheck">✔</span></div>
@@ -252,8 +270,8 @@
               <div class="xfoot"><span class="tchip">✔ VERIFIED</span><span class="nchip">Base</span></div>
             </div>
           </article>
-          <article class="xcard">
-            <div class="xban" style="background:linear-gradient(120deg,#20264E,#4356C9)"><span class="pot">◎ 40K RLP</span><span class="ends">⏱ Next week</span></div>
+          <article class="xcard" style="border-color:#BFD7FF">
+            <div class="xban" style="background:linear-gradient(120deg,#20264E,#4356C9); height:96px"><span class="pot">◎ 40K RLP</span><span class="ends">⏱ Next week</span></div>
             <div class="xbody">
               <div class="xt">Your Last Tweet</div>
               <div class="xby"><span class="xava"></span>@RallyOnChain <span class="vcheck">✔</span></div>
@@ -261,13 +279,37 @@
               <div class="xfoot"><span class="tchip">✔ VERIFIED</span><span class="nchip">GenLayer Rally Testnet</span></div>
             </div>
           </article>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; margin:18px 0 10px">
+          <span style="font-size:13px; font-weight:800; color:#12141F">Network</span>
+          <span style="font-size:11px; color:var(--r-faint)">Open to everyone — anyone can launch a campaign</span>
+        </div>
+        <div class="xgrid">
           <article class="xcard">
             <div class="xban" style="background:linear-gradient(120deg,#4A1D0E,#C2410C)"><span class="pot">◎ 40K RLP</span><span class="ends">⏱ 2 days</span></div>
             <div class="xbody">
               <div class="xt">Roast Your Worst Trade</div>
               <div class="xby"><span class="xava c1"></span>@0xSofiya</div>
               <div class="paid"><div class="pb"><i style="width:72%"></i></div><div class="pt2"><span><b>28.8K</b> of 40K RLP</span><span>42 subs</span></div></div>
-              <div class="xfoot"><span class="tchip comm">COMMUNITY</span><span class="nchip">Base</span></div>
+              <div class="xfoot"><span class="tchip comm">NETWORK</span><span class="nchip">Base</span></div>
+            </div>
+          </article>
+          <article class="xcard">
+            <div class="xban" style="background:linear-gradient(120deg,#123B2E,#0E9F6E)"><span class="pot">◎ 250 USDC</span><span class="ends">⏱ Next week</span></div>
+            <div class="xbody">
+              <div class="xt">Explain Your Job Badly</div>
+              <div class="xby"><span class="xava c2"></span>@gomtu_xyz</div>
+              <div class="paid"><div class="pb"><i style="width:22%"></i></div><div class="pt2"><span><b>55</b> of 250 USDC</span><span>67 subs</span></div></div>
+              <div class="xfoot"><span class="tchip comm">NETWORK</span><span class="nchip">Base</span></div>
+            </div>
+          </article>
+          <article class="xcard">
+            <div class="xban" style="background:linear-gradient(120deg,#2A1D4A,#7C3AED)"><span class="pot">◎ 25K RLP</span><span class="ends">⏱ 6 days</span></div>
+            <div class="xbody">
+              <div class="xt">The Delulu Take</div>
+              <div class="xby"><span class="xava c3"></span>@basewhale.eth</div>
+              <div class="paid"><div class="pb"><i style="width:12%"></i></div><div class="pt2"><span><b>3K</b> of 25K RLP</span><span>12 subs</span></div></div>
+              <div class="xfoot"><span class="tchip comm">NETWORK</span><span class="nchip">Base</span></div>
             </div>
           </article>
         </div>
@@ -374,6 +416,34 @@
   </figure>
 </div>
 
+<div class="step new">
+  <span class="snum">5</span>
+  <div class="shead"><h3>Permissionless: lanza tu propia Network campaign</h3><span class="stag new">NUEVA</span></div>
+  <p class="sdesc">El mismo <b>+ Create campaign</b> que ve el partner, abierto a cualquier creator: fondea el pool en <b>RLP o USDC</b> y tu campaña sale en el carril Network. Misma página de creación de una sola pantalla; el banner de arriba te dice en qué carril estás y cómo subir al otro.</p>
+  <figure class="frame slim" role="img" aria-label="Pantalla: crear network campaign como creator">
+    <div class="screen"><div class="cv">
+      <div class="r-hero" style="padding-bottom:16px">
+        <div style="display:flex; align-items:center; gap:12px">
+          <div><div class="r-h1" style="font-size:20px">Create campaign</div>
+          <p class="r-sub" style="margin-top:4px">You’re launching a <b style="color:#B45309">NETWORK</b> campaign — open to everyone, funded by you.</p></div>
+          <span class="r-spacer"></span>
+          <span class="tchip comm" style="font-size:11px; padding:6px 12px">NETWORK</span>
+        </div>
+      </div>
+      <div class="r-pad">
+        <div class="payrow on" style="margin-top:0"><span>Pool in RLP<small>Your balance: 180000 RLP</small></span><span class="amt">◆</span></div>
+        <div class="payrow"><span>Pool in USDC<small>From your wallet · Base</small></span><span class="amt">◎</span></div>
+        <div style="display:flex; gap:10px; align-items:center; margin-top:14px; border:1px dashed #BFD7FF; border-radius:10px; padding:11px 14px; background:#F6FAFF">
+          <span class="vcheck" style="font-size:15px">✔</span>
+          <span style="font-size:12px; color:#3A4152">Are you a project? <b>Get verified</b> to earn the blue badge and featured placement in the Verified rail.</span>
+          <span class="r-spacer"></span>
+          <button class="btn-line" style="font-size:11.5px; padding:6px 12px">Get verified</button>
+        </div>
+      </div>
+    </div></div>
+  </figure>
+</div>
+
 <div class="step last">
   <span class="snum">·</span>
   <div class="shead"><h3>Lo que no cambia</h3><span class="stag same">YA EXISTE</span></div>
@@ -382,9 +452,9 @@
 
 <!-- ================= PARTNER FLOW ================= -->
 <div class="flow-title" id="project">
-  <span class="ft-kicker">02 · crear campaña: una sola página</span>
+  <span class="ft-kicker">02 · verified campaigns · crear en una sola página</span>
   <h2>Partner Flow</h2>
-  <p>Lo más importante del flow de partners es crear la campaña. Propuesta: <b>una página, dos bloques y un botón</b>. Qué quieres que publiquen + qué pagas → Deposit & launch. Lo técnico (evaluation, targeting, periods) viene resuelto con los defaults de Rally, editable en "Advanced". Al depositar: live, y la Community se crea sola.</p>
+  <p>El partner verificado lanza <b>✔ Verified campaigns</b>: badge azul, carril destacado arriba del todo, y confianza para los creators. Crear la campaña es <b>una página, dos bloques y un botón</b>: qué quieres que publiquen + qué pagas → Deposit & launch. Lo técnico viene resuelto con los defaults de Rally, editable en "Advanced". Al depositar: live, y la Community se crea sola.</p>
 </div>
 
 <div class="step new">
@@ -394,8 +464,12 @@
   <figure class="frame" role="img" aria-label="Pantalla: crear campaña en una sola página">
     <div class="screen"><div class="cv">
       <div class="r-hero" style="padding-bottom:14px">
-        <div class="r-h1">Create campaign</div>
-        <p class="r-sub">Two blocks and a button. Everything technical is preset — edit it under Advanced if you want.</p>
+        <div style="display:flex; align-items:center; gap:12px">
+          <div><div class="r-h1">Create campaign</div>
+          <p class="r-sub">Two blocks and a button. Everything technical is preset — edit it under Advanced if you want.</p></div>
+          <span class="r-spacer"></span>
+          <span class="tchip" style="font-size:11px; padding:6px 12px">✔ VERIFIED · featured placement</span>
+        </div>
       </div>
       <div class="create-grid">
         <div>
