@@ -1,0 +1,686 @@
+<title>Rally — Flows: Diagrama + Prototipo interactivo</title>
+<style>
+  :root{
+    --paper:#F6F7FB; --ink:#12141F; --ink-2:#6B7084; --line:#E7E9F3; --card:#FFFFFF;
+    --blue:#2B3BE8; --green:#17A34A; --green-bg:#F0FAF3; --warn:#D97706;
+    --lav:linear-gradient(120deg,#EDEFFD 0%,#F7F2FE 55%,#FDFBFF 100%);
+    --chip:#EBE7FB; --chip-ink:#7A6BD8; --faint:#9CA1B4; --line2:#D8DBEA;
+    --mono:ui-monospace,'SF Mono','Cascadia Code',Menlo,Consolas,monospace;
+    --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box; margin:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none !important; animation:none !important} }
+  body{background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.5; font-size:15px; padding:0 16px 90px}
+  .wrap{max-width:960px; margin:0 auto}
+  button{font-family:var(--sans); cursor:pointer}
+  a{color:var(--blue)}
+  button:focus-visible{outline:2px solid var(--blue); outline-offset:2px}
+
+  header{padding:40px 0 18px; text-align:center}
+  .kicker{font-family:var(--mono); font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--blue)}
+  h1{font-size:clamp(26px,4.5vw,40px); font-weight:900; font-style:italic; text-transform:uppercase; letter-spacing:-.02em; margin-top:10px}
+  header p{color:var(--ink-2); max-width:56ch; margin:10px auto 0; font-size:14.5px}
+
+  /* top tabs */
+  .tabs{display:flex; gap:8px; justify-content:center; margin:22px 0 8px; flex-wrap:wrap}
+  .tab{border:1.5px solid var(--line2); background:var(--card); color:var(--ink-2); font-weight:700; font-size:13px; padding:10px 20px; border-radius:999px}
+  .tab.on{background:var(--ink); border-color:var(--ink); color:#fff}
+
+  .view{display:none; padding-top:18px}
+  .view.on{display:block}
+
+  /* ================= DIAGRAMA ================= */
+  .dsec{margin:26px 0 0}
+  .dsec h2{font-size:19px; font-weight:800; letter-spacing:-.01em}
+  .dsec .dl{font-size:13px; color:var(--ink-2); margin-top:3px}
+  .lane{display:flex; align-items:stretch; gap:0; overflow-x:auto; padding:16px 2px 6px}
+  .node{min-width:148px; flex:1; position:relative; padding-right:30px}
+  .node:not(.end)::after{content:""; position:absolute; right:8px; top:38px; width:11px; height:11px; border-top:2.5px solid var(--ink); border-right:2.5px solid var(--ink); transform:rotate(45deg)}
+  .node .nbox{border:1.5px solid var(--line2); background:var(--card); border-radius:12px; padding:12px 13px; height:100%}
+  .node .nk{font-family:var(--mono); font-size:9.5px; letter-spacing:.12em; color:var(--faint); text-transform:uppercase}
+  .node .nt{font-weight:800; font-size:13.5px; margin-top:4px; line-height:1.25}
+  .node .nd{font-size:11.5px; color:var(--ink-2); margin-top:4px; line-height:1.4}
+  .node.hot .nbox{border-color:var(--blue); box-shadow:0 0 0 1.5px var(--blue) inset}
+  .node.hot .nk{color:var(--blue)}
+  .node.pay .nbox{border-color:#BFE5CC; background:var(--green-bg)}
+  .node.vrf .nbox{border-color:#BFD7FF; background:#F6FAFF}
+  .node.net .nbox{border-color:#F5D9AE; background:#FFFAF2}
+  .fork{display:grid; grid-template-columns:1fr; gap:10px; min-width:190px; flex:1.2; position:relative; padding-right:30px}
+  .fork::after{content:""; position:absolute; right:8px; top:38px; width:11px; height:11px; border-top:2.5px solid var(--ink); border-right:2.5px solid var(--ink); transform:rotate(45deg)}
+  .loopnote{font-family:var(--mono); font-size:10.5px; color:var(--faint); margin:2px 2px 0}
+  .legend{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+  .lg{font-family:var(--mono); font-size:10px; padding:4px 10px; border-radius:999px; font-weight:700}
+  .lg.v{background:#EAF3FF; color:#2563EB}
+  .lg.n{background:#FFF4E8; color:#D97706}
+  .lg.g{background:var(--green-bg); color:var(--green)}
+  .lg.b{background:#EDEFFE; color:var(--blue)}
+
+  /* ================= PROTOTIPO ================= */
+  .proto-bar{display:flex; align-items:center; gap:10px; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:10px 14px; margin-bottom:14px; flex-wrap:wrap}
+  .proto-bar .pb-lbl{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; color:var(--faint); text-transform:uppercase}
+  .flowpick{display:flex; gap:6px; flex-wrap:wrap}
+  .fp{border:1px solid var(--line2); background:#fff; color:var(--ink-2); font-weight:700; font-size:12px; padding:7px 14px; border-radius:999px}
+  .fp.on{background:var(--blue); border-color:var(--blue); color:#fff}
+  .reset{margin-left:auto; border:none; background:none; color:var(--ink-2); font-size:12px; font-weight:600; text-decoration:underline}
+
+  .dots{display:flex; gap:6px; align-items:center; margin-left:6px}
+  .dot{width:8px; height:8px; border-radius:50%; background:var(--line2)}
+  .dot.on{background:var(--blue); transform:scale(1.25)}
+  .dot.done{background:var(--green)}
+
+  /* app shell */
+  .app{border:1px solid var(--line); border-radius:18px; background:#fff; overflow:hidden; box-shadow:0 2px 4px rgba(18,20,31,.05), 0 18px 44px -20px rgba(18,20,31,.22)}
+  .app-top{display:flex; align-items:center; gap:14px; padding:12px 20px; border-bottom:1px solid var(--line); overflow-x:auto}
+  .logo{font-style:italic; font-weight:900; font-size:17px; white-space:nowrap}
+  .logo::before{content:"⚡ "; font-style:normal; font-size:13px}
+  .anav{display:flex; gap:14px; font-size:12.5px; color:var(--ink-2); white-space:nowrap}
+  .anav .on{color:var(--ink); font-weight:700; border-bottom:2px solid var(--blue); padding-bottom:3px}
+  .sp{flex:1}
+  .wing{background:var(--green); color:#fff; font-weight:700; font-size:11.5px; border:none; border-radius:999px; padding:7px 12px; white-space:nowrap}
+  .wallet{background:var(--blue); color:#fff; font-weight:700; font-size:11.5px; border:none; border-radius:9px; padding:7px 12px; white-space:nowrap}
+
+  .screen{display:none; animation:fadein .25s ease}
+  .screen.on{display:block}
+  @keyframes fadein{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+
+  .hero{background:var(--lav); padding:20px 22px 16px}
+  .h1{font-size:21px; font-weight:800; letter-spacing:-.02em}
+  .sub{color:var(--ink-2); font-size:12.5px; margin-top:4px}
+  .pad{padding:16px 22px 22px}
+
+  .btn{background:var(--blue); color:#fff; font-weight:700; font-size:13px; border:none; border-radius:10px; padding:11px 18px}
+  .btn.full{width:100%}
+  .btn.ghost{background:#fff; color:var(--ink); border:1px solid var(--line2); font-weight:600}
+  .btn.green{background:var(--green)}
+  .btn:disabled{opacity:.45; cursor:not-allowed}
+
+  .chiprow{display:flex; gap:8px; margin-top:12px; flex-wrap:wrap}
+  .chip{border:1px solid var(--line2); background:#fff; color:var(--ink-2); font-size:11.5px; font-weight:700; padding:6px 13px; border-radius:999px}
+  .chip.on{background:var(--ink); border-color:var(--ink); color:#fff}
+  .tchip{font-size:9.5px; font-weight:800; padding:3px 8px; border-radius:999px; letter-spacing:.04em}
+  .tchip.v{background:#EAF3FF; color:#2563EB}
+  .tchip.n{background:#FFF4E8; color:#D97706}
+  .tchip.ok{background:var(--green-bg); color:var(--green)}
+  .tchip.warn{background:#FEF3C7; color:#B45309}
+  .nchip{background:var(--chip); color:var(--chip-ink); font-size:9.5px; font-weight:700; padding:3px 8px; border-radius:999px}
+  .vk{color:#3B82F6; font-size:11px}
+
+  .rail-h{display:flex; align-items:baseline; gap:8px; margin:16px 0 8px}
+  .rail-h b{font-size:13px}
+  .rail-h span{font-size:10.5px; color:var(--faint)}
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:12px}
+  .ccard{border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fff; text-align:left; padding:0; display:block; width:100%}
+  .ccard:hover{border-color:var(--blue)}
+  .ccard.v{border-color:#CFE0FF}
+  .cban{height:74px; position:relative; display:flex; align-items:flex-start; padding:8px}
+  .cban .pot{font-family:var(--mono); font-size:11.5px; font-weight:800; color:#fff}
+  .cban .ends{position:absolute; right:7px; bottom:7px; background:rgba(10,10,20,.55); color:#fff; font-size:9px; padding:2px 8px; border-radius:999px}
+  .cbody{padding:10px 12px 12px}
+  .ct{font-weight:800; font-size:13px}
+  .cby{display:flex; align-items:center; gap:6px; margin-top:6px; font-size:10.5px; color:var(--ink-2)}
+  .ava{width:16px; height:16px; border-radius:50%; background:#14161F; flex:none}
+  .ava.a1{background:linear-gradient(135deg,#F59E0B,#EF4444)} .ava.a2{background:linear-gradient(135deg,#10B981,#3B82F6)} .ava.a3{background:linear-gradient(135deg,#8B5CF6,#EC4899)}
+  .pb{height:5px; border-radius:3px; background:#EEF0F7; margin-top:8px; position:relative; overflow:hidden}
+  .pb i{position:absolute; inset:0; background:var(--green); border-radius:3px}
+  .pmeta{display:flex; justify-content:space-between; font-family:var(--mono); font-size:9px; color:var(--faint); margin-top:4px}
+  .cfoot{display:flex; gap:5px; margin-top:8px}
+
+  /* big sequential stepper */
+  .bsteps{display:flex; align-items:center; padding:16px 22px 0}
+  .bs{display:flex; align-items:center; gap:8px}
+  .bs .bn{width:26px; height:26px; border-radius:50%; display:grid; place-items:center; font-family:var(--mono); font-weight:800; font-size:12px; border:2px solid var(--line2); color:var(--faint); background:#fff}
+  .bs .bt{font-size:12px; color:var(--faint); font-weight:600}
+  .bs.on .bn{background:var(--ink); border-color:var(--ink); color:#fff}
+  .bs.on .bt{color:var(--ink); font-weight:800; font-size:14px}
+  .bs.done .bn{background:var(--green-bg); border-color:var(--green); color:var(--green)}
+  .bs.done .bt{color:var(--green)}
+  .bsp{flex:1; height:2px; background:var(--line); margin:0 10px; min-width:18px}
+  .bsp.done{background:var(--green)}
+
+  .focus{max-width:560px; margin:0 auto; padding:16px 22px 24px}
+  .fcard{border:1px solid var(--line); border-radius:14px; background:#fff; padding:20px}
+  .fq{font-size:17.5px; font-weight:800; letter-spacing:-.01em}
+  .fsub{font-size:12px; color:var(--ink-2); margin-top:3px}
+  .rlist{margin-top:12px; display:grid; gap:7px}
+  .rl{display:flex; gap:9px; font-size:12.5px; color:#3A4152; align-items:baseline; padding:9px 12px; background:#FBFBFE; border:1px solid var(--line); border-radius:9px}
+  .rl i{font-style:normal; color:var(--blue); font-family:var(--mono); font-size:10.5px; flex:none}
+  .foot-note{font-size:11px; color:var(--faint); margin-top:8px; text-align:center}
+
+  .inp{width:100%; background:#fff; border:1px solid var(--line2); border-radius:9px; padding:10px 12px; font-size:13px; color:var(--ink); font-family:var(--sans)}
+  .inp:focus{outline:2px solid var(--blue); outline-offset:-1px}
+  textarea.inp{resize:vertical; min-height:58px; line-height:1.5}
+  label.fl{display:block; font-size:11.5px; font-weight:700; margin:12px 0 4px}
+
+  .check{border:1px solid #BFE5CC; border-radius:10px; background:var(--green-bg); padding:11px 13px; margin:12px 0 0; display:none}
+  .check.on{display:block; animation:fadein .3s ease}
+  .check .ch{display:flex; align-items:center; gap:8px; font-weight:800; font-size:12px; color:#14532D}
+  .check .ch .free{margin-left:auto; font-family:var(--mono); font-size:9px; color:var(--green); background:#fff; border:1px solid #BFE5CC; padding:2px 7px; border-radius:999px}
+  .pcs{margin-top:7px; display:grid; gap:4px}
+  .pc{display:flex; gap:8px; font-size:11.5px; color:#2F4A3A; align-items:baseline}
+  .pc i{font-style:normal; flex:none; width:14px; height:14px; border-radius:50%; display:grid; place-items:center; font-size:8px; background:#DCFCE7; color:var(--green)}
+
+  .payrow{border:1px solid var(--line2); border-radius:10px; padding:10px 12px; display:flex; align-items:center; gap:10px; font-size:12px; margin-top:7px; background:#fff; width:100%; text-align:left}
+  .payrow.on{border-color:var(--blue); box-shadow:0 0 0 1px var(--blue) inset}
+  .payrow .amt{margin-left:auto; font-family:var(--mono); font-size:11px; font-weight:700}
+  .payrow small{display:block; color:var(--faint); font-size:10px; font-weight:400}
+
+  .spinner{display:none; text-align:center; padding:26px 0 10px; color:var(--ink-2); font-size:12.5px}
+  .spinner.on{display:block}
+  .spinner .ring{width:34px; height:34px; border-radius:50%; border:4px solid var(--line); border-top-color:var(--blue); margin:0 auto 10px; animation:spin 1s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  .rhero{text-align:center; padding:6px 0 2px}
+  .rhero .rlbl{font-family:var(--mono); font-size:10px; letter-spacing:.12em; color:var(--faint); text-transform:uppercase}
+  .rhero .rval{font-size:30px; font-weight:900; letter-spacing:-.02em; color:#2563EB; margin-top:3px}
+  .rhero .rsub{font-size:12px; color:var(--ink-2); margin-top:3px}
+
+  .okring{width:44px; height:44px; border-radius:50%; background:var(--green-bg); border:2px solid var(--green); display:grid; place-items:center; color:var(--green); font-size:17px; margin:0 auto 10px}
+  .slink{font-family:var(--mono); font-size:11px; color:var(--blue); background:#F4F5FE; border:1px solid var(--line2); border-radius:999px; padding:6px 13px; display:inline-block; margin-top:8px}
+
+  .grid2{display:grid; grid-template-columns:1.5fr 1fr; gap:16px}
+  @media (max-width:700px){ .grid2{grid-template-columns:1fr} }
+  .block{border:1px solid var(--line); border-radius:12px; background:#fff; padding:16px; margin-bottom:12px}
+  .block .bh{display:flex; align-items:center; gap:8px; font-weight:800; font-size:13.5px; margin-bottom:8px}
+  .block .bh i{font-style:normal; width:20px; height:20px; border-radius:50%; background:var(--ink); color:#fff; display:grid; place-items:center; font-family:var(--mono); font-size:10px; flex:none}
+  .sums{border:1px solid var(--line); border-radius:12px; background:#FBFBFE; padding:16px}
+  .srow{display:flex; justify-content:space-between; font-size:12px; color:var(--ink-2); padding:6px 0; border-bottom:1px dashed var(--line)}
+  .srow b{color:var(--ink); font-family:var(--mono)}
+  .srow:last-of-type{border-bottom:none}
+
+  .panel{border:1px solid var(--line); border-radius:12px; background:#fff; margin-top:14px}
+  .phead{display:flex; align-items:center; padding:12px 15px; border-bottom:1px solid var(--line); font-weight:700; font-size:13px}
+  .phead .st{margin-left:auto; font-weight:700; font-size:11.5px; color:var(--blue)}
+  .pbody{padding:14px 15px}
+  .lrow{display:flex; align-items:center; gap:9px; padding:9px 0; border-bottom:1px solid var(--line); font-size:12px}
+  .lrow:last-child{border-bottom:none}
+  .lrow .meta{color:var(--ink-2)}
+  .kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; margin-top:14px}
+  .kpi{border:1px solid var(--line); border-radius:11px; background:#fff; padding:11px 13px}
+  .kpi .kl{font-family:var(--mono); font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint)}
+  .kpi .kv{font-size:18px; font-weight:800; margin-top:4px; font-variant-numeric:tabular-nums}
+  .kpi .kd{font-size:10px; color:var(--ink-2); margin-top:1px}
+
+  .toast{position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(20px); background:var(--ink); color:#fff; font-size:13px; font-weight:600; padding:12px 20px; border-radius:12px; opacity:0; pointer-events:none; transition:all .3s ease; z-index:50; max-width:90vw; text-align:center}
+  .toast.on{opacity:1; transform:translateX(-50%) translateY(0)}
+
+  .hint{border:1px dashed #BFD7FF; border-radius:10px; background:#F6FAFF; padding:10px 13px; font-size:11.5px; color:#3A4152; margin-top:12px; display:flex; gap:8px; align-items:center}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="kicker">app.rally.fun · updated flows</span>
+  <h1>Diagrama + Prototipo</h1>
+  <p>Arriba, el mapa de los flujos. Abajo, la app simulada: <strong>haz click y recorre cada flow como si fuera el producto real.</strong></p>
+  <div class="tabs" role="tablist">
+    <button class="tab on" id="tab-d" onclick="showView('d')">📐 Diagrama de flows</button>
+    <button class="tab" id="tab-p" onclick="showView('p')">▶ Probar en la app</button>
+  </div>
+</header>
+
+<!-- ==================== VISTA DIAGRAMA ==================== -->
+<div class="view on" id="view-d">
+
+  <div class="dsec">
+    <h2>El modelo: dos carriles, un solo botón de crear</h2>
+    <p class="dl">Cualquiera puede crear campaña. La verificación decide el carril.</p>
+    <div class="lane">
+      <div class="node hot"><div class="nbox"><span class="nk">Entrada</span><div class="nt">+ Create campaign</div><div class="nd">Visible para todos, en toda la app</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">Decisión</span><div class="nt">¿Proyecto verificado?</div><div class="nd">Badge azul otorgado por el equipo Rally</div></div></div>
+      <div class="fork">
+        <div class="nbox" style="border-color:#BFD7FF; background:#F6FAFF"><span class="nk" style="color:#2563EB">SÍ</span><div class="nt">✔ VERIFIED campaign</div><div class="nd">Badge azul · carril destacado arriba</div></div>
+        <div class="nbox" style="border-color:#F5D9AE; background:#FFFAF2"><span class="nk" style="color:#D97706">NO</span><div class="nt">NETWORK campaign</div><div class="nd">Permissionless · pool en RLP o USDC</div></div>
+      </div>
+      <div class="node end"><div class="nbox"><span class="nk">Destino</span><div class="nt">Campaigns</div><div class="nd">Carril Verified arriba · grid Network debajo · filtros All / Verified / Network</div></div></div>
+    </div>
+    <div class="legend"><span class="lg v">✔ VERIFIED · partners</span><span class="lg n">NETWORK · cualquiera</span></div>
+  </div>
+
+  <div class="dsec">
+    <h2>Creator flow — una acción por pantalla</h2>
+    <p class="dl">Rules → Post → Get paid. El paso activo manda; el resto, apagado.</p>
+    <div class="lane">
+      <div class="node"><div class="nbox"><span class="nk">Descubre</span><div class="nt">Campaigns</div><div class="nd">Card: pot · repartido · tiempo · badge</div></div></div>
+      <div class="node hot"><div class="nbox"><span class="nk">Paso 1</span><div class="nt">RULES</div><div class="nd">Solo las reglas, numeradas. Un botón: "My post is ready"</div></div></div>
+      <div class="node hot"><div class="nbox"><span class="nk">Paso 2</span><div class="nt">POST</div><div class="nd">Pega URL → rules check gratis → paga 100 RLP y envía</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">Espera</span><div class="nt">AI Evaluation</div><div class="nd">~4 min · timeline visible</div></div></div>
+      <div class="node hot"><div class="nbox"><span class="nk">Paso 3</span><div class="nt">GET PAID</div><div class="nd">Reward proyectado en grande + rank + cómo subir</div></div></div>
+      <div class="node pay end"><div class="nbox"><span class="nk">Automático</span><div class="nt">Cobro al cerrar el periodo</div><div class="nd">Sin claim manual</div></div></div>
+    </div>
+    <p class="loopnote">↺ "Post again" vuelve al paso 2 · el rules check es orientativo: la AI Evaluation decide</p>
+  </div>
+
+  <div class="dsec">
+    <h2>Partner flow — de cero a live en una sesión</h2>
+    <p class="dl">Crear campaña = una página. La Community se crea sola.</p>
+    <div class="lane">
+      <div class="node"><div class="nbox"><span class="nk">Una vez</span><div class="nt">Request access</div><div class="nd">Form in-app → aprobación del equipo → badge ✔ Verified</div></div></div>
+      <div class="node hot"><div class="nbox"><span class="nk">La clave</span><div class="nt">Create campaign · 1 página</div><div class="nd">① Qué deben publicar ② El premio · defaults en "Advanced"</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">1 depósito</span><div class="nt">Deposit &amp; launch</div><div class="nd">El deposit del protocolo, sin cambios</div></div></div>
+      <div class="node pay"><div class="nbox"><span class="nk">Automático</span><div class="nt">LIVE + Community</div><div class="nd">Success con Share on X · Community creada sola</div></div></div>
+      <div class="node end"><div class="nbox"><span class="nk">Después</span><div class="nt">Track &amp; grow</div><div class="nd">Leaderboard · stats · Ambassador Program</div></div></div>
+    </div>
+  </div>
+
+  <div class="dsec">
+    <h2>Ambassadors — apply de 1 click, gestión en un panel</h2>
+    <p class="dl">Los datos ya existen (Sorsa, followers, historial) → cero formularios.</p>
+    <div class="lane">
+      <div class="node"><div class="nbox"><span class="nk">Creator</span><div class="nt">Miembro automático</div><div class="nd">Ganas puntos en una campaña → estás dentro</div></div></div>
+      <div class="node hot"><div class="nbox"><span class="nk">Creator</span><div class="nt">Apply · 1 click</div><div class="nd">Tu solicitud es tu track record pre-rellenado</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">Partner</span><div class="nt">Open applications</div><div class="nd">3 campos: plazas · pago mensual · cierre</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">Partner</span><div class="nt">Review &amp; select</div><div class="nd">Lista rankeada por datos de Rally → elegir</div></div></div>
+      <div class="node pay end"><div class="nbox"><span class="nk">Gestión</span><div class="nt">Analytics + Payments</div><div class="nd">Fondea el mes · Rally paga el día 1 si cumplen el mínimo de posts · pause/remove</div></div></div>
+    </div>
+  </div>
+
+  <div class="dsec" style="text-align:center; padding:30px 0 10px">
+    <button class="tab on" onclick="showView('p')" style="font-size:14px; padding:13px 26px">▶ Probar estos flows en la app</button>
+  </div>
+</div>
+
+<!-- ==================== VISTA PROTOTIPO ==================== -->
+<div class="view" id="view-p">
+
+  <div class="proto-bar">
+    <span class="pb-lbl">Prototipo · elige flow</span>
+    <div class="flowpick">
+      <button class="fp on" id="fp-creator" onclick="startFlow('creator')">Creator</button>
+      <button class="fp" id="fp-partner" onclick="startFlow('partner')">Partner</button>
+      <button class="fp" id="fp-amb" onclick="startFlow('amb')">Ambassadors</button>
+    </div>
+    <div class="dots" id="dots"></div>
+    <button class="reset" onclick="resetFlow()">↺ Reiniciar</button>
+  </div>
+
+  <div class="app">
+    <div class="app-top">
+      <span class="logo">RALLY</span>
+      <nav class="anav"><span class="on">Campaigns</span><span>Communities</span><span>Rewards</span><span>Leaderboard</span></nav>
+      <span class="sp"></span>
+      <button class="wing">✦ Wingston</button>
+      <button class="wallet">▣ 0x4a…eb4348</button>
+    </div>
+
+    <!-- ========== CREATOR 1: discover ========== -->
+    <section class="screen" id="c1">
+      <div class="hero">
+        <div style="display:flex; gap:12px; align-items:flex-start; flex-wrap:wrap">
+          <div><div class="h1">Campaigns</div>
+          <div class="sub">From verified partners — or from anyone. Launch yours with a pool in RLP or USDC.</div></div>
+          <span class="sp"></span>
+          <button class="btn" onclick="startFlow('partner')">+ Create campaign</button>
+        </div>
+        <div class="chiprow">
+          <button class="chip on">All</button><button class="chip" style="color:#2563EB">✔ Verified</button><button class="chip" style="color:#B45309">Network</button>
+        </div>
+      </div>
+      <div class="pad">
+        <div class="rail-h"><b>✔ Verified</b><span>campaigns from verified partners</span></div>
+        <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+          <button class="ccard v" onclick="go('c2')">
+            <div class="cban" style="background:linear-gradient(120deg,#191722,#3B2B57)"><span class="pot">◎ 500 USDC / period</span><span class="ends">⏱ 3 days</span></div>
+            <div class="cbody"><div class="ct">Internet Court Is Here</div>
+              <div class="cby"><span class="ava"></span>@GenLayer <span class="vk">✔</span></div>
+              <div class="pb"><i style="width:50%"></i></div><div class="pmeta"><span><b>500</b> of 1000 USDC</span><span>214 subs</span></div>
+              <div class="cfoot"><span class="tchip v">✔ VERIFIED</span><span class="nchip">Base</span></div></div>
+          </button>
+          <button class="ccard v" onclick="go('c2')">
+            <div class="cban" style="background:linear-gradient(120deg,#20264E,#4356C9)"><span class="pot">◎ 40K RLP</span><span class="ends">⏱ Next week</span></div>
+            <div class="cbody"><div class="ct">Your Last Tweet</div>
+              <div class="cby"><span class="ava"></span>@RallyOnChain <span class="vk">✔</span></div>
+              <div class="pb"><i style="width:34%"></i></div><div class="pmeta"><span><b>13.6K</b> of 40K RLP</span><span>96 subs</span></div>
+              <div class="cfoot"><span class="tchip v">✔ VERIFIED</span><span class="nchip">GenLayer Rally Testnet</span></div></div>
+          </button>
+        </div>
+        <div class="rail-h"><b>Network</b><span>open to everyone — anyone can launch a campaign</span></div>
+        <div class="cards">
+          <button class="ccard" onclick="go('c2')">
+            <div class="cban" style="background:linear-gradient(120deg,#4A1D0E,#C2410C)"><span class="pot">◎ 40K RLP</span><span class="ends">⏱ 2 days</span></div>
+            <div class="cbody"><div class="ct">Roast Your Worst Trade</div>
+              <div class="cby"><span class="ava a1"></span>@0xSofiya</div>
+              <div class="pb"><i style="width:72%"></i></div><div class="pmeta"><span><b>28.8K</b> of 40K RLP</span><span>42 subs</span></div>
+              <div class="cfoot"><span class="tchip n">NETWORK</span><span class="nchip">Base</span></div></div>
+          </button>
+          <button class="ccard" onclick="go('c2')">
+            <div class="cban" style="background:linear-gradient(120deg,#123B2E,#0E9F6E)"><span class="pot">◎ 250 USDC</span><span class="ends">⏱ Next week</span></div>
+            <div class="cbody"><div class="ct">Explain Your Job Badly</div>
+              <div class="cby"><span class="ava a2"></span>@gomtu_xyz</div>
+              <div class="pb"><i style="width:22%"></i></div><div class="pmeta"><span><b>55</b> of 250 USDC</span><span>67 subs</span></div>
+              <div class="cfoot"><span class="tchip n">NETWORK</span><span class="nchip">Base</span></div></div>
+          </button>
+          <button class="ccard" onclick="go('c2')">
+            <div class="cban" style="background:linear-gradient(120deg,#2A1D4A,#7C3AED)"><span class="pot">◎ 25K RLP</span><span class="ends">⏱ 6 days</span></div>
+            <div class="cbody"><div class="ct">The Delulu Take</div>
+              <div class="cby"><span class="ava a3"></span>@basewhale.eth</div>
+              <div class="pb"><i style="width:12%"></i></div><div class="pmeta"><span><b>3K</b> of 25K RLP</span><span>12 subs</span></div>
+              <div class="cfoot"><span class="tchip n">NETWORK</span><span class="nchip">Base</span></div></div>
+          </button>
+        </div>
+        <div class="hint">👆 <b>Haz click en cualquier campaña</b> para entrar — o en "+ Create campaign" para probar el flow de partner.</div>
+      </div>
+    </section>
+
+    <!-- ========== CREATOR 2: rules ========== -->
+    <section class="screen" id="c2">
+      <div class="bsteps">
+        <span class="bs on"><span class="bn">1</span><span class="bt">Rules</span></span><span class="bsp"></span>
+        <span class="bs"><span class="bn">2</span><span class="bt">Post</span></span><span class="bsp"></span>
+        <span class="bs"><span class="bn">3</span><span class="bt">Get paid</span></span>
+      </div>
+      <div class="focus">
+        <div class="fcard">
+          <div class="fq">Quote the Forbes milestone</div>
+          <div class="fsub">Internet Court Is Here · @GenLayer <span class="vk">✔</span> · Read this once — your post must follow every rule to earn.</div>
+          <div class="rlist">
+            <div class="rl"><i>01</i><span>Quote this GenLayer post: <b style="color:var(--blue)">x.com/GenLayer/status/2075…</b></span></div>
+            <div class="rl"><i>02</i><span>Mention <b>@GenLayer</b> and <b>@courtofinternet</b></span></div>
+            <div class="rl"><i>03</i><span>Add your own genuine take — no empty hype or copy-paste</span></div>
+            <div class="rl"><i>04</i><span>No em dashes (—) · don’t start the post with a mention</span></div>
+            <div class="rl"><i>05</i><span>Any language · original content only</span></div>
+          </div>
+          <div style="margin-top:14px"><button class="btn full" onclick="go('c3')">My post is ready →</button></div>
+          <div class="foot-note">Reward pool: 500 USDC this period · Ends in 3 days</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CREATOR 3: post ========== -->
+    <section class="screen" id="c3">
+      <div class="bsteps">
+        <span class="bs done"><span class="bn">✓</span><span class="bt">Rules</span></span><span class="bsp done"></span>
+        <span class="bs on"><span class="bn">2</span><span class="bt">Post</span></span><span class="bsp"></span>
+        <span class="bs"><span class="bn">3</span><span class="bt">Get paid</span></span>
+      </div>
+      <div class="focus">
+        <div class="fcard">
+          <div class="fq">Drop your post</div>
+          <div class="fsub">Paste the URL of the tweet you just published.</div>
+          <div style="display:flex; gap:8px; margin-top:12px">
+            <input class="inp" id="tweeturl" placeholder="x.com/you/status/…" aria-label="Tweet URL">
+            <button class="btn ghost" onclick="pasteExample()" style="white-space:nowrap">Pegar ejemplo</button>
+          </div>
+          <div class="check" id="rulecheck">
+            <div class="ch">✓ Your post passes the rules <span class="free">CHECKED FREE · BEFORE YOU PAY</span></div>
+            <div class="pcs">
+              <div class="pc"><i>✓</i><span>Quotes the right post · mentions <b>@GenLayer</b> + <b>@courtofinternet</b></span></div>
+              <div class="pc"><i>✓</i><span>No em dashes · doesn’t start with a mention · original take</span></div>
+            </div>
+          </div>
+          <button class="payrow on"><span>Pay with RLP<small>Your balance: 180000 RLP</small></span><span class="amt">100 RLP</span></button>
+          <button class="payrow"><span>Pay with ETH<small>Base</small></span><span class="amt">0.0007 ETH (~$1.20)</span></button>
+          <div style="margin-top:12px"><button class="btn full" id="submitbtn" disabled onclick="submitTweet()">Submit · 100 RLP</button></div>
+          <div class="spinner" id="spin"><div class="ring"></div>In queue · AI Evaluation running… (~4 min in real life)</div>
+          <div class="foot-note">The rules check is advisory — final scoring happens in AI Evaluation.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CREATOR 4: get paid ========== -->
+    <section class="screen" id="c4">
+      <div class="bsteps">
+        <span class="bs done"><span class="bn">✓</span><span class="bt">Rules</span></span><span class="bsp done"></span>
+        <span class="bs done"><span class="bn">✓</span><span class="bt">Post</span></span><span class="bsp done"></span>
+        <span class="bs on"><span class="bn">3</span><span class="bt">Get paid</span></span>
+      </div>
+      <div class="focus">
+        <div class="fcard">
+          <div class="rhero">
+            <div class="rlbl">Projected reward · Period 1</div>
+            <div class="rval">~14,20 USDC</div>
+            <div class="rsub">You’re <b>#14</b> of 215 · 408 campaign points · paid automatically when the period ends (2d 11h)</div>
+          </div>
+          <div class="check on" style="margin-top:14px">
+            <div class="pcs" style="margin-top:0">
+              <div class="pc"><i>→</i><span><b>Want to climb?</b> Your weakest score is Originality (0.6) — posts with a personal angle rank higher. Engagement keeps counting until the period ends.</span></div>
+            </div>
+          </div>
+          <div style="display:flex; gap:9px; margin-top:12px">
+            <button class="btn ghost" style="flex:1" onclick="toast('El detalle del score vive un nivel por debajo — no compite con el reward')">See score details</button>
+            <button class="btn" style="flex:1" onclick="go('c3'); toast('↺ De vuelta al paso 2 — Post again')">Post again</button>
+          </div>
+          <div style="margin-top:10px"><button class="btn green full" onclick="startFlow('partner')">✦ Fin del flow creator → probar Partner</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PARTNER 1: create (1 página) ========== -->
+    <section class="screen" id="p1">
+      <div class="hero">
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
+          <div><div class="h1">Create campaign</div>
+          <div class="sub">Two blocks and a button. Everything technical is preset — edit it under Advanced.</div></div>
+          <span class="sp"></span>
+          <span class="tchip v" style="font-size:10.5px; padding:5px 11px">✔ VERIFIED · featured placement</span>
+        </div>
+      </div>
+      <div class="pad">
+        <div class="grid2">
+          <div>
+            <div class="block">
+              <div class="bh"><i>1</i>What should creators post?</div>
+              <label class="fl" for="cname">Campaign name</label>
+              <input class="inp" id="cname" value="Internet Court Is Here">
+              <label class="fl" for="cask">The ask — what makes a winning post</label>
+              <textarea class="inp" id="cask">Quote the GenLayer post quoting Forbes and amplify it in your own voice. Original takes only.</textarea>
+              <div style="display:flex; gap:8px; margin-top:9px; align-items:center; flex-wrap:wrap">
+                <button class="btn ghost" onclick="toast('✦ Wingston rellena descripción, reglas y knowledge base desde el nombre')">✦ Let AI fill this from the name</button>
+                <span style="font-size:10.5px; color:var(--faint)">rules · knowledge base · style</span>
+              </div>
+            </div>
+            <div class="block">
+              <div class="bh"><i>2</i>What’s the prize?</div>
+              <button class="payrow on"><span>USDC<small>From your wallet · Base</small></span><span class="amt">◎</span></button>
+              <button class="payrow"><span>Your project’s token<small>Any ERC-20 · optionally add Rally Points on top</small></span></button>
+              <label class="fl" for="camount">Amount &amp; duration</label>
+              <div style="display:flex; gap:8px">
+                <input class="inp" id="camount" value="1000" style="max-width:120px; font-weight:800; font-size:15px" inputmode="numeric" oninput="updateSum()">
+                <input class="inp" value="2 weeks · paid weekly" readonly>
+              </div>
+            </div>
+            <div style="font-size:11.5px; color:var(--faint); padding:0 2px">Advanced — evaluation · targeting · schedule <span class="tchip ok">✓ RALLY DEFAULTS</span> · <button style="border:none; background:none; color:var(--blue); font-weight:700; font-size:11.5px; cursor:pointer" onclick="toast('Los 6 pasos técnicos siguen aquí, pre-rellenos y editables')">Edit ▾</button></div>
+          </div>
+          <aside>
+            <div class="sums">
+              <div style="font-weight:800; font-size:13px; margin-bottom:6px">Ready to launch</div>
+              <div class="srow"><span>Prize</span><b id="sum-prize">1000 USDC</b></div>
+              <div class="srow"><span>Paid out</span><b id="sum-week">500 / week × 2</b></div>
+              <div class="srow"><span>Goes live</span><b>Immediately</b></div>
+              <div style="margin-top:11px"><button class="btn full" onclick="deposit()">Deposit &amp; launch</button></div>
+              <div class="foot-note" style="text-align:left">One deposit. Rewards are distributed automatically.</div>
+            </div>
+            <div class="hint">Como <b>creator</b> este mismo formulario lanza una <b style="color:#B45309">NETWORK</b> campaign (pool en RLP o USDC). Verificado = badge azul + carril destacado.</div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PARTNER 2: live ========== -->
+    <section class="screen" id="p2">
+      <div class="pad" style="text-align:center; padding-top:34px">
+        <div class="okring">✓</div>
+        <div class="h1">Your campaign is live</div>
+        <div><span class="slink" id="livelink">app.rally.fun/campaigns/internet-court-is-here</span></div>
+        <div style="display:flex; gap:9px; justify-content:center; margin-top:12px">
+          <button class="btn ghost" onclick="toast('Link copiado 📋')">⧉ Copy link</button>
+          <button class="btn" onclick="toast('Abre el share de X con el post pre-escrito')">Share on 𝕏</button>
+        </div>
+      </div>
+      <div class="panel" style="margin:18px 22px 0">
+        <div class="pbody" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap">
+          <div style="width:34px; height:34px; border-radius:9px; background:#14161F; flex:none"></div>
+          <div style="flex:1; min-width:220px">
+            <div style="font-weight:800; font-size:12.5px">Your GenLayer Community was created automatically <span class="tchip ok">✓ LIVE</span></div>
+            <div style="font-size:11.5px; color:var(--ink-2); margin-top:2px">Campaigns, members and leaderboards live there. Customize whenever you want.</div>
+          </div>
+          <button class="btn ghost" onclick="startFlow('amb'); toast('Tu Community → pestaña Ambassadors')">Customize →</button>
+        </div>
+      </div>
+      <div class="pad" style="text-align:center">
+        <button class="btn green" onclick="startFlow('amb')">✦ Siguiente: gestionar Ambassadors →</button>
+      </div>
+    </section>
+
+    <!-- ========== AMB 1: creator apply ========== -->
+    <section class="screen" id="a1">
+      <div class="hero">
+        <div class="h1">GenLayer Community · Ambassadors</div>
+        <div class="sub">Ser miembro ya es automático (ganaste puntos → estás dentro). Este es el camino a ambassador.</div>
+      </div>
+      <div class="pad">
+        <div class="panel" style="margin-top:0">
+          <div class="phead">⭐ Ambassador Program <span class="st">Applications open · 4 days left</span></div>
+          <div class="pbody">
+            <div style="font-size:12px; color:var(--ink-2); margin-bottom:10px">10 spots · 12,000 RLP monthly · exclusive campaigns.</div>
+            <div class="check on" style="margin:0 0 12px">
+              <div class="ch">Your application is your track record</div>
+              <div class="pcs">
+                <div class="pc"><i>✓</i><span><b>@holly_web3</b> · Sorsa 672 · 45.06K followers · 12 campaigns · top 10 in 5</span></div>
+                <div class="pc"><i>✓</i><span>Note for the team (optional)</span></div>
+              </div>
+            </div>
+            <button class="btn full" id="applybtn" onclick="applyAmb()">Apply to be ambassador</button>
+            <div class="foot-note">1 click. No forms — Rally already has your data.</div>
+          </div>
+        </div>
+        <div class="pad" style="text-align:center; padding-bottom:0">
+          <button class="btn ghost" onclick="go('a2')">Ver el lado del partner →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== AMB 2: partner manage ========== -->
+    <section class="screen" id="a2">
+      <div class="hero">
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
+          <div><div class="h1">Ambassador Program — GenLayer</div>
+          <div class="sub">Payments run automatically through Rally. Fund the month, we handle the rest.</div></div>
+          <span class="sp"></span>
+          <button class="btn" onclick="toast('Depósito del mes: 120,000 RLP · Rally paga el día 1 a quien cumpla el mínimo')">Fund August · 120,000 RLP</button>
+        </div>
+      </div>
+      <div class="pad">
+        <div class="kpis" style="margin-top:0">
+          <div class="kpi"><div class="kl">Ambassadors</div><div class="kv">10</div><div class="kd">of 10 spots</div></div>
+          <div class="kpi"><div class="kl">Monthly cost</div><div class="kv">120K RLP</div><div class="kd">12,000 each</div></div>
+          <div class="kpi"><div class="kl">Posts this month</div><div class="kv">126</div><div class="kd">min. 12 each to get paid</div></div>
+          <div class="kpi"><div class="kl">Total reach</div><div class="kv">2.4M</div><div class="kd">July, all ambassadors</div></div>
+        </div>
+        <div class="panel">
+          <div class="phead">Ambassadors <span class="st">July payment · auto on Aug 1</span></div>
+          <div class="pbody" style="padding-top:4px">
+            <div class="lrow"><span class="ava a1"></span><b>@srinigoes</b><span class="vk">✔</span><span class="meta">16 posts ✓ · 412K reach · Sorsa 2207</span><span class="sp"></span><span class="tchip ok">✓ PAID</span><button class="btn ghost" style="padding:5px 10px; font-size:11px" onclick="toast('Sus posts del mes, con scores')">View posts</button></div>
+            <div class="lrow"><span class="ava a2"></span><b>@grebby</b><span class="vk">✔</span><span class="meta">14 posts ✓ · 380K reach · Sorsa 1043</span><span class="sp"></span><span class="tchip ok">✓ PAID</span><button class="btn ghost" style="padding:5px 10px; font-size:11px" onclick="toast('Sus posts del mes, con scores')">View posts</button></div>
+            <div class="lrow"><span class="ava a3"></span><b>@holly_web3</b><span class="vk">✔</span><span class="meta">9 posts · below min · 96K reach</span><span class="sp"></span><span class="tchip warn">HELD</span><button class="btn ghost" style="padding:5px 10px; font-size:11px" onclick="toast('Pago retenido: no llegó al mínimo. Vuelve a tu balance.')">Why?</button></div>
+          </div>
+        </div>
+        <div class="foot-note" style="text-align:left; margin-top:10px">Held payments return to your balance. Ambassadors see their own status on their profile.</div>
+        <div style="text-align:center; margin-top:16px"><button class="btn green" onclick="startFlow('creator'); toast('↺ Vuelta al principio — flow creator')">↺ Recorrer todo otra vez</button></div>
+      </div>
+    </section>
+
+  </div><!-- /app -->
+</div><!-- /view-p -->
+
+</div><!-- /wrap -->
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+  var FLOWS = {
+    creator: ['c1','c2','c3','c4'],
+    partner: ['p1','p2'],
+    amb:     ['a1','a2']
+  };
+  var current = 'creator';
+
+  function showView(v){
+    document.getElementById('view-d').classList.toggle('on', v==='d');
+    document.getElementById('view-p').classList.toggle('on', v==='p');
+    document.getElementById('tab-d').classList.toggle('on', v==='d');
+    document.getElementById('tab-p').classList.toggle('on', v==='p');
+    if(v==='p'){ go(FLOWS[current][0]); }
+    window.scrollTo({top:0});
+  }
+  function startFlow(f){
+    current = f;
+    ['creator','partner','amb'].forEach(function(k){
+      document.getElementById('fp-'+(k==='amb'?'amb':k)).classList.toggle('on', k===f);
+    });
+    showView('p');
+  }
+  function go(id){
+    document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('on'); });
+    var el = document.getElementById(id);
+    if(el){ el.classList.add('on'); }
+    // sync current flow if jumping
+    Object.keys(FLOWS).forEach(function(f){ if(FLOWS[f].indexOf(id)>-1){ current=f; } });
+    ['creator','partner','amb'].forEach(function(k){
+      document.getElementById('fp-'+(k==='amb'?'amb':k)).classList.toggle('on', k===current);
+    });
+    drawDots(id);
+  }
+  function drawDots(id){
+    var steps = FLOWS[current], html='';
+    var idx = steps.indexOf(id);
+    steps.forEach(function(s,i){
+      html += '<span class="dot '+(i<idx?'done':(i===idx?'on':''))+'"></span>';
+    });
+    document.getElementById('dots').innerHTML = html;
+  }
+  function resetFlow(){ go(FLOWS[current][0]); toast('↺ Flow reiniciado'); }
+
+  function pasteExample(){
+    document.getElementById('tweeturl').value = 'x.com/holly_web3/status/2081334…';
+    document.getElementById('rulecheck').classList.add('on');
+    document.getElementById('submitbtn').disabled = false;
+    toast('✓ Reglas verificadas gratis — antes de pagar');
+  }
+  document.addEventListener('input', function(e){
+    if(e.target && e.target.id==='tweeturl'){
+      var has = e.target.value.trim().length > 8;
+      document.getElementById('rulecheck').classList.toggle('on', has);
+      document.getElementById('submitbtn').disabled = !has;
+    }
+  });
+  function submitTweet(){
+    document.getElementById('submitbtn').disabled = true;
+    var sp = document.getElementById('spin');
+    sp.classList.add('on');
+    setTimeout(function(){
+      sp.classList.remove('on');
+      document.getElementById('submitbtn').disabled = false;
+      go('c4');
+      toast('Scored ✓ · 408 campaign points');
+    }, 1600);
+  }
+  function updateSum(){
+    var v = parseInt(document.getElementById('camount').value.replace(/\D/g,''),10) || 0;
+    document.getElementById('sum-prize').textContent = v.toLocaleString('en-US') + ' USDC';
+    document.getElementById('sum-week').textContent = Math.round(v/2).toLocaleString('en-US') + ' / week × 2';
+  }
+  function deposit(){
+    var name = (document.getElementById('cname').value || 'my-campaign').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+    document.getElementById('livelink').textContent = 'app.rally.fun/campaigns/' + name;
+    go('p2');
+    toast('✓ Deposit hecho — live al instante · Community creada sola');
+  }
+  function applyAmb(){
+    var b = document.getElementById('applybtn');
+    b.textContent = '✓ Applied — you’ll see your status here';
+    b.disabled = true;
+    b.style.background = 'var(--green)';
+    toast('Applied ✓ · Selected te llegará aquí y en tu perfil');
+  }
+  var toastTimer;
+  function toast(msg){
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ t.classList.remove('on'); }, 2600);
+  }
+  // init
+  drawDots('c1');
+  document.getElementById('c1').classList.add('on');
+</script>
