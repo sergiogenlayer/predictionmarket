@@ -357,7 +357,7 @@
 
   <div class="flow">
     <div class="fstep"><span class="fk">ACCEDE</span><div class="fbox"><div class="ft">Request access in-app</div><div class="fd">Formulario en producto → aprobación en 1 click del equipo</div></div></div>
-    <div class="fstep"><span class="fk">REDACTA</span><div class="fbox"><div class="ft">Wizard con defaults</div><div class="fd">El doc-plantilla vive en el producto; review de Rally opcional, 1 click</div></div></div>
+    <div class="fstep"><span class="fk">REDACTA</span><div class="fbox"><div class="ft">Formulario con defaults</div><div class="fd">El doc-plantilla vive en el producto; review de Rally opcional, 1 click</div></div></div>
     <div class="fstep"><span class="fk">FONDEA</span><div class="fbox"><div class="ft">Pot &amp; Duration</div><div class="fd">USDC, tu token, o + Rally Points por encima — igual que hoy</div></div></div>
     <div class="fstep"><span class="fk">LIVE</span><div class="fbox"><div class="ft">Live + Community</div><div class="fd">Al depositar: campaña live y Community creada automáticamente</div></div></div>
     <div class="fstep"><span class="fk">MIDE</span><div class="fbox"><div class="ft">Track → Rewards</div><div class="fd">Leaderboard y distribución por periodos — lo de siempre</div></div></div>
@@ -367,7 +367,7 @@
     <thead><tr><th style="width:15%">Etapa</th><th style="width:30%">Fricción hoy (Partner Guide)</th><th style="width:32%">Fix (solo UI)</th><th>Psicología</th></tr></thead>
     <tbody>
       <tr><td><strong>Acceso</strong></td><td class="now">Emails al equipo → Rally crea la org a mano → confirmación → login. Días de espera antes de tocar nada</td><td class="fix">MVP: formulario "Request access" en el producto (nombre org + emails) → un click de aprobación en el Admin que ya existe <span class="dev s">S</span> · self-serve completo <span class="dev p2">FASE 2</span></td><td class="psy"><b>MOMENTUM</b>El interés del brand es máximo el día 0. Cada día de espera lo gasta</td></tr>
-      <tr><td><strong>Redactar</strong></td><td class="now">Copiar un Google Doc plantilla, redactar fuera del producto, enviarlo a review por Telegram, 2 Looms para aprender a subirlo</td><td class="fix">El wizard ES la plantilla: los defaults de Evaluation/Targeting son presets de config <span class="dev xs">XS</span> · "Request Rally review" = botón que notifica al equipo con el link del draft <span class="dev xs">XS</span></td><td class="psy"><b>ZEIGARNIK</b>Una checklist con el paso 1 ya en verde pide ser terminada. Un doc externo, no</td></tr>
+      <tr><td><strong>Redactar</strong></td><td class="now">Copiar un Google Doc plantilla, redactar fuera del producto, enviarlo a review por Telegram, 2 Looms para aprender a subirlo</td><td class="fix">El formulario de crear campaña ES la plantilla: los defaults de Evaluation/Targeting son presets de config <span class="dev xs">XS</span> · "Request Rally review" = botón que notifica al equipo con el link del draft <span class="dev xs">XS</span></td><td class="psy"><b>ZEIGARNIK</b>Una checklist con el paso 1 ya en verde pide ser terminada. Un doc externo, no</td></tr>
       <tr><td><strong>Fondear</strong></td><td class="now">La estructura del pool se decide en conversaciones sueltas</td><td class="fix">Nada nuevo: Pot &amp; Duration ya lo resuelve (USDC / tu token / capa de Rally Points). Solo el resumen de deposit visible en el paso <span class="dev xs">XS</span></td><td class="psy"><b>CLARITY = TRUST</b>Ver qué depositas y cuándo elimina la incertidumbre que hoy resuelve un humano</td></tr>
       <tr><td><strong>Lanzar</strong></td><td class="now">Al crear la campaña no pasa nada visible; la Community se crea automáticamente pero nadie se entera</td><td class="fix">Success screen: campaña live + "Your Community was created automatically" con botón Customize + Copy link / Share on X (patrón del referral) <span class="dev xs">XS</span></td><td class="psy"><b>PEAK-END</b>El momento de éxito cuenta lo que ya pasó solo y empuja la campaña hacia fuera</td></tr>
     </tbody>
@@ -393,7 +393,7 @@
       <div class="wgrid">
         <div class="chk">
           <div class="chkrow"><span class="cnum done">✓</span><div><div class="ct">Organization access</div><div class="cd">GenLayer · requested in-app, approved by Rally · 3 teammates added</div></div></div>
-          <div class="chkrow active"><span class="cnum now">2</span><div><div class="ct">Draft your campaign</div><div class="cd">The setup guide lives inside the wizard now — defaults applied, AI Template available. Optional: request a review from the Rally team before launch.</div></div><span class="cta"><button class="btn-blue">Continue draft</button></span></div>
+          <div class="chkrow active"><span class="cnum now">2</span><div><div class="ct">Draft your campaign</div><div class="cd">The setup guide lives inside the campaign form now — defaults applied, AI Template available. Optional: request a review from the Rally team before launch.</div></div><span class="cta"><button class="btn-blue">Continue draft</button></span></div>
           <div class="chkrow"><span class="cnum todo">3</span><div><div class="ct">Fund your reward pool</div><div class="cd">USDC, your project’s token, or layer Rally Points on top to boost participation.</div></div></div>
           <div class="chkrow"><span class="cnum todo">4</span><div><div class="ct">Deposit &amp; go live</div><div class="cd">Your campaign goes live and your Community is created automatically.</div></div></div>
         </div>
@@ -452,7 +452,7 @@
   <ul class="plain">
     <li><strong>Protocolo intacto.</strong> Pot, periods, misiones, core gates / quality / engagement, curvas Balanced–Default–Extreme, targeting, deposit y el coste de submission (100 RLP o ETH ~$1.20) no cambian. Todo lo propuesto es capa de UI, mensajería y notificaciones internas al equipo.</li>
     <li><strong>Regla de recorte:</strong> si un fix necesita backend nuevo o AI, se parte en MVP (sin) + fase 2. Lo que ya pasa solo (la Community se crea automáticamente al crear campaña) no se convierte en pasos — solo se <em>cuenta</em> en el success.</li>
-    <li><strong>El wizard de 6 pasos se mantiene</strong> con Evaluation y Targeting pre-resueltos con los defaults actuales (presets de config, editables) — detallado en la iteración v2 (historial de git).</li>
+    <li><strong>El formulario de 6 pasos de Campaign Management se mantiene por debajo</strong> con Evaluation y Targeting pre-resueltos con los defaults actuales (presets de config, editables).</li>
     <li><strong>Solo cifras reales:</strong> 500 USDC / periodo, 100 RLP por submission, $2,000 de umbral para Communities (del Partner Guide). El pre-check es orientativo — la AI Evaluation decide, y así se comunica.</li>
   </ul>
 </section>
@@ -468,7 +468,7 @@
       <tr><td>2</td><td class="fix">Timeline de submission + línea de feedback por plantilla</td><td><span class="dev xs">XS</span></td><td class="now">Solo frontend: pinta estados y scores que el backend ya devuelve.</td></tr>
       <tr><td>3</td><td class="fix">Checklist de brand + "Request access" in-app</td><td><span class="dev s">S</span></td><td class="now">Un formulario + aprobación en el Admin existente + página de checklist con estado derivado de datos existentes.</td></tr>
       <tr><td>4</td><td class="fix">Success screen: live + Community automática + Share on X</td><td><span class="dev xs">XS</span></td><td class="now">Solo frontend: cuenta lo que ya pasa solo (la Community se crea automáticamente) + share-intent.</td></tr>
-      <tr><td>5</td><td class="fix">Wizard en 3 pantallas (el qué · el pot · deposit)</td><td><span class="dev xs">XS</span></td><td class="now">Reagrupar pasos existentes: Basic + Missions = "el qué"; Evaluation/Targeting con defaults detrás de "Advanced". Mismos campos, misma API.</td></tr>
+      <tr><td>5</td><td class="fix">Crear campaña en 3 pantallas (el qué · el pot · deposit)</td><td><span class="dev xs">XS</span></td><td class="now">Reagrupar los pasos existentes del formulario: Basic + Missions = "el qué"; Evaluation/Targeting con defaults detrás de "Advanced". Mismos campos, misma API.</td></tr>
       <tr><td>6</td><td class="fix">Badge ✔ Verified / Community en las cards de Explore</td><td><span class="dev xs">XS</span></td><td class="now">Un flag por proyecto (las orgs partner ya existen de facto) + un chip en la card.</td></tr>
     </tbody>
   </table></div>
