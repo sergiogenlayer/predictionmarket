@@ -1,114 +1,82 @@
-<title>2026.07.15 app.rally.fun Updated Flows — Creators & Projects</title>
+<title>Rally — Updated Flows (app.rally.fun) · Doc visual para diseño</title>
 <style>
   :root{
-    --paper:#F8F8FB; --ink:#141620; --ink-2:#5B5F72; --line:#E2E4EE;
-    --card:#FFFFFF; --accent:#2B3BE8; --accent-soft:#EDEFFE;
+    --paper:#FFFFFF; --ink:#12141F; --ink-2:#6B7084; --line:#E7E9F3;
+    --card:#FFFFFF; --accent:#2B3BE8; --purple:#7C3AED;
     --mono:ui-monospace,'SF Mono','Cascadia Code',Menlo,Consolas,monospace;
     --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
   }
   @media (prefers-color-scheme: dark){
-    :root{ --paper:#101118; --ink:#EAEBF2; --ink-2:#9A9EB2; --line:#282B3A;
-           --card:#181A24; --accent:#8FA0FF; --accent-soft:#1E2236; }
+    :root{ --paper:#0F1017; --ink:#EDEEF5; --ink-2:#9BA0B4; --line:#272A3A; --card:#171923 }
   }
-  :root[data-theme="dark"]{ --paper:#101118; --ink:#EAEBF2; --ink-2:#9A9EB2; --line:#282B3A;
-           --card:#181A24; --accent:#8FA0FF; --accent-soft:#1E2236; }
-  :root[data-theme="light"]{ --paper:#F8F8FB; --ink:#141620; --ink-2:#5B5F72; --line:#E2E4EE;
-           --card:#FFFFFF; --accent:#2B3BE8; --accent-soft:#EDEFFE; }
+  :root[data-theme="dark"]{ --paper:#0F1017; --ink:#EDEEF5; --ink-2:#9BA0B4; --line:#272A3A; --card:#171923 }
+  :root[data-theme="light"]{ --paper:#FFFFFF; --ink:#12141F; --ink-2:#6B7084; --line:#E7E9F3; --card:#FFFFFF }
 
   *{box-sizing:border-box; margin:0}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
-  body{background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.55; font-size:16px; padding:0 20px 96px}
-  .wrap{max-width:1080px; margin:0 auto}
+  body{background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.5; font-size:16px; padding:0 20px 110px}
+  .wrap{max-width:1020px; margin:0 auto}
   a{color:var(--accent)}
   a:focus-visible,button:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
 
-  header.masthead{padding:58px 0 24px; border-bottom:1px solid var(--line)}
-  .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent)}
-  h1{font-size:clamp(27px,4vw,40px); line-height:1.08; letter-spacing:-.02em; font-weight:800; text-wrap:balance; margin:14px 0 12px}
-  .lede{max-width:66ch; color:var(--ink-2); font-size:16.5px}
-  .meta-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px}
-  .meta-chip{font-family:var(--mono); font-size:11.5px; padding:5px 10px; border:1px solid var(--line); border-radius:999px; color:var(--ink-2); background:var(--card)}
+  /* ======== masthead ======== */
+  header.masthead{padding:64px 0 30px}
+  .kicker{font-family:var(--mono); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent)}
+  h1{font-size:clamp(34px,5.5vw,58px); line-height:.98; letter-spacing:-.03em; font-weight:900; font-style:italic; text-transform:uppercase; margin:16px 0 4px}
+  h1 .thin{color:var(--accent)}
+  .lede{max-width:58ch; color:var(--ink-2); font-size:16.5px; margin-top:14px}
+  .rules-strip{display:flex; flex-wrap:wrap; gap:8px; margin-top:22px}
+  .rule{font-family:var(--mono); font-size:11.5px; padding:6px 12px; border:1.5px solid var(--ink); border-radius:999px; font-weight:700}
+  .rule.alt{border-color:var(--line); color:var(--ink-2); font-weight:400}
 
-  nav.toc{display:flex; flex-wrap:wrap; gap:6px 18px; padding:16px 0; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:12.5px}
-  nav.toc a{text-decoration:none; color:var(--ink-2)}
+  nav.toc{display:flex; flex-wrap:wrap; gap:8px 20px; padding:18px 0; border-top:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink); font-family:var(--mono); font-size:12.5px; margin-top:26px}
+  nav.toc a{text-decoration:none; color:var(--ink); font-weight:700}
   nav.toc a:hover{color:var(--accent)}
-  nav.toc a b{color:var(--accent); font-weight:600; margin-right:5px}
+  nav.toc a small{color:var(--ink-2); font-weight:400; margin-left:4px}
 
-  section{padding:50px 0 8px}
-  .sec-head{display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:baseline; margin-bottom:8px}
-  .sec-num{font-family:var(--mono); font-size:13px; color:var(--accent); letter-spacing:.1em}
-  h2{font-size:clamp(21px,3vw,28px); letter-spacing:-.014em; font-weight:800}
-  h3{font-size:16.5px; font-weight:700; margin:26px 0 8px}
-  section > p{max-width:70ch; color:var(--ink-2); margin:8px 0}
-  section > p strong{color:var(--ink)}
-  .cap{font-family:var(--mono); font-size:11.5px; color:var(--ink-2); margin:8px 2px 0}
+  /* ======== flow section titles (Pablo-doc style) ======== */
+  .flow-title{padding:84px 0 6px}
+  .flow-title .ft-kicker{font-family:var(--mono); font-size:12px; letter-spacing:.16em; color:var(--accent); text-transform:uppercase}
+  .flow-title h2{font-size:clamp(38px,6.5vw,72px); line-height:.95; letter-spacing:-.03em; font-weight:900; font-style:italic; text-transform:uppercase; margin-top:8px}
+  .flow-title p{max-width:60ch; color:var(--ink-2); margin-top:14px; font-size:16px}
 
-  .learn{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:10px; margin:16px 0}
-  .lrn{background:var(--card); border:1px solid var(--line); border-radius:11px; padding:13px 14px; font-size:13.5px; color:var(--ink-2)}
-  .lrn b{display:block; color:var(--ink); margin-bottom:3px}
-  .lrn .src{font-family:var(--mono); font-size:10px; letter-spacing:.08em; color:var(--accent); display:block; margin-bottom:6px}
+  /* ======== step blocks ======== */
+  .step{position:relative; padding:38px 0 0 78px}
+  .step::before{content:""; position:absolute; left:26px; top:0; bottom:-6px; width:2px; background:var(--line)}
+  .step:first-of-type::before{top:44px}
+  .step.last::before{bottom:auto; height:44px}
+  .snum{position:absolute; left:0; top:34px; width:54px; height:54px; border-radius:50%; background:var(--ink); color:var(--paper); display:grid; place-items:center; font-family:var(--mono); font-weight:800; font-size:20px; z-index:1}
+  .step.new .snum{background:var(--accent)}
+  .shead{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+  .shead h3{font-size:22px; font-weight:800; letter-spacing:-.015em}
+  .stag{font-family:var(--mono); font-size:10px; font-weight:800; letter-spacing:.1em; padding:4px 10px; border-radius:999px}
+  .stag.same{background:#DCFCE7; color:#15803D}
+  .stag.new{background:#2B3BE8; color:#fff}
+  .stag.copy{background:#FEF3C7; color:#B45309}
+  @media (prefers-color-scheme: dark){ .stag.same{background:#14321F; color:#6EE7A0} .stag.copy{background:#3A2B10; color:#FBBF24} }
+  :root[data-theme="dark"] .stag.same{background:#14321F; color:#6EE7A0}
+  :root[data-theme="dark"] .stag.copy{background:#3A2B10; color:#FBBF24}
+  :root[data-theme="light"] .stag.same{background:#DCFCE7; color:#15803D}
+  :root[data-theme="light"] .stag.copy{background:#FEF3C7; color:#B45309}
+  .sdesc{color:var(--ink-2); font-size:14.5px; margin-top:6px; max-width:66ch}
+  .sdesc b{color:var(--ink)}
 
-  .note{background:var(--accent-soft); border:1px solid var(--line); border-radius:10px; padding:13px 16px; max-width:74ch; color:var(--ink); font-size:14px; margin:14px 0}
-
-  /* ============ FLOW STRIPS (mini screens) ============ */
-  .strip{display:flex; gap:0; overflow-x:auto; padding:20px 4px 10px; align-items:stretch}
-  .ms{min-width:186px; width:186px; flex:none; position:relative; padding-right:26px}
-  .ms:not(:last-child)::after{content:""; position:absolute; right:6px; top:74px; width:11px; height:11px;
-    border-top:2px solid var(--accent); border-right:2px solid var(--accent); transform:rotate(45deg)}
-  .ms .num{font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:.08em; margin-bottom:6px}
-  .thumb{border:1px solid var(--line); border-radius:10px; background:#FFFFFF; overflow:hidden; height:128px; display:flex; flex-direction:column}
-  .thumb .th{height:16px; background:linear-gradient(120deg,#EDEFFD,#F7F2FE); border-bottom:1px solid #ECEEF6; display:flex; align-items:center; gap:3px; padding:0 7px}
-  .thumb .th i{width:5px; height:5px; border-radius:50%; background:#D8DBEA}
-  .thumb .tb{flex:1; padding:8px 9px; display:flex; flex-direction:column; gap:5px}
-  .ln{height:6px; border-radius:3px; background:#ECEEF6}
-  .ln.w40{width:40%} .ln.w60{width:60%} .ln.w80{width:80%}
-  .hl{height:16px; border-radius:5px; background:#2B3BE8; opacity:.92}
-  .hl.green{background:#17A34A}
-  .hl.soft{background:#EDEFFE; border:1px dashed #B9C0F5}
-  .hl.half{width:55%}
-  .pillrow{display:flex; gap:4px}
-  .pill{height:10px; border-radius:5px; background:#EBE7FB; flex:1}
-  .pill.b{background:#DCE8FF} .pill.o{background:#FFEDD9}
-  .grid4{display:grid; grid-template-columns:1fr 1fr; gap:4px; flex:1}
-  .cell{border:1px solid #ECEEF6; border-radius:4px; background:#FBFBFE}
-  .bar{height:8px; border-radius:4px; background:#ECEEF6; position:relative; overflow:hidden}
-  .bar::after{content:""; position:absolute; inset:0; width:58%; background:#17A34A; border-radius:4px}
-  .rings-mini{display:flex; gap:4px}
-  .rg{width:16px; height:16px; border-radius:50%; border:3px solid #F59E0B33; border-top-color:#F59E0B}
-  .rg.p{border-color:#8B5CF633; border-top-color:#8B5CF6}
-  .rg.b{border-color:#3B82F633; border-top-color:#3B82F6}
-  .ms .lbl{font-size:12.5px; font-weight:700; margin-top:8px; line-height:1.3}
-  .ms .sub{font-size:11.5px; color:var(--ink-2); margin-top:3px; line-height:1.45}
-  .ms .tag{display:inline-block; font-family:var(--mono); font-size:9.5px; font-weight:700; letter-spacing:.06em; padding:2px 6px; border-radius:4px; margin-top:6px}
-  .tag.same{background:#DCFCE7; color:#15803D}
-  .tag.new{background:#EDEFFE; color:#2B3BE8}
-  @media (prefers-color-scheme: dark){
-    .tag.same{background:#14321F; color:#6EE7A0}
-    .tag.new{background:#1E2236; color:#8FA0FF}
-  }
-  :root[data-theme="dark"] .tag.same{background:#14321F; color:#6EE7A0}
-  :root[data-theme="dark"] .tag.new{background:#1E2236; color:#8FA0FF}
-  :root[data-theme="light"] .tag.same{background:#DCFCE7; color:#15803D}
-  :root[data-theme="light"] .tag.new{background:#EDEFFE; color:#2B3BE8}
-
-  /* ============ POV FRAMES (Rally light UI) ============ */
+  /* ======== mockup frames (Rally light UI — always light, it's the product) ======== */
   .frame{
     --r-bg:#FFFFFF; --r-ink:#12141F; --r-dim:#6B7084; --r-faint:#9CA1B4;
     --r-line:#E7E9F3; --r-line2:#D8DBEA; --r-blue:#2B3BE8;
-    --r-lav-bg:linear-gradient(120deg,#EDEFFD 0%,#F7F2FE 55%,#FDFBFF 100%);
+    --r-lav:linear-gradient(120deg,#EDEFFD 0%,#F7F2FE 55%,#FDFBFF 100%);
     --r-chip:#EBE7FB; --r-chip-ink:#7A6BD8;
     --r-green:#17A34A; --r-green-bg:#F0FAF3; --r-warn:#D97706;
-    margin:20px 0 4px; border:1px solid var(--line); border-radius:14px; background:var(--card); overflow:hidden;
+    margin:18px 0 0; border:1px solid var(--line); border-radius:16px; background:#fff; overflow:hidden;
+    box-shadow:0 1px 2px rgba(18,20,31,.05), 0 12px 32px -18px rgba(18,20,31,.18);
   }
-  .frame .bar2{display:flex; align-items:center; gap:8px; padding:9px 14px; border-bottom:1px solid var(--line); background:var(--paper)}
-  .frame .bar2 i{width:9px; height:9px; border-radius:50%; background:var(--line); display:inline-block}
-  .frame .bar2 .url{margin-left:10px; font-family:var(--mono); font-size:11px; color:var(--ink-2); background:var(--card); border:1px solid var(--line); padding:3px 11px; border-radius:999px}
   .frame .screen{background:var(--r-bg); color:var(--r-ink); font-size:14px; overflow-x:auto}
-  .frame .cv{min-width:900px; padding:0 0 24px}
+  .frame .cv{min-width:880px; padding:0 0 24px}
 
   .r-top{display:flex; align-items:center; gap:18px; padding:12px 26px; border-bottom:1px solid var(--r-line)}
-  .r-logo{font-style:italic; font-weight:900; letter-spacing:-.02em; font-size:18px}
+  .r-logo{font-style:italic; font-weight:900; letter-spacing:-.02em; font-size:18px; color:#12141F}
   .r-logo::before{content:"⚡ "; font-style:normal; font-size:14px}
   .r-nav{display:flex; gap:18px; font-size:12.5px; color:var(--r-dim); align-items:center}
   .r-nav .on{color:var(--r-ink); font-weight:700; border-bottom:2px solid var(--r-blue); padding-bottom:4px}
@@ -118,10 +86,10 @@
   .btn-wallet{background:var(--r-blue); color:#fff; font-weight:700; font-size:12px; border:none; border-radius:10px; padding:8px 13px}
   .btn-blue{background:var(--r-blue); color:#fff; font-weight:700; font-size:13px; border:none; border-radius:10px; padding:10px 18px}
   .btn-line{background:#fff; color:var(--r-ink); border:1px solid var(--r-line2); border-radius:10px; padding:9px 14px; font-size:12.5px; font-weight:600}
-  .r-hero{background:var(--r-lav-bg); padding:24px 26px 18px}
-  .r-h1{font-size:24px; font-weight:800; letter-spacing:-.02em}
-  .r-sub{color:var(--r-dim); font-size:13px; margin-top:5px; max-width:62ch}
-  .r-pad{padding:18px 26px 0}
+  .r-hero{background:var(--r-lav); padding:22px 26px 16px}
+  .r-h1{font-size:23px; font-weight:800; letter-spacing:-.02em; color:#12141F}
+  .r-sub{color:var(--r-dim); font-size:13px; margin-top:5px; max-width:64ch}
+  .r-pad{padding:16px 26px 0}
 
   .vcheck{color:#3B82F6; font-size:12px}
   .nchip{background:var(--r-chip); color:var(--r-chip-ink); font-size:10px; font-weight:700; padding:3px 9px; border-radius:999px}
@@ -129,26 +97,33 @@
   .tchip.comm{background:#FFF4E8; color:#D97706}
   .tchip.ok{background:var(--r-green-bg); color:var(--r-green)}
 
-  .xgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:14px}
+  .xgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:4px}
   .xcard{border:1px solid var(--r-line); border-radius:12px; overflow:hidden; background:#fff}
-  .xban{height:84px; position:relative; display:flex; align-items:flex-start; padding:9px}
-  .xban .pot{font-family:var(--mono); font-size:12px; font-weight:700; color:#fff}
+  .xban{height:86px; position:relative; display:flex; align-items:flex-start; padding:9px}
+  .xban .pot{font-family:var(--mono); font-size:12.5px; font-weight:800; color:#fff}
   .xban .ends{position:absolute; right:8px; bottom:8px; background:rgba(10,10,20,.55); color:#fff; font-size:10px; padding:3px 9px; border-radius:999px}
   .xbody{padding:12px 13px 13px}
-  .xt{font-weight:800; font-size:14px; letter-spacing:-.01em}
+  .xt{font-weight:800; font-size:14.5px; letter-spacing:-.01em; color:#12141F}
   .xby{display:flex; align-items:center; gap:6px; margin-top:7px; font-size:11.5px; color:var(--r-dim)}
   .xava{width:18px; height:18px; border-radius:50%; background:#14161F; flex:none}
-  .xava.c1{background:linear-gradient(135deg,#F59E0B,#EF4444)} .xava.c2{background:linear-gradient(135deg,#10B981,#3B82F6)}
+  .xava.c1{background:linear-gradient(135deg,#F59E0B,#EF4444)} .xava.c2{background:linear-gradient(135deg,#10B981,#3B82F6)} .xava.c3{background:linear-gradient(135deg,#8B5CF6,#EC4899)}
   .paid{margin-top:10px}
   .paid .pb{height:6px; border-radius:3px; background:#EEF0F7; position:relative; overflow:hidden}
   .paid .pb i{position:absolute; inset:0; background:var(--r-green); border-radius:3px}
   .paid .pt2{display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; color:var(--r-faint); margin-top:5px}
-  .paid .pt2 b{color:var(--r-ink)}
+  .paid .pt2 b{color:#12141F}
   .xfoot{display:flex; gap:6px; margin-top:10px}
 
-  .mpanel{border:1px solid var(--r-line); border-radius:12px; margin:16px 26px 0; background:#fff}
-  .mhead{display:flex; align-items:center; padding:13px 17px; border-bottom:1px solid var(--r-line); font-weight:700; font-size:13.5px}
-  .mhead .join{margin-left:auto; color:var(--r-green); font-weight:700; font-size:12.5px}
+  .pothero{display:flex; gap:12px}
+  .potcard{border-radius:14px; padding:16px 18px; color:#fff; min-width:150px}
+  .potcard .pl{font-size:10.5px; opacity:.9; font-weight:700}
+  .potcard .pv{font-size:22px; font-weight:800; margin-top:4px}
+  .potcard.orange{background:linear-gradient(135deg,#F4740C,#FB9E3C)}
+  .potcard.purple{background:linear-gradient(135deg,#7C3AED,#A855F7)}
+
+  .mpanel{border:1px solid var(--r-line); border-radius:12px; margin:14px 26px 0; background:#fff}
+  .mhead{display:flex; align-items:center; padding:13px 17px; border-bottom:1px solid var(--r-line); font-weight:700; font-size:13.5px; color:#12141F}
+  .mhead .join{margin-left:auto; font-weight:700; font-size:12.5px; color:var(--r-green)}
   .mbody{padding:16px 17px}
   .msteps{display:flex; gap:10px; margin-bottom:14px}
   .mst{flex:1; font-size:11px; color:var(--r-faint)}
@@ -164,77 +139,73 @@
   .pc.ok i{background:#DCFCE7; color:var(--r-green)}
   .pc.warn i{background:#FEF3C7; color:var(--r-warn)}
   .pc.warn{color:#7C4A03}
-  .inp{background:#fff; border:1px solid var(--r-line2); border-radius:9px; padding:9px 12px; font-size:13px; color:var(--r-faint)}
-  .payrow{border:1px solid var(--r-line2); border-radius:10px; padding:10px 13px; display:flex; align-items:center; gap:10px; font-size:12.5px; margin-top:7px}
+  .inp{background:#fff; border:1px solid var(--r-line2); border-radius:9px; padding:9px 12px; font-size:13px; color:#12141F}
+  .inp.ph{color:var(--r-faint)}
+  .payrow{border:1px solid var(--r-line2); border-radius:10px; padding:10px 13px; display:flex; align-items:center; gap:10px; font-size:12.5px; margin-top:7px; color:#12141F}
   .payrow.on{border-color:var(--r-blue); box-shadow:0 0 0 1px var(--r-blue) inset}
   .payrow .amt{margin-left:auto; font-family:var(--mono); font-size:11.5px; font-weight:700}
-  .payrow small{display:block; color:var(--r-faint); font-size:10.5px}
+  .payrow small{display:block; color:var(--r-faint); font-size:10.5px; font-weight:400}
 
   .wgrid{display:grid; grid-template-columns:1.6fr 1fr; gap:18px; padding:16px 26px 0}
-  .chk{display:grid; gap:9px}
-  .chkrow{border:1px solid var(--r-line); border-radius:12px; background:#fff; padding:13px 15px; display:flex; gap:12px; align-items:flex-start}
-  .chkrow.active{border-color:var(--r-blue); box-shadow:0 0 0 1px var(--r-blue) inset}
-  .cnum{width:24px; height:24px; border-radius:50%; flex:none; display:grid; place-items:center; font-size:11px; font-weight:800; font-family:var(--mono)}
-  .cnum.done{background:var(--r-green-bg); color:var(--r-green); border:1px solid #BFE5CC}
-  .cnum.now{background:#EDEFFE; color:var(--r-blue); border:1px solid #C3C8F7}
-  .cnum.todo{border:1px solid var(--r-line2); color:var(--r-faint)}
-  .chkrow .ct{font-weight:800; font-size:13.5px}
-  .chkrow .cd{font-size:12px; color:var(--r-dim); margin-top:2px; line-height:1.5}
-  .chkrow .cta{margin-left:auto; flex:none}
-  .team{border:1px solid var(--r-line); border-radius:12px; background:var(--r-lav-bg); padding:15px}
+  .panel{border:1px solid var(--r-line); border-radius:12px; background:#FBFBFE; padding:18px; color:#12141F}
+  .panel .pt{font-size:17px; font-weight:800; letter-spacing:-.01em; margin-bottom:10px}
+  .fl{font-size:12px; font-weight:700; margin:12px 0 4px; color:#12141F}
+  .team{border:1px solid var(--r-line); border-radius:12px; background:var(--r-lav); padding:15px; color:#12141F}
   .team .tt{font-weight:800; font-size:13px; margin-bottom:5px}
   .team p{font-size:12px; color:var(--r-dim); margin:0 0 9px; line-height:1.5}
+  .sumrow{display:flex; justify-content:space-between; font-size:12.5px; color:var(--r-dim); padding:7px 0; border-bottom:1px dashed var(--r-line)}
+  .sumrow b{color:#12141F; font-family:var(--mono)}
+  .sumrow:last-of-type{border-bottom:none}
+  .crumbs{display:flex; gap:10px; font-family:var(--mono); font-size:11px; color:var(--r-faint)}
+  .crumbs .on{color:var(--r-blue); font-weight:700}
+  .crumbs .done{color:var(--r-green); font-weight:700}
+
+  .lbrow{display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid var(--r-line); font-size:12.5px; color:#12141F}
+  .lbrow:last-child{border-bottom:none}
+  .lbrow .rk{font-family:var(--mono); color:var(--r-faint); width:22px}
+  .lbrow .meta{color:var(--r-dim)}
+  .lbrow .amt2{margin-left:auto; font-family:var(--mono); font-weight:700; color:#2563EB}
 
   @media (max-width:760px){
     .xgrid{grid-template-columns:1fr}
     .wgrid{grid-template-columns:1fr}
-    .sec-head{grid-template-columns:1fr}
+    .step{padding-left:0; padding-top:64px}
+    .step::before{display:none}
+    .snum{top:0}
   }
 </style>
 
 <div class="wrap">
 
+<!-- ================= MASTHEAD ================= -->
 <header class="masthead">
-  <span class="eyebrow">2026.07.15 · app.rally.fun updated flows · for reference</span>
-  <h1>Updated Flows — Creators &amp; Projects</h1>
-  <p class="lede">Formato del doc de flows de Pablo, aplicado a app.rally.fun: <strong>POV</strong> (las pantallas clave) y <strong>FLOW</strong> (la secuencia paso a paso) para creators y projects. Usa <a href="https://contentrewards.com/discover" rel="noopener">ContentRewards</a> como referencia de presentación — adoptamos sus patrones de claridad, no su economía: el protocolo de Rally (pot, periods, scoring, deposit) queda intacto.</p>
-  <div class="meta-row">
-    <span class="meta-chip">protocolo intacto</span>
-    <span class="meta-chip">cada pantalla marcada IGUAL / NUEVO</span>
-    <span class="meta-chip">referencia: contentrewards.com/discover</span>
+  <span class="kicker">app.rally.fun · updated flows · para diseño · 2026.07</span>
+  <h1>Updated <span class="thin">Flows</span></h1>
+  <p class="lede">Los flujos propuestos de <strong>creator</strong> y <strong>project</strong>, pantalla a pantalla. Cada paso está etiquetado: <span class="stag same" style="vertical-align:2px">YA EXISTE</span> no se rediseña, <span class="stag new" style="vertical-align:2px">NUEVO</span> es pantalla o bloque a diseñar, <span class="stag copy" style="vertical-align:2px">SOLO COPY</span> es texto sobre lo que ya hay.</p>
+  <div class="rules-strip">
+    <span class="rule">CUANTOS MENOS PASOS, MEJOR</span>
+    <span class="rule alt">El protocolo no cambia — solo la experiencia</span>
+    <span class="rule alt">Referencia de claridad: contentrewards.com</span>
   </div>
+  <nav class="toc" aria-label="Flujos">
+    <a href="#creator">01 CREATOR FLOW <small>5 pantallas</small></a>
+    <a href="#project">02 PROJECT FLOW <small>5 pantallas</small></a>
+    <a href="#ambassador">03 AMBASSADOR FLOW <small>creator + project</small></a>
+  </nav>
 </header>
 
-<nav class="toc" aria-label="Secciones">
-  <a href="#s0"><b>00</b>Referencia ContentRewards</a>
-  <a href="#s1"><b>01</b>Creators POV</a>
-  <a href="#s2"><b>02</b>Creators Flow</a>
-  <a href="#s3"><b>03</b>Projects POV</a>
-  <a href="#s4"><b>04</b>Projects Flow</a>
-  <a href="#s5"><b>05</b>Communities &amp; Ambassadors</a>
-</nav>
+<!-- ================= CREATOR FLOW ================= -->
+<div class="flow-title" id="creator">
+  <span class="ft-kicker">01 · de descubrir a cobrar</span>
+  <h2>Creator Flow</h2>
+  <p>Join a campaign → read the rules → post on X → get rewarded. El flujo ya funciona así; estas pantallas lo hacen evidente y quitan el único miedo real: pagar sin saber si tu post cumple.</p>
+</div>
 
-<!-- ============================================================ -->
-<section id="s0">
-  <div class="sec-head"><span class="sec-num">00</span><h2>Qué tomamos de ContentRewards (y qué no)</h2></div>
-  <p>ContentRewards (Whop) es hoy el estándar de UX en content bounties. Su fuerza no es la tecnología — es que <strong>cada decisión del usuario cabe en un vistazo</strong>. Cuatro patrones aplicables a Rally:</p>
-  <div class="learn">
-    <div class="lrn"><span class="src">CONTENTREWARDS</span><b>La card se decide con un número</b>Su card: reward por 1K views + presupuesto. La nuestra: pot del periodo + tiempo. Todo lo demás sobra en el grid.</div>
-    <div class="lrn"><span class="src">CONTENTREWARDS</span><b>Barra de "paid out" en la card</b>"$3.4K of $6K paid out" = prueba social + urgencia. Rally ya tiene el dato (Current Period / Total pot: 500/1000 USDC) — solo hay que pintarlo.</div>
-    <div class="lrn"><span class="src">CONTENTREWARDS</span><b>El flow del creator son 4 pasos</b>Join → Read rules → Post → Get paid. Rally ya funciona así; hay que <em>contarlo</em> así en cada pantalla y en el marketing.</div>
-    <div class="lrn"><span class="src">CONTENTREWARDS</span><b>Tipo de campaña como badge</b>Ellos: Clipping / UGC / Faceless. Nosotros: ✔ Verified / Community — el carril se lee sin entrar.</div>
-  </div>
-  <div class="note"><strong>Qué NO copiamos:</strong> el modelo CPM (pago por views). Rally paga por calidad evaluada por AI sobre un pot — es nuestra diferencia competitiva y es protocolo. Adoptamos su presentación, no su economía.</div>
-</section>
-
-<!-- ============================================================ -->
-<section id="s1">
-  <div class="sec-head"><span class="sec-num">01</span><h2>Creators POV</h2></div>
-  <p>Las tres pantallas que ve un creator, en orden. Lo único nuevo respecto al producto actual: la barra de pot pagado en la card, el rules check antes de pagar, y el feedback bajo el score.</p>
-
-  <h3>POV 1 · Network (discover)</h3>
-  <figure class="frame" role="img" aria-label="Creators POV: pantalla Network de descubrimiento">
-    <div class="bar2"><i></i><i></i><i></i><span class="url">app.rally.fun/campaigns</span></div>
+<div class="step new">
+  <span class="snum">1</span>
+  <div class="shead"><h3>Network — descubrir</h3><span class="stag new">CARD NUEVA</span></div>
+  <p class="sdesc">La card se decide en un vistazo: <b>pot del periodo · barra de lo ya distribuido · tiempo</b>. Badge azul para proyectos verified, ámbar para campañas de la comunidad. Botón <b>+ Create campaign</b> visible para todos.</p>
+  <figure class="frame" role="img" aria-label="Pantalla 1: Network, grid de campañas">
     <div class="screen"><div class="cv">
       <div class="r-top">
         <span class="r-logo">RALLY</span>
@@ -263,11 +234,11 @@
             </div>
           </article>
           <article class="xcard">
-            <div class="xban" style="background:linear-gradient(120deg,#20264E,#4356C9)"><span class="pot">◎ 75K RLP</span><span class="ends">⏱ 4 days</span></div>
+            <div class="xban" style="background:linear-gradient(120deg,#20264E,#4356C9)"><span class="pot">◎ 40K RLP</span><span class="ends">⏱ Ends next week</span></div>
             <div class="xbody">
-              <div class="xt">Why We Need GenLayer</div>
-              <div class="xby"><span class="xava"></span>@GenLayer <span class="vcheck">✔</span></div>
-              <div class="paid"><div class="pb"><i style="width:34%"></i></div><div class="pt2"><span><b>25.5K</b> of 75K RLP</span><span>96 subs</span></div></div>
+              <div class="xt">Your Last Tweet</div>
+              <div class="xby"><span class="xava"></span>@RallyOnChain <span class="vcheck">✔</span></div>
+              <div class="paid"><div class="pb"><i style="width:34%"></i></div><div class="pt2"><span><b>13.6K</b> of 40K RLP</span><span>96 subs</span></div></div>
               <div class="xfoot"><span class="tchip">✔ VERIFIED</span><span class="nchip">GenLayer Rally Testnet</span></div>
             </div>
           </article>
@@ -284,11 +255,37 @@
       </div>
     </div></div>
   </figure>
-  <figcaption class="cap">Card estilo ContentRewards con datos 100% Rally: pot por periodo + barra de distribuido (dato que ya existe en el Briefing) + badge de carril. La decisión cabe en un vistazo.</figcaption>
+</div>
 
-  <h3>POV 2 · Submit con rules check</h3>
-  <figure class="frame" role="img" aria-label="Creators POV: submit con rules check">
-    <div class="bar2"><i></i><i></i><i></i><span class="url">app.rally.fun/campaigns/internet-court-is-here</span></div>
+<div class="step">
+  <span class="snum">2</span>
+  <div class="shead"><h3>Campaign page — decidir</h3><span class="stag same">YA EXISTE</span></div>
+  <p class="sdesc">La página actual (Missions · Briefing · Leaderboard, pot naranja, period morado) no se toca. Es buena.</p>
+  <figure class="frame" role="img" aria-label="Pantalla 2: campaign page actual">
+    <div class="screen"><div class="cv">
+      <div class="r-hero">
+        <div style="display:flex; gap:18px; align-items:flex-start">
+          <div style="flex:1">
+            <div class="r-h1">Internet Court Is Here</div>
+            <div style="display:flex; gap:8px; align-items:center; margin-top:6px; font-size:12.5px; color:var(--r-dim)"><span class="xava"></span>@GenLayer <span class="nchip">Base</span></div>
+            <p class="r-sub" style="margin-top:10px">This campaign has one goal: amplify the launch of Internet Court and the Forbes coverage. Quote the posts and add your own voice.</p>
+            <div style="display:flex; gap:18px; margin-top:14px; font-size:13px; font-weight:700; color:#12141F"><span style="color:var(--r-blue); border-bottom:2px solid var(--r-blue); padding-bottom:4px">Missions</span><span style="color:var(--r-dim); font-weight:400">Briefing</span><span style="color:var(--r-dim); font-weight:400">Leaderboard</span></div>
+          </div>
+          <div class="pothero">
+            <div class="potcard orange"><div class="pl">◎ USDC</div><div class="pv">500</div></div>
+            <div class="potcard purple"><div class="pl">Period ends in</div><div class="pv">3 days</div></div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+  </figure>
+</div>
+
+<div class="step new">
+  <span class="snum">3</span>
+  <div class="shead"><h3>Submit — con el rules check antes de pagar</h3><span class="stag new">BLOQUE NUEVO</span></div>
+  <p class="sdesc">El único añadido del flujo: al pegar la URL, las reglas de la misión se convierten en una <b>checklist resuelta, gratis, antes de pagar los 100 RLP</b>. Verde = cumples; ámbar = aviso, no bloquea. El pago y el stepper son los de siempre.</p>
+  <figure class="frame" role="img" aria-label="Pantalla 3: submit con rules check">
     <div class="screen"><div class="cv">
       <div class="mpanel" style="margin-top:16px">
         <div class="mhead">1. Quote the Forbes milestone <span class="join">Joined ✓</span></div>
@@ -298,26 +295,31 @@
             <div class="mst on"><div class="ml">2. Submit your tweet</div><div class="mb"></div></div>
             <div class="mst"><div class="ml">3. AI Evaluation</div><div class="mb"></div></div>
           </div>
-          <div class="inp" style="display:flex; justify-content:space-between"><span>Paste your tweet URL here</span><span>⎘</span></div>
+          <div class="inp ph" style="display:flex; justify-content:space-between"><span>Paste your tweet URL here</span><span>⎘</span></div>
           <div class="prefly">
             <div class="ph">✓ Rules check <span class="free">FREE · BEFORE YOU PAY</span></div>
             <div class="pchecks">
-              <div class="pc ok"><i>✓</i><span><b>Quotes the GenLayer post</b> · <b>mentions @GenLayer + @courtofinternet</b></span></div>
+              <div class="pc ok"><i>✓</i><span><b>Quotes the GenLayer post</b> — correct link detected</span></div>
+              <div class="pc ok"><i>✓</i><span><b>Mentions @GenLayer and @courtofinternet</b></span></div>
               <div class="pc ok"><i>✓</i><span><b>No em dashes · doesn’t start with a mention</b></span></div>
-              <div class="pc warn"><i>!</i><span>Originality hint <em>(fase 2 · Wingston)</em></span></div>
+              <div class="pc warn"><i>!</i><span><b>Originality could score low</b> — your take reads close to the example</span></div>
             </div>
           </div>
           <div class="payrow on"><span>Pay with RLP<small>Use your Rally balance · Available: 180000 RLP</small></span><span class="amt">100 RLP</span></div>
+          <div class="payrow"><span>Pay with ETH<small>Pay from your wallet · Network: Base</small></span><span class="amt">0.0007 ETH (~$1.20)</span></div>
           <div style="margin-top:12px"><button class="btn-blue" style="width:100%">Submit tweet · 100 RLP</button></div>
+          <div style="font-size:11px; color:var(--r-faint); margin-top:8px">The rules check is advisory — final scoring happens in AI Evaluation.</div>
         </div>
       </div>
     </div></div>
   </figure>
-  <figcaption class="cap">La pantalla de submit actual + checklist de reglas resuelta por regex antes del pago. Orientativa — la AI Evaluation decide.</figcaption>
+</div>
 
-  <h3>POV 3 · Score con feedback</h3>
-  <figure class="frame" role="img" aria-label="Creators POV: score con feedback accionable">
-    <div class="bar2"><i></i><i></i><i></i><span class="url">app.rally.fun/campaigns/internet-court-is-here</span></div>
+<div class="step new">
+  <span class="snum">4</span>
+  <div class="shead"><h3>AI Evaluation — estado y feedback</h3><span class="stag new">TIMELINE + TIP</span></div>
+  <p class="sdesc">Los ~4 minutos de cola dejan de ser silencio: <b>timeline de estado</b> y, con el score, <b>una línea que dice qué mejorar</b>. Los gauges son los actuales.</p>
+  <figure class="frame" role="img" aria-label="Pantalla 4: evaluación con timeline y feedback">
     <div class="screen"><div class="cv">
       <div class="mpanel" style="margin-top:16px">
         <div class="mhead">Your submission <span class="join">Scored ✓ · 408 campaign points</span></div>
@@ -327,7 +329,7 @@
             <div class="mst done"><div class="ml">In queue · ~4 min</div><div class="mb"></div></div>
             <div class="mst done"><div class="ml">Scored · 15:03</div><div class="mb"></div></div>
           </div>
-          <div style="display:flex; gap:14px; flex-wrap:wrap; font-size:11px; color:var(--r-dim)">
+          <div style="display:flex; gap:16px; flex-wrap:wrap; font-size:11.5px; color:var(--r-dim); margin-bottom:4px">
             <span>Content Alignment <b style="color:#B45309">0.8</b></span>
             <span>Information Accuracy <b style="color:#B45309">0.8</b></span>
             <span>Originality <b style="color:#B45309">0.6</b></span>
@@ -337,82 +339,81 @@
           </div>
           <div class="prefly" style="margin-bottom:0">
             <div class="pchecks" style="margin-top:0">
-              <div class="pc ok"><i>→</i><span><b>Your weakest area: Originality (0.6).</b> Posts with a personal angle score higher. Engagement keeps growing during the period. You’re #14 on the leaderboard.</span></div>
+              <div class="pc ok"><i>→</i><span><b>Your weakest area: Originality (0.6).</b> Posts with a personal angle score higher. Engagement keeps growing during the period — you’re #14 on the leaderboard.</span></div>
             </div>
           </div>
         </div>
       </div>
     </div></div>
   </figure>
-  <figcaption class="cap">Mismos scores de siempre + una línea de feedback por plantilla (gate más bajo → consejo fijo). El score pasa de veredicto a coaching.</figcaption>
-</section>
+</div>
 
-<!-- ============================================================ -->
-<section id="s2">
-  <div class="sec-head"><span class="sec-num">02</span><h2>Creators Flow</h2></div>
-  <p>La secuencia completa, pantalla a pantalla. Verde = ya funciona así hoy; azul = cambio propuesto (solo UI).</p>
-
-  <div class="strip">
-    <div class="ms"><div class="num">1</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w60"></div><div class="pillrow"><span class="pill b"></span><span class="pill o"></span><span class="pill"></span></div><div class="grid4"><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span></div></div></div>
-      <div class="lbl">Network</div><div class="sub">Grid de campañas con pot, barra de pagado y badge de carril</div><span class="tag new">CARD NUEVA</span></div>
-    <div class="ms"><div class="num">2</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w80"></div><div class="ln w60"></div><div class="bar"></div><div class="pillrow"><span class="pill o"></span><span class="pill b"></span></div><div class="hl half"></div></div></div>
-      <div class="lbl">Campaign page</div><div class="sub">Missions · Briefing · Leaderboard, pot y period — igual que hoy</div><span class="tag same">IGUAL</span></div>
-    <div class="ms"><div class="num">3</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w60"></div><div class="ln w80"></div><div class="ln w80"></div><div class="ln w40"></div><div class="hl"></div></div></div>
-      <div class="lbl">Join mission</div><div class="sub">1. Read the rules — el stepper actual de 3 pasos</div><span class="tag same">IGUAL</span></div>
-    <div class="ms"><div class="num">4</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w80"></div><div class="hl soft" style="height:34px"></div><div class="ln w40"></div></div></div>
-      <div class="lbl">Post on X</div><div class="sub">El creator escribe su post fuera, como siempre</div><span class="tag same">IGUAL</span></div>
-    <div class="ms"><div class="num">5</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w80"></div><div class="hl green" style="height:30px; opacity:.15; border:1px solid #17A34A; border-radius:6px"></div><div class="ln w60"></div></div></div>
-      <div class="lbl">Rules check</div><div class="sub">Checklist gratis antes de pagar (regex en cliente)</div><span class="tag new">NUEVO</span></div>
-    <div class="ms"><div class="num">6</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w60"></div><div class="ln w80"></div><div class="hl"></div><div class="ln w40"></div></div></div>
-      <div class="lbl">Submit · 100 RLP</div><div class="sub">O ETH (~$1.20) — el pago de siempre, sin cambios</div><span class="tag same">IGUAL</span></div>
-    <div class="ms"><div class="num">7</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="bar"></div><div class="rings-mini"><span class="rg"></span><span class="rg"></span><span class="rg p"></span><span class="rg b"></span></div><div class="ln w80"></div><div class="ln w60"></div></div></div>
-      <div class="lbl">AI Evaluation</div><div class="sub">Timeline de estado + scores + línea de feedback</div><span class="tag new">TIMELINE + TIP</span></div>
-    <div class="ms"><div class="num">8</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w40"></div><div class="ln w80"></div><div class="ln w80"></div><div class="ln w80"></div></div></div>
-      <div class="lbl">Leaderboard</div><div class="sub">Campaign points → projected rewards por periodo</div><span class="tag same">IGUAL</span></div>
-    <div class="ms"><div class="num">9</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w60"></div><div class="hl green"></div><div class="ln w40"></div></div></div>
-      <div class="lbl">Get rewarded</div><div class="sub">Distribución al cierre del periodo — protocolo intacto</div><span class="tag same">IGUAL</span></div>
-  </div>
-  <p class="cap">9 pantallas, 3 cambios (1, 5, 7) — todos frontend. El resto del flow ya existe tal cual.</p>
-</section>
-
-<!-- ============================================================ -->
-<section id="s3">
-  <div class="sec-head"><span class="sec-num">03</span><h2>Projects POV — crear una campaña en 3 pasos</h2></div>
-  <p><strong>El qué → el pot → deposit. Ya está.</strong> Todo lo demás (evaluation, targeting, periods, knowledge base) queda con los defaults actuales detrás de un link "Advanced settings" — mismos parámetros, misma API, solo que ya no bloquean el camino. Y al depositar, <strong>la Community del proyecto se crea automáticamente</strong> — el proyecto solo la personaliza si quiere.</p>
-
-  <h3>POV 1 · Paso 1: el qué</h3>
-  <figure class="frame" role="img" aria-label="Projects POV: crear campaña, paso 1">
-    <div class="bar2"><i></i><i></i><i></i><span class="url">app.rally.fun/campaigns/create</span></div>
+<div class="step last">
+  <span class="snum">5</span>
+  <div class="shead"><h3>Leaderboard — cobrar</h3><span class="stag same">YA EXISTE</span></div>
+  <p class="sdesc">Campaign points → projected rewards por periodo. Sin cambios.</p>
+  <figure class="frame" role="img" aria-label="Pantalla 5: leaderboard con projected rewards">
     <div class="screen"><div class="cv">
-      <div class="r-hero" style="padding-bottom:14px">
-        <div style="display:flex; gap:10px; font-family:var(--mono); font-size:11px; color:var(--r-faint)">
-          <span style="color:var(--r-blue); font-weight:700">1 · THE CAMPAIGN</span><span>›</span><span>2 · THE POT</span><span>›</span><span>3 · DEPOSIT</span>
+      <div class="mpanel" style="margin-top:16px">
+        <div class="mhead">Leaderboard · Period 1 (Current)</div>
+        <div class="mbody" style="padding-top:6px">
+          <div class="lbrow"><span class="rk">#1</span><span class="xava c1"></span><b>Bang Yanto</b><span class="vcheck">✔</span><span class="meta">2 submissions · 49.474 pts</span><span class="amt2">~17,49 USDC</span></div>
+          <div class="lbrow"><span class="rk">#2</span><span class="xava c2"></span><b>Ahon Mazino</b><span class="vcheck">✔</span><span class="meta">2 submissions · 49.037 pts</span><span class="amt2">~17,33 USDC</span></div>
+          <div class="lbrow"><span class="rk">#3</span><span class="xava c3"></span><b>Dee</b><span class="vcheck">✔</span><span class="meta">2 submissions · 44.845 pts</span><span class="amt2">~17,06 USDC</span></div>
         </div>
       </div>
+    </div></div>
+  </figure>
+</div>
+
+<!-- ================= PROJECT FLOW ================= -->
+<div class="flow-title" id="project">
+  <span class="ft-kicker">02 · de cero a campaña live en una sesión</span>
+  <h2>Project Flow</h2>
+  <p>Crear una campaña son <strong>tres decisiones: el qué, el pot, deposit</strong>. Todo lo técnico (evaluation, targeting, periods) viene resuelto con los defaults de Rally, editable bajo "Advanced". Al depositar, la campaña queda live y <strong>la Community se crea automáticamente</strong>.</p>
+</div>
+
+<div class="step new">
+  <span class="snum">1</span>
+  <div class="shead"><h3>Request access</h3><span class="stag new">NUEVA</span></div>
+  <p class="sdesc">Sustituye los emails: el proyecto pide acceso desde el producto (nombre + equipo) y el equipo de Rally aprueba. Una pantalla mínima.</p>
+  <figure class="frame" role="img" aria-label="Pantalla 1: request access del proyecto">
+    <div class="screen"><div class="cv">
+      <div class="r-hero" style="text-align:center; padding:34px 26px 30px">
+        <div class="r-h1">Run campaigns for your project</div>
+        <p class="r-sub" style="margin:8px auto 0">Tell us who you are — the Rally team approves fast.</p>
+        <div style="max-width:420px; margin:18px auto 0; text-align:left">
+          <div class="inp" style="margin-bottom:8px">GenLayer</div>
+          <div class="inp ph" style="margin-bottom:8px">Teammate emails (comma separated)</div>
+          <button class="btn-blue" style="width:100%">Request access</button>
+        </div>
+      </div>
+    </div></div>
+  </figure>
+</div>
+
+<div class="step new">
+  <span class="snum">2</span>
+  <div class="shead"><h3>Crear campaña · El qué</h3><span class="stag new">NUEVA</span></div>
+  <p class="sdesc">Dos campos: <b>nombre</b> y <b>qué deben publicar los creators</b>. El AI Template rellena descripción, reglas y knowledge base desde el nombre. El resto, plegado en "Advanced".</p>
+  <figure class="frame" role="img" aria-label="Pantalla 2: crear campaña, el qué">
+    <div class="screen"><div class="cv">
+      <div class="r-hero" style="padding-bottom:14px">
+        <div class="crumbs"><span class="on">1 · THE CAMPAIGN</span><span>›</span><span>2 · THE POT</span><span>›</span><span>3 · DEPOSIT</span></div>
+      </div>
       <div class="wgrid">
-        <div class="chk">
-          <div class="chkrow" style="display:block">
-            <div class="ct" style="margin-bottom:10px">What is your campaign?</div>
-            <div class="cd" style="font-weight:700; color:var(--r-ink); margin-bottom:4px">Name</div>
-            <div class="inp" style="color:var(--r-ink); font-weight:700">Internet Court Is Here</div>
-            <div class="cd" style="font-weight:700; color:var(--r-ink); margin:12px 0 4px">What should creators post?</div>
-            <div class="inp" style="color:var(--r-ink); min-height:64px; line-height:1.5">Quote the GenLayer post quoting Forbes and amplify it in your own voice. Original takes only — no empty hype.</div>
-            <div class="cd" style="margin-top:12px; color:var(--r-faint)">Advanced: knowledge base · style · extra missions · <span style="color:var(--r-blue); font-weight:700">Expand ▾</span></div>
-          </div>
+        <div class="panel">
+          <div class="pt">What is your campaign?</div>
+          <div class="fl">Name</div>
+          <div class="inp" style="font-weight:700">Internet Court Is Here</div>
+          <div class="fl">What should creators post?</div>
+          <div class="inp" style="min-height:64px; line-height:1.5">Quote the GenLayer post quoting Forbes and amplify it in your own voice. Original takes only — no empty hype.</div>
+          <div style="font-size:12px; color:var(--r-faint); margin-top:12px">Advanced: knowledge base · style · extra missions · <span style="color:var(--r-blue); font-weight:700">Expand ▾</span></div>
         </div>
         <aside>
           <div class="team">
             <div class="tt">✦ AI Template</div>
-            <p>Write just the name — Wingston drafts the description, rules and knowledge base for you. Edit and go.</p>
+            <p>Write just the name — Wingston drafts the description, rules and knowledge base. Edit and go.</p>
             <button class="btn-line">✦ Fill it for me</button>
           </div>
         </aside>
@@ -420,62 +421,62 @@
       <div style="display:flex; padding:16px 26px 0"><span class="r-spacer"></span><button class="btn-blue">Continue</button></div>
     </div></div>
   </figure>
-  <figcaption class="cap">Dos campos obligatorios: nombre y qué debe publicar el creator. El AI Template (ya existe) rellena el resto. Mismos campos de siempre bajo "Advanced".</figcaption>
+</div>
 
-  <h3>POV 2 · Paso 2 y 3: el pot y deposit</h3>
-  <figure class="frame" role="img" aria-label="Projects POV: crear campaña, pot y deposit">
-    <div class="bar2"><i></i><i></i><i></i><span class="url">app.rally.fun/campaigns/create</span></div>
+<div class="step new">
+  <span class="snum">3</span>
+  <div class="shead"><h3>Crear campaña · El pot</h3><span class="stag new">NUEVA</span></div>
+  <p class="sdesc">Token, cantidad, duración — con el <b>resumen del deposit siempre a la vista</b>. Evaluation y Targeting quedan como "✓ Rally defaults", editables.</p>
+  <figure class="frame" role="img" aria-label="Pantalla 3: crear campaña, el pot">
     <div class="screen"><div class="cv">
       <div class="r-hero" style="padding-bottom:14px">
-        <div style="display:flex; gap:10px; font-family:var(--mono); font-size:11px; color:var(--r-faint)">
-          <span style="color:var(--r-green); font-weight:700">✓ 1 · THE CAMPAIGN</span><span>›</span><span style="color:var(--r-blue); font-weight:700">2 · THE POT</span><span>›</span><span>3 · DEPOSIT</span>
-        </div>
+        <div class="crumbs"><span class="done">✓ 1 · THE CAMPAIGN</span><span>›</span><span class="on">2 · THE POT</span><span>›</span><span>3 · DEPOSIT</span></div>
       </div>
       <div class="wgrid">
-        <div class="chk">
-          <div class="chkrow" style="display:block">
-            <div class="ct" style="margin-bottom:10px">What’s the pot?</div>
-            <div class="payrow on"><span>USDC<small>From your wallet · Base</small></span><span class="amt">◎</span></div>
-            <div class="payrow"><span>Your project’s token<small>Any ERC-20 · optionally layer Rally Points on top</small></span></div>
-            <div class="payrow"><span>Rally Points (RLP)<small>Your balance: 180000 RLP</small></span></div>
-            <div class="cd" style="font-weight:700; color:var(--r-ink); margin:12px 0 4px">Amount &amp; duration</div>
-            <div style="display:flex; gap:8px">
-              <div class="inp" style="color:var(--r-ink); font-weight:800; font-size:16px; max-width:160px">1000</div>
-              <div class="inp" style="color:var(--r-ink)">2 periods × 7 days ▾</div>
-            </div>
-            <div class="cd" style="margin-top:12px; color:var(--r-faint)">Advanced: evaluation · targeting · schedule <span class="tchip ok">✓ RALLY DEFAULTS</span> · <span style="color:var(--r-blue); font-weight:700">Edit ▾</span></div>
+        <div class="panel">
+          <div class="pt">What’s the pot?</div>
+          <div class="payrow on"><span>USDC<small>From your wallet · Base</small></span><span class="amt">◎</span></div>
+          <div class="payrow"><span>Your project’s token<small>Any ERC-20 · optionally layer Rally Points on top</small></span></div>
+          <div class="payrow"><span>Rally Points (RLP)<small>Your balance: 180000 RLP</small></span></div>
+          <div class="fl">Amount &amp; duration</div>
+          <div style="display:flex; gap:8px">
+            <div class="inp" style="font-weight:800; font-size:16px; max-width:150px">1000</div>
+            <div class="inp">2 periods × 7 days ▾</div>
           </div>
+          <div style="font-size:12px; color:var(--r-faint); margin-top:12px">Advanced: evaluation · targeting · schedule <span class="tchip ok">✓ RALLY DEFAULTS</span> · <span style="color:var(--r-blue); font-weight:700">Edit ▾</span></div>
         </div>
         <aside>
-          <div class="chkrow" style="display:block">
-            <div class="ct" style="margin-bottom:8px">Deposit &amp; launch</div>
-            <div class="cd" style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed var(--r-line)"><span>Pot</span><b>1000 USDC</b></div>
-            <div class="cd" style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed var(--r-line)"><span>Per period</span><b>500 USDC × 2</b></div>
-            <div class="cd" style="display:flex; justify-content:space-between; padding:6px 0"><span>Live</span><b>Immediately</b></div>
-            <div style="margin-top:12px"><button class="btn-blue" style="width:100%">Deposit &amp; launch · 1000 USDC</button></div>
+          <div class="panel" style="background:#fff">
+            <div class="pt" style="font-size:14px">Deposit &amp; launch</div>
+            <div class="sumrow"><span>Pot</span><b>1000 USDC</b></div>
+            <div class="sumrow"><span>Per period</span><b>500 USDC × 2</b></div>
+            <div class="sumrow"><span>Live</span><b>Immediately</b></div>
+            <div style="margin-top:12px"><button class="btn-blue" style="width:100%">Deposit &amp; launch</button></div>
           </div>
         </aside>
       </div>
     </div></div>
   </figure>
-  <figcaption class="cap">Token, cantidad, duración — y el botón de deposit ya visible. Evaluation/Targeting quedan en "Rally defaults" editables. El deposit es el mismo del protocolo.</figcaption>
+</div>
 
-  <h3>POV 3 · Live (con la Community creada automáticamente)</h3>
-  <figure class="frame" role="img" aria-label="Projects POV: campaña live con community automática">
-    <div class="bar2"><i></i><i></i><i></i><span class="url">app.rally.fun/campaigns/internet-court-is-here</span></div>
+<div class="step new">
+  <span class="snum">4</span>
+  <div class="shead"><h3>Live — y la Community, creada sola</h3><span class="stag new">SUCCESS NUEVO</span></div>
+  <p class="sdesc">Tras el deposit (el de siempre), el éxito cuenta lo que ya pasa solo: campaña live y <b>Community creada automáticamente</b>. Share on X + Customize opcional. Nada que configurar.</p>
+  <figure class="frame" role="img" aria-label="Pantalla 4: success con community automática">
     <div class="screen"><div class="cv">
-      <div style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:36px 26px 8px">
+      <div style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:32px 26px 6px">
         <div style="width:48px; height:48px; border-radius:50%; background:var(--r-green-bg); border:2px solid var(--r-green); display:grid; place-items:center; color:var(--r-green); font-size:19px; margin-bottom:12px">✓</div>
-        <div style="font-size:22px; font-weight:800; letter-spacing:-.02em">Your campaign is live</div>
+        <div style="font-size:22px; font-weight:800; letter-spacing:-.02em; color:#12141F">Your campaign is live</div>
         <div style="font-family:var(--mono); font-size:12px; color:var(--r-blue); background:#F4F5FE; border:1px solid var(--r-line2); border-radius:999px; padding:7px 15px; margin:12px 0 4px">app.rally.fun/campaigns/internet-court-is-here</div>
         <div style="display:flex; gap:10px; margin-top:10px"><button class="btn-line">⧉ Copy link</button><button class="btn-blue">Share on 𝕏</button></div>
       </div>
-      <div class="mpanel" style="margin-top:20px">
+      <div class="mpanel" style="margin-top:18px">
         <div class="mbody" style="display:flex; gap:14px; align-items:center">
           <div style="width:38px; height:38px; border-radius:10px; background:#14161F; flex:none"></div>
           <div>
-            <div style="font-weight:800; font-size:13.5px">Your GenLayer Community was created automatically <span class="tchip ok">✓ LIVE</span></div>
-            <div style="font-size:12px; color:var(--r-dim); margin-top:3px">All your campaigns, members and leaderboards live there — it persists between campaigns. Customize the banner, description and links whenever you want.</div>
+            <div style="font-weight:800; font-size:13.5px; color:#12141F">Your GenLayer Community was created automatically <span class="tchip ok">✓ LIVE</span></div>
+            <div style="font-size:12px; color:var(--r-dim); margin-top:3px">All your campaigns, members and leaderboards live there. Customize the banner and links whenever you want.</div>
           </div>
           <span class="r-spacer"></span>
           <button class="btn-line">Customize →</button>
@@ -483,64 +484,40 @@
       </div>
     </div></div>
   </figure>
-  <figcaption class="cap">El success cuenta lo que ya pasa solo: campaña live + Community creada automáticamente. Cero pasos extra — solo un "Customize" opcional y el share.</figcaption>
-</section>
+</div>
 
-<!-- ============================================================ -->
-<section id="s4">
-  <div class="sec-head"><span class="sec-num">04</span><h2>Projects Flow</h2></div>
-  <p>Hoy: ~7 contactos con el equipo, 3 Google Docs y 2 Looms. Propuesta: <strong>6 pantallas, y de la 2 a la 5 es una sola sesión</strong>. La Community se crea sola al depositar — no es un paso.</p>
+<div class="step last">
+  <span class="snum">5</span>
+  <div class="shead"><h3>Track — tu Community trabaja por ti</h3><span class="stag same">YA EXISTE</span></div>
+  <p class="sdesc">Stats, campañas y leaderboards viven en la página de Community actual (Overview · Campaigns · Ambassadors · Members · Posts). Sin cambios.</p>
+  <figure class="frame" role="img" aria-label="Pantalla 5: community page del proyecto">
+    <div class="screen"><div class="cv">
+      <div style="height:64px; background:linear-gradient(120deg,#3A1D66,#7C3AED); display:flex; align-items:center; padding:0 26px"><span style="color:#fff; font-style:italic; font-weight:900; font-size:18px; letter-spacing:.02em">INFLUENCE · BY GENLAYER</span></div>
+      <div class="r-pad" style="display:flex; gap:14px; align-items:center; padding-top:14px">
+        <div style="width:52px; height:52px; border-radius:12px; background:linear-gradient(135deg,#F4740C,#FB9E3C); border:2px solid #fff; margin-top:-30px"></div>
+        <div><b style="font-size:16px; color:#12141F">GenLayer</b> <span class="vcheck">✔</span><div style="font-size:11.5px; color:var(--r-dim)">@GenLayer</div></div>
+        <span class="r-spacer"></span>
+        <span style="font-size:12px; color:var(--r-dim)">Members <b style="color:#12141F">4985</b></span>
+        <span style="font-size:12px; color:var(--r-dim)">Campaigns <b style="color:#12141F">38</b> <span style="color:var(--r-green)">· 6 live</span></span>
+        <span style="font-size:12px; color:var(--r-dim)">Rewards <b style="color:#12141F">$36.2K</b></span>
+      </div>
+      <div class="r-pad"><div style="display:flex; gap:18px; font-size:13px; color:var(--r-dim); border-bottom:1px solid var(--r-line); padding-bottom:10px"><span style="color:var(--r-blue); font-weight:700; border-bottom:2px solid var(--r-blue); padding-bottom:10px; margin-bottom:-11px">Overview</span><span>Campaigns</span><span>Ambassadors</span><span>Members</span><span>Posts</span></div></div>
+    </div></div>
+  </figure>
+</div>
 
-  <div class="strip">
-    <div class="ms"><div class="num">1</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w60"></div><div class="hl soft" style="height:26px"></div><div class="hl half"></div></div></div>
-      <div class="lbl">Request access</div><div class="sub">Formulario in-app → aprobación 1-click del equipo</div><span class="tag new">NUEVO · S</span></div>
-    <div class="ms"><div class="num">2</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w40"></div><div class="hl soft" style="height:20px"></div><div class="hl soft" style="height:20px"></div><div class="ln w60"></div></div></div>
-      <div class="lbl">Paso 1 · El qué</div><div class="sub">Nombre + qué deben publicar. AI Template rellena el resto</div><span class="tag new">NUEVO · XS</span></div>
-    <div class="ms"><div class="num">3</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="pillrow"><span class="pill b"></span><span class="pill o"></span><span class="pill"></span></div><div class="hl soft" style="height:18px"></div><div class="ln w60"></div><div class="ln w40"></div></div></div>
-      <div class="lbl">Paso 2 · El pot</div><div class="sub">Token + cantidad + duración. Defaults de evaluation/targeting detrás de "Advanced"</div><span class="tag new">NUEVO · XS</span></div>
-    <div class="ms"><div class="num">4</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w60"></div><div class="ln w80"></div><div class="hl"></div></div></div>
-      <div class="lbl">Paso 3 · Deposit</div><div class="sub">El deposit del protocolo — sin cambios</div><span class="tag same">IGUAL</span></div>
-    <div class="ms"><div class="num">5</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="hl green" style="opacity:.2; border:1px solid #17A34A; border-radius:5px; height:20px"></div><div class="ln w80"></div><div class="hl half"></div></div></div>
-      <div class="lbl">Live + Community</div><div class="sub">Campaña live y Community creada automáticamente. Share on X + Customize opcional</div><span class="tag new">SUCCESS · XS</span></div>
-    <div class="ms"><div class="num">6</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w40"></div><div class="ln w80"></div><div class="ln w80"></div><div class="hl green"></div></div></div>
-      <div class="lbl">Track → Rewards</div><div class="sub">Leaderboard y distribución por periodos — protocolo intacto</div><span class="tag same">IGUAL</span></div>
-  </div>
-  <p class="cap">6 pantallas. Nuevas: el request (S), los pasos 1–2 del formulario y el success (XS). El deposit, el tracking y los rewards son los de siempre. El white-glove de Ana sigue disponible en cada paso.</p>
+<!-- ================= AMBASSADOR FLOW ================= -->
+<div class="flow-title" id="ambassador">
+  <span class="ft-kicker">03 · communities & ambassadors · cerrar los dos caminos</span>
+  <h2>Ambassador Flow</h2>
+  <p>Ser miembro ya es automático (ganas puntos → estás dentro). Lo que se diseña es el camino a ambassador — con una regla: <strong>Rally ya tiene todos los datos, así que cero formularios</strong>.</p>
+</div>
 
-  <div class="note"><strong>Cómo se simplifica el formulario de crear campaña sin tocar nada:</strong> los 6 pasos actuales de Campaign Management (Basic details · Pot &amp; Duration · Missions · Evaluation · Targeting · Confirm &amp; Deposit) se reagrupan en 3 pantallas. Basic + Missions se funden en "El qué" (son los mismos campos); Evaluation y Targeting no desaparecen — quedan con los defaults de Rally detrás de "Advanced ▾", editables. Ningún parámetro del protocolo se elimina.</div>
-
-  <div class="note"><strong>Nota para Pablo:</strong> este doc sigue el formato de "2026.07.10 Rally.fun Updated flows". Las pantallas POV están listas para alta fidelidad; los strips marcan qué es IGUAL (no tocar) y qué es NUEVO (diseñar). Referencia de patrones: contentrewards.com/discover.</div>
-</section>
-
-<!-- ============================================================ -->
-<section id="s5">
-  <div class="sec-head"><span class="sec-num">05</span><h2>Communities &amp; Ambassadors — darle forma con el mínimo de pasos</h2></div>
-  <p>Las dos features ya están vivas y la base es muy buena: la Community se crea sola, <strong>ser miembro también es automático</strong> (ganas puntos en una campaña del proyecto → estás dentro) y la página ya tiene Overview / Campaigns / Ambassadors / Members / Posts. Lo que falta es cerrar los dos caminos que hoy quedan abiertos: <strong>cómo un creator se convierte en ambassador</strong> y <strong>cómo un proyecto monta su programa</strong>. Regla: los datos ya existen (Sorsa Score, followers, historial de campañas) — así que <strong>cero formularios</strong>.</p>
-
-  <h3>Creator → Ambassador (la solicitud es 1 click)</h3>
-  <div class="strip">
-    <div class="ms"><div class="num">1</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w60"></div><div class="grid4"><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span></div></div></div>
-      <div class="lbl">Participa en campañas</div><div class="sub">Gana puntos en cualquier campaña del proyecto</div><span class="tag same">IGUAL</span></div>
-    <div class="ms"><div class="num">2</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w40"></div><div class="hl green" style="opacity:.2; border:1px solid #17A34A; border-radius:5px; height:16px"></div><div class="ln w80"></div><div class="ln w60"></div></div></div>
-      <div class="lbl">Miembro automático</div><div class="sub">Ya funciona así — solo hay que contarlo: "Joined ✓ · You earned points in Meet Wingston Agent"</div><span class="tag same">IGUAL + COPY</span></div>
-    <div class="ms"><div class="num">3</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w80"></div><div class="hl soft" style="height:26px"></div><div class="hl half"></div></div></div>
-      <div class="lbl">Apply · 1 click</div><div class="sub">Tu solicitud ES tu track record: Sorsa, followers y campañas van solos. Nota opcional</div><span class="tag new">NUEVO · XS</span></div>
-    <div class="ms"><div class="num">4</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w40"></div><div class="hl green"></div><div class="ln w80"></div></div></div>
-      <div class="lbl">Selected</div><div class="sub">Badge en tu perfil + rewards mensuales + campañas "Ambassadors only"</div><span class="tag new">ESTADOS · XS</span></div>
-  </div>
-
-  <figure class="frame" role="img" aria-label="Creators POV: aplicar a ambassador con un click">
-    <div class="bar2"><i></i><i></i><i></i><span class="url">app.rally.fun/communities/rally</span></div>
+<div class="step new">
+  <span class="snum">A</span>
+  <div class="shead"><h3>Creator · Apply en 1 click</h3><span class="stag new">NUEVA</span></div>
+  <p class="sdesc">La solicitud <b>es</b> tu track record: Sorsa, followers y campañas van pre-rellenados. Un click, estado visible (Applied → Selected), y al ser elegido: badge + rewards mensuales + campañas exclusivas.</p>
+  <figure class="frame" role="img" aria-label="Ambassador: solicitud del creator en un click">
     <div class="screen"><div class="cv">
       <div class="mpanel" style="margin-top:16px">
         <div class="mhead">⭐ Ambassador Program <span class="join" style="color:var(--r-blue)">Applications open · 4 days left</span></div>
@@ -555,60 +532,46 @@
             </div>
           </div>
           <button class="btn-blue" style="width:100%">Apply to be ambassador</button>
-          <div style="font-size:11px; color:var(--r-faint); margin-top:8px; text-align:center">That’s it — no forms. The team reviews and you’ll see your status here.</div>
+          <div style="font-size:11px; color:var(--r-faint); margin-top:8px; text-align:center">That’s it — no forms. You’ll see your status here.</div>
         </div>
       </div>
     </div></div>
   </figure>
-  <figcaption class="cap">La solicitud pre-rellenada con datos que Rally ya tiene. Un click y estado visible (Applied → Selected). Cero formularios.</figcaption>
+</div>
 
-  <h3>Project → Ambassador Program (3 campos y a correr)</h3>
-  <div class="strip">
-    <div class="ms"><div class="num">1</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w60"></div><div class="hl soft" style="height:14px"></div><div class="hl soft" style="height:14px"></div><div class="hl half"></div></div></div>
-      <div class="lbl">Open applications</div><div class="sub">3 campos: plazas · reward mensual · fecha límite. Desde la pestaña Ambassadors de tu Community</div><span class="tag new">NUEVO · XS</span></div>
-    <div class="ms"><div class="num">2</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w40"></div><div class="ln w80"></div><div class="ln w80"></div><div class="ln w80"></div></div></div>
-      <div class="lbl">Review &amp; select</div><div class="sub">Lista rankeada por Sorsa/followers/historial (datos que ya existen) → checkboxes → Confirm</div><span class="tag new">NUEVO · XS</span></div>
-    <div class="ms"><div class="num">3</div>
-      <div class="thumb"><div class="th"><i></i><i></i><i></i></div><div class="tb"><div class="ln w60"></div><div class="hl green"></div><div class="pillrow"><span class="pill b"></span><span class="pill o"></span></div></div></div>
-      <div class="lbl">Run</div><div class="sub">Pagos mensuales gestionados por Rally + campañas con requirement "Ambassadors" (opción que ya existe en Targeting)</div><span class="tag same">YA EXISTE</span></div>
-  </div>
-
-  <figure class="frame" role="img" aria-label="Projects POV: abrir y gestionar el ambassador program">
-    <div class="bar2"><i></i><i></i><i></i><span class="url">app.rally.fun/communities/genlayer · Ambassadors</span></div>
+<div class="step new">
+  <span class="snum">B</span>
+  <div class="shead"><h3>Project · Abrir el programa con 3 campos</h3><span class="stag new">NUEVA</span></div>
+  <p class="sdesc">Plazas · reward mensual · fecha límite. Los applicants llegan <b>ya rankeados</b> por Sorsa, followers e historial — el proyecto solo elige. Los pagos mensuales los gestiona Rally y las campañas exclusivas usan el requirement "Ambassadors" que ya existe.</p>
+  <figure class="frame" role="img" aria-label="Ambassador: el proyecto abre y selecciona">
     <div class="screen"><div class="cv">
       <div class="mpanel" style="margin-top:16px">
         <div class="mhead">Open ambassador applications</div>
         <div class="mbody">
           <div style="display:flex; gap:10px; flex-wrap:wrap">
-            <div style="flex:1; min-width:140px"><div style="font-size:11px; font-weight:700; margin-bottom:4px">Spots</div><div class="inp" style="color:var(--r-ink); font-weight:700">10</div></div>
-            <div style="flex:1.4; min-width:180px"><div style="font-size:11px; font-weight:700; margin-bottom:4px">Monthly reward per ambassador</div><div class="inp" style="color:var(--r-ink); font-weight:700">12,000 RLP</div></div>
-            <div style="flex:1; min-width:150px"><div style="font-size:11px; font-weight:700; margin-bottom:4px">Applications close</div><div class="inp" style="color:var(--r-ink); font-weight:700">Jul 31 ▾</div></div>
+            <div style="flex:1; min-width:120px"><div class="fl" style="margin-top:0">Spots</div><div class="inp" style="font-weight:700">10</div></div>
+            <div style="flex:1.5; min-width:180px"><div class="fl" style="margin-top:0">Monthly reward per ambassador</div><div class="inp" style="font-weight:700">12,000 RLP</div></div>
+            <div style="flex:1; min-width:140px"><div class="fl" style="margin-top:0">Applications close</div><div class="inp" style="font-weight:700">Jul 31 ▾</div></div>
           </div>
-          <div style="margin-top:12px; display:flex; gap:10px; align-items:center">
-            <button class="btn-blue">Open applications</button>
-            <span style="font-size:11.5px; color:var(--r-faint)">Applicants arrive ranked by Sorsa Score, followers and campaign history — you just pick.</span>
-          </div>
+          <div style="margin-top:12px"><button class="btn-blue">Open applications</button></div>
         </div>
       </div>
       <div class="mpanel" style="margin-top:14px">
         <div class="mhead">Applicants · 47 <span class="join" style="color:var(--r-blue)">3 of 10 selected</span></div>
-        <div class="mbody" style="padding-top:8px">
-          <div style="display:flex; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--r-line); font-size:12.5px"><span style="font-family:var(--mono); color:var(--r-faint)">1</span><span class="xava" style="background:linear-gradient(135deg,#F59E0B,#EF4444)"></span><b>@srinigoes</b><span class="vcheck">✔</span><span style="color:var(--r-dim)">Sorsa 2207 · 27.83K · 9 campaigns</span><span class="r-spacer"></span><span class="tchip ok">✓ SELECTED</span></div>
-          <div style="display:flex; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--r-line); font-size:12.5px"><span style="font-family:var(--mono); color:var(--r-faint)">2</span><span class="xava" style="background:linear-gradient(135deg,#10B981,#3B82F6)"></span><b>@grebby</b><span class="vcheck">✔</span><span style="color:var(--r-dim)">Sorsa 1043 · 65.19K · 14 campaigns</span><span class="r-spacer"></span><span class="tchip ok">✓ SELECTED</span></div>
-          <div style="display:flex; align-items:center; gap:10px; padding:9px 0; font-size:12.5px"><span style="font-family:var(--mono); color:var(--r-faint)">3</span><span class="xava" style="background:linear-gradient(135deg,#8B5CF6,#EC4899)"></span><b>@holly_web3</b><span class="vcheck">✔</span><span style="color:var(--r-dim)">Sorsa 672 · 45.06K · 12 campaigns</span><span class="r-spacer"></span><button class="btn-line" style="padding:5px 12px; font-size:11.5px">Select</button></div>
+        <div class="mbody" style="padding-top:6px">
+          <div class="lbrow"><span class="rk">1</span><span class="xava c1"></span><b>@srinigoes</b><span class="vcheck">✔</span><span class="meta">Sorsa 2207 · 27.83K · 9 campaigns</span><span class="r-spacer"></span><span class="tchip ok">✓ SELECTED</span></div>
+          <div class="lbrow"><span class="rk">2</span><span class="xava c2"></span><b>@grebby</b><span class="vcheck">✔</span><span class="meta">Sorsa 1043 · 65.19K · 14 campaigns</span><span class="r-spacer"></span><span class="tchip ok">✓ SELECTED</span></div>
+          <div class="lbrow"><span class="rk">3</span><span class="xava c3"></span><b>@holly_web3</b><span class="vcheck">✔</span><span class="meta">Sorsa 672 · 45.06K · 12 campaigns</span><span class="r-spacer"></span><button class="btn-line" style="padding:5px 12px; font-size:11.5px">Select</button></div>
         </div>
       </div>
     </div></div>
   </figure>
-  <figcaption class="cap">Abrir el programa = 3 campos. Seleccionar = una lista ya rankeada con los datos del protocolo. Los pagos mensuales los gestiona Rally y las campañas exclusivas usan el requirement "Ambassadors" que ya existe en Targeting.</figcaption>
+</div>
 
-  <h3>Communities: dos retoques de copy, cero pantallas nuevas</h3>
-  <div class="learn">
-    <div class="lrn"><span class="src">YA FUNCIONA · SOLO CONTARLO</span><b>El join automático es un regalo — díselo al usuario</b>En la card de la community y en la página (estado no-miembro): "Earn points in any of its campaigns to join" con CTA directo a las campañas activas del proyecto. Hoy esa frase solo está en el texto gris de arriba.</div>
-    <div class="lrn"><span class="src">YA FUNCIONA · SOLO CONTARLO</span><b>El momento de entrada merece un toast</b>La primera vez que ganas puntos con un proyecto: "You're now a member of GenLayer's community 🎉" con link. Convierte un evento invisible en el inicio de la relación.</div>
-  </div>
-</section>
+<div class="step last">
+  <span class="snum">C</span>
+  <div class="shead"><h3>Communities · dos retoques de copy</h3><span class="stag copy">SOLO COPY</span></div>
+  <p class="sdesc">El join automático es un regalo escondido en un texto gris. <b>1)</b> En la card y en el estado no-miembro: <i>"Earn points in any of its campaigns to join"</i> con CTA a las campañas activas. <b>2)</b> Un toast la primera vez que ganas puntos: <i>"You're now a member of GenLayer's community 🎉"</i>. Cero pantallas nuevas.</p>
+</div>
 
 </div>
