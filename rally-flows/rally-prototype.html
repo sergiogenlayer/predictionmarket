@@ -1,4 +1,4 @@
-<title>Rally — Flows: Diagrama + Prototipo interactivo</title>
+<title>Rally — Flows: Diagram + Interactive Prototype</title>
 <style>
   :root{
     --paper:#F6F7FB; --ink:#12141F; --ink-2:#6B7084; --line:#E7E9F3; --card:#FFFFFF;
@@ -30,7 +30,7 @@
   .view{display:none; padding-top:18px}
   .view.on{display:block}
 
-  /* ================= DIAGRAMA ================= */
+  /* ================= DIAGRAM ================= */
   .dsec{margin:26px 0 0}
   .dsec h2{font-size:19px; font-weight:800; letter-spacing:-.01em}
   .dsec .dl{font-size:13px; color:var(--ink-2); margin-top:3px}
@@ -44,8 +44,6 @@
   .node.hot .nbox{border-color:var(--blue); box-shadow:0 0 0 1.5px var(--blue) inset}
   .node.hot .nk{color:var(--blue)}
   .node.pay .nbox{border-color:#BFE5CC; background:var(--green-bg)}
-  .node.vrf .nbox{border-color:#BFD7FF; background:#F6FAFF}
-  .node.net .nbox{border-color:#F5D9AE; background:#FFFAF2}
   .fork{display:grid; grid-template-columns:1fr; gap:10px; min-width:190px; flex:1.2; position:relative; padding-right:30px}
   .fork::after{content:""; position:absolute; right:8px; top:38px; width:11px; height:11px; border-top:2.5px solid var(--ink); border-right:2.5px solid var(--ink); transform:rotate(45deg)}
   .loopnote{font-family:var(--mono); font-size:10.5px; color:var(--faint); margin:2px 2px 0}
@@ -53,10 +51,8 @@
   .lg{font-family:var(--mono); font-size:10px; padding:4px 10px; border-radius:999px; font-weight:700}
   .lg.v{background:#EAF3FF; color:#2563EB}
   .lg.n{background:#FFF4E8; color:#D97706}
-  .lg.g{background:var(--green-bg); color:var(--green)}
-  .lg.b{background:#EDEFFE; color:var(--blue)}
 
-  /* ================= PROTOTIPO ================= */
+  /* ================= PROTOTYPE ================= */
   .proto-bar{display:flex; align-items:center; gap:10px; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:10px 14px; margin-bottom:14px; flex-wrap:wrap}
   .proto-bar .pb-lbl{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; color:var(--faint); text-transform:uppercase}
   .flowpick{display:flex; gap:6px; flex-wrap:wrap}
@@ -210,88 +206,88 @@
 <div class="wrap">
 <header>
   <span class="kicker">app.rally.fun · updated flows</span>
-  <h1>Diagrama + Prototipo</h1>
-  <p>Arriba, el mapa de los flujos. Abajo, la app simulada: <strong>haz click y recorre cada flow como si fuera el producto real.</strong></p>
+  <h1>Diagram + Prototype</h1>
+  <p>Top: the flow map. Below: the simulated app — <strong>click through every flow as if it were the real product.</strong></p>
   <div class="tabs" role="tablist">
-    <button class="tab on" id="tab-d" onclick="showView('d')">📐 Diagrama de flows</button>
-    <button class="tab" id="tab-p" onclick="showView('p')">▶ Probar en la app</button>
+    <button class="tab on" id="tab-d" onclick="showView('d')">📐 Flow diagram</button>
+    <button class="tab" id="tab-p" onclick="showView('p')">▶ Try it in the app</button>
   </div>
 </header>
 
-<!-- ==================== VISTA DIAGRAMA ==================== -->
+<!-- ==================== DIAGRAM VIEW ==================== -->
 <div class="view on" id="view-d">
 
   <div class="dsec">
-    <h2>El modelo: dos carriles, un solo botón de crear</h2>
-    <p class="dl">Cualquiera puede crear campaña. La verificación decide el carril.</p>
+    <h2>The model: two rails, one create button</h2>
+    <p class="dl">Anyone can create a campaign. Verification decides the rail.</p>
     <div class="lane">
-      <div class="node hot"><div class="nbox"><span class="nk">Entrada</span><div class="nt">+ Create campaign</div><div class="nd">Visible para todos, en toda la app</div></div></div>
-      <div class="node"><div class="nbox"><span class="nk">Decisión</span><div class="nt">¿Proyecto verificado?</div><div class="nd">Badge azul otorgado por el equipo Rally</div></div></div>
+      <div class="node hot"><div class="nbox"><span class="nk">Entry</span><div class="nt">+ Create campaign</div><div class="nd">Visible to everyone, everywhere in the app</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">Decision</span><div class="nt">Verified project?</div><div class="nd">Blue badge granted by the Rally team</div></div></div>
       <div class="fork">
-        <div class="nbox" style="border-color:#BFD7FF; background:#F6FAFF"><span class="nk" style="color:#2563EB">SÍ</span><div class="nt">✔ VERIFIED campaign</div><div class="nd">Badge azul · carril destacado arriba</div></div>
-        <div class="nbox" style="border-color:#F5D9AE; background:#FFFAF2"><span class="nk" style="color:#D97706">NO</span><div class="nt">NETWORK campaign</div><div class="nd">Permissionless · pool en RLP o USDC</div></div>
+        <div class="nbox" style="border-color:#BFD7FF; background:#F6FAFF"><span class="nk" style="color:#2563EB">YES</span><div class="nt">✔ VERIFIED campaign</div><div class="nd">Blue badge · featured rail on top</div></div>
+        <div class="nbox" style="border-color:#F5D9AE; background:#FFFAF2"><span class="nk" style="color:#D97706">NO</span><div class="nt">NETWORK campaign</div><div class="nd">Permissionless · pool in RLP or USDC</div></div>
       </div>
-      <div class="node end"><div class="nbox"><span class="nk">Destino</span><div class="nt">Campaigns</div><div class="nd">Carril Verified arriba · grid Network debajo · filtros All / Verified / Network</div></div></div>
+      <div class="node end"><div class="nbox"><span class="nk">Destination</span><div class="nt">Campaigns</div><div class="nd">Verified rail on top · Network grid below · All / Verified / Network filters</div></div></div>
     </div>
-    <div class="legend"><span class="lg v">✔ VERIFIED · partners</span><span class="lg n">NETWORK · cualquiera</span></div>
+    <div class="legend"><span class="lg v">✔ VERIFIED · partners</span><span class="lg n">NETWORK · anyone</span></div>
   </div>
 
   <div class="dsec">
-    <h2>Creator flow — una acción por pantalla</h2>
-    <p class="dl">Rules → Post → Get paid. El paso activo manda; el resto, apagado.</p>
+    <h2>Creator flow — one action per screen</h2>
+    <p class="dl">Rules → Post → Get paid. The active step leads; everything else is dimmed.</p>
     <div class="lane">
-      <div class="node"><div class="nbox"><span class="nk">Descubre</span><div class="nt">Campaigns</div><div class="nd">Card: pot · repartido · tiempo · badge</div></div></div>
-      <div class="node hot"><div class="nbox"><span class="nk">Paso 1</span><div class="nt">RULES</div><div class="nd">Solo las reglas, numeradas. Un botón: "My post is ready"</div></div></div>
-      <div class="node hot"><div class="nbox"><span class="nk">Paso 2</span><div class="nt">POST</div><div class="nd">Pega URL → rules check gratis → paga 100 RLP y envía</div></div></div>
-      <div class="node"><div class="nbox"><span class="nk">Espera</span><div class="nt">AI Evaluation</div><div class="nd">~4 min · timeline visible</div></div></div>
-      <div class="node hot"><div class="nbox"><span class="nk">Paso 3</span><div class="nt">GET PAID</div><div class="nd">Reward proyectado en grande + rank + cómo subir</div></div></div>
-      <div class="node pay end"><div class="nbox"><span class="nk">Automático</span><div class="nt">Cobro al cerrar el periodo</div><div class="nd">Sin claim manual</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">Discover</span><div class="nt">Campaigns</div><div class="nd">Card: pot · paid out · time · badge</div></div></div>
+      <div class="node hot"><div class="nbox"><span class="nk">Step 1</span><div class="nt">RULES</div><div class="nd">Just the rules, numbered. One button: "My post is ready"</div></div></div>
+      <div class="node hot"><div class="nbox"><span class="nk">Step 2</span><div class="nt">POST</div><div class="nd">Paste URL → free rules check → pay 100 RLP and submit</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">Wait</span><div class="nt">AI Evaluation</div><div class="nd">~4 min · visible timeline</div></div></div>
+      <div class="node hot"><div class="nbox"><span class="nk">Step 3</span><div class="nt">GET PAID</div><div class="nd">Projected reward, big + rank + how to climb</div></div></div>
+      <div class="node pay end"><div class="nbox"><span class="nk">Automatic</span><div class="nt">Paid when the period ends</div><div class="nd">No manual claim</div></div></div>
     </div>
-    <p class="loopnote">↺ "Post again" vuelve al paso 2 · el rules check es orientativo: la AI Evaluation decide</p>
+    <p class="loopnote">↺ "Post again" loops back to step 2 · the rules check is advisory: AI Evaluation decides</p>
   </div>
 
   <div class="dsec">
-    <h2>Partner flow — de cero a live en una sesión</h2>
-    <p class="dl">Crear campaña = una página. La Community se crea sola.</p>
+    <h2>Partner flow — from zero to live in one session</h2>
+    <p class="dl">Onboarding ends inside campaign creation. The Community creates itself.</p>
     <div class="lane">
-      <div class="node"><div class="nbox"><span class="nk">Entra a la app</span><div class="nt">Connect X → ¿Creator o Project?</div><div class="nd">Fork de rol (hoy no existe)</div></div></div>
-      <div class="node hot"><div class="nbox"><span class="nk">1 pantalla</span><div class="nt">Tell us about your project</div><div class="nd">pfp + nombre desde X · goal · chain → org y Community creados solos · ✔ review en background</div></div></div>
-      <div class="node hot"><div class="nbox"><span class="nk">La clave</span><div class="nt">Create campaign · 1 página</div><div class="nd">Pre-rellenada según tu goal · defaults en "Advanced"</div></div></div>
-      <div class="node"><div class="nbox"><span class="nk">1 depósito</span><div class="nt">Deposit &amp; launch</div><div class="nd">El deposit del protocolo, sin cambios</div></div></div>
-      <div class="node pay"><div class="nbox"><span class="nk">Automático</span><div class="nt">LIVE + Community</div><div class="nd">Success con Share on X · Community creada sola</div></div></div>
-      <div class="node end"><div class="nbox"><span class="nk">Después</span><div class="nt">Track &amp; grow</div><div class="nd">Leaderboard · stats · Ambassador Program</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">Enters the app</span><div class="nt">Connect X → Creator or Project?</div><div class="nd">Role fork (doesn’t exist today)</div></div></div>
+      <div class="node hot"><div class="nbox"><span class="nk">1 screen</span><div class="nt">Tell us about your project</div><div class="nd">pfp + name from X · goal · chain → org &amp; Community auto-created · ✔ review in background</div></div></div>
+      <div class="node hot"><div class="nbox"><span class="nk">The key</span><div class="nt">Create campaign · 1 page</div><div class="nd">Pre-filled from your goal · defaults under "Advanced"</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">1 deposit</span><div class="nt">Deposit &amp; launch</div><div class="nd">The protocol deposit, unchanged</div></div></div>
+      <div class="node pay"><div class="nbox"><span class="nk">Automatic</span><div class="nt">LIVE + Community</div><div class="nd">Success with Share on X · Community created on its own</div></div></div>
+      <div class="node end"><div class="nbox"><span class="nk">Afterwards</span><div class="nt">Track &amp; grow</div><div class="nd">Leaderboard · stats · Ambassador Program</div></div></div>
     </div>
   </div>
 
   <div class="dsec">
-    <h2>Ambassadors — apply de 1 click, gestión en un panel</h2>
-    <p class="dl">Los datos ya existen (Sorsa, followers, historial) → cero formularios.</p>
+    <h2>Ambassadors — 1-click apply, one management panel</h2>
+    <p class="dl">The data already exists (Sorsa, followers, history) → zero forms.</p>
     <div class="lane">
-      <div class="node"><div class="nbox"><span class="nk">Creator</span><div class="nt">Miembro automático</div><div class="nd">Ganas puntos en una campaña → estás dentro</div></div></div>
-      <div class="node hot"><div class="nbox"><span class="nk">Creator</span><div class="nt">Apply · 1 click</div><div class="nd">Tu solicitud es tu track record pre-rellenado</div></div></div>
-      <div class="node"><div class="nbox"><span class="nk">Partner</span><div class="nt">Open applications</div><div class="nd">3 campos: plazas · pago mensual · cierre</div></div></div>
-      <div class="node"><div class="nbox"><span class="nk">Partner</span><div class="nt">Review &amp; select</div><div class="nd">Lista rankeada por datos de Rally → elegir</div></div></div>
-      <div class="node pay end"><div class="nbox"><span class="nk">Gestión</span><div class="nt">Analytics + Payments</div><div class="nd">Fondea el mes · Rally paga el día 1 si cumplen el mínimo de posts · pause/remove</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">Creator</span><div class="nt">Automatic member</div><div class="nd">Earn points in a campaign → you’re in</div></div></div>
+      <div class="node hot"><div class="nbox"><span class="nk">Creator</span><div class="nt">Apply · 1 click</div><div class="nd">Your application is your pre-filled track record</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">Partner</span><div class="nt">Open applications</div><div class="nd">3 fields: spots · monthly pay · close date</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">Partner</span><div class="nt">Review &amp; select</div><div class="nd">List ranked by Rally data → pick</div></div></div>
+      <div class="node pay end"><div class="nbox"><span class="nk">Management</span><div class="nt">Analytics + Payments</div><div class="nd">Fund the month · Rally pays on the 1st if the posts minimum is met · pause/remove</div></div></div>
     </div>
   </div>
 
   <div class="dsec" style="text-align:center; padding:30px 0 10px">
-    <button class="tab on" onclick="showView('p')" style="font-size:14px; padding:13px 26px">▶ Probar estos flows en la app</button>
+    <button class="tab on" onclick="showView('p')" style="font-size:14px; padding:13px 26px">▶ Try these flows in the app</button>
   </div>
 </div>
 
-<!-- ==================== VISTA PROTOTIPO ==================== -->
+<!-- ==================== PROTOTYPE VIEW ==================== -->
 <div class="view" id="view-p">
 
   <div class="proto-bar">
-    <span class="pb-lbl">Prototipo · elige flow</span>
+    <span class="pb-lbl">Prototype · pick a flow</span>
     <div class="flowpick">
       <button class="fp on" id="fp-creator" onclick="startFlow('creator')">Creator</button>
       <button class="fp" id="fp-partner" onclick="startFlow('partner')">Partner</button>
       <button class="fp" id="fp-amb" onclick="startFlow('amb')">Ambassadors</button>
     </div>
     <div class="dots" id="dots"></div>
-    <button class="reset" onclick="resetFlow()">↺ Reiniciar</button>
+    <button class="reset" onclick="resetFlow()">↺ Restart</button>
   </div>
 
   <div class="app">
@@ -358,7 +354,7 @@
               <div class="cfoot"><span class="tchip n">NETWORK</span><span class="nchip">Base</span></div></div>
           </button>
         </div>
-        <div class="hint">👆 <b>Haz click en cualquier campaña</b> para entrar — o en "+ Create campaign" para probar el flow de partner.</div>
+        <div class="hint">👆 <b>Click any campaign</b> to enter — or "+ Create campaign" to try the partner flow.</div>
       </div>
     </section>
 
@@ -399,7 +395,7 @@
           <div class="fsub">Paste the URL of the tweet you just published.</div>
           <div style="display:flex; gap:8px; margin-top:12px">
             <input class="inp" id="tweeturl" placeholder="x.com/you/status/…" aria-label="Tweet URL">
-            <button class="btn ghost" onclick="pasteExample()" style="white-space:nowrap">Pegar ejemplo</button>
+            <button class="btn ghost" onclick="pasteExample()" style="white-space:nowrap">Paste example</button>
           </div>
           <div class="check" id="rulecheck">
             <div class="ch">✓ Your post passes the rules <span class="free">CHECKED FREE · BEFORE YOU PAY</span></div>
@@ -428,7 +424,7 @@
         <div class="fcard">
           <div class="rhero">
             <div class="rlbl">Projected reward · Period 1</div>
-            <div class="rval">~14,20 USDC</div>
+            <div class="rval">~14.20 USDC</div>
             <div class="rsub">You’re <b>#14</b> of 215 · 408 campaign points · paid automatically when the period ends (2d 11h)</div>
           </div>
           <div class="check on" style="margin-top:14px">
@@ -437,21 +433,21 @@
             </div>
           </div>
           <div style="display:flex; gap:9px; margin-top:12px">
-            <button class="btn ghost" style="flex:1" onclick="toast('El detalle del score vive un nivel por debajo — no compite con el reward')">See score details</button>
-            <button class="btn" style="flex:1" onclick="go('c3'); toast('↺ De vuelta al paso 2 — Post again')">Post again</button>
+            <button class="btn ghost" style="flex:1" onclick="toast('Score details live one level below — they never compete with the reward')">See score details</button>
+            <button class="btn" style="flex:1" onclick="go('c3'); toast('↺ Back to step 2 — Post again')">Post again</button>
           </div>
-          <div style="margin-top:10px"><button class="btn green full" onclick="startFlow('partner')">✦ Fin del flow creator → probar Partner</button></div>
+          <div style="margin-top:10px"><button class="btn green full" onclick="startFlow('partner')">✦ End of creator flow → try Partner</button></div>
         </div>
       </div>
     </section>
 
-    <!-- ========== PARTNER 0: entra a la app (fork de rol) ========== -->
+    <!-- ========== PARTNER 0: enters the app (role fork) ========== -->
     <section class="screen" id="p0">
       <div class="pad" style="text-align:center; padding-top:38px; max-width:520px; margin:0 auto">
         <div class="h1">Welcome to Rally</div>
         <div class="sub" style="margin-bottom:6px">You just connected with X. What brings you here?</div>
         <div style="display:grid; gap:10px; margin-top:16px">
-          <button class="ccard" style="padding:16px; border-width:1.5px" onclick="startFlow('creator'); toast('Camino creator → elegir campaña')">
+          <button class="ccard" style="padding:16px; border-width:1.5px" onclick="startFlow('creator'); toast('Creator path → pick a campaign')">
             <div style="font-weight:800; font-size:14px">🎨 I’m a creator</div>
             <div style="font-size:12px; color:var(--ink-2); margin-top:3px">Earn by posting on X</div>
           </button>
@@ -460,7 +456,7 @@
             <div style="font-size:12px; color:var(--ink-2); margin-top:3px">Run a campaign, grow your community</div>
           </button>
         </div>
-        <div class="foot-note">Este fork hoy no existe — la app asume que todo el mundo es creator.</div>
+        <div class="foot-note">This fork doesn’t exist today — the app assumes everyone is a creator.</div>
       </div>
     </section>
 
@@ -486,7 +482,7 @@
       </div>
     </section>
 
-    <!-- ========== PARTNER 1: create (1 página) ========== -->
+    <!-- ========== PARTNER 1: create (one page) ========== -->
     <section class="screen" id="p1">
       <div class="hero">
         <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
@@ -506,7 +502,7 @@
               <label class="fl" for="cask">The ask — what makes a winning post</label>
               <textarea class="inp" id="cask">Quote the GenLayer post quoting Forbes and amplify it in your own voice. Original takes only.</textarea>
               <div style="display:flex; gap:8px; margin-top:9px; align-items:center; flex-wrap:wrap">
-                <button class="btn ghost" onclick="toast('✦ Wingston rellena descripción, reglas y knowledge base desde el nombre')">✦ Let AI fill this from the name</button>
+                <button class="btn ghost" onclick="toast('✦ Wingston drafts the description, rules and knowledge base from the name')">✦ Let AI fill this from the name</button>
                 <span style="font-size:10.5px; color:var(--faint)">rules · knowledge base · style</span>
               </div>
             </div>
@@ -520,7 +516,7 @@
                 <input class="inp" value="2 weeks · paid weekly" readonly>
               </div>
             </div>
-            <div style="font-size:11.5px; color:var(--faint); padding:0 2px">Advanced — evaluation · targeting · schedule <span class="tchip ok">✓ RALLY DEFAULTS</span> · <button style="border:none; background:none; color:var(--blue); font-weight:700; font-size:11.5px; cursor:pointer" onclick="toast('Los 6 pasos técnicos siguen aquí, pre-rellenos y editables')">Edit ▾</button></div>
+            <div style="font-size:11.5px; color:var(--faint); padding:0 2px">Advanced — evaluation · targeting · schedule <span class="tchip ok">✓ RALLY DEFAULTS</span> · <button style="border:none; background:none; color:var(--blue); font-weight:700; font-size:11.5px; cursor:pointer" onclick="toast('The 6 technical steps are still here — pre-filled and editable')">Edit ▾</button></div>
           </div>
           <aside>
             <div class="sums">
@@ -531,7 +527,7 @@
               <div style="margin-top:11px"><button class="btn full" onclick="deposit()">Deposit &amp; launch</button></div>
               <div class="foot-note" style="text-align:left">One deposit. Rewards are distributed automatically.</div>
             </div>
-            <div class="hint">Como <b>creator</b> este mismo formulario lanza una <b style="color:#B45309">NETWORK</b> campaign (pool en RLP o USDC). Verificado = badge azul + carril destacado.</div>
+            <div class="hint">As a <b>creator</b>, this same form launches a <b style="color:#B45309">NETWORK</b> campaign (pool in RLP or USDC). Verified = blue badge + featured rail.</div>
           </aside>
         </div>
       </div>
@@ -544,8 +540,8 @@
         <div class="h1">Your campaign is live</div>
         <div><span class="slink" id="livelink">app.rally.fun/campaigns/internet-court-is-here</span></div>
         <div style="display:flex; gap:9px; justify-content:center; margin-top:12px">
-          <button class="btn ghost" onclick="toast('Link copiado 📋')">⧉ Copy link</button>
-          <button class="btn" onclick="toast('Abre el share de X con el post pre-escrito')">Share on 𝕏</button>
+          <button class="btn ghost" onclick="toast('Link copied 📋')">⧉ Copy link</button>
+          <button class="btn" onclick="toast('Opens the X share sheet with a pre-written post')">Share on 𝕏</button>
         </div>
       </div>
       <div class="panel" style="margin:18px 22px 0">
@@ -555,11 +551,11 @@
             <div style="font-weight:800; font-size:12.5px">Your GenLayer Community was created automatically <span class="tchip ok">✓ LIVE</span></div>
             <div style="font-size:11.5px; color:var(--ink-2); margin-top:2px">Campaigns, members and leaderboards live there. Customize whenever you want.</div>
           </div>
-          <button class="btn ghost" onclick="startFlow('amb'); toast('Tu Community → pestaña Ambassadors')">Customize →</button>
+          <button class="btn ghost" onclick="startFlow('amb'); toast('Your Community → Ambassadors tab')">Customize →</button>
         </div>
       </div>
       <div class="pad" style="text-align:center">
-        <button class="btn green" onclick="startFlow('amb')">✦ Siguiente: gestionar Ambassadors →</button>
+        <button class="btn green" onclick="startFlow('amb')">✦ Next: manage Ambassadors →</button>
       </div>
     </section>
 
@@ -567,7 +563,7 @@
     <section class="screen" id="a1">
       <div class="hero">
         <div class="h1">GenLayer Community · Ambassadors</div>
-        <div class="sub">Ser miembro ya es automático (ganaste puntos → estás dentro). Este es el camino a ambassador.</div>
+        <div class="sub">Membership is already automatic (you earned points → you’re in). This is the path to ambassador.</div>
       </div>
       <div class="pad">
         <div class="panel" style="margin-top:0">
@@ -586,7 +582,7 @@
           </div>
         </div>
         <div class="pad" style="text-align:center; padding-bottom:0">
-          <button class="btn ghost" onclick="go('a2')">Ver el lado del partner →</button>
+          <button class="btn ghost" onclick="go('a2')">See the partner side →</button>
         </div>
       </div>
     </section>
@@ -598,7 +594,7 @@
           <div><div class="h1">Ambassador Program — GenLayer</div>
           <div class="sub">Payments run automatically through Rally. Fund the month, we handle the rest.</div></div>
           <span class="sp"></span>
-          <button class="btn" onclick="toast('Depósito del mes: 120,000 RLP · Rally paga el día 1 a quien cumpla el mínimo')">Fund August · 120,000 RLP</button>
+          <button class="btn" onclick="toast('Month deposit: 120,000 RLP · Rally pays on the 1st to everyone who met the minimum')">Fund August · 120,000 RLP</button>
         </div>
       </div>
       <div class="pad">
@@ -611,13 +607,13 @@
         <div class="panel">
           <div class="phead">Ambassadors <span class="st">July payment · auto on Aug 1</span></div>
           <div class="pbody" style="padding-top:4px">
-            <div class="lrow"><span class="ava a1"></span><b>@srinigoes</b><span class="vk">✔</span><span class="meta">16 posts ✓ · 412K reach · Sorsa 2207</span><span class="sp"></span><span class="tchip ok">✓ PAID</span><button class="btn ghost" style="padding:5px 10px; font-size:11px" onclick="toast('Sus posts del mes, con scores')">View posts</button></div>
-            <div class="lrow"><span class="ava a2"></span><b>@grebby</b><span class="vk">✔</span><span class="meta">14 posts ✓ · 380K reach · Sorsa 1043</span><span class="sp"></span><span class="tchip ok">✓ PAID</span><button class="btn ghost" style="padding:5px 10px; font-size:11px" onclick="toast('Sus posts del mes, con scores')">View posts</button></div>
-            <div class="lrow"><span class="ava a3"></span><b>@holly_web3</b><span class="vk">✔</span><span class="meta">9 posts · below min · 96K reach</span><span class="sp"></span><span class="tchip warn">HELD</span><button class="btn ghost" style="padding:5px 10px; font-size:11px" onclick="toast('Pago retenido: no llegó al mínimo. Vuelve a tu balance.')">Why?</button></div>
+            <div class="lrow"><span class="ava a1"></span><b>@srinigoes</b><span class="vk">✔</span><span class="meta">16 posts ✓ · 412K reach · Sorsa 2207</span><span class="sp"></span><span class="tchip ok">✓ PAID</span><button class="btn ghost" style="padding:5px 10px; font-size:11px" onclick="toast('Their posts this month, with scores')">View posts</button></div>
+            <div class="lrow"><span class="ava a2"></span><b>@grebby</b><span class="vk">✔</span><span class="meta">14 posts ✓ · 380K reach · Sorsa 1043</span><span class="sp"></span><span class="tchip ok">✓ PAID</span><button class="btn ghost" style="padding:5px 10px; font-size:11px" onclick="toast('Their posts this month, with scores')">View posts</button></div>
+            <div class="lrow"><span class="ava a3"></span><b>@holly_web3</b><span class="vk">✔</span><span class="meta">9 posts · below min · 96K reach</span><span class="sp"></span><span class="tchip warn">HELD</span><button class="btn ghost" style="padding:5px 10px; font-size:11px" onclick="toast('Payment held: below the posts minimum. Returns to your balance.')">Why?</button></div>
           </div>
         </div>
         <div class="foot-note" style="text-align:left; margin-top:10px">Held payments return to your balance. Ambassadors see their own status on their profile.</div>
-        <div style="text-align:center; margin-top:16px"><button class="btn green" onclick="startFlow('creator'); toast('↺ Vuelta al principio — flow creator')">↺ Recorrer todo otra vez</button></div>
+        <div style="text-align:center; margin-top:16px"><button class="btn green" onclick="startFlow('creator'); toast('↺ Back to the start — creator flow')">↺ Walk through everything again</button></div>
       </div>
     </section>
 
@@ -634,6 +630,8 @@
     partner: ['p0','p0b','p1','p2'],
     amb:     ['a1','a2']
   };
+  var current = 'creator';
+
   function pickGoal(el, goal){
     document.querySelectorAll('#goalrow .chip').forEach(function(c){ c.classList.remove('on'); });
     el.classList.add('on');
@@ -649,9 +647,8 @@
     document.getElementById('cname').value = pre[0];
     document.getElementById('cask').value = pre[1];
     go('p1');
-    toast('✓ Onboarded — org y Community creados · Verified en revisión · plantilla "'+g+'" pre-cargada');
+    toast('✓ Onboarded — org & Community created · Verified in review · "'+g+'" template pre-loaded');
   }
-  var current = 'creator';
 
   function showView(v){
     document.getElementById('view-d').classList.toggle('on', v==='d');
@@ -672,7 +669,6 @@
     document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('on'); });
     var el = document.getElementById(id);
     if(el){ el.classList.add('on'); }
-    // sync current flow if jumping
     Object.keys(FLOWS).forEach(function(f){ if(FLOWS[f].indexOf(id)>-1){ current=f; } });
     ['creator','partner','amb'].forEach(function(k){
       document.getElementById('fp-'+(k==='amb'?'amb':k)).classList.toggle('on', k===current);
@@ -687,13 +683,13 @@
     });
     document.getElementById('dots').innerHTML = html;
   }
-  function resetFlow(){ go(FLOWS[current][0]); toast('↺ Flow reiniciado'); }
+  function resetFlow(){ go(FLOWS[current][0]); toast('↺ Flow restarted'); }
 
   function pasteExample(){
     document.getElementById('tweeturl').value = 'x.com/holly_web3/status/2081334…';
     document.getElementById('rulecheck').classList.add('on');
     document.getElementById('submitbtn').disabled = false;
-    toast('✓ Reglas verificadas gratis — antes de pagar');
+    toast('✓ Rules checked for free — before you pay');
   }
   document.addEventListener('input', function(e){
     if(e.target && e.target.id==='tweeturl'){
@@ -722,14 +718,14 @@
     var name = (document.getElementById('cname').value || 'my-campaign').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
     document.getElementById('livelink').textContent = 'app.rally.fun/campaigns/' + name;
     go('p2');
-    toast('✓ Deposit hecho — live al instante · Community creada sola');
+    toast('✓ Deposited — live instantly · Community created on its own');
   }
   function applyAmb(){
     var b = document.getElementById('applybtn');
     b.textContent = '✓ Applied — you’ll see your status here';
     b.disabled = true;
     b.style.background = 'var(--green)';
-    toast('Applied ✓ · Selected te llegará aquí y en tu perfil');
+    toast('Applied ✓ · "Selected" will show up here and on your profile');
   }
   var toastTimer;
   function toast(msg){
