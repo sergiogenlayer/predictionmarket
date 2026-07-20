@@ -217,8 +217,9 @@
   </div>
   <nav class="toc" aria-label="Flujos">
     <a href="#creator">01 CREATOR FLOW <small>rules → post → cobra</small></a>
-    <a href="#project">02 PARTNER FLOW <small>crear campaña en 1 página</small></a>
-    <a href="#ambassador">03 AMBASSADORS <small>apply · gestión · payments</small></a>
+    <a href="#create">02 CREATE CAMPAIGN <small>3 entradas · user → org</small></a>
+    <a href="#project">03 PARTNER FLOW <small>onboarding + 1 página</small></a>
+    <a href="#ambassador">04 AMBASSADORS <small>apply · gestión · payments</small></a>
   </nav>
 </header>
 
@@ -450,6 +451,109 @@
   <p class="sdesc">La campaign page (Missions · Briefing · Leaderboard), la evaluación AI, el leaderboard y la distribución por periodos siguen igual. La secuencia Rules → Post → Get paid es la <b>capa guiada por encima</b> de lo que ya existe.</p>
 </div>
 
+<!-- ================= CREATE CAMPAIGN — 3 ENTRADAS ================= -->
+<div class="flow-title" id="create">
+  <span class="ft-kicker">02 · permissionless · la clave: de usuario a organization</span>
+  <h2>Create Campaign</h2>
+  <p><b>Modelo estructural: solo existe USER.</b> Un usuario es creator por defecto; en el momento en que lanza una campaña, su cuenta se convierte <b>además</b> en organization — automáticamente, sin registro aparte y <b>con la misma wallet</b>. Una marca puede entrar como creator y crear permissionless: los roles no son cuentas distintas, son estados de la misma cuenta. Tres puertas de entrada, un solo formulario.</p>
+</div>
+
+<div class="step new">
+  <span class="snum">1</span>
+  <div class="shead"><h3>Qué necesitas para tu primera campaña</h3><span class="stag new">3 COSAS</span></div>
+  <p class="sdesc">Esta lista es la promesa que hay que enseñar en las 3 entradas — todo lo demás pasa solo.</p>
+  <figure class="frame slim" role="img" aria-label="Checklist: qué necesitas para crear tu primera campaña">
+    <div class="screen"><div class="cv" style="max-width:620px; margin:0 auto; padding:26px">
+      <div class="r-h1" style="font-size:20px; text-align:center">Launch your first campaign</div>
+      <p class="r-sub" style="text-align:center; margin:6px auto 18px">Three things. That’s the whole list.</p>
+      <div style="display:grid; gap:10px">
+        <div style="display:flex; gap:12px; align-items:center; border:1px solid var(--r-line); border-radius:12px; padding:14px 16px">
+          <span style="width:26px; height:26px; border-radius:50%; background:#12141F; color:#fff; display:grid; place-items:center; font-family:var(--mono); font-size:12px; flex:none">1</span>
+          <div><b style="font-size:13.5px; color:#12141F">Log in with X</b><div style="font-size:11.5px; color:var(--r-dim)">Your identity on Rally — name and pfp come from here</div></div>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center; border:1px solid var(--r-line); border-radius:12px; padding:14px 16px">
+          <span style="width:26px; height:26px; border-radius:50%; background:#12141F; color:#fff; display:grid; place-items:center; font-family:var(--mono); font-size:12px; flex:none">2</span>
+          <div><b style="font-size:13.5px; color:#12141F">A name + the ask</b><div style="font-size:11.5px; color:var(--r-dim)">What should creators post? AI drafts the rest for you</div></div>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center; border:1px solid var(--r-line); border-radius:12px; padding:14px 16px">
+          <span style="width:26px; height:26px; border-radius:50%; background:#12141F; color:#fff; display:grid; place-items:center; font-family:var(--mono); font-size:12px; flex:none">3</span>
+          <div><b style="font-size:13.5px; color:#12141F">A prize pool — RLP or USDC</b><div style="font-size:11.5px; color:var(--r-dim)">Wallet asked only at deposit. No wallet? Create one right there</div></div>
+        </div>
+      </div>
+      <div style="font-size:11px; color:var(--r-faint); text-align:center; margin-top:14px">Your organization and Community page are created automatically at launch · Getting verified is optional, and comes after</div>
+    </div></div>
+  </figure>
+  <figcaption class="cap">No pedimos organización, ni datos de empresa, ni wallet por adelantado. La wallet aparece en el deposit; la organization aparece al lanzar.</figcaption>
+</div>
+
+<div class="step new">
+  <span class="snum">2</span>
+  <div class="shead"><h3>Los 3 flujos de entrada — y el árbol de Verified</h3><span class="stag new">EL DIAGRAMA CLAVE</span></div>
+  <p class="sdesc">Las tres puertas convergen en el mismo formulario de 1 página. Regla de oro: <b>la entrada con más intención (tweet) es deep link directo al formulario</b> — nunca pasa por home ni por onboarding. La decisión de Verified llega <b>después de lanzar</b>, nunca bloquea.</p>
+  <div class="pd">
+    <div class="pd-inner">
+      <h4>Create a Campaign</h4>
+      <div class="pd-entries">
+        <div class="pd-pent p3">Tweet<br><span style="font-weight:400; font-size:10.5px">"I launched a campaign —<br>create yours" · deep link</span></div>
+        <div class="pd-pent p1">rally.fun<br><span style="font-weight:400; font-size:10.5px">CTA "Launch a campaign"</span></div>
+        <div class="pd-pent p2">app.rally.fun<br><span style="font-weight:400; font-size:10.5px">"+ Create campaign"<br>en el feed</span></div>
+      </div>
+      <div class="pd-varrow" style="height:30px; margin-top:10px"></div>
+      <div class="pd-diamond"><span>IF</span></div>
+      <div class="pd-cols" style="grid-template-columns:1fr 1fr">
+        <div class="pd-col">
+          <div class="pd-state in">Logged In</div>
+          <div class="pd-varrow"></div>
+          <div class="pd-sq">Create form · 1 página<br><span style="font-weight:400; font-size:10px">nombre + ask (AI) · pool RLP/USDC<br>defaults en Advanced</span></div>
+        </div>
+        <div class="pd-col">
+          <div class="pd-state new">Logged Out / New</div>
+          <div class="pd-varrow"></div>
+          <div class="pd-circ">Connect X<small>1 click · el formulario se ve<br>detrás — sin puertas ciegas</small></div>
+          <div class="pd-varrow"></div>
+          <div class="pd-sq">Create form · 1 página<br><span style="font-weight:400; font-size:10px">con intención de crear<br>NO hay role fork — directo</span></div>
+        </div>
+      </div>
+      <div class="pd-varrow" style="height:26px"></div>
+      <div style="display:flex; justify-content:center">
+        <div class="pd-circ" style="width:140px; height:140px">Deposit &amp; launch<small>la wallet se pide AQUÍ<br>¿no tienes? create wallet<br>embebida, sin salir</small></div>
+      </div>
+      <div class="pd-varrow" style="height:26px"></div>
+      <div style="display:flex; justify-content:center">
+        <div class="pd-dest" style="width:150px; height:150px">LIVE · NETWORK<br><span style="font-weight:400; font-size:10px">+ tu cuenta ahora es<br>organization · Community<br>creada sola · Share on X</span></div>
+      </div>
+      <div class="pd-varrow" style="height:26px"></div>
+      <div style="display:flex; justify-content:center; margin-bottom:10px">
+        <div class="pd-diamond" style="margin:0"><span style="font-size:9px">VERIFIED?</span></div>
+      </div>
+      <div class="pd-cols" style="grid-template-columns:1fr 1fr; margin-top:14px">
+        <div class="pd-col">
+          <div class="pd-state in" style="width:150px">Yes, verify me</div>
+          <div class="pd-varrow"></div>
+          <div class="pd-sq" style="width:170px">Short form → review con Ana<br><span style="font-weight:400; font-size:10px">badge ✔ en &lt;24h · carril Verified<br>featured · token/points custom · invoice</span></div>
+        </div>
+        <div class="pd-col">
+          <div class="pd-state new" style="width:150px">Not now</div>
+          <div class="pd-varrow"></div>
+          <div class="pd-sq" style="width:170px; background:#fff; color:#12141F; border:1.5px solid #9CA1B4">Sigue en Network<br><span style="font-weight:400; font-size:10px; color:#6B7084">puede verificarse en cualquier<br>momento desde su org</span></div>
+        </div>
+      </div>
+      <div class="pd-note">Diferencias por entrada: TWEET = deep link a /create, contexto en 1 línea sobre el formulario · RALLY.FUN = la web ya vendió el valor, no re-onboardear · APP = el feed (carril Network visible) es la prueba social de que "gente como yo crea campañas"</div>
+    </div>
+  </div>
+</div>
+
+<div class="step last">
+  <span class="snum">3</span>
+  <div class="shead"><h3>Estructura de cuentas — y la wallet</h3><span class="stag new">MODELO</span></div>
+  <p class="sdesc">
+    <b>Una cuenta, un login (X), una wallet.</b> La misma wallet sirve como creator (pagar submissions, cobrar rewards) y como organization (depositar el pool) — se pide una sola vez y solo cuando hace falta.
+    <b>Lanzar una campaña convierte la cuenta en organization</b>: aparece un switcher Personal / [Org] en el perfil (patrón Twitter/GitHub), sin segundo registro ni segunda wallet.
+    <b>Una marca es simplemente un creator que creó una campaña</b> — permissionless de verdad.
+    La única diferencia real de un brand grande: puede <b>añadir wallets de su equipo como admins</b> de la org, después, desde ajustes. Y <b>Verified</b> no es otra cuenta: es un badge sobre la organization que ya existe.
+  </p>
+</div>
+
 <!-- ================= PARTNER ONBOARDING (Pablo-diagram style) ================= -->
 <style>
   .pd{border:1px solid var(--line); border-radius:16px; background:var(--card); padding:34px 22px 30px; margin:22px 0 0; overflow-x:auto}
@@ -477,7 +581,7 @@
 </style>
 
 <div class="flow-title" id="project">
-  <span class="ft-kicker">02 · qué pasa cuando un proyecto entra a la app</span>
+  <span class="ft-kicker">03 · qué pasa cuando un proyecto entra a la app</span>
   <h2>Partner Flow</h2>
   <p>La respuesta a "un proyecto entra — ¿y ahora qué?": <b>onboarding de una sola vez que termina DENTRO del formulario de crear campaña</b>, no en un dashboard vacío. Conecta X → dice quién es (1 pantalla) → ya está creando. La verificación corre <b>en paralelo</b> y solo decide el carril (✔ Verified destacado o Network) — nunca bloquea crear.</p>
 </div>
@@ -664,7 +768,7 @@
 
 <!-- ================= AMBASSADORS ================= -->
 <div class="flow-title" id="ambassador">
-  <span class="ft-kicker">03 · communities & ambassadors</span>
+  <span class="ft-kicker">04 · communities & ambassadors</span>
   <h2>Ambassadors</h2>
   <p>Ser miembro de una Community ya es automático. Aquí se diseñan las tres piezas que faltan: <b>cómo aplica el creator</b> (1 click), <b>cómo el partner monta el programa</b> (3 campos) y <b>cómo lo gestiona después: analytics y payments</b> en un solo panel.</p>
 </div>
