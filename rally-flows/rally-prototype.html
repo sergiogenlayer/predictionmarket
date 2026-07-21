@@ -284,11 +284,16 @@
 
   <div class="app">
     <div class="app-top">
-      <span class="logo">RALLY</span>
-      <nav class="anav"><span class="on">Campaigns</span><span>Communities</span><span>Rewards</span><span>Leaderboard</span></nav>
+      <button class="logo" style="background:none; border:none; padding:0" onclick="startFlow('creator')">RALLY</button>
+      <nav class="anav">
+        <button class="on" style="background:none; border:none; padding:0 0 3px; font:inherit; color:inherit; font-weight:700; border-bottom:2px solid var(--blue); cursor:pointer" onclick="startFlow('creator')">Campaigns</button>
+        <button style="background:none; border:none; padding:0; font:inherit; color:var(--ink-2); cursor:pointer" onclick="startFlow('amb')">Communities</button>
+        <button style="background:none; border:none; padding:0; font:inherit; color:var(--ink-2); cursor:pointer" onclick="navToast('Rewards')">Rewards</button>
+        <button style="background:none; border:none; padding:0; font:inherit; color:var(--ink-2); cursor:pointer" onclick="navToast('Leaderboard')">Leaderboard</button>
+      </nav>
       <span class="sp"></span>
-      <button class="wing">✦ Wingston</button>
-      <button class="wallet">▣ 0xf5…0AFF12</button>
+      <button class="wing" onclick="toast('✦ Wingston — your AI copilot: drafts briefs, checks rules, answers questions')">✦ Wingston</button>
+      <button class="wallet" onclick="toast('Wallet connected · 0xf5…0AFF12 · 180,000 RLP — one wallet for both roles')">▣ 0xf5…0AFF12</button>
     </div>
 
     <!-- ========== CREATOR 1: discover ========== -->
@@ -301,10 +306,13 @@
           <button class="btn" onclick="startFlow('launch')">+ Create campaign</button>
         </div>
         <div style="display:flex; gap:8px; margin-top:12px">
-          <button class="chip on">All</button><button class="chip" style="color:#2563EB">✔ Verified</button><button class="chip" style="color:#B45309">Network</button>
+          <button class="chip on" id="f-all" onclick="filterRail('all')">All</button>
+          <button class="chip" id="f-ver" style="color:#2563EB" onclick="filterRail('ver')">✔ Verified</button>
+          <button class="chip" id="f-net" style="color:#B45309" onclick="filterRail('net')">Network</button>
         </div>
       </div>
       <div class="pad">
+        <div id="rail-ver">
         <div class="rail-h"><b>✔ Verified</b><span>campaigns from verified organizations · featured</span></div>
         <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
           <button class="ccard v" onclick="go('c2')">
@@ -322,6 +330,8 @@
               <div class="cfoot"><span class="tchip v">✔ VERIFIED</span><span class="nchip">GenLayer Rally Testnet</span></div></div>
           </button>
         </div>
+        </div>
+        <div id="rail-net">
         <div class="rail-h"><b>Network</b><span>open to everyone — orgs shown without badge</span></div>
         <div class="cards">
           <button class="ccard" onclick="go('c2')">
@@ -346,7 +356,8 @@
               <div class="cfoot"><span class="tchip n">NETWORK</span><span class="nchip">Base</span></div></div>
           </button>
         </div>
-        <div class="hint">👆 <b>Click any campaign</b> to participate — or "+ Create campaign" to launch yours.</div>
+        </div>
+        <div class="hint">👆 <b>Click any campaign</b> to participate — or "+ Create campaign" to launch yours. The All / Verified / Network filters work.</div>
       </div>
     </section>
 
@@ -396,8 +407,8 @@
               <div class="pc"><i>✓</i><span>No em dashes · doesn’t start with a mention · original take</span></div>
             </div>
           </div>
-          <button class="payrow on"><span>Pay with RLP<small>Your balance: 180000 RLP</small></span><span class="amt">100 RLP</span></button>
-          <button class="payrow"><span>Pay with ETH<small>Base</small></span><span class="amt">0.0007 ETH (~$1.20)</span></button>
+          <button class="payrow on" onclick="paySel(this,'RLP')"><span>Pay with RLP<small>Your balance: 180000 RLP</small></span><span class="amt">100 RLP</span></button>
+          <button class="payrow" onclick="paySel(this,'ETH')"><span>Pay with ETH<small>Base</small></span><span class="amt">0.0007 ETH (~$1.20)</span></button>
           <div style="margin-top:12px"><button class="btn full" id="submitbtn" disabled onclick="submitTweet()">Submit · 100 RLP</button></div>
           <div class="spinner" id="spin"><div class="ring"></div>In queue · AI Evaluation running… (~4 min in real life)</div>
           <div class="foot-note">The rules check is advisory — final scoring happens in AI Evaluation.</div>
@@ -526,9 +537,9 @@
               <textarea class="inp" id="f-ask" oninput="meter()">Quote the GenLayer post quoting Forbes and amplify it in your own voice. Original takes only.</textarea>
               <label class="fl">Rules <small>— the AI enforces these on every submission</small></label>
               <div id="rules">
-                <span class="rulechip">✓ Mention @GenLayer</span>
-                <span class="rulechip">✓ Quote the launch post</span>
-                <span class="rulechip">✓ Original take — no copy-paste</span>
+                <button class="rulechip" onclick="removeRule(this)" title="Click to remove">✓ Mention @GenLayer</button>
+                <button class="rulechip" onclick="removeRule(this)" title="Click to remove">✓ Quote the launch post</button>
+                <button class="rulechip" onclick="removeRule(this)" title="Click to remove">✓ Original take — no copy-paste</button>
                 <button class="rulechip add" onclick="addRule()">+ Add rule</button>
               </div>
               <label class="fl">Knowledge base <small>— context so the AI scores accuracy right</small></label>
@@ -546,18 +557,18 @@
             </div>
             <div class="block">
               <div class="bh"><i>2</i>The prize</div>
-              <button class="payrow on"><span>Rally Points (RLP)<small>Your balance: 180000 RLP</small></span><span class="amt">◆</span></button>
-              <button class="payrow"><span>USDC<small>From your wallet · Base</small></span><span class="amt">◎</span></button>
+              <button class="payrow on" onclick="paySel(this,'RLP pool')"><span>Rally Points (RLP)<small>Your balance: 180000 RLP</small></span><span class="amt">◆</span></button>
+              <button class="payrow" onclick="paySel(this,'USDC pool')"><span>USDC<small>From your wallet · Base</small></span><span class="amt">◎</span></button>
               <label class="fl">Amount &amp; duration</label>
               <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap">
                 <input class="inp" id="f-amount" value="40000" inputmode="numeric" style="max-width:120px; font-weight:800; font-size:15px" oninput="recalc()">
-                <button class="chip">1 week</button><button class="chip on">2 weeks</button><button class="chip">Custom ▾</button>
+                <button class="chip" onclick="groupSel(this)">1 week</button><button class="chip on" onclick="groupSel(this)">2 weeks</button><button class="chip" onclick="groupSel(this)">Custom ▾</button>
               </div>
             </div>
             <div class="block">
               <div class="bh"><i>3</i>Who can join?</div>
               <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px">
-                <button class="chip on">Everyone · 11,746 eligible</button><button class="chip">Whitelist only</button><button class="chip">Elite creators</button>
+                <button class="chip on" onclick="groupSel(this)">Everyone · 11,746 eligible</button><button class="chip" onclick="groupSel(this)">Whitelist only</button><button class="chip" onclick="groupSel(this)">Elite creators</button>
               </div>
               <label class="fl" style="margin-top:0">Also pay specific creators per post <small>(optional)</small></label>
               <div class="wlrow"><span class="ava a1"></span><b>@srinigoes</b><span class="vk">✔</span><span class="sp"></span><span class="lab">per post</span><input class="inp" id="w1p" value="4000" inputmode="numeric" oninput="recalc()"><span class="lab">max</span><input class="inp sm" id="w1m" value="3" inputmode="numeric" oninput="recalc()"></div>
@@ -780,12 +791,41 @@
   }
   function addRule(){
     var b = document.querySelector('#rules .add');
-    var s = document.createElement('span');
+    var s = document.createElement('button');
     s.className = 'rulechip';
     s.textContent = '✓ Post in any language';
+    s.title = 'Click to remove';
+    s.onclick = function(){ removeRule(s); };
     b.parentNode.insertBefore(s, b);
     meter();
     toast('Rule added — the AI will enforce it on every submission');
+  }
+  function removeRule(el){
+    el.remove();
+    meter();
+    toast('Rule removed');
+  }
+  function navToast(x){
+    toast(x + ' — not in this prototype. This demo covers the campaign flows.');
+  }
+  function paySel(el, label){
+    var rows = el.parentNode.querySelectorAll('.payrow');
+    rows.forEach(function(r){ r.classList.remove('on'); });
+    el.classList.add('on');
+    toast('Payment method: ' + label);
+  }
+  function groupSel(el){
+    var chips = el.parentNode.querySelectorAll('.chip');
+    chips.forEach(function(c){ c.classList.remove('on'); });
+    el.classList.add('on');
+  }
+  function filterRail(w){
+    ['all','ver','net'].forEach(function(k){
+      document.getElementById('f-'+k).classList.toggle('on', k===w);
+    });
+    document.getElementById('rail-ver').style.display = (w==='net') ? 'none' : '';
+    document.getElementById('rail-net').style.display = (w==='ver') ? 'none' : '';
+    toast(w==='all' ? 'Showing all campaigns' : (w==='ver' ? 'Only ✔ Verified — the featured rail' : 'Only Network — permissionless campaigns'));
   }
   function aiDraft(){
     document.getElementById('f-kb').value = 'Internet Court is a neutral dispute-resolution protocol for AI agents, covered by Forbes. GenLayer is the network it runs on. Key facts: AI jury, verdicts in minutes, live in beta.';

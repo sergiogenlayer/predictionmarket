@@ -295,6 +295,7 @@
     <a href="#participar">03 PARTICIPAR <small>rules → post → get paid</small></a>
     <a href="#verified">04 VERIFIED <small>$1,500 · qué incluye</small></a>
     <a href="#ambassadors">05 AMBASSADORS <small>solo orgs verified</small></a>
+    <a href="#admin">06 ADMIN <small>organizations</small></a>
   </nav>
 </header>
 
@@ -944,6 +945,96 @@
       <div style="font-size:11.5px; color:var(--r-faint); padding:10px 26px 0">Rejected posts don’t pay and can be retried while the campaign runs. Unused reserve (unposted or rejected) returns to your balance at campaign end. Creators see their own status on their profile.</div>
     </div></div>
   </figure>
+</div>
+
+<!-- ================= 06 ADMIN ================= -->
+<div class="flow-title" id="admin">
+  <span class="ft-kicker">06 · la trastienda del equipo rally</span>
+  <h2>Admin · Orgs</h2>
+  <p>El panel actual de Organizations es un scroll infinito con toggles sueltos (Verified escondido dentro de "Community Profile", switches sin explicación, applications en texto libre). El rediseño lo ordena en <b>tabs</b> y conecta el admin con el modelo del doc: <b>Verified deja de ser un toggle y pasa a ser un estado del flujo $1,500 + Ana</b>, con quién, cuándo y qué desbloquea.</p>
+</div>
+
+<div class="step last">
+  <span class="snum">·</span>
+  <div class="shead"><h3>Pantalla · Edit organization, reordenada</h3><span class="stag new">REDISEÑO</span></div>
+  <p class="sdesc">Cabecera con el estado de un vistazo → tabs (Profile · Verification · Elite Creators · Defaults) → cada cosa en su sitio. En el mockup, el tab de <b>Verification</b>: el toggle de hoy se convierte en un pipeline auditable.</p>
+  <figure class="frame" role="img" aria-label="Admin: editar organization con tabs y pipeline de verificación">
+    <div class="screen"><div class="cv">
+      <div class="r-top" style="background:var(--r-lav)">
+        <span class="r-logo">RALLY</span>
+        <nav class="r-nav"><span>Dashboard</span><span>Campaigns</span><span>Users</span><span class="on">Organizations</span><span>Whitelist</span><span>Transactions</span><span>Reports</span></nav>
+        <span class="r-spacer"></span>
+        <span class="nchip">ADMIN</span>
+      </div>
+      <div style="display:grid; grid-template-columns:190px 1fr; gap:0">
+        <div style="border-right:1px solid var(--r-line); padding:14px 0">
+          <div style="display:flex; align-items:center; justify-content:space-between; padding:0 14px 10px"><b style="font-size:12px; color:#12141F">Organizations</b><span class="nchip">+ New</span></div>
+          <div style="padding:8px 14px; background:#F4F5FE; border-right:2px solid var(--r-blue); font-size:12px; font-weight:700; color:#12141F">2Factor Finance <span style="float:right; color:var(--r-faint)">1</span></div>
+          <div style="padding:8px 14px; font-size:12px; color:var(--r-dim)">GenLayer <span style="float:right; color:var(--r-faint)">4</span></div>
+          <div style="padding:8px 14px; font-size:12px; color:var(--r-dim)">Grvt <span style="float:right; color:var(--r-faint)">4</span></div>
+          <div style="padding:8px 14px; font-size:12px; color:var(--r-dim)">Rally <span style="float:right; color:var(--r-faint)">5</span></div>
+          <div style="padding:8px 14px; font-size:12px; color:var(--r-dim)">io.net <span style="float:right; color:var(--r-faint)">1</span></div>
+        </div>
+        <div style="padding:16px 22px">
+          <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap">
+            <div style="width:44px; height:44px; border-radius:11px; background:#14161F; flex:none"></div>
+            <div>
+              <b style="font-size:15px; color:#12141F">2Factor Finance</b> <span style="font-size:11.5px; color:var(--r-dim)">@2factorfinance · /2factorfinance</span>
+              <div style="display:flex; gap:6px; margin-top:5px">
+                <span class="tchip ok">ACTIVE</span>
+                <span class="tchip warnc">NOT VERIFIED · IN REVIEW</span>
+                <span class="nchip">1 campaign · 767 members</span>
+              </div>
+            </div>
+            <span class="r-spacer"></span>
+            <button class="btn-line">View as user →</button>
+          </div>
+          <div style="display:flex; gap:18px; font-size:12.5px; color:var(--r-dim); border-bottom:1px solid var(--r-line); margin-top:16px; padding-bottom:9px">
+            <span>Profile</span>
+            <span style="color:var(--r-blue); font-weight:800; border-bottom:2px solid var(--r-blue); padding-bottom:9px; margin-bottom:-10px">Verification</span>
+            <span>Elite Creators <b style="color:#B45309">2</b></span>
+            <span>Defaults</span>
+          </div>
+
+          <div class="mpanel" style="margin:14px 0 0">
+            <div class="mhead">Verification pipeline <span class="join" style="color:var(--r-blue)">$1,500 · review con Ana</span></div>
+            <div class="mbody">
+              <div class="pchecks" style="margin-top:0">
+                <div class="pc ok"><i>✓</i><span><b>Requested</b> — Jul 20, from the org’s Verified panel</span></div>
+                <div class="pc ok"><i>✓</i><span><b>Payment $1,500</b> — Jul 20 · ref #INV-2214 (card)</span></div>
+                <div class="pc"><i style="background:#FEF3C7; color:#B45309">●</i><span><b>Review with Ana</b> — scheduled Jul 22, 15:00 CET (Telegram)</span></div>
+                <div class="pc" style="opacity:.45"><i style="background:#EEF0F7; color:#9CA1B4">4</i><span><b>Badge granted</b> — pending review</span></div>
+              </div>
+              <div style="display:flex; gap:9px; margin-top:14px; flex-wrap:wrap">
+                <button class="btn-blue">✔ Grant badge</button>
+                <button class="btn-line">Reject with note</button>
+                <span style="font-size:10.5px; color:var(--r-faint); align-self:center">Granting: badge on the org · campaigns move to the Verified rail · public Community activates</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mpanel" style="margin:12px 0 0">
+            <div class="mhead">Switches <span class="join" style="color:var(--r-faint); font-weight:400">each one says what it does</span></div>
+            <div class="mbody" style="padding-top:6px">
+              <div class="lbrow"><b>Status</b><span class="meta">org can log in and launch</span><span class="r-spacer"></span><span class="tchip ok">ACTIVE</span></div>
+              <div class="lbrow"><b>Gas-free campaigns</b><span class="meta">Rally covers members’ submission gas</span><span class="r-spacer"></span><span class="tchip warnc">OFF</span></div>
+              <div class="lbrow"><b>Community page</b><span class="meta">public page — auto-activates with the Verified badge</span><span class="r-spacer"></span><span class="tchip warnc">LOCKED · needs badge</span></div>
+              <div class="lbrow"><b>Elite Creator program</b><span class="meta">roster + applications</span><span class="r-spacer"></span><span class="tchip ok">ON · applications open</span></div>
+            </div>
+          </div>
+
+          <div class="mpanel" style="margin:12px 0 0">
+            <div class="mhead">Elite Creators · applications to review (2) <span class="join" style="color:var(--r-blue)">⬇ Download CSV</span></div>
+            <div class="mbody" style="padding-top:6px">
+              <div class="lbrow"><span class="xava c1"></span><b>@baiyijiuba</b><span class="vcheck">✔</span><span class="meta">Sorsa 812 · 45.06K followers · 9 campaigns · East Asia · note attached</span><span class="r-spacer"></span><button class="btn-blue" style="padding:6px 14px; font-size:11.5px">Approve</button><button class="btn-line" style="padding:6px 12px; font-size:11.5px">Reject</button></div>
+              <div class="lbrow"><span class="xava c2"></span><b>@airdroploverrr</b><span class="vcheck">✔</span><span class="meta">Sorsa 641 · 12.3K followers · 5 campaigns · Africa/EU · note attached</span><span class="r-spacer"></span><button class="btn-blue" style="padding:6px 14px; font-size:11.5px">Approve</button><button class="btn-line" style="padding:6px 12px; font-size:11.5px">Reject</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+  </figure>
+  <figcaption class="cap">Qué cambia vs hoy: ① el scroll infinito → 4 tabs; ② el toggle "Verified" escondido → pipeline con pago, review con Ana, quién y cuándo — y qué desbloquea al conceder; ③ los switches agrupados, cada uno con su consecuencia escrita (y Community bloqueada hasta el badge, coherente con el modelo); ④ las applications llegan con los datos de Rally pegados (Sorsa, followers, campañas) — la nota en texto libre es un adjunto, no la decisión.</figcaption>
 </div>
 
 <!-- ================= CIERRE ================= -->
