@@ -1,0 +1,210 @@
+<title>Rally — Create a Campaign · 3 entradas · Creator vs Brand</title>
+<style>
+  :root{
+    --paper:#FFFFFF; --ink:#12141F; --ink-2:#6B7084; --line:#E7E9F3; --card:#FFFFFF; --accent:#2B3BE8;
+    --mono:ui-monospace,'SF Mono','Cascadia Code',Menlo,Consolas,monospace;
+    --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#0F1017; --ink:#EDEEF5; --ink-2:#9BA0B4; --line:#272A3A; --card:#171923 }
+  }
+  :root[data-theme="dark"]{ --paper:#0F1017; --ink:#EDEEF5; --ink-2:#9BA0B4; --line:#272A3A; --card:#171923 }
+  :root[data-theme="light"]{ --paper:#FFFFFF; --ink:#12141F; --ink-2:#6B7084; --line:#E7E9F3; --card:#FFFFFF }
+
+  *{box-sizing:border-box; margin:0}
+  body{background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.5; font-size:16px; padding:0 18px 100px}
+  .wrap{max-width:860px; margin:0 auto}
+
+  header{padding:56px 0 10px; text-align:center}
+  .kicker{font-family:var(--mono); font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent)}
+  h1{font-size:clamp(30px,5vw,50px); font-weight:900; font-style:italic; text-transform:uppercase; letter-spacing:-.025em; margin-top:12px}
+  header p{color:var(--ink-2); max-width:56ch; margin:12px auto 0; font-size:15.5px}
+  header p b{color:var(--ink)}
+
+  /* ===== diagram ===== */
+  .pd{border:1px solid var(--line); border-radius:18px; background:var(--card); padding:38px 20px 34px; margin:30px 0 0; overflow-x:auto}
+  .pdi{min-width:680px; max-width:760px; margin:0 auto}
+  .rowlbl{font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); text-align:center; margin:0 0 14px}
+
+  .entries{display:flex; justify-content:center; gap:30px}
+  .pent{width:170px; padding:20px 12px 30px; color:#fff; font-weight:800; font-size:14px; text-align:center;
+    clip-path:polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%)}
+  .pent small{display:block; font-weight:400; font-size:10.5px; opacity:.9; margin-top:4px; line-height:1.35}
+  .pent.p1{background:#F59E0B} .pent.p2{background:#7C3AED} .pent.p3{background:#EC4899}
+
+  .varr{width:2px; height:30px; background:var(--ink); margin:0 auto; position:relative}
+  .varr::after{content:""; position:absolute; bottom:-1px; left:-4px; border:5px solid transparent; border-top-color:var(--ink)}
+  .varr.tall{height:36px}
+
+  .diamond{width:70px; height:70px; background:var(--ink); transform:rotate(45deg); margin:10px auto 16px; display:grid; place-items:center; border-radius:9px}
+  .diamond span{transform:rotate(-45deg); color:var(--paper); font-weight:800; font-size:11px; text-align:center; line-height:1.2}
+
+  .cols{display:grid; gap:24px; margin-top:4px}
+  .cols.three{grid-template-columns:1fr 1fr 1fr}
+  .cols.two{grid-template-columns:1fr 1fr; max-width:620px; margin-left:auto; margin-right:auto}
+  .col{display:flex; flex-direction:column; align-items:center}
+  .state{min-width:130px; padding:14px 12px; text-align:center; font-weight:800; font-size:13px; border-radius:10px}
+  .state.in{background:#5BCB6C; color:#fff}
+  .state.out{background:#E8442E; color:#fff}
+  .state.nw{background:#fff; color:#12141F; border:2px solid #9CA1B4}
+  .sq{padding:14px 14px; background:var(--ink); color:var(--paper); font-weight:700; font-size:12px; text-align:center; border-radius:10px; line-height:1.4; min-width:150px}
+  .sq small{display:block; font-weight:400; font-size:10px; opacity:.8; margin-top:3px; line-height:1.4}
+
+  .bignode{max-width:380px; margin:0 auto; background:var(--ink); color:var(--paper); border-radius:14px; padding:18px 20px; text-align:center}
+  .bignode .bt{font-weight:900; font-size:17px; letter-spacing:.01em}
+  .bignode .bd{font-size:11.5px; opacity:.85; margin-top:5px; line-height:1.5}
+  .bignode.hot{background:var(--accent)}
+
+  .branch{border-radius:12px; padding:15px 16px; text-align:center; width:100%; max-width:280px}
+  .branch .bh{font-weight:800; font-size:13.5px}
+  .branch .bb{font-size:11.5px; margin-top:5px; line-height:1.5}
+  .branch.v{background:#EAF3FF; border:2px solid #3B82F6; color:#12306B}
+  .branch.v .bh{color:#1D4ED8}
+  .branch.n{background:#FFF6EA; border:2px solid #F59E0B; color:#5C3A08}
+  .branch.n .bh{color:#B45309}
+
+  .dest{width:190px; height:190px; border-radius:50%; background:#FDE7F5; border:3px solid #EC4899; color:#12141F; display:grid; place-items:center; text-align:center; font-weight:900; font-size:14px; padding:16px; line-height:1.35; margin:0 auto}
+  .dest small{display:block; font-weight:400; font-size:10.5px; color:#4A4E5E; margin-top:5px; line-height:1.45}
+
+  .foot{font-family:var(--mono); font-size:10.5px; color:var(--ink-2); text-align:center; margin-top:18px; line-height:1.7}
+
+  /* ===== creator vs brand ===== */
+  .vs{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:34px}
+  @media (max-width:700px){ .vs{grid-template-columns:1fr} .cols.three,.cols.two{grid-template-columns:1fr} }
+  .vscard{border:2px solid var(--line); border-radius:16px; padding:22px}
+  .vscard.c{border-color:#F59E0B}
+  .vscard.b{border-color:#3B82F6}
+  .vscard .vh{display:flex; align-items:center; gap:10px; font-weight:900; font-size:18px}
+  .vscard.c .vh{color:#B45309}
+  .vscard.b .vh{color:#1D4ED8}
+  .vscard .vsub{font-size:12.5px; color:var(--ink-2); margin-top:3px}
+  .vscard ul{padding-left:0; list-style:none; margin-top:14px; display:grid; gap:9px}
+  .vscard li{font-size:13.5px; color:var(--ink-2); display:flex; gap:9px}
+  .vscard li b{color:var(--ink)}
+  .vscard li::before{content:"→"; font-family:var(--mono); flex:none}
+  .vscard.c li::before{color:#F59E0B}
+  .vscard.b li::before{color:#3B82F6}
+</style>
+
+<div class="wrap">
+
+<header>
+  <span class="kicker">app.rally.fun · el flujo de crear campaña · para diseño</span>
+  <h1>Create a Campaign</h1>
+  <p>Un solo flujo para todos. <b>Orden fijo: primero se crea la Organization, después la campaña.</b> La única bifurcación es la pregunta de Verified. Creator y Brand recorren exactamente el mismo camino — abajo, en qué se diferencian.</p>
+</header>
+
+<!-- ================= EL DIAGRAMA ================= -->
+<div class="pd">
+  <div class="pdi">
+
+    <p class="rowlbl">Las 3 entradas</p>
+    <div class="entries">
+      <div class="pent p1">Tweet<small>"create yours"<br>deep link a /create</small></div>
+      <div class="pent p2">rally.fun<small>CTA "Launch<br>a campaign"</small></div>
+      <div class="pent p3">app.rally.fun<small>"+ Create campaign"<br>en el feed</small></div>
+    </div>
+
+    <div class="varr tall" style="margin-top:12px"></div>
+    <div class="diamond"><span>IF<br>sesión</span></div>
+
+    <div class="cols three">
+      <div class="col">
+        <div class="state in">Logged In</div>
+      </div>
+      <div class="col">
+        <div class="state out">Logged Out</div>
+        <div class="varr"></div>
+        <div class="sq">Log in<br>X / Metamask</div>
+      </div>
+      <div class="col">
+        <div class="state nw">New</div>
+        <div class="varr"></div>
+        <div class="sq">Connect<br>X / Metamask</div>
+      </div>
+    </div>
+
+    <div class="varr tall" style="margin-top:20px"></div>
+
+    <p class="rowlbl" style="margin-top:6px">Paso 1 · siempre antes de la campaña</p>
+    <div class="bignode hot">
+      <div class="bt">CREATE ORGANIZATION</div>
+      <div class="bd">Nombre · pfp · descripción — importados de la cuenta de X con la que entró.<br>Creator: su X personal · Brand: la X del proyecto. 30 segundos.</div>
+    </div>
+
+    <div class="varr tall" style="margin-top:16px"></div>
+    <div class="diamond" style="width:84px; height:84px"><span>¿QUIERES SER<br>VERIFIED?</span></div>
+
+    <div class="cols two">
+      <div class="col">
+        <div class="branch v">
+          <div class="bh">SÍ → ✔ VERIFIED</div>
+          <div class="bb"><b>Formulario con Ana + $1,500.</b><br>Badge azul en &lt;24h · carril destacado · token/points custom · invoice.<br>Mientras llega el badge, puede seguir con el flujo.</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="branch n">
+          <div class="bh">NO → NETWORK</div>
+          <div class="bb"><b>Solo los datos de la organización</b> (ya vienen pre-rellenos de X).<br>Sin coste, sin espera.<br>Puede verificarse más adelante cuando quiera.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="varr tall" style="margin-top:20px"></div>
+
+    <p class="rowlbl" style="margin-top:6px">Paso 2 · la wallet — solo si no la tiene</p>
+    <div class="bignode">
+      <div class="bt">WALLET</div>
+      <div class="bd">¿Ya conectó Metamask al entrar? Este paso no aparece.<br>¿No tiene wallet? <b>Create wallet</b> embebida, sin salir del flujo.<br>Es LA MISMA wallet para todo: participar como creator y depositar como organization.</div>
+    </div>
+
+    <div class="varr tall" style="margin-top:16px"></div>
+
+    <p class="rowlbl" style="margin-top:6px">Paso 3 · la campaña</p>
+    <div class="bignode">
+      <div class="bt">CREATE CAMPAIGN · 1 página</div>
+      <div class="bd">Qué deben publicar (la AI redacta el resto) + el premio: pool en RLP o USDC, cantidad, duración.<br>Lo técnico va pre-relleno en "Advanced ▾ ✓ Rally defaults".</div>
+    </div>
+
+    <div class="varr tall" style="margin-top:16px"></div>
+    <div class="bignode" style="max-width:300px">
+      <div class="bt">DEPOSIT &amp; LAUNCH</div>
+      <div class="bd">Un depósito desde su wallet. El del protocolo, sin cambios.</div>
+    </div>
+
+    <div class="varr tall" style="margin-top:16px"></div>
+    <div class="dest">LIVE<small>En el carril <b style="color:#1D4ED8">✔ Verified</b> o <b style="color:#B45309">Network</b> según su organization.<br>Community creada automáticamente.<br>Share on X.</small></div>
+
+    <div class="foot">
+      TWEET = máxima intención: deep link, nunca pasa por home · RALLY.FUN = la web ya vendió el valor, directo al flujo · APP = el feed (carril Network) es la prueba social antes del botón
+    </div>
+  </div>
+</div>
+
+<!-- ================= CREATOR VS BRAND ================= -->
+<div class="vs">
+  <div class="vscard c">
+    <div class="vh">🎨 Si es CREATOR</div>
+    <div class="vsub">Una persona lanzando su propia campaña — permissionless</div>
+    <ul>
+      <li><span><b>Organization en 30 segundos:</b> se pre-rellena con su X personal (pfp, nombre). Solo confirma.</span></li>
+      <li><span><b>Verified: normalmente NO</b> — salta la pregunta con un click y sigue. Puede verificarse más adelante si crece.</span></li>
+      <li><span><b>Wallet: la que ya usa</b> para participar y cobrar. Si vino de Metamask, este paso ni aparece.</span></li>
+      <li><span><b>Pool en RLP o USDC</b> — lo que tenga. Su campaña sale en el carril <b>NETWORK</b>.</span></li>
+      <li><span><b>Total: ~2 minutos</b> de la entrada al live.</span></li>
+    </ul>
+  </div>
+  <div class="vscard b">
+    <div class="vh">🚀 Si es BRAND</div>
+    <div class="vsub">Un proyecto — y puede entrar como cualquier creator</div>
+    <ul>
+      <li><span><b>Organization con la X del proyecto:</b> mismo paso, misma pantalla — entra con la cuenta de la marca y todo se importa igual.</span></li>
+      <li><span><b>Verified: su decisión.</b> SÍ → formulario con Ana + <b>$1,500</b> → badge azul, carril destacado, token/points custom, invoice. NO → lanza en Network igual que un creator, sin coste.</span></li>
+      <li><span><b>Wallet: la misma mecánica.</b> Una wallet por cuenta; luego puede añadir wallets de su equipo como admins, desde ajustes.</span></li>
+      <li><span><b>Puede lanzar mientras la review corre</b> — sale en Network y sube al carril Verified al llegar el badge.</span></li>
+      <li><span><b>Una marca es un creator que creó una organization</b> — no hay cuenta especial de marca.</span></li>
+    </ul>
+  </div>
+</div>
+
+</div>
