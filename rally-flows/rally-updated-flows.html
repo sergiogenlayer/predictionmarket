@@ -475,138 +475,106 @@
 
 <div class="step new">
   <span class="snum">4</span>
-  <div class="shead"><h3>Pantalla · Create Campaign (1 página)</h3><span class="stag new">PANTALLA NUEVA</span></div>
-  <p class="sdesc">Dos bloques y un botón. El chip de arriba muestra el carril de tu org (NOT VERIFIED → Network; ✔ VERIFIED → destacado). Lo técnico (evaluation, targeting, schedule) sigue existiendo, pre-relleno bajo "Advanced ▾".</p>
-  <figure class="frame" role="img" aria-label="Pantalla: crear campaña en una página">
+  <div class="shead"><h3>Pantalla · Create Campaign — todo en una página</h3><span class="stag new">LA PANTALLA CLAVE</span></div>
+  <p class="sdesc">Una sola página con <b>todo lo que hace falta para lanzar una campaña exitosa y que la AI la pueda evaluar</b>: el qué (nombre, ask, reglas, knowledge base, tono), el premio, y quién participa. A la derecha, siempre visible: el medidor <b>"AI Evaluation ready"</b> — se va completando mientras rellenas y te dice exactamente cuándo tu campaña es evaluable — y el resumen del deposit. Nada escondido, nada en pasos.</p>
+  <figure class="frame" role="img" aria-label="Pantalla: crear campaña completa en una página">
     <div class="screen"><div class="cv">
       <div class="r-hero" style="padding-bottom:14px">
         <div style="display:flex; align-items:center; gap:12px">
           <div><div class="r-h1">Create campaign</div>
-          <p class="r-sub">Two blocks and a button. Everything technical is preset — edit it under Advanced.</p></div>
+          <p class="r-sub">Everything on one page. Fill it top to bottom — the meter tells you when the AI can evaluate it.</p></div>
           <span class="r-spacer"></span>
-          <span class="tchip comm" style="font-size:11px; padding:6px 12px">NETWORK · org not verified</span>
+          <span class="tchip comm" style="font-size:11px; padding:6px 12px">NETWORK · GenLayer (not verified)</span>
         </div>
       </div>
       <div class="grid2">
         <div>
           <div class="cblock">
-            <div class="cbh"><i>1</i>What should creators post?</div>
+            <div class="cbh"><i>1</i>The campaign <span style="font-weight:400; font-size:11px; color:var(--r-faint)">— this is what the AI evaluates against</span></div>
             <div class="fl">Campaign name</div>
-            <div class="inp" style="font-weight:700">Roast Your Worst Trade</div>
-            <div class="fl">The ask — what makes a winning post</div>
-            <div class="inp" style="min-height:60px; line-height:1.5">One tweet about the worst trade you ever made. Be honest, be specific, make it sting.</div>
-            <div style="display:flex; gap:8px; margin-top:10px; align-items:center">
-              <button class="btn-line">✦ Let AI fill this from the name</button>
-              <span style="font-size:11.5px; color:var(--r-faint)">rules · knowledge base · style</span>
+            <div class="inp" style="font-weight:700">Internet Court Is Here</div>
+            <div class="fl">What should creators post?</div>
+            <div class="inp" style="min-height:56px; line-height:1.5">Quote the GenLayer post quoting Forbes and amplify it in your own voice. Original takes only — no empty hype.</div>
+            <div class="fl">Rules <span style="font-weight:400; color:var(--r-faint)">— the AI enforces these on every submission</span></div>
+            <div style="display:flex; gap:7px; flex-wrap:wrap">
+              <span style="border:1px solid #BFE5CC; background:var(--r-green-bg); color:#14532D; font-size:11.5px; font-weight:600; padding:6px 11px; border-radius:999px">✓ Mention @GenLayer</span>
+              <span style="border:1px solid #BFE5CC; background:var(--r-green-bg); color:#14532D; font-size:11.5px; font-weight:600; padding:6px 11px; border-radius:999px">✓ Quote the launch post</span>
+              <span style="border:1px solid #BFE5CC; background:var(--r-green-bg); color:#14532D; font-size:11.5px; font-weight:600; padding:6px 11px; border-radius:999px">✓ Original take — no copy-paste</span>
+              <span style="border:1px dashed var(--r-line2); color:var(--r-faint); font-size:11.5px; font-weight:600; padding:6px 11px; border-radius:999px">+ Add rule</span>
+            </div>
+            <div class="fl">Knowledge base <span style="font-weight:400; color:var(--r-faint)">— context so the AI scores accuracy right</span></div>
+            <div class="inp" style="min-height:52px; line-height:1.5; font-size:12.5px">Internet Court is a neutral dispute-resolution protocol for AI agents, covered by Forbes. GenLayer is the network it runs on…</div>
+            <div style="display:flex; gap:8px; margin-top:8px; align-items:center">
+              <button class="btn-line">✦ Draft rules &amp; knowledge base with AI</button>
+              <span style="font-size:11px; color:var(--r-faint)">from your name and ask</span>
+            </div>
+            <div class="fl">Tone</div>
+            <div style="display:flex; gap:7px">
+              <span style="background:#12141F; color:#fff; font-size:11.5px; font-weight:700; padding:6px 13px; border-radius:999px">🔥 Hype</span>
+              <span style="border:1px solid var(--r-line2); color:var(--r-dim); font-size:11.5px; font-weight:700; padding:6px 13px; border-radius:999px">🎓 Educational</span>
+              <span style="border:1px solid var(--r-line2); color:var(--r-dim); font-size:11.5px; font-weight:700; padding:6px 13px; border-radius:999px">😂 Fun</span>
             </div>
           </div>
           <div class="cblock">
-            <div class="cbh"><i>2</i>What’s the prize?</div>
+            <div class="cbh"><i>2</i>The prize</div>
             <div class="payrow on" style="margin-top:0"><span>Rally Points (RLP)<small>Your balance: 180000 RLP</small></span><span class="amt">◆</span></div>
             <div class="payrow"><span>USDC<small>From your wallet · Base</small></span><span class="amt">◎</span></div>
             <div class="fl">Amount &amp; duration</div>
-            <div style="display:flex; gap:8px">
+            <div style="display:flex; gap:8px; align-items:center">
               <div class="inp" style="font-weight:800; font-size:16px; max-width:140px">40.000</div>
-              <div class="inp">1 week ▾</div>
+              <span style="border:1px solid var(--r-line2); color:var(--r-dim); font-size:11.5px; font-weight:700; padding:7px 13px; border-radius:999px; background:#fff">1 week</span>
+              <span style="background:#12141F; color:#fff; font-size:11.5px; font-weight:700; padding:7px 13px; border-radius:999px">2 weeks</span>
+              <span style="border:1px solid var(--r-line2); color:var(--r-faint); font-size:11.5px; font-weight:700; padding:7px 13px; border-radius:999px; background:#fff">Custom ▾</span>
             </div>
           </div>
           <div class="cblock">
-            <div class="cbh"><i>3</i>Whitelisted creators <span style="font-weight:400; font-size:11px; color:var(--r-faint)">(optional — fixed pay per post)</span></div>
-            <div style="display:flex; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--r-line); font-size:12.5px"><span class="xava c1" style="width:20px; height:20px"></span><b>@srinigoes</b><span class="vcheck">✔</span><span class="r-spacer"></span><span style="color:var(--r-dim); font-size:11.5px">pay per post</span><div class="inp" style="max-width:110px; font-weight:700; padding:6px 10px">4.000 RLP</div><span style="color:var(--r-dim); font-size:11.5px">max posts</span><div class="inp" style="max-width:60px; font-weight:700; padding:6px 10px">3</div></div>
-            <div style="display:flex; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--r-line); font-size:12.5px"><span class="xava c3" style="width:20px; height:20px"></span><b>@holly_web3</b><span class="vcheck">✔</span><span class="r-spacer"></span><span style="color:var(--r-dim); font-size:11.5px">pay per post</span><div class="inp" style="max-width:110px; font-weight:700; padding:6px 10px">4.000 RLP</div><span style="color:var(--r-dim); font-size:11.5px">max posts</span><div class="inp" style="max-width:60px; font-weight:700; padding:6px 10px">3</div></div>
-            <div style="display:flex; gap:8px; margin-top:10px">
+            <div class="cbh"><i>3</i>Who can join?</div>
+            <div style="display:flex; gap:6px; margin-bottom:12px">
+              <span style="background:#12141F; color:#fff; font-size:11.5px; font-weight:700; padding:7px 14px; border-radius:999px">Everyone · 11,746 eligible</span>
+              <span style="border:1px solid var(--r-line2); color:var(--r-dim); font-size:11.5px; font-weight:700; padding:7px 14px; border-radius:999px; background:#fff">Whitelist only</span>
+              <span style="border:1px solid var(--r-line2); color:var(--r-dim); font-size:11.5px; font-weight:700; padding:7px 14px; border-radius:999px; background:#fff">Elite creators</span>
+            </div>
+            <div class="fl" style="margin-top:0">Also pay specific creators per post <span style="font-weight:400; color:var(--r-faint)">(optional)</span></div>
+            <div style="display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--r-line); font-size:12.5px"><span class="xava c1" style="width:20px; height:20px"></span><b>@srinigoes</b><span class="vcheck">✔</span><span class="r-spacer"></span><span style="color:var(--r-dim); font-size:11.5px">per post</span><div class="inp" style="max-width:100px; font-weight:700; padding:5px 10px">4.000 RLP</div><span style="color:var(--r-dim); font-size:11.5px">max</span><div class="inp" style="max-width:52px; font-weight:700; padding:5px 10px">3</div></div>
+            <div style="display:flex; align-items:center; gap:10px; padding:8px 0; font-size:12.5px"><span class="xava c3" style="width:20px; height:20px"></span><b>@holly_web3</b><span class="vcheck">✔</span><span class="r-spacer"></span><span style="color:var(--r-dim); font-size:11.5px">per post</span><div class="inp" style="max-width:100px; font-weight:700; padding:5px 10px">4.000 RLP</div><span style="color:var(--r-dim); font-size:11.5px">max</span><div class="inp" style="max-width:52px; font-weight:700; padding:5px 10px">3</div></div>
+            <div style="display:flex; gap:8px; margin-top:10px; align-items:center">
               <button class="btn-line">+ Add creator</button>
               <button class="btn-line">⬆ Upload list (CSV)</button>
-              <span style="font-size:11px; color:var(--r-faint); align-self:center">5 creators · 3 posts each · <b style="color:#12141F">60.000 RLP reserved</b></span>
+              <span style="font-size:11px; color:var(--r-faint)">AI-verified per post · released when the campaign ends</span>
             </div>
-            <div style="font-size:11px; color:var(--r-faint); margin-top:10px; line-height:1.5">Each post must follow the campaign rules (talk about GenLayer, mention @GenLayer…). <b style="color:#15803D">AI verifies every post</b> — if true, the payment is approved but <b style="color:#B45309">held until the campaign ends</b>, then released automatically. Unused reserve returns to you.</div>
           </div>
-          <div style="font-size:12px; color:var(--r-faint); padding:0 4px">Advanced — evaluation · targeting · schedule <span class="tchip ok">✓ RALLY DEFAULTS</span> · <span style="color:var(--r-blue); font-weight:700">Edit ▾</span></div>
         </div>
         <aside>
-          <div class="sticky-sum">
+          <div class="sticky-sum" style="border-color:#BFE5CC; background:var(--r-green-bg)">
+            <div style="font-weight:800; font-size:13.5px; color:#14532D; margin-bottom:8px">✦ AI Evaluation ready</div>
+            <div style="height:7px; border-radius:4px; background:#DCFCE7; position:relative; overflow:hidden; margin-bottom:10px"><span style="position:absolute; inset:0; width:100%; background:var(--r-green); border-radius:4px"></span></div>
+            <div style="display:grid; gap:4px; font-size:11.5px; color:#2F4A3A">
+              <span>✓ Name &amp; ask</span>
+              <span>✓ Rules (3) — enforceable</span>
+              <span>✓ Knowledge base — accuracy scoring on</span>
+              <span>✓ Tone set — style scoring on</span>
+            </div>
+            <div style="font-size:10.5px; color:#4A7C5C; margin-top:8px">Wingston can fully evaluate every submission.</div>
+          </div>
+          <div class="sticky-sum" style="margin-top:12px">
             <div style="font-weight:800; font-size:14px; color:#12141F; margin-bottom:8px">Ready to launch</div>
             <div class="sumrow"><span>Prize pool</span><b>40.000 RLP</b></div>
-            <div class="sumrow"><span>Whitelisted creators</span><b>60.000 RLP</b></div>
-            <div class="sumrow"><span>Total deposit</span><b>100.000 RLP</b></div>
-            <div class="sumrow"><span>Runs</span><b>1 week</b></div>
+            <div class="sumrow"><span>Whitelisted creators</span><b>24.000 RLP</b></div>
+            <div class="sumrow"><span>Total deposit</span><b>64.000 RLP</b></div>
+            <div class="sumrow"><span>Runs</span><b>2 weeks · live now</b></div>
             <div style="margin-top:12px"><button class="btn-blue" style="width:100%">Deposit &amp; launch</button></div>
-            <div style="font-size:11px; color:var(--r-faint); margin-top:8px">Wallet asked here. By depositing you accept the Terms &amp; Conditions.</div>
+            <div style="font-size:11px; color:var(--r-faint); margin-top:8px">By depositing you accept the Terms &amp; Conditions. Wallet asked here — don’t have one? Create it without leaving.</div>
           </div>
-          <div class="team">
-            <div class="tt">Want the featured rail? <span class="vcheck">✔</span></div>
-            <p><b>Get Verified — $1,500</b> · blue badge + featured placement + your own Community.</p>
-            <button class="btn-line">✔ Get Verified</button>
-          </div>
+          <div style="font-size:11px; color:var(--ink-2); margin-top:12px; line-height:1.6; padding:0 2px">Fine-tune scoring weights, curve, periods &amp; targeting — <b style="color:var(--accent)">optional, Rally defaults applied</b>.</div>
         </aside>
       </div>
     </div></div>
   </figure>
-</div>
-
-<div class="step new">
-  <span class="snum">5</span>
-  <div class="shead"><h3>El formulario por dentro — mapeo campo a campo</h3><span class="stag new">ESPECIFICACIÓN COMPLETA</span></div>
-  <p class="sdesc">Los 6 pasos actuales de Campaign Management (Basic details · Pot &amp; Duration · Missions · Evaluation · Targeting on X · Confirm &amp; Deposit) <b>no pierden ni un campo</b>: cada uno se recoloca. Regla: <b>si un campo tiene default sensato, no puede estar en el camino crítico.</b> Visible en la página solo lo que exige decisión: nombre, ask, token, cantidad, duración y el whitelist opcional. Leyenda: <span class="loc p1">PÁGINA 1</span> visible · <span class="loc auto">AUTO</span> lo resuelve el sistema · <span class="loc adv">ADVANCED ▾</span> pre-relleno y editable · <span class="loc wl">BLOQUE 3</span> whitelist.</p>
-
-  <div class="maptbl-wrap"><table class="maptbl">
-    <thead><tr><th style="width:26%">Campo (formulario actual)</th><th style="width:16%">Dónde queda</th><th>Comportamiento en el nuevo diseño · default</th></tr></thead>
-    <tbody>
-      <tr class="grp"><td colspan="3">Paso 1 actual · Basic details</td></tr>
-      <tr><td class="f">Publish as</td><td><span class="loc auto">AUTO</span></td><td>Siempre tu organization activa — ya no se elige. <span class="dft">default: la org del usuario</span></td></tr>
-      <tr><td class="f">Campaign Name</td><td><span class="loc p1">PÁGINA 1</span></td><td>Bloque 1 · "Campaign name". Obligatorio junto al ask.</td></tr>
-      <tr><td class="f">Short Description</td><td><span class="loc p1">PÁGINA 1</span></td><td>Se fusiona con la misión en "The ask — what makes a winning post".</td></tr>
-      <tr><td class="f">Knowledge Base</td><td><span class="loc adv">ADVANCED ▾</span></td><td>El <b>AI Template lo redacta desde el nombre y el ask</b>; editable. <span class="dft">default: generado</span></td></tr>
-      <tr><td class="f">Campaign Style</td><td><span class="loc adv">ADVANCED ▾</span></td><td>AI Template; editable. <span class="dft">default: generado</span></td></tr>
-      <tr><td class="f">Additional Information</td><td><span class="loc adv">ADVANCED ▾</span></td><td>AI Template; editable. <span class="dft">default: vacío</span></td></tr>
-      <tr class="grp"><td colspan="3">Paso 2 actual · Pot &amp; Duration</td></tr>
-      <tr><td class="f">Network</td><td><span class="loc adv">ADVANCED ▾</span></td><td><span class="dft">default: Base (o la chain de la org)</span></td></tr>
-      <tr><td class="f">Token</td><td><span class="loc p1">PÁGINA 1</span></td><td>Bloque 2 · RLP / USDC — token propio y points solo si la org es ✔ Verified.</td></tr>
-      <tr><td class="f">Total Amount</td><td><span class="loc p1">PÁGINA 1</span></td><td>Bloque 2 · "Amount".</td></tr>
-      <tr><td class="f">Number of Periods</td><td><span class="loc adv">ADVANCED ▾</span></td><td><span class="dft">default: 1</span></td></tr>
-      <tr><td class="f">Period Duration</td><td><span class="loc p1">PÁGINA 1</span></td><td>Bloque 2 · "Duration" con presets (1 week · 2 weeks · custom).</td></tr>
-      <tr><td class="f">Rewards per Period</td><td><span class="loc auto">AUTO</span></td><td>Calculado (amount ÷ periods) y mostrado en el resumen.</td></tr>
-      <tr><td class="f">Start Date &amp; Time / End date</td><td><span class="loc auto">AUTO</span></td><td>Live inmediato al depositar. Programar fecha → Advanced. <span class="dft">default: now</span></td></tr>
-      <tr class="grp"><td colspan="3">Paso 3 actual · Missions</td></tr>
-      <tr><td class="f">Mission Title</td><td><span class="loc auto">AUTO</span></td><td>= Campaign name. Editable en Advanced. <span class="dft">default: el nombre</span></td></tr>
-      <tr><td class="f">Mission Short Description</td><td><span class="loc p1">PÁGINA 1</span></td><td>= "The ask" del bloque 1 — un solo campo, no dos.</td></tr>
-      <tr><td class="f">Mission Rules (markdown)</td><td><span class="loc adv">ADVANCED ▾</span></td><td>El AI Template las redacta desde el ask (menciones, formato, no em dashes…); editables. <span class="dft">default: generadas</span></td></tr>
-      <tr><td class="f">+ Add another mission</td><td><span class="loc adv">ADVANCED ▾</span></td><td>Multi-misión disponible, fuera del camino crítico. <span class="dft">default: 1 misión</span></td></tr>
-      <tr class="grp"><td colspan="3">Paso 4 actual · Evaluation</td></tr>
-      <tr><td class="f">Distribution Curve Type</td><td><span class="loc adv">ADVANCED ▾</span></td><td>Balanced / Default / Extreme intactas. <span class="dft">default: Default</span></td></tr>
-      <tr><td class="f">External Multiplier URL</td><td><span class="loc adv">ADVANCED ▾</span></td><td><span class="dft">default: vacío (desactivado)</span></td></tr>
-      <tr><td class="f">Scoring Weights — Core Gates · Engagement · Quality</td><td><span class="loc adv">ADVANCED ▾</span></td><td>Los 12 sliders siguen ahí. <span class="dft">default: gates 1.0 · engagement 0.5 · impressions 0.9 · quality 0.9</span></td></tr>
-      <tr class="grp"><td colspan="3">Paso 5 actual · Targeting on X</td></tr>
-      <tr><td class="f">Allow Old Tweets</td><td><span class="loc adv">ADVANCED ▾</span></td><td><span class="dft">default: off</span></td></tr>
-      <tr><td class="f">Submission Disqualification + Moderators</td><td><span class="loc adv">ADVANCED ▾</span></td><td><span class="dft">default: on · Rally moderator</span></td></tr>
-      <tr><td class="f">Max Submissions / Participant</td><td><span class="loc adv">ADVANCED ▾</span></td><td><span class="dft">default: 0 (unlimited)</span></td></tr>
-      <tr><td class="f">Max Winners / Period</td><td><span class="loc adv">ADVANCED ▾</span></td><td><span class="dft">default: 0 (todos con puntos cobran)</span></td></tr>
-      <tr><td class="f">Participation: Everyone / Whitelist only / Elite Creators</td><td><span class="loc wl">BLOQUE 3</span></td><td>El bloque "Whitelisted creators" (pago fijo por post) ES el modo Whitelist con dinero encima. Sin whitelist → Everyone. Elite Creators → Advanced. <span class="dft">default: Everyone</span></td></tr>
-      <tr><td class="f">Min Sorsa Score</td><td><span class="loc adv">ADVANCED ▾</span></td><td><span class="dft">default: 0</span></td></tr>
-      <tr><td class="f">Only Verified Users + Min/Max Followers</td><td><span class="loc adv">ADVANCED ▾</span></td><td><span class="dft">default: on · min 500 · max 0</span> — la config que ya usáis</td></tr>
-      <tr class="grp"><td colspan="3">Paso 6 actual · Confirm &amp; Deposit</td></tr>
-      <tr><td class="f">Review (Rewards · Schedule · Targeting · Content)</td><td><span class="loc p1">PÁGINA 1</span></td><td>La columna "Ready to launch" fija a la derecha — el review deja de ser un paso y está siempre visible.</td></tr>
-      <tr><td class="f">Create campaign</td><td><span class="loc p1">PÁGINA 1</span></td><td>"Deposit &amp; launch" — deposit del protocolo + aceptación de T&amp;C. Un click.</td></tr>
-    </tbody>
-  </table></div>
-
-  <p class="sdesc" style="margin-top:16px">Y así se ve el <b>Advanced ▾ abierto</b> — cuatro grupos, cada uno con sus valores a la vista y un solo "Edit". Quien no lo necesite no lo abrirá jamás; quien lo necesite encuentra todo donde estaba:</p>
-  <figure class="frame slim" role="img" aria-label="Pantalla: advanced abierto con los cuatro grupos">
-    <div class="screen"><div class="cv">
-      <div class="r-pad" style="padding-top:18px; padding-bottom:6px">
-        <div style="font-weight:800; font-size:14px; color:#12141F">Advanced <span class="tchip ok">✓ RALLY DEFAULTS</span> <span style="font-weight:400; font-size:11.5px; color:var(--r-faint)">— everything is preset; edit only what you need</span></div>
-        <div class="accrow"><div><div class="at">📄 Content</div></div><div class="ad">Knowledge Base · Campaign Style · Additional Info — <b>drafted by AI</b> from your name &amp; ask · Mission rules generated · + add missions</div><span class="edit">Edit ▾</span></div>
-        <div class="accrow"><div><div class="at">💰 Pot &amp; schedule</div></div><div class="ad">Network: Base · Periods: 1 · Rewards/period: auto · Start: immediately (or pick a date)</div><span class="edit">Edit ▾</span></div>
-        <div class="accrow"><div><div class="at">🧠 Evaluation</div></div><div class="ad">Curve: Default · Weights: gates 1.0 / engagement 0.5 / impressions 0.9 / quality 0.9 · External multiplier: off</div><span class="edit">Edit ▾</span></div>
-        <div class="accrow"><div><div class="at">🎯 Targeting</div></div><div class="ad">Everyone · 11,746 eligible · old tweets off · disqualification on (Rally moderator) · max subs/winners: unlimited · Sorsa 0 · verified users on · followers 500+</div><span class="edit">Edit ▾</span></div>
-      </div>
-    </div></div>
-  </figure>
-  <figcaption class="cap">El contador "eligible users" en vivo (11,746) se mantiene — es el mejor feedback del formulario actual. Cambiar algo en Targeting lo recalcula a la vista.</figcaption>
+  <figcaption class="cap">Una página, tres bloques, un botón. Todo lo que la AI necesita para evaluar (ask, reglas, knowledge base, tono) está a la vista y con asistencia de AI para redactarlo; el medidor verde confirma cuándo la campaña es evaluable; el resumen suma pool + whitelist en un solo deposit.</figcaption>
 </div>
 
 <div class="step last">
-  <span class="snum">6</span>
+  <span class="snum">5</span>
   <div class="shead"><h3>Creator vs Brand — mismo camino, distinta cara</h3><span class="stag new">LA DISTINCIÓN</span></div>
   <div class="vs">
     <div class="vscard c">
