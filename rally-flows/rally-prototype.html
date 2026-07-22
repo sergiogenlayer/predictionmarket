@@ -229,6 +229,7 @@
     <p class="dl">Anyone can launch. The org is born NOT VERIFIED; paying $1,500 (+ review with Ana) upgrades it to ✔ Verified.</p>
     <div class="lane">
       <div class="node hot"><div class="nbox"><span class="nk">Entry</span><div class="nt">+ Create campaign</div><div class="nd">X bio "create yours" · rally.fun · in-app</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">Login</span><div class="nt">Connect with 𝕏</div><div class="nd">skipped if a session exists</div></div></div>
       <div class="node hot"><div class="nbox"><span class="nk">Always first</span><div class="nt">CREATE ORGANIZATION</div><div class="nd">name · pfp · banner · links (from X) · accepts T&amp;C · born NOT VERIFIED</div></div></div>
       <div class="fork">
         <div class="nbox" style="border-color:#BFD7FF; background:#F6FAFF"><span class="nk" style="color:#2563EB">VERIFIED? YES</span><div class="nt">$1,500 + Ana</div><div class="nd">badge &lt;24h · featured rail · own Community · token/points · invoice</div></div>
@@ -450,20 +451,33 @@
         <div class="h1">Launch a campaign — where from?</div>
         <div class="sub" style="margin-bottom:6px">Three doors, one flow. Anyone can launch — creator or brand.</div>
         <div style="display:grid; gap:10px; margin-top:16px">
-          <button class="ccard" style="padding:16px; border:2px solid #F59E0B; background:#FFFBF4" onclick="go('pOrg'); toast('🐦 NEW USER · deep link to /create · full path: Connect X → Org → Campaign (~3 min)')">
+          <button class="ccard" style="padding:16px; border:2px solid #F59E0B; background:#FFFBF4" onclick="entryDoor(true,'🐦 NEW USER · deep link to /create · Connect X → Org → ¿Verified? → Campaign (~3 min)')">
             <div style="font-weight:800; font-size:14px">🐦 From Rally’s X bio <span class="tchip warn" style="margin-left:6px">NEW USER · ~3 MIN</span></div>
             <div style="font-size:12px; color:var(--ink-2); margin-top:3px">"create yours" → deep link to /create · never sees home · context = 1 line above the form · does EVERY step: Connect X → Org → ¿Verified? → Campaign</div>
           </button>
-          <button class="ccard" style="padding:16px; border-width:1.5px" onclick="go('pOrg'); toast('🌐 The website did the pitch — same full path, but zero re-explaining (~3 min)')">
+          <button class="ccard" style="padding:16px; border-width:1.5px" onclick="entryDoor(false,'🌐 The website did the pitch — same path, but no context strip needed (~3 min)')">
             <div style="font-weight:800; font-size:14px">🌐 From rally.fun <span class="tchip warn" style="margin-left:6px">NEW · SOLD · ~3 MIN</span></div>
             <div style="font-size:12px; color:var(--ink-2); margin-top:3px">CTA "Launch a campaign" → /create · same steps as the tweet door, but no context needed — the landing already sold it</div>
           </button>
-          <button class="ccard" style="padding:16px; border:2px solid var(--green); background:var(--green-bg)" onclick="go('pC'); toast('📱 EXISTING USER: logged in + org already created → Login, Org and ¿Verified? SKIPPED. Straight to the form (~1 min)')">
+          <button class="ccard" style="padding:16px; border:2px solid var(--green); background:var(--green-bg)" onclick="door3()">
             <div style="font-weight:800; font-size:14px">📱 Browsing app.rally.fun <span class="tchip ok" style="margin-left:6px">EXISTING · ~1 MIN</span></div>
             <div style="font-size:12px; color:var(--ink-2); margin-top:3px">"+ Create campaign" in the feed · already logged in, org already exists → <b>skips Login, Org and ¿Verified?</b> — lands straight on the form. Try it: this door jumps ahead.</div>
           </button>
         </div>
         <div class="foot-note">Same flow, three doors. What changes: where you land, how much context we give you, and how many steps you already have done.</div>
+      </div>
+    </section>
+
+    <!-- ========== LAUNCH 0b: connect (S1) ========== -->
+    <section class="screen" id="pLogin">
+      <div class="pad" style="max-width:400px; margin:0 auto; padding-top:40px">
+        <div class="fcard" style="text-align:center">
+          <div class="fq">Connect to Rally</div>
+          <div class="fsub">One account for everything — earning and launching.</div>
+          <div style="margin-top:14px"><button class="btn full" id="conxbtn" onclick="connectX(this,'𝕏')">Continue with 𝕏</button></div>
+          <div style="margin-top:8px"><button class="btn ghost full" onclick="connectX(this,'Metamask')">Continue with Metamask</button></div>
+          <div class="foot-note">By continuing you agree to Rally’s Terms &amp; Conditions.</div>
+        </div>
       </div>
     </section>
 
@@ -516,9 +530,41 @@
       </div>
     </section>
 
+    <!-- ========== LAUNCH 2b: get verified sub-flow (S3b) ========== -->
+    <section class="screen" id="pVerForm">
+      <div class="pad" style="max-width:600px; margin:0 auto; padding-top:24px">
+        <div class="h1" style="text-align:center">Get Verified <span class="tchip v" style="vertical-align:6px">✔ $1,500</span></div>
+        <div class="sub" style="text-align:center; margin-bottom:14px">Three quick steps — no KYB, no company forms. You can keep launching while the review runs.</div>
+        <div class="block">
+          <div class="bh"><i>1</i>Short form</div>
+          <label class="fl">Website</label>
+          <input class="inp" value="genlayer.com">
+          <label class="fl">What are you building?</label>
+          <textarea class="inp">Trust infrastructure for the AI age — Intelligent Contracts and the Internet Court.</textarea>
+        </div>
+        <div class="block">
+          <div class="bh"><i>2</i>Payment · $1,500 <small>— invoice included</small></div>
+          <button class="payrow on" onclick="paySel(this,'Card')"><span>Card<small>Invoice by email</small></span><span class="amt">$1,500</span></button>
+          <button class="payrow" onclick="paySel(this,'Crypto')"><span>Crypto<small>USDC · Base</small></span><span class="amt">$1,500</span></button>
+          <div style="margin-top:10px"><button class="btn full" id="payverbtn" onclick="payVer()">Pay $1,500</button></div>
+        </div>
+        <div class="block">
+          <div class="bh"><i>3</i>Review with Ana <small>— badge in &lt;24h</small></div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap">
+            <button class="btn ghost" style="flex:1" id="anatg" disabled onclick="schedAna('Telegram')">💬 Telegram</button>
+            <button class="btn ghost" style="flex:1" id="anacal" disabled onclick="schedAna('Calendly')">📅 Book a call</button>
+          </div>
+          <div class="foot-note" id="ananote">Unlocks after payment.</div>
+        </div>
+        <div><button class="btn full" id="vercont" disabled onclick="finishVer()">Continue to your campaign →</button></div>
+        <div class="foot-note">Status meanwhile: ✔ VERIFIED · in review — your campaigns upgrade to the featured rail when the badge lands.</div>
+      </div>
+    </section>
+
     <!-- ========== LAUNCH 3: one-page create ========== -->
     <section class="screen" id="pC">
       <div class="hero">
+        <div id="ctxstrip" style="display:none; margin:0 0 10px; font-size:11.5px; color:#3A4152; background:#fff; border:1px dashed #BFD7FF; border-radius:9px; padding:7px 11px">Fund a pool, AI evaluates every post, winners get paid. <button style="background:none;border:none;color:var(--faint);font-weight:700;cursor:pointer;float:right" onclick="this.parentNode.style.display='none'" aria-label="Dismiss">×</button></div>
         <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
           <div><div class="h1">Create campaign</div>
           <div class="sub">Everything on one page. The meter tells you when the AI can evaluate it.</div></div>
@@ -531,8 +577,8 @@
           <div>
             <div class="block">
               <div class="bh"><i>1</i>The campaign <small>— this is what the AI evaluates against</small></div>
-              <label class="fl">Campaign name</label>
-              <input class="inp" id="f-name" value="Internet Court Is Here" oninput="meter()">
+              <label class="fl">Campaign name <small id="namecount"></small></label>
+              <input class="inp" id="f-name" value="Internet Court Is Here" maxlength="60" oninput="meter()">
               <label class="fl">What should creators post?</label>
               <textarea class="inp" id="f-ask" oninput="meter()">Quote the GenLayer post quoting Forbes and amplify it in your own voice. Original takes only.</textarea>
               <label class="fl">Rules <small>— the AI enforces these on every submission</small></label>
@@ -559,11 +605,13 @@
               <div class="bh"><i>2</i>The prize</div>
               <button class="payrow on" onclick="paySel(this,'RLP pool')"><span>Rally Points (RLP)<small>Your balance: 180000 RLP</small></span><span class="amt">◆</span></button>
               <button class="payrow" onclick="paySel(this,'USDC pool')"><span>USDC<small>From your wallet · Base</small></span><span class="amt">◎</span></button>
+              <button class="payrow" id="tok-custom" style="display:none" onclick="paySel(this,'Your project’s token')"><span>Your project’s token<small>Verified orgs only</small></span><span class="amt">◈</span></button>
               <label class="fl">Amount &amp; duration</label>
               <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap">
                 <input class="inp" id="f-amount" value="40000" inputmode="numeric" style="max-width:120px; font-weight:800; font-size:15px" oninput="recalc()">
                 <button class="chip" onclick="groupSel(this)">1 week</button><button class="chip on" onclick="groupSel(this)">2 weeks</button><button class="chip" onclick="groupSel(this)">Custom ▾</button>
               </div>
+              <div id="amterr" style="display:none; font-size:10.5px; color:#B91C1C; margin-top:6px">That’s more than your balance (180,000 RLP).</div>
             </div>
             <div class="block">
               <div class="bh"><i>3</i>Who can join?</div>
@@ -598,10 +646,31 @@
               <div class="srow"><span>Whitelisted creators</span><b id="s-wl">24,000 RLP</b></div>
               <div class="srow"><span>Total deposit</span><b id="s-total">64,000 RLP</b></div>
               <div class="srow"><span>Runs</span><b>2 weeks · live now</b></div>
-              <div style="margin-top:11px"><button class="btn full" onclick="deposit()">Deposit &amp; launch</button></div>
+              <div style="margin-top:11px"><button class="btn full" id="depbtn" onclick="deposit()">Deposit &amp; launch</button></div>
               <div class="foot-note" style="text-align:left">By depositing you accept the T&amp;C. Wallet asked here — don’t have one? Create it without leaving.</div>
             </div>
           </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== LAUNCH 3b: deposit modal (S5) ========== -->
+    <section class="screen" id="pDep">
+      <div class="pad" style="max-width:430px; margin:0 auto; padding-top:30px">
+        <div class="fcard">
+          <div class="fq">Confirm your deposit</div>
+          <div style="margin-top:10px">
+            <div class="srow"><span>Prize pool</span><b id="d-pool">40,000 RLP</b></div>
+            <div class="srow"><span>Whitelisted creators</span><b id="d-wl">24,000 RLP</b></div>
+            <div class="srow"><span>Total</span><b id="d-total">64,000 RLP</b></div>
+          </div>
+          <div class="foot-note" style="text-align:left; margin-top:8px">Rewards distribute automatically. Whitelist payments release when the campaign ends. Unused funds return to you.</div>
+          <div style="margin-top:12px"><button class="btn full" id="depconfirm" onclick="confirmDeposit()">Deposit</button></div>
+          <div class="foot-note">Wallet: 0xf5…0AFF12 · GenLayer Rally Testnet</div>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:12px; justify-content:center; flex-wrap:wrap">
+          <button class="chip" onclick="toast('Path B — wallet not connected: the modal first shows Continue with Metamask, then returns here. Same wallet as your creator role.')">Path B: wallet not connected?</button>
+          <button class="chip" onclick="toast('Path C — no wallet: Create one in 10 seconds without leaving Rally (embedded). It also works for earning as a creator.')">Path C: no wallet at all?</button>
         </div>
       </div>
     </section>
@@ -692,7 +761,7 @@
 <script>
   var FLOWS = {
     creator: ['c1','c2','c3','c4'],
-    launch:  ['pE','pOrg','pVer','pC','pLive'],
+    launch:  ['pE','pLogin','pOrg','pVer','pVerForm','pC','pDep','pLive'],
     amb:     ['a1','a2']
   };
   var current = 'creator';
@@ -771,18 +840,60 @@
     if(tcAccepted) toast('T&C accepted — you can create your organization');
   }
   function chooseVerified(v){
-    isVerified = v;
+    if(v){ go('pVerForm'); toast('Get Verified — 3 steps: short form · $1,500 · review with Ana'); return; }
+    isVerified = false;
     var chip = document.getElementById('railchip');
-    if(v){
-      chip.textContent = '✔ VERIFIED · in review — featured when badge lands';
-      chip.className = 'tchip v';
-      toast('$1,500 + short form → review with Ana · badge in <24h. You can launch meanwhile.');
-    } else {
-      chip.textContent = 'NETWORK · not verified';
-      chip.className = 'tchip n';
-      toast('Staying on Network — free. Verify anytime from your org.');
-    }
+    chip.textContent = 'NETWORK · not verified';
+    chip.className = 'tchip n';
+    document.getElementById('tok-custom').style.display = 'none';
     go('pC');
+    toast('Staying on Network — free. Verify anytime from your org.');
+  }
+  function entryDoor(strip, label){
+    document.getElementById('ctxstrip').style.display = strip ? '' : 'none';
+    go('pLogin');
+    toast(label);
+  }
+  function door3(){
+    document.getElementById('ctxstrip').style.display = 'none';
+    go('pC');
+    toast('📱 EXISTING USER: logged in + org already created → Login, Org and ¿Verified? SKIPPED. Straight to the form (~1 min)');
+  }
+  function connectX(btn, how){
+    btn.textContent = 'Connecting…';
+    btn.disabled = true;
+    setTimeout(function(){
+      btn.textContent = 'Continue with ' + how;
+      btn.disabled = false;
+      go('pOrg');
+      toast('Connected with ' + how + ' ✓ — name, pfp and bio imported');
+    }, 800);
+  }
+  function payVer(){
+    var b = document.getElementById('payverbtn');
+    b.textContent = 'Processing…'; b.disabled = true;
+    setTimeout(function(){
+      b.textContent = '✓ Paid — invoice #INV-2214 sent';
+      b.style.background = 'var(--green)';
+      document.getElementById('anatg').disabled = false;
+      document.getElementById('anacal').disabled = false;
+      document.getElementById('ananote').textContent = 'Pick a channel — Ana replies within hours.';
+      toast('Payment received · $1,500 — invoice sent to your email');
+    }, 900);
+  }
+  function schedAna(how){
+    document.getElementById('ananote').textContent = '✓ Review scheduled via ' + how + ' — badge lands in <24h.';
+    document.getElementById('vercont').disabled = false;
+    toast('Review with Ana scheduled via ' + how);
+  }
+  function finishVer(){
+    isVerified = true;
+    var chip = document.getElementById('railchip');
+    chip.textContent = '✔ VERIFIED · in review — featured when badge lands';
+    chip.className = 'tchip v';
+    document.getElementById('tok-custom').style.display = '';
+    go('pC');
+    toast('While the review runs you can launch — the custom token option just unlocked');
   }
   function pickTone(el){
     document.querySelectorAll('#tones .chip').forEach(function(c){ c.classList.remove('on'); });
@@ -838,12 +949,15 @@
     var kb = document.getElementById('f-kb').value.trim().length > 20;
     var tone = !!document.querySelector('#tones .chip.on');
     setCk('ck-name', name); setCk('ck-rules', rules); setCk('ck-kb', kb); setCk('ck-tone', tone);
+    var nv = document.getElementById('f-name').value;
+    document.getElementById('namecount').textContent = nv.length >= 45 ? nv.length + '/60' : '';
     var n = [name,rules,kb,tone].filter(Boolean).length;
     document.getElementById('meterbar').style.width = (n*25)+'%';
     document.getElementById('meterlbl').textContent =
       n===4 ? 'Wingston can fully evaluate every submission. ✓' :
       !kb ? 'Add a knowledge base so Wingston can score accuracy.' :
       'Complete the highlighted fields to make the campaign evaluable.';
+    recalc();
   }
   function setCk(id, on){
     var el = document.getElementById(id);
@@ -856,8 +970,35 @@
     document.getElementById('s-pool').textContent = pool.toLocaleString('en-US')+' RLP';
     document.getElementById('s-wl').textContent = wl.toLocaleString('en-US')+' RLP';
     document.getElementById('s-total').textContent = (pool+wl).toLocaleString('en-US')+' RLP';
+    var over = pool > 180000;
+    document.getElementById('amterr').style.display = over ? '' : 'none';
+    var nameOk = document.getElementById('f-name').value.trim().length > 0;
+    var askOk = document.getElementById('f-ask').value.trim().length > 0;
+    document.getElementById('depbtn').disabled = over || !nameOk || !askOk || pool <= 0;
   }
+  var depTotal = '';
   function deposit(){
+    var pool = num('f-amount');
+    var wl = num('w1p')*num('w1m') + num('w2p')*num('w2m');
+    depTotal = (pool+wl).toLocaleString('en-US')+' RLP';
+    document.getElementById('d-pool').textContent = pool.toLocaleString('en-US')+' RLP';
+    document.getElementById('d-wl').textContent = wl.toLocaleString('en-US')+' RLP';
+    document.getElementById('d-total').textContent = depTotal;
+    document.getElementById('depconfirm').textContent = 'Deposit ' + depTotal;
+    go('pDep');
+  }
+  function confirmDeposit(){
+    var b = document.getElementById('depconfirm');
+    b.disabled = true;
+    b.textContent = 'Waiting for wallet…';
+    setTimeout(function(){ b.textContent = 'Depositing…'; }, 700);
+    setTimeout(function(){
+      b.disabled = false;
+      b.textContent = 'Deposit ' + depTotal;
+      goLive();
+    }, 1500);
+  }
+  function goLive(){
     var name = (document.getElementById('f-name').value || 'my-campaign').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
     document.getElementById('livelink').textContent = 'app.rally.fun/campaigns/' + name;
     var sub = document.getElementById('livesub');
@@ -870,7 +1011,7 @@
       card.innerHTML = '<div class="pbody" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap"><div style="flex:1; min-width:220px"><div style="font-weight:800; font-size:12.5px">Want the blue badge? <span class="tchip v">✔ VERIFIED · $1,500</span></div><div style="font-size:11.5px; color:var(--ink-2); margin-top:2px">Featured rail · your own Community · custom token/points · invoice. Review with Ana, badge in &lt;24h.</div></div><button class="btn" onclick="toast(\'$1,500 + short form → review with Ana → badge in <24h\')">Get Verified</button></div>';
     }
     go('pLive');
-    toast('✓ Deposited '+document.getElementById('s-total').textContent+' — campaign live');
+    toast('✓ Deposited ' + depTotal + ' — campaign live');
   }
 
   /* ---- amb ---- */
