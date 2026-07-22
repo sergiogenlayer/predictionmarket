@@ -374,8 +374,29 @@
 
 <div class="step new">
   <span class="snum">2</span>
-  <div class="shead"><h3>Los 3 flujos de entrada, uno a uno</h3><span class="stag new">LA CLAVE</span></div>
-  <p class="sdesc">El mismo destino, tres recorridos distintos. Regla que conecta los tres: <b>si el usuario ya tiene organization, ese paso se salta</b> y va directo al formulario de campaña.</p>
+  <div class="shead"><h3>Los 3 flujos de entrada — qué cambia exactamente</h3><span class="stag new">LA CLAVE</span></div>
+  <p class="sdesc"><b>El flujo es el mismo en las tres puertas.</b> Lo que cambia son tres cosas: <b>① dónde aterrizas</b>, <b>② cuánto contexto hay que darte</b> y <b>③ cuántos pasos ya tienes hechos</b>. Esta tabla es la diferencia, sin ambigüedad:</p>
+
+  <div class="maptbl-wrap"><table class="maptbl">
+    <thead><tr>
+      <th style="width:19%"></th>
+      <th style="width:27%">🐦 X · bio de Rally</th>
+      <th style="width:27%">🌐 rally.fun</th>
+      <th>📱 app.rally.fun</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="f">Quién suele entrar</td><td><b>Nuevo total.</b> Viene de un tweet, no sabe qué es Rally</td><td><b>Nuevo con contexto.</b> La landing ya le vendió el valor</td><td><b>Usuario existente.</b> Ya participa; puede que ya tenga org</td></tr>
+      <tr><td class="f">Dónde aterriza</td><td><b>app.rally.fun/create directo</b> (deep link). Nunca ve el home ni el feed</td><td>/create tras el CTA "Launch a campaign"</td><td>El formulario, desde "+ Create campaign" del feed</td></tr>
+      <tr><td class="f">Sesión típica</td><td>Sin cuenta → <b>Connect X</b></td><td>Logged out → <b>Login X</b></td><td><b>Ya logueado</b> — este paso no existe</td></tr>
+      <tr><td class="f">Contexto que damos</td><td><b>1 línea encima del formulario</b>: "Fund a pool, AI evaluates every post, winners get paid." Nada más</td><td><b>Cero</b> — repetir el pitch de la web sería fricción</td><td><b>Cero</b> — el carril Network del feed ya fue la prueba social</td></tr>
+      <tr><td class="f">Pasos que hace</td><td>Connect X → <b>Org</b> → ¿Verified? → Form → Deposit</td><td>Login → <b>Org</b> → ¿Verified? → Form → Deposit</td><td><b>Form → Deposit.</b> Org y Verified ya resueltos la primera vez</td></tr>
+      <tr><td class="f">Pasos que se salta</td><td>Ninguno — es su primer contacto</td><td>Ninguno — pero llega convencido</td><td><b>Login, Org y ¿Verified?</b> (si ya tiene org)</td></tr>
+      <tr><td class="f">Tiempo a live</td><td><span class="dft">~3 min</span></td><td><span class="dft">~3 min</span></td><td><span class="dft">~1 min</span></td></tr>
+      <tr><td class="f">Objetivo del diseño</td><td>No perder el impulso del click — cero desvíos</td><td>No re-onboardear a quien ya está vendido</td><td>Fricción cero para el repetidor — que lanzar sea rutina</td></tr>
+    </tbody>
+  </table></div>
+
+  <p class="sdesc" style="margin-top:16px">Y los tres recorridos dibujados. Regla que los conecta: <b>si el usuario ya tiene organization, ese paso se salta</b> y va directo al formulario.</p>
 
   <div class="hlane">
     <div class="hl-head">
