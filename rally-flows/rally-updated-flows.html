@@ -280,6 +280,97 @@
     .step::before{display:none}
     .snum{top:0}
   }
+
+  /* ===== 07 · DESIGN SPEC (handoff) ===== */
+  .scr{padding:64px 0 0}
+  .scr-head{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap}
+  .scr-id{font-family:var(--mono); font-size:13px; font-weight:800; color:#fff; background:var(--accent); border-radius:8px; padding:5px 12px}
+  .scr h2{font-size:clamp(22px,3.4vw,32px); font-weight:800; letter-spacing:-.015em}
+  .job{font-size:14.5px; color:var(--ink-2); margin-top:8px; max-width:70ch}
+  .job b{color:var(--ink)}
+  .rulebox{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
+  .rule{font-family:var(--mono); font-size:11px; padding:5px 11px; border:1.5px solid var(--line); border-radius:999px; color:var(--ink-2)}
+  .rule.hot{border-color:var(--accent); color:var(--accent); font-weight:700}
+
+  /* spec tables */
+  .spec-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:14px; background:var(--card); margin-top:14px}
+  table.spec{border-collapse:collapse; width:100%; min-width:820px; font-size:13px}
+  .spec th{font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-2); text-align:left; padding:11px 13px; border-bottom:1.5px solid var(--ink)}
+  .spec td{padding:10px 13px; border-bottom:1px solid var(--line); vertical-align:top; color:var(--ink-2)}
+  .spec tr:last-child td{border-bottom:none}
+  .spec td.n{width:34px}
+  .spec td.c{color:var(--ink); font-weight:700; white-space:nowrap}
+  .spec td.t{white-space:nowrap; font-family:var(--mono); font-size:11px}
+  .spec .copy{font-family:var(--mono); font-size:11.5px; color:var(--ink); background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:2px 7px; display:inline-block; margin:1px 0}
+  .spec b{color:var(--ink)}
+  .mk{display:inline-grid; place-items:center; width:19px; height:19px; border-radius:50%; background:var(--accent); color:#fff; font-family:var(--mono); font-size:10.5px; font-weight:800; vertical-align:2px; margin-right:5px}
+  .mk.inmock{position:relative; z-index:3; box-shadow:0 0 0 2px #fff}
+
+  /* mock frames (Rally light) */
+  .frame{
+    --r-line:#E7E9F3; --r-line2:#D8DBEA; --r-blue:#2B3BE8; --r-dim:#6B7084; --r-faint:#9CA1B4;
+    --r-lav:linear-gradient(120deg,#EDEFFD 0%,#F7F2FE 55%,#FDFBFF 100%);
+    --r-green:#17A34A; --r-green-bg:#F0FAF3;
+    margin:18px 0 0; border:1px solid var(--line); border-radius:16px; background:#fff; overflow:hidden;
+    box-shadow:0 1px 2px rgba(18,20,31,.05), 0 12px 32px -18px rgba(18,20,31,.18);
+  }
+  .frame .screen{background:#fff; color:#12141F; font-size:13.5px; overflow-x:auto}
+  .frame .cv{min-width:860px; padding:0 0 22px}
+  .frame.slim .cv{min-width:700px}
+  .r-hero{background:var(--r-lav); padding:20px 24px 15px}
+  .r-h1{font-size:21px; font-weight:800; letter-spacing:-.02em}
+  .r-sub{color:var(--r-dim); font-size:12.5px; margin-top:4px; max-width:66ch}
+  .r-pad{padding:15px 24px 0}
+  .btn-blue{background:var(--r-blue); color:#fff; font-weight:700; font-size:12.5px; border:none; border-radius:10px; padding:10px 17px}
+  .btn-line{background:#fff; color:#12141F; border:1px solid var(--r-line2); border-radius:10px; padding:9px 13px; font-size:12px; font-weight:600}
+  .inp{background:#fff; border:1px solid var(--r-line2); border-radius:9px; padding:9px 12px; font-size:12.5px; color:#12141F}
+  .inp.ph{color:var(--r-faint)}
+  .fl{font-size:11.5px; font-weight:700; margin:11px 0 4px; color:#12141F}
+  .fl small{font-weight:400; color:var(--r-faint)}
+  .tchip{font-size:9.5px; font-weight:800; padding:3px 8px; border-radius:999px}
+  .tchip.v{background:#EAF3FF; color:#2563EB}
+  .tchip.n{background:#FFF4E8; color:#D97706}
+  .tchip.ok{background:var(--r-green-bg); color:var(--r-green)}
+  .tchip.warn{background:#FEF3C7; color:#B45309}
+  .vk{color:#3B82F6; font-size:11px}
+  .grid2{display:grid; grid-template-columns:1.55fr 1fr; gap:16px; padding:15px 24px 0}
+  .cblock{border:1px solid var(--r-line); border-radius:12px; background:#fff; padding:16px; margin-bottom:11px}
+  .cbh{display:flex; align-items:center; gap:8px; font-weight:800; font-size:13.5px; margin-bottom:10px}
+  .cbh i{font-style:normal; width:21px; height:21px; border-radius:50%; background:#12141F; color:#fff; display:grid; place-items:center; font-family:var(--mono); font-size:10.5px; flex:none}
+  .cbh small{font-weight:400; font-size:10px; color:var(--r-faint)}
+  .sums{border:1px solid var(--r-line); border-radius:12px; background:#FBFBFE; padding:15px}
+  .sums.ai{border-color:#BFE5CC; background:var(--r-green-bg)}
+  .srow{display:flex; justify-content:space-between; font-size:11.5px; color:var(--r-dim); padding:6px 0; border-bottom:1px dashed var(--r-line)}
+  .srow b{color:#12141F; font-family:var(--mono)}
+  .srow:last-of-type{border-bottom:none}
+  .meter{height:7px; border-radius:4px; background:#DCFCE7; position:relative; overflow:hidden; margin:7px 0 9px}
+  .meter i{position:absolute; inset:0; width:75%; background:var(--r-green); border-radius:4px}
+  .pcs{display:grid; gap:4px; font-size:11px; color:#2F4A3A}
+  .rulechip{border:1px solid #BFE5CC; background:var(--r-green-bg); color:#14532D; font-size:10.5px; font-weight:600; padding:5px 10px; border-radius:999px; display:inline-block; margin:0 4px 5px 0}
+  .rulechip.add{border:1px dashed var(--r-line2); background:#fff; color:var(--r-faint)}
+  .payrow{border:1px solid var(--r-line2); border-radius:10px; padding:9px 12px; display:flex; align-items:center; gap:10px; font-size:12px; margin-top:6px; color:#12141F}
+  .payrow.on{border-color:var(--r-blue); box-shadow:0 0 0 1px var(--r-blue) inset}
+  .payrow .amt{margin-left:auto; font-family:var(--mono); font-size:10.5px; font-weight:700}
+  .payrow small{display:block; color:var(--r-faint); font-size:10px; font-weight:400}
+  .chip{border:1px solid var(--r-line2); background:#fff; color:var(--r-dim); font-size:10.5px; font-weight:700; padding:6px 12px; border-radius:999px; display:inline-block; margin-right:5px}
+  .chip.on{background:#12141F; border-color:#12141F; color:#fff}
+  .tcbox{display:flex; gap:9px; align-items:flex-start; margin-top:12px; padding:10px 12px; border:1px solid var(--r-line); border-radius:9px; background:#FBFBFE}
+  .tcbox .cb{width:15px; height:15px; border:2px solid var(--r-blue); border-radius:4px; flex:none; margin-top:1px; display:grid; place-items:center; color:var(--r-blue); font-size:9px; font-weight:800}
+  .tcbox span.t{font-size:10.5px; color:#3A4152; line-height:1.5}
+  .okring{width:42px; height:42px; border-radius:50%; background:var(--r-green-bg); border:2px solid var(--r-green); display:grid; place-items:center; color:var(--r-green); font-size:16px; margin:0 auto 9px}
+  .slink{font-family:var(--mono); font-size:10.5px; color:var(--r-blue); background:#F4F5FE; border:1px solid var(--r-line2); border-radius:999px; padding:6px 12px; display:inline-block; margin-top:7px}
+  .modal{max-width:400px; margin:26px auto; border:1px solid var(--r-line); border-radius:16px; padding:22px; box-shadow:0 18px 44px -20px rgba(18,20,31,.25); background:#fff}
+  .wlrow{display:flex; align-items:center; gap:8px; padding:7px 0; border-bottom:1px solid var(--r-line); font-size:11.5px; flex-wrap:wrap}
+  .wlrow:last-of-type{border-bottom:none}
+  .wlrow .inp{max-width:84px; padding:5px 8px; font-weight:700; font-size:11px}
+  .wlrow .inp.sm{max-width:46px}
+  .ava{width:16px; height:16px; border-radius:50%; background:#14161F; display:inline-block; vertical-align:-3px}
+  .ava.a1{background:linear-gradient(135deg,#F59E0B,#EF4444)}
+  .ava.a3{background:linear-gradient(135deg,#8B5CF6,#EC4899)}
+  .sp{flex:1}
+  .cap{font-family:var(--mono); font-size:11px; color:var(--ink-2); margin:8px 2px 0}
+
+  @media (max-width:760px){ .grid2{grid-template-columns:1fr} }
 </style>
 
 <div class="wrap">
@@ -296,6 +387,7 @@
     <a href="#verified">04 VERIFIED <small>$1,500 · qué incluye</small></a>
     <a href="#ambassadors">05 ELITE CREATORS <small>solo orgs verified</small></a>
     <a href="#admin">06 ADMIN <small>organizations</small></a>
+    <a href="#spec">07 DESIGN SPEC <small>pantalla a pantalla · para diseño</small></a>
   </nav>
 </header>
 
@@ -1057,6 +1149,270 @@
   </figure>
   <figcaption class="cap">Qué cambia vs hoy: ① el scroll infinito → 4 tabs; ② el toggle "Verified" escondido → pipeline con pago, review con Ana, quién y cuándo — y qué desbloquea al conceder; ③ los switches agrupados, cada uno con su consecuencia escrita (y Community bloqueada hasta el badge, coherente con el modelo); ④ las applications llegan con los datos de Rally pegados (Sorsa, followers, campañas) — la nota en texto libre es un adjunto, no la decisión.</figcaption>
 </div>
+
+<!-- ================= 07 DESIGN SPEC ================= -->
+<div class="flow-title" id="spec">
+  <span class="ft-kicker">07 · design spec — el handoff para diseño</span>
+  <h2>Design Spec · pantalla a pantalla</h2>
+  <p>El flujo 01 bajado al detalle: cada pantalla con su <b>job</b>, el mockup con los componentes numerados y la tabla de especificación — tipo de componente, <b>copy final en inglés (literal)</b>, estados y comportamiento. Regla global: <b>el flujo es uno solo</b>; las 3 entradas solo deciden en qué pantalla entras (S0). Con esta sección el diseñador puede montar cada pantalla sin interpretar nada.</p>
+</div>
+
+<!-- ================= S0 ================= -->
+<section class="scr" id="s0">
+  <div class="scr-head"><span class="scr-id">S0</span><h2>Routing — las 3 entradas (no es una pantalla)</h2></div>
+  <p class="job"><b>Job:</b> decidir en qué pantalla entra el usuario. Lógica pura — el diseñador solo necesita saber qué variante de S4 se muestra y cuándo aparece la línea de contexto.</p>
+  <div class="spec-wrap"><table class="spec">
+    <thead><tr><th>Entrada</th><th>Destino</th><th>Reglas</th></tr></thead>
+    <tbody>
+      <tr><td class="c">🐦 X bio · "create yours"</td><td>Deep link → <b>app.rally.fun/create</b></td><td>Nunca pasa por home/feed. Si no hay sesión → S1 con retorno a /create. Muestra <b>context strip</b> encima de S4 (ver S4 · comp 0). Usuario nuevo → S2 → S3 → S4.</td></tr>
+      <tr><td class="c">🌐 rally.fun · CTA "Launch a campaign"</td><td>→ app.rally.fun/create</td><td>Igual que la anterior pero <b>sin context strip</b> (la web ya hizo el pitch). </td></tr>
+      <tr><td class="c">📱 In-app · "+ Create campaign"</td><td>→ /create</td><td>Sesión ya existe. <b>Si el user ya tiene org: S2 y S3 se saltan</b> → directo a S4. Si no la tiene → S2.</td></tr>
+      <tr><td class="c">Regla global</td><td colspan="2"><b>org existente ⇒ saltar S2 y S3 siempre.</b> "Not now" en S3 se recuerda; no se re-pregunta hasta que el user entre a Get Verified por su cuenta (S3b accesible desde su org y desde el upsell de S4/S6).</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ================= S1 ================= -->
+<section class="scr" id="s1">
+  <div class="scr-head"><span class="scr-id">S1</span><h2>Connect — login modal</h2></div>
+  <p class="job"><b>Job:</b> una decisión: conectar con X. Se abre como modal sobre la página destino (el formulario se ve detrás, difuminado — sin puertas ciegas).</p>
+  <div class="rulebox"><span class="rule hot">MODAL · overlay blur 8px</span><span class="rule">se salta si hay sesión</span><span class="rule">al completar → vuelve a la ruta original</span></div>
+  <figure class="frame slim"><div class="screen"><div class="cv">
+    <div class="modal">
+      <div style="font-weight:800; font-size:17px"><span class="mk inmock">1</span>Connect to Rally</div>
+      <div style="font-size:11.5px; color:#6B7084; margin-top:3px"><span class="mk inmock">2</span>One account for everything — earning and launching.</div>
+      <div style="margin-top:14px"><button class="btn-blue" style="width:100%"><span class="mk inmock" style="background:#fff; color:var(--accent)">3</span> Continue with 𝕏</button></div>
+      <div style="margin-top:8px"><button class="btn-line" style="width:100%"><span class="mk inmock">4</span> Continue with Metamask</button></div>
+      <div style="font-size:10px; color:#9CA1B4; margin-top:10px; text-align:center"><span class="mk inmock">5</span>By continuing you agree to Rally’s Terms &amp; Conditions.</div>
+    </div>
+  </div></div></figure>
+  <div class="spec-wrap"><table class="spec">
+    <thead><tr><th style="width:34px">#</th><th style="width:16%">Componente</th><th style="width:12%">Tipo</th><th style="width:36%">Copy (EN, literal)</th><th>Estados · comportamiento</th></tr></thead>
+    <tbody>
+      <tr><td class="n"><span class="mk">1</span></td><td class="c">Título</td><td class="t">H2</td><td><span class="copy">Connect to Rally</span></td><td>—</td></tr>
+      <tr><td class="n"><span class="mk">2</span></td><td class="c">Subtítulo</td><td class="t">body-s</td><td><span class="copy">One account for everything — earning and launching.</span></td><td>Refuerza el modelo 1 cuenta / 2 roles.</td></tr>
+      <tr><td class="n"><span class="mk">3</span></td><td class="c">CTA primario</td><td class="t">button/primary</td><td><span class="copy">Continue with 𝕏</span></td><td>default · loading (<span class="copy">Connecting…</span> + spinner) · error (toast <span class="copy">Couldn’t connect to X. Try again.</span>)</td></tr>
+      <tr><td class="n"><span class="mk">4</span></td><td class="c">CTA secundario</td><td class="t">button/secondary</td><td><span class="copy">Continue with Metamask</span></td><td>Mismos estados. La wallet conectada aquí es la misma que se usará en S5.</td></tr>
+      <tr><td class="n"><span class="mk">5</span></td><td class="c">Legal</td><td class="t">caption + link</td><td><span class="copy">By continuing you agree to Rally’s Terms &amp; Conditions.</span></td><td>Link a T&amp;C. NO sustituye el checkbox explícito de S2.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ================= S2 ================= -->
+<section class="scr" id="s2">
+  <div class="scr-head"><span class="scr-id">S2</span><h2>Create Organization</h2></div>
+  <p class="job"><b>Job:</b> crear la org (siempre antes de la campaña) en ≤30s. Todo lo importable de X llega pre-relleno; el usuario solo confirma y acepta T&amp;C. <b>La org nace NOT VERIFIED, visible desde ya.</b></p>
+  <div class="rulebox"><span class="rule hot">SE SALTA si el user ya tiene org</span><span class="rule">1 columna · max-width 600</span><span class="rule">CTA bloqueado sin T&amp;C</span></div>
+  <figure class="frame slim"><div class="screen"><div class="cv">
+    <div class="r-hero"><div style="display:flex; align-items:center; gap:10px">
+      <div><div class="r-h1"><span class="mk inmock">1</span>Create your organization</div>
+      <div class="r-sub">Campaigns are launched by organizations. Yours takes 30 seconds — we pre-filled it from X.</div></div>
+      <span class="sp"></span><span class="tchip warn"><span class="mk inmock">2</span>NOT VERIFIED</span>
+    </div></div>
+    <div class="r-pad" style="max-width:560px">
+      <div style="height:48px; border-radius:10px; background:var(--r-lav); border:1px dashed var(--r-line2); display:grid; place-items:center; font-size:10.5px; color:#9CA1B4"><span><span class="mk inmock">3</span>⬆ Upload banner (optional — you can do it later)</span></div>
+      <div style="display:flex; gap:10px; align-items:center; margin-top:-14px"><div style="width:38px; height:38px; border-radius:10px; background:#14161F; border:2px solid #fff"></div><span style="font-size:9.5px; color:#9CA1B4"><span class="mk inmock">4</span>pfp imported from X</span></div>
+      <div class="fl"><span class="mk inmock">5</span>Organization name</div><div class="inp" style="font-weight:700">GenLayer <span class="vk">from X</span></div>
+      <div class="fl"><span class="mk inmock">6</span>Description</div><div class="inp">Trust Infrastructure for The AI Age</div>
+      <div class="fl"><span class="mk inmock">7</span>Website &amp; links <small>(optional)</small></div><div class="inp ph">genlayer.com · t.me/… · discord.gg/…</div>
+      <div class="tcbox"><span class="cb">✓</span><span class="t"><span class="mk inmock">8</span>I have read and accept the <b style="color:var(--accent)">Terms &amp; Conditions</b> — including the scam &amp; liability policy: Rally is a permissionless protocol and is not responsible for third-party campaigns.</span></div>
+      <div style="margin-top:11px"><button class="btn-blue" style="width:100%"><span class="mk inmock" style="background:#fff; color:var(--accent)">9</span> Create organization</button></div>
+    </div>
+  </div></div></figure>
+  <div class="spec-wrap"><table class="spec">
+    <thead><tr><th style="width:34px">#</th><th style="width:16%">Componente</th><th style="width:12%">Tipo</th><th style="width:34%">Copy (EN, literal)</th><th>Estados · comportamiento</th></tr></thead>
+    <tbody>
+      <tr><td class="n"><span class="mk">1</span></td><td class="c">Título + sub</td><td class="t">H1 + body-s</td><td><span class="copy">Create your organization</span><br><span class="copy">Campaigns are launched by organizations. Yours takes 30 seconds — we pre-filled it from X.</span></td><td>—</td></tr>
+      <tr><td class="n"><span class="mk">2</span></td><td class="c">Status chip</td><td class="t">badge/warning</td><td><span class="copy">NOT VERIFIED</span></td><td>Estado fijo en esta pantalla. Tooltip: <span class="copy">Get verified later for the blue badge, featured rail and your own Community.</span></td></tr>
+      <tr><td class="n"><span class="mk">3</span></td><td class="c">Banner upload</td><td class="t">dropzone</td><td><span class="copy">⬆ Upload banner (optional — you can do it later)</span></td><td>empty · hover · uploaded (preview + <span class="copy">Replace</span>) · error (<span class="copy">Max 1200px wide, 600KB. JPG or PNG.</span> — límites actuales del producto)</td></tr>
+      <tr><td class="n"><span class="mk">4</span></td><td class="c">Pfp</td><td class="t">avatar 40</td><td>caption <span class="copy">pfp imported from X</span></td><td>Auto de X. Hover → <span class="copy">Change</span>.</td></tr>
+      <tr><td class="n"><span class="mk">5</span></td><td class="c">Name</td><td class="t">input/text</td><td>label <span class="copy">Organization name</span> · sufijo <span class="copy">from X</span></td><td>prefilled (de X) · edited (sufijo desaparece) · error vacío: <span class="copy">Your organization needs a name.</span> Genera slug automático (mostrar bajo el campo: <span class="copy">app.rally.fun/genlayer</span>).</td></tr>
+      <tr><td class="n"><span class="mk">6</span></td><td class="c">Description</td><td class="t">input/text</td><td>label <span class="copy">Description</span></td><td>prefilled con la bio de X · editable · opcional.</td></tr>
+      <tr><td class="n"><span class="mk">7</span></td><td class="c">Links</td><td class="t">input/multi</td><td>label <span class="copy">Website &amp; links (optional)</span> · placeholder <span class="copy">genlayer.com · t.me/… · discord.gg/…</span></td><td>Chips al pegar URL válida. Opcional — nunca bloquea.</td></tr>
+      <tr><td class="n"><span class="mk">8</span></td><td class="c">T&amp;C checkbox</td><td class="t">checkbox + rich label</td><td><span class="copy">I have read and accept the Terms &amp; Conditions — including the scam &amp; liability policy: Rally is a permissionless protocol and is not responsible for third-party campaigns.</span></td><td><b>unchecked (default) → CTA 9 disabled.</b> Link abre T&amp;C en nueva pestaña. Área de click: toda la caja.</td></tr>
+      <tr><td class="n"><span class="mk">9</span></td><td class="c">CTA</td><td class="t">button/primary XL</td><td><span class="copy">Create organization</span></td><td>disabled (sin T&amp;C o sin name) · default · loading <span class="copy">Creating…</span> → navega a S3.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ================= S3 ================= -->
+<section class="scr" id="s3">
+  <div class="scr-head"><span class="scr-id">S3</span><h2>¿Verified? — la única bifurcación</h2></div>
+  <p class="job"><b>Job:</b> una decisión binaria, sin bloquear nunca. Dos cards del mismo peso visual; la de Verified vende el paquete, la de Network quita el miedo (gratis, ahora, reversible).</p>
+  <div class="rulebox"><span class="rule hot">SE SALTA si ya tiene org</span><span class="rule">"Not now" se recuerda</span><span class="rule">Sí → sub-flujo S3b · nunca bloquea S4</span></div>
+  <figure class="frame slim"><div class="screen"><div class="cv">
+    <div class="r-pad" style="text-align:center; max-width:620px; margin:0 auto; padding-top:26px">
+      <div class="r-h1"><span class="mk inmock">1</span>Do you want to be verified?</div>
+      <div class="r-sub" style="margin:4px auto 14px"><span class="mk inmock">2</span>Your organization was created — not verified for now. Verification is optional and never blocks launching.</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; text-align:left">
+        <div style="border:2px solid #3B82F6; border-radius:14px; padding:14px; background:#F6FAFF">
+          <div style="font-weight:800; font-size:13px; color:#1D4ED8"><span class="mk inmock">3</span>✔ Yes — $1,500</div>
+          <div style="font-size:10.5px; color:#3A4152; margin-top:4px; line-height:1.5">Short form + review with Ana · badge in &lt;24h · featured rail · your own Community · custom token/points · invoice</div>
+        </div>
+        <div style="border:2px solid #F59E0B; border-radius:14px; padding:14px; background:#FFFBF4">
+          <div style="font-weight:800; font-size:13px; color:#B45309"><span class="mk inmock">4</span>Not now → Network</div>
+          <div style="font-size:10.5px; color:#3A4152; margin-top:4px; line-height:1.5">Free · launch immediately · shown without badge · no Community · verify anytime later</div>
+        </div>
+      </div>
+      <div style="font-size:10px; color:#9CA1B4; margin-top:10px"><span class="mk inmock">5</span>If you pay now, you can keep launching while the review runs — campaigns upgrade to the Verified rail when the badge lands.</div>
+    </div>
+  </div></div></figure>
+  <div class="spec-wrap"><table class="spec">
+    <thead><tr><th style="width:34px">#</th><th style="width:16%">Componente</th><th style="width:12%">Tipo</th><th style="width:34%">Copy (EN, literal)</th><th>Estados · comportamiento</th></tr></thead>
+    <tbody>
+      <tr><td class="n"><span class="mk">1</span></td><td class="c">Título</td><td class="t">H1 centered</td><td><span class="copy">Do you want to be verified?</span></td><td>—</td></tr>
+      <tr><td class="n"><span class="mk">2</span></td><td class="c">Subtítulo</td><td class="t">body-s</td><td><span class="copy">Your organization was created — not verified for now. Verification is optional and never blocks launching.</span></td><td>Confirma el éxito de S2 (no hace falta pantalla de éxito separada).</td></tr>
+      <tr><td class="n"><span class="mk">3</span></td><td class="c">Card SÍ</td><td class="t">option card / azul</td><td>título <span class="copy">✔ Yes — $1,500</span><br>body <span class="copy">Short form + review with Ana · badge in &lt;24h · featured rail · your own Community · custom token/points · invoice</span></td><td>hover/selected → abre <b>S3b (sub-flujo, 3 pasos)</b>: ① form corto (website + <span class="copy">What are you building?</span>) ② pago $1,500 (card o crypto) ③ agenda con Ana (Telegram o Calendly). Al cerrar S3b → S4 con chip "VERIFIED · in review".</td></tr>
+      <tr><td class="n"><span class="mk">4</span></td><td class="c">Card NO</td><td class="t">option card / ámbar</td><td>título <span class="copy">Not now → Network</span><br>body <span class="copy">Free · launch immediately · shown without badge · no Community · verify anytime later</span></td><td>click → S4 con chip "NETWORK · not verified". Elección recordada.</td></tr>
+      <tr><td class="n"><span class="mk">5</span></td><td class="c">Nota</td><td class="t">caption</td><td><span class="copy">If you pay now, you can keep launching while the review runs — campaigns upgrade to the Verified rail when the badge lands.</span></td><td>Mata la objeción "me va a frenar".</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ================= S4 ================= -->
+<section class="scr" id="s4">
+  <div class="scr-head"><span class="scr-id">S4</span><h2>Create Campaign — una página</h2></div>
+  <p class="job"><b>Job:</b> todo lo necesario para una campaña exitosa y evaluable por la AI, en una sola página: 3 bloques (izquierda) + rail fijo (derecha) con el medidor de AI y el resumen del deposit. <b>Sin pasos, sin páginas intermedias.</b></p>
+  <div class="rulebox"><span class="rule hot">LAYOUT · 2 col: 1.55fr + 1fr · rail sticky</span><span class="rule">mobile: rail → bottom-sheet</span><span class="rule">autosave draft</span></div>
+  <figure class="frame"><div class="screen"><div class="cv">
+    <div class="r-hero"><div style="display:flex; align-items:center; gap:10px">
+      <div><div class="r-h1">Create campaign</div>
+      <div class="r-sub"><span class="mk inmock">0</span>Fund a pool, AI evaluates every post, winners get paid. <i>(context strip — SOLO entrada X bio)</i></div></div>
+      <span class="sp"></span><span class="tchip n"><span class="mk inmock">1</span>NETWORK · not verified</span>
+    </div></div>
+    <div class="grid2">
+      <div>
+        <div class="cblock">
+          <div class="cbh"><i>1</i><span class="mk inmock">2</span>The campaign <small>— this is what the AI evaluates against</small></div>
+          <div class="fl"><span class="mk inmock">3</span>Campaign name</div><div class="inp" style="font-weight:700">Internet Court Is Here</div>
+          <div class="fl"><span class="mk inmock">4</span>What should creators post?</div><div class="inp" style="min-height:46px">Quote the GenLayer post quoting Forbes and amplify it in your own voice. Original takes only.</div>
+          <div class="fl"><span class="mk inmock">5</span>Rules <small>— the AI enforces these on every submission</small></div>
+          <div><span class="rulechip">✓ Mention @GenLayer</span><span class="rulechip">✓ Quote the launch post</span><span class="rulechip">✓ Original take — no copy-paste</span><span class="rulechip add">+ Add rule</span></div>
+          <div class="fl"><span class="mk inmock">6</span>Knowledge base <small>— context so the AI scores accuracy right</small></div><div class="inp" style="min-height:42px; font-size:11.5px">Internet Court is a neutral dispute-resolution protocol for AI agents, covered by Forbes…</div>
+          <div style="margin-top:7px"><button class="btn-line"><span class="mk inmock">7</span>✦ Draft rules &amp; knowledge base with AI</button></div>
+          <div class="fl"><span class="mk inmock">8</span>Tone</div>
+          <div><span class="chip on">🔥 Hype</span><span class="chip">🎓 Educational</span><span class="chip">😂 Fun</span></div>
+        </div>
+        <div class="cblock">
+          <div class="cbh"><i>2</i>The prize</div>
+          <div class="payrow on"><span><span class="mk inmock">9</span>Rally Points (RLP)<small>Your balance: 180000 RLP</small></span><span class="amt">◆</span></div>
+          <div class="payrow"><span>USDC<small>From your wallet · Base</small></span><span class="amt">◎</span></div>
+          <div class="fl"><span class="mk inmock">10</span>Amount &amp; duration</div>
+          <div style="display:flex; gap:7px; align-items:center"><div class="inp" style="max-width:110px; font-weight:800">40.000</div><span class="chip">1 week</span><span class="chip on">2 weeks</span><span class="chip">Custom ▾</span></div>
+        </div>
+        <div class="cblock">
+          <div class="cbh"><i>3</i><span class="mk inmock">11</span>Who can join?</div>
+          <div style="margin-bottom:9px"><span class="chip on">Everyone · 11,746 eligible</span><span class="chip">Whitelist only</span><span class="chip">Elite creators</span></div>
+          <div class="fl" style="margin-top:0"><span class="mk inmock">12</span>Also pay specific creators per post <small>(optional)</small></div>
+          <div class="wlrow"><span class="ava a1"></span><b>@srinigoes</b> <span class="vk">✔</span><span class="sp"></span><span style="font-size:9.5px;color:#9CA1B4">per post</span><span class="inp">4.000 RLP</span><span style="font-size:9.5px;color:#9CA1B4">max</span><span class="inp sm">3</span></div>
+          <div class="wlrow"><span class="ava a3"></span><b>@holly_web3</b> <span class="vk">✔</span><span class="sp"></span><span style="font-size:9.5px;color:#9CA1B4">per post</span><span class="inp">4.000 RLP</span><span style="font-size:9.5px;color:#9CA1B4">max</span><span class="inp sm">3</span></div>
+          <div style="margin-top:8px"><button class="btn-line">+ Add creator</button> <button class="btn-line">⬆ Upload list (CSV)</button></div>
+        </div>
+        <div style="font-size:10.5px; color:#9CA1B4; padding:0 3px"><span class="mk inmock">13</span>Fine-tune scoring weights, curve, periods &amp; targeting — <b style="color:var(--accent)">optional, Rally defaults applied</b></div>
+      </div>
+      <aside>
+        <div class="sums ai">
+          <div style="font-weight:800; font-size:12px; color:#14532D"><span class="mk inmock">14</span>✦ AI Evaluation ready</div>
+          <div class="meter"><i></i></div>
+          <div class="pcs"><span>✓ Name &amp; ask</span><span>✓ Rules (3) — enforceable</span><span style="opacity:.45">○ Knowledge base — accuracy scoring</span><span>✓ Tone — style scoring</span></div>
+          <div style="font-size:9.5px; color:#4A7C5C; margin-top:7px">Add a knowledge base so Wingston can score accuracy.</div>
+        </div>
+        <div class="sums" style="margin-top:11px">
+          <div style="font-weight:800; font-size:12.5px; margin-bottom:6px"><span class="mk inmock">15</span>Ready to launch</div>
+          <div class="srow"><span>Prize pool</span><b>40,000 RLP</b></div>
+          <div class="srow"><span>Whitelisted creators</span><b>24,000 RLP</b></div>
+          <div class="srow"><span>Total deposit</span><b>64,000 RLP</b></div>
+          <div class="srow"><span>Runs</span><b>2 weeks · live now</b></div>
+          <div style="margin-top:10px"><button class="btn-blue" style="width:100%"><span class="mk inmock" style="background:#fff; color:var(--accent)">16</span> Deposit &amp; launch</button></div>
+          <div style="font-size:9.5px; color:#9CA1B4; margin-top:7px">By depositing you accept the Terms &amp; Conditions.</div>
+        </div>
+      </aside>
+    </div>
+  </div></div></figure>
+  <div class="spec-wrap"><table class="spec">
+    <thead><tr><th style="width:34px">#</th><th style="width:17%">Componente</th><th style="width:13%">Tipo</th><th style="width:33%">Copy (EN, literal)</th><th>Estados · comportamiento</th></tr></thead>
+    <tbody>
+      <tr><td class="n"><span class="mk">0</span></td><td class="c">Context strip</td><td class="t">banner 1 línea</td><td><span class="copy">Fund a pool, AI evaluates every post, winners get paid.</span></td><td><b>Solo entrada X-bio</b> (S0). Dismissible (×). No aparece en las otras entradas.</td></tr>
+      <tr><td class="n"><span class="mk">1</span></td><td class="c">Rail chip</td><td class="t">badge</td><td>3 variantes: <span class="copy">NETWORK · not verified</span> / <span class="copy">✔ VERIFIED · in review</span> / <span class="copy">✔ VERIFIED</span></td><td>Estado según la org (S3). Nunca clickable aquí.</td></tr>
+      <tr><td class="n"><span class="mk">2</span></td><td class="c">Bloque 1 header</td><td class="t">section header</td><td><span class="copy">The campaign</span> + hint <span class="copy">— this is what the AI evaluates against</span></td><td>El hint conecta el esfuerzo con el beneficio (mejor input → mejor evaluación).</td></tr>
+      <tr><td class="n"><span class="mk">3</span></td><td class="c">Name</td><td class="t">input/text</td><td>label <span class="copy">Campaign name</span></td><td>máx 60 chars, contador a partir de 45 · error vacío al intentar Deposit: <span class="copy">Give your campaign a name.</span></td></tr>
+      <tr><td class="n"><span class="mk">4</span></td><td class="c">The ask</td><td class="t">textarea</td><td>label <span class="copy">What should creators post?</span> · placeholder <span class="copy">e.g. Quote our launch post and add your own take. Original content only.</span></td><td>min 2 líneas, autogrow. Alimenta check 1 del medidor.</td></tr>
+      <tr><td class="n"><span class="mk">5</span></td><td class="c">Rules</td><td class="t">chip list editable</td><td>label <span class="copy">Rules</span> + hint <span class="copy">— the AI enforces these on every submission</span> · chip add <span class="copy">+ Add rule</span></td><td>3 defaults generadas · click en chip = eliminar (con undo en toast) · "+ Add rule" = input inline → Enter crea chip · mín 1 para el medidor.</td></tr>
+      <tr><td class="n"><span class="mk">6</span></td><td class="c">Knowledge base</td><td class="t">textarea</td><td>label <span class="copy">Knowledge base</span> + hint <span class="copy">— context so the AI scores accuracy right</span> · placeholder <span class="copy">What should the AI know to judge accuracy?</span></td><td>empty (check apagado en medidor) · filled ≥ ~20 palabras enciende check 3.</td></tr>
+      <tr><td class="n"><span class="mk">7</span></td><td class="c">AI draft</td><td class="t">button/ghost + ✦</td><td><span class="copy">✦ Draft rules &amp; knowledge base with AI</span></td><td>default · loading <span class="copy">✦ Drafting…</span> (shimmer en campos 5 y 6) · done: rellena rules + KB, editables. Deshabilitado si name+ask vacíos.</td></tr>
+      <tr><td class="n"><span class="mk">8</span></td><td class="c">Tone</td><td class="t">chip select (1 de 3)</td><td><span class="copy">🔥 Hype</span> · <span class="copy">🎓 Educational</span> · <span class="copy">😂 Fun</span></td><td>Single-select, default Hype. Mapea a Campaign Style interno.</td></tr>
+      <tr><td class="n"><span class="mk">9</span></td><td class="c">Token</td><td class="t">radio rows</td><td><span class="copy">Rally Points (RLP)</span> + <span class="copy">Your balance: 180000 RLP</span> · <span class="copy">USDC</span> + <span class="copy">From your wallet · Base</span></td><td>Fila extra <span class="copy">Your project’s token</span> <b>solo si org Verified</b>. Selección = borde azul.</td></tr>
+      <tr><td class="n"><span class="mk">10</span></td><td class="c">Amount + duration</td><td class="t">input/number + chips</td><td>label <span class="copy">Amount &amp; duration</span> · chips <span class="copy">1 week</span> <span class="copy">2 weeks</span> <span class="copy">Custom ▾</span></td><td>error si amount &gt; balance: <span class="copy">That’s more than your balance (180,000 RLP).</span> · Custom abre date-range. Todo recalcula el rail 15 en vivo.</td></tr>
+      <tr><td class="n"><span class="mk">11</span></td><td class="c">Participación</td><td class="t">segmented 3</td><td><span class="copy">Everyone · 11,746 eligible</span> / <span class="copy">Whitelist only</span> / <span class="copy">Elite creators</span></td><td>Default Everyone. El contador eligible es <b>vivo</b> — se recalcula al tocar targeting avanzado. Whitelist only oculta el contador.</td></tr>
+      <tr><td class="n"><span class="mk">12</span></td><td class="c">Whitelist per-post</td><td class="t">row list + inputs</td><td>label <span class="copy">Also pay specific creators per post (optional)</span> · botones <span class="copy">+ Add creator</span> <span class="copy">⬆ Upload list (CSV)</span> · nota <span class="copy">AI-verified per post · released when the campaign ends</span></td><td>Row: avatar + handle ✔ + pay/post (numérico) + max (stepper) + ✕ eliminar · "+ Add creator" = búsqueda por handle (roster de Elite Creators primero) · CSV: <span class="copy">handle, pay per post, max posts</span>. Suma → fila "Whitelisted creators" del rail 15.</td></tr>
+      <tr><td class="n"><span class="mk">13</span></td><td class="c">Fine-tune link</td><td class="t">text link</td><td><span class="copy">Fine-tune scoring weights, curve, periods &amp; targeting — optional, Rally defaults applied</span></td><td>Abre drawer lateral con los controles actuales del producto (sliders, curva, periods, old tweets, mods, Sorsa, followers). Nada obligatorio.</td></tr>
+      <tr><td class="n"><span class="mk">14</span></td><td class="c">AI meter</td><td class="t">progress + checklist</td><td>título <span class="copy">✦ AI Evaluation ready</span> · checks <span class="copy">Name &amp; ask</span> <span class="copy">Rules — enforceable</span> <span class="copy">Knowledge base — accuracy scoring</span> <span class="copy">Tone — style scoring</span></td><td>4 checks = 25% cada uno, animación width 300ms · labels de estado: 4/4 → <span class="copy">Wingston can fully evaluate every submission. ✓</span> · sin KB → <span class="copy">Add a knowledge base so Wingston can score accuracy.</span> · resto → <span class="copy">Complete the highlighted fields to make the campaign evaluable.</span> Nunca bloquea el deposit — es incentivo, no gate.</td></tr>
+      <tr><td class="n"><span class="mk">15</span></td><td class="c">Summary</td><td class="t">card sticky</td><td>título <span class="copy">Ready to launch</span> · filas <span class="copy">Prize pool / Whitelisted creators / Total deposit / Runs</span></td><td>Recalcula en vivo con 10 y 12. Fila whitelist oculta si no hay rows.</td></tr>
+      <tr><td class="n"><span class="mk">16</span></td><td class="c">CTA deposit</td><td class="t">button/primary XL</td><td><span class="copy">Deposit &amp; launch</span> · legal <span class="copy">By depositing you accept the Terms &amp; Conditions.</span></td><td>disabled hasta: name + ask + amount válido · click → S5.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ================= S5 ================= -->
+<section class="scr" id="s5">
+  <div class="scr-head"><span class="scr-id">S5</span><h2>Deposit — la wallet aparece aquí, no antes</h2></div>
+  <p class="job"><b>Job:</b> un solo depósito (pool + whitelist) con la menor ceremonia posible. Tres caminos según el estado de la wallet.</p>
+  <div class="rulebox"><span class="rule hot">MODAL sobre S4</span><span class="rule">misma wallet que como creator</span><span class="rule">deposit del protocolo, sin cambios</span></div>
+  <figure class="frame slim"><div class="screen"><div class="cv">
+    <div class="modal">
+      <div style="font-weight:800; font-size:16px"><span class="mk inmock">1</span>Confirm your deposit</div>
+      <div class="srow" style="margin-top:10px"><span>Prize pool</span><b>40,000 RLP</b></div>
+      <div class="srow"><span>Whitelisted creators</span><b>24,000 RLP</b></div>
+      <div class="srow"><span>Total</span><b>64,000 RLP</b></div>
+      <div style="font-size:10px; color:#9CA1B4; margin:8px 0"><span class="mk inmock">2</span>Rewards distribute automatically. Whitelist payments release when the campaign ends. Unused funds return to you.</div>
+      <div><button class="btn-blue" style="width:100%"><span class="mk inmock" style="background:#fff; color:var(--accent)">3</span> Deposit 64,000 RLP</button></div>
+      <div style="margin-top:8px; text-align:center; font-size:10px; color:#9CA1B4"><span class="mk inmock">4</span>Wallet: 0xf5…0AFF12 · GenLayer Rally Testnet</div>
+    </div>
+  </div></div></figure>
+  <div class="spec-wrap"><table class="spec">
+    <thead><tr><th style="width:34px">#</th><th style="width:18%">Componente / camino</th><th style="width:14%">Tipo</th><th style="width:32%">Copy (EN, literal)</th><th>Estados · comportamiento</th></tr></thead>
+    <tbody>
+      <tr><td class="n"><span class="mk">1</span></td><td class="c">Resumen</td><td class="t">modal + rows</td><td><span class="copy">Confirm your deposit</span></td><td>Mismas cifras que el rail — nunca sorpresas nuevas en el modal.</td></tr>
+      <tr><td class="n"><span class="mk">2</span></td><td class="c">Nota de confianza</td><td class="t">caption</td><td><span class="copy">Rewards distribute automatically. Whitelist payments release when the campaign ends. Unused funds return to you.</span></td><td>Las 3 garantías, siempre visibles antes de firmar.</td></tr>
+      <tr><td class="n"><span class="mk">3</span></td><td class="c">CTA</td><td class="t">button/primary XL</td><td><span class="copy">Deposit 64,000 RLP</span></td><td>loading <span class="copy">Waiting for wallet…</span> → <span class="copy">Depositing…</span> · success → S6 · error: <span class="copy">The transaction didn’t go through. Nothing was charged — try again.</span></td></tr>
+      <tr><td class="n"><span class="mk">4</span></td><td class="c">Wallet line</td><td class="t">caption</td><td><span class="copy">Wallet: 0xf5…0AFF12 · GenLayer Rally Testnet</span></td><td>—</td></tr>
+      <tr><td class="n">·</td><td class="c">Camino B: sin conectar</td><td class="t">paso previo</td><td><span class="copy">Connect your wallet to deposit</span> + <span class="copy">Continue with Metamask</span></td><td>Vuelve a este modal al conectar.</td></tr>
+      <tr><td class="n">·</td><td class="c">Camino C: sin wallet</td><td class="t">paso previo</td><td><span class="copy">Don’t have a wallet? Create one — it takes 10 seconds and you never leave Rally.</span> CTA <span class="copy">Create wallet</span></td><td>Wallet embebida. Misma wallet servirá para participar como creator.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ================= S6 ================= -->
+<section class="scr" id="s6">
+  <div class="scr-head"><span class="scr-id">S6</span><h2>Live — éxito con 2 variantes</h2></div>
+  <p class="job"><b>Job:</b> confirmar + empujar la campaña hacia fuera (Share on X) + contar lo que pasó solo. La variante depende de la decisión de S3.</p>
+  <div class="rulebox"><span class="rule hot">VARIANTE A · Network</span><span class="rule hot">VARIANTE B · Verified in review</span><span class="rule">tweet pre-escrito incluido abajo</span></div>
+  <figure class="frame slim"><div class="screen"><div class="cv">
+    <div style="text-align:center; padding:26px 24px 4px">
+      <div class="okring">✓</div>
+      <div class="r-h1" style="font-size:19px"><span class="mk inmock">1</span>Your campaign is live</div>
+      <div style="font-size:11px; color:#6B7084; margin-top:3px"><span class="mk inmock">2</span>On the Network rail — your org shows without badge.</div>
+      <div><span class="slink">app.rally.fun/campaigns/internet-court-is-here</span></div>
+      <div style="display:flex; gap:8px; justify-content:center; margin-top:10px"><button class="btn-line"><span class="mk inmock">3</span>⧉ Copy link</button><button class="btn-blue">Share on 𝕏</button></div>
+    </div>
+    <div style="margin:14px 24px 0; border:1px solid var(--r-line); border-radius:12px; padding:12px 14px; display:flex; gap:10px; align-items:center">
+      <div style="flex:1"><div style="font-weight:800; font-size:12px"><span class="mk inmock">4</span>Want the blue badge? <span class="tchip v">✔ VERIFIED · $1,500</span></div>
+      <div style="font-size:10.5px; color:#6B7084; margin-top:2px">Featured rail · your own Community · custom token/points · invoice. Review with Ana, badge in &lt;24h.</div></div>
+      <button class="btn-blue" style="flex:none">Get Verified</button>
+    </div>
+  </div></div></figure>
+  <div class="spec-wrap"><table class="spec">
+    <thead><tr><th style="width:34px">#</th><th style="width:18%">Componente</th><th style="width:14%">Tipo</th><th style="width:34%">Copy (EN, literal)</th><th>Estados · comportamiento</th></tr></thead>
+    <tbody>
+      <tr><td class="n"><span class="mk">1</span></td><td class="c">Confirmación</td><td class="t">H1 + check ring</td><td><span class="copy">Your campaign is live</span></td><td>Animación única de entrada (scale-in del ring). Peak-end del flujo.</td></tr>
+      <tr><td class="n"><span class="mk">2</span></td><td class="c">Sub por variante</td><td class="t">body-s</td><td>A: <span class="copy">On the Network rail — your org shows without badge.</span><br>B: <span class="copy">Queued for the ✔ Verified rail — featured as soon as your badge lands (&lt;24h).</span></td><td>Variante según estado de la org.</td></tr>
+      <tr><td class="n"><span class="mk">3</span></td><td class="c">Share</td><td class="t">link pill + 2 botones</td><td><span class="copy">⧉ Copy link</span> · <span class="copy">Share on 𝕏</span> — tweet pre-escrito: <span class="copy">I just launched a campaign on @RallyOnChain — post about it and earn from a 40,000 RLP pool. Create yours 👉 [link]</span></td><td>Copy link → toast <span class="copy">Link copied</span>. El tweet incluye "Create yours" → regenera el loop de la entrada A.</td></tr>
+      <tr><td class="n"><span class="mk">4</span></td><td class="c">Card inferior por variante</td><td class="t">banner card</td><td>A (Network): <span class="copy">Want the blue badge? — Featured rail · your own Community · custom token/points · invoice. Review with Ana, badge in &lt;24h.</span> CTA <span class="copy">Get Verified</span> → S3b.<br>B (Verified in review): <span class="copy">Your Community goes live with your badge — members, leaderboards and your Elite Creator program will live there.</span> CTA <span class="copy">Preview →</span></td><td>Es el único upsell del flujo — aparece después del éxito, nunca antes.</td></tr>
+    </tbody>
+  </table></div>
+
+  <p class="cap" style="margin-top:26px">Notas globales para Pablo · tokens: los del producto actual (azul #2B3BE8, lavanda, verde Wingston, chips lavanda; badge Verified azul #2563EB, Network ámbar #D97706, estados verde/ámbar) · tipografía y radios: los actuales · mobile: S4 en 1 columna con el rail como bottom-sheet fija (medidor colapsado a barra + total + CTA) · vacíos/errores: siempre con acción ("try again", "add a name"), nunca callejones · todo el copy de este doc es final salvo que Ana lo toque.</p>
+</section>
 
 <!-- ================= CIERRE ================= -->
 <div class="flow-title">
