@@ -232,7 +232,7 @@
       <div class="node"><div class="nbox"><span class="nk">Login</span><div class="nt">Connect with 𝕏</div><div class="nd">skipped if a session exists</div></div></div>
       <div class="node hot"><div class="nbox"><span class="nk">Always first</span><div class="nt">CREATE ORGANIZATION</div><div class="nd">name · pfp · banner · links (from X) · accepts T&amp;C · born NOT VERIFIED</div></div></div>
       <div class="fork">
-        <div class="nbox" style="border-color:#BFD7FF; background:#F6FAFF"><span class="nk" style="color:#2563EB">VERIFIED? YES</span><div class="nt">$1,500 + Ana</div><div class="nd">badge &lt;24h · featured rail · own Community · token/points · invoice</div></div>
+        <div class="nbox" style="border-color:#BFD7FF; background:#F6FAFF"><span class="nk" style="color:#2563EB">VERIFIED? YES</span><div class="nt">Call with Ana → $1,500</div><div class="nd">badge &lt;24h · priority placement · promo from Rally’s official channels · own Community · token/points</div></div>
         <div class="nbox" style="border-color:#F5D9AE; background:#FFFAF2"><span class="nk" style="color:#D97706">NOT NOW</span><div class="nt">Stays NETWORK</div><div class="nd">free · no Community · shown without badge · verify anytime</div></div>
       </div>
       <div class="node"><div class="nbox"><span class="nk">One page</span><div class="nt">Create campaign</div><div class="nd">everything the AI needs + prize + who joins</div></div></div>
@@ -254,10 +254,10 @@
 
   <div class="dsec">
     <h2>Whitelisted creators — paid per post, released at campaign end</h2>
-    <p class="dl">Set up inside campaign creation (block 3). Elite Creators live in Communities — Verified orgs only.</p>
+    <p class="dl">Exclusive campaigns only — in block 3 the org picks <b>fixed pay per post</b> or <b>curve distribution</b>. Elite Creators live in Communities — Verified orgs only.</p>
     <div class="lane">
       <div class="node"><div class="nbox"><span class="nk">Roster</span><div class="nt">Applications or CSV</div><div class="nd">1-click apply — the application is the track record</div></div></div>
-      <div class="node hot"><div class="nbox"><span class="nk">In creation</span><div class="nt">Whitelist block</div><div class="nd">pay per post + max posts per creator</div></div></div>
+      <div class="node hot"><div class="nbox"><span class="nk">In creation</span><div class="nt">Payment model</div><div class="nd">fixed per post (pay + max per creator) or curve distribution</div></div></div>
       <div class="node"><div class="nbox"><span class="nk">Per post</span><div class="nt">AI verifies</div><div class="nd">talks about the project · mentions · rules</div></div></div>
       <div class="node"><div class="nbox"><span class="nk">If true</span><div class="nt">APPROVED · held</div><div class="nd">funds stay in escrow</div></div></div>
       <div class="node pay end"><div class="nbox"><span class="nk">Campaign ends</span><div class="nt">Release</div><div class="nd">approved paid out · unused returns to the org</div></div></div>
@@ -519,14 +519,14 @@
         <div class="grid2" style="margin-top:16px; grid-template-columns:1fr 1fr">
           <button class="ccard" style="padding:16px; border:2px solid #3B82F6; background:#F6FAFF" onclick="chooseVerified(true)">
             <div style="font-weight:800; font-size:14px; color:#1D4ED8">✔ Yes — $1,500</div>
-            <div style="font-size:11.5px; color:var(--ink-2); margin-top:4px; line-height:1.5">Short form + review with Ana · badge in &lt;24h · featured rail · <b>your own Community</b> · custom token/points · invoice</div>
+            <div style="font-size:11.5px; color:var(--ink-2); margin-top:4px; line-height:1.5">Video call with Ana first, then $1,500 · badge in &lt;24h · <b>priority placement across Rally</b> · promoted by Rally’s official channels · featured rail · <b>your own Community</b> · custom token/points · invoice</div>
           </button>
           <button class="ccard" style="padding:16px; border:2px solid #F59E0B; background:#FFFBF4" onclick="chooseVerified(false)">
             <div style="font-weight:800; font-size:14px; color:#B45309">Not now → Network</div>
             <div style="font-size:11.5px; color:var(--ink-2); margin-top:4px; line-height:1.5">Free · launch immediately · shown without badge · no Community · verify anytime later</div>
           </button>
         </div>
-        <div class="foot-note">If you pay now, you can keep launching while the review runs — campaigns upgrade to the Verified rail when the badge lands.</div>
+        <div class="foot-note">Booking the call never blocks you — keep launching on Network meanwhile; campaigns upgrade to the Verified rail when the badge lands.</div>
       </div>
     </section>
 
@@ -534,7 +534,7 @@
     <section class="screen" id="pVerForm">
       <div class="pad" style="max-width:600px; margin:0 auto; padding-top:24px">
         <div class="h1" style="text-align:center">Get Verified <span class="tchip v" style="vertical-align:6px">✔ $1,500</span></div>
-        <div class="sub" style="text-align:center; margin-bottom:14px">Three quick steps — no KYB, no company forms. You can keep launching while the review runs.</div>
+        <div class="sub" style="text-align:center; margin-bottom:14px">Three quick steps — no KYB, no company forms. <b>Payment only opens after your videocall with Ana.</b></div>
         <div class="block">
           <div class="bh"><i>1</i>Short form</div>
           <label class="fl">Website</label>
@@ -543,18 +543,28 @@
           <textarea class="inp">Trust infrastructure for the AI age — Intelligent Contracts and the Internet Court.</textarea>
         </div>
         <div class="block">
-          <div class="bh"><i>2</i>Payment · $1,500 <small>— invoice included</small></div>
-          <button class="payrow on" onclick="paySel(this,'Card')"><span>Card<small>Invoice by email</small></span><span class="amt">$1,500</span></button>
-          <button class="payrow" onclick="paySel(this,'Crypto')"><span>Crypto<small>USDC · Base</small></span><span class="amt">$1,500</span></button>
-          <div style="margin-top:10px"><button class="btn full" id="payverbtn" onclick="payVer()">Pay $1,500</button></div>
+          <div class="bh"><i>2</i>Videocall with Ana <small>— required before payment</small></div>
+          <label class="fl" style="margin-top:0">Pick a day</label>
+          <div id="caldays" style="display:flex; gap:6px; flex-wrap:wrap">
+            <button class="chip" onclick="calPick(this,'caldays')">Thu · Jul 23</button>
+            <button class="chip" onclick="calPick(this,'caldays')">Fri · Jul 24</button>
+            <button class="chip" onclick="calPick(this,'caldays')">Mon · Jul 27</button>
+          </div>
+          <label class="fl">Pick a time <small>(CET)</small></label>
+          <div id="calslots" style="display:flex; gap:6px; flex-wrap:wrap">
+            <button class="chip" onclick="calPick(this,'calslots')">11:00</button>
+            <button class="chip" onclick="calPick(this,'calslots')">15:00</button>
+            <button class="chip" onclick="calPick(this,'calslots')">17:00</button>
+          </div>
+          <div style="margin-top:12px"><button class="btn full" id="bookbtn" disabled onclick="bookCall()">Book videocall</button></div>
+          <div class="foot-note" id="booknote">Pick a day and a time.</div>
         </div>
         <div class="block">
-          <div class="bh"><i>3</i>Review with Ana <small>— badge in &lt;24h</small></div>
-          <div style="display:flex; gap:8px; flex-wrap:wrap">
-            <button class="btn ghost" style="flex:1" id="anatg" disabled onclick="schedAna('Telegram')">💬 Telegram</button>
-            <button class="btn ghost" style="flex:1" id="anacal" disabled onclick="schedAna('Calendly')">📅 Book a call</button>
-          </div>
-          <div class="foot-note" id="ananote">Unlocks after payment.</div>
+          <div class="bh"><i>3</i>Payment · $1,500 <small>— unlocks after the call · invoice included</small></div>
+          <button class="payrow on" onclick="paySel(this,'Card')"><span>Card<small>Invoice by email</small></span><span class="amt">$1,500</span></button>
+          <button class="payrow" onclick="paySel(this,'Crypto')"><span>Crypto<small>USDC · Base</small></span><span class="amt">$1,500</span></button>
+          <div style="margin-top:10px"><button class="btn full" id="payverbtn" disabled onclick="payVer()">Pay $1,500</button></div>
+          <div class="foot-note" id="paynote">🔒 Locked until your videocall with Ana happens.</div>
         </div>
         <div><button class="btn full" id="vercont" disabled onclick="finishVer()">Continue to your campaign →</button></div>
         <div class="foot-note">Status meanwhile: ✔ VERIFIED · in review — your campaigns upgrade to the featured rail when the badge lands.</div>
@@ -612,19 +622,29 @@
                 <button class="chip" onclick="groupSel(this)">1 week</button><button class="chip on" onclick="groupSel(this)">2 weeks</button><button class="chip" onclick="groupSel(this)">Custom ▾</button>
               </div>
               <div id="amterr" style="display:none; font-size:10.5px; color:#B91C1C; margin-top:6px">That’s more than your balance (180,000 RLP).</div>
+              <div id="fixednote" style="display:none; font-size:10.5px; color:var(--faint); margin-top:6px">Fixed payment model: the deposit is the sum of per-post commitments — the pool amount isn’t used.</div>
             </div>
             <div class="block">
               <div class="bh"><i>3</i>Who can join?</div>
               <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px">
-                <button class="chip on" onclick="groupSel(this)">Everyone · 11,746 eligible</button><button class="chip" onclick="groupSel(this)">Whitelist only</button><button class="chip" onclick="groupSel(this)">Elite creators</button>
+                <button class="chip on" onclick="joinSel(this,'everyone')">Everyone · 11,746 eligible</button><button class="chip" onclick="joinSel(this,'wl')">Whitelist only</button><button class="chip" onclick="joinSel(this,'elite')">Elite creators · exclusive</button>
               </div>
-              <label class="fl" style="margin-top:0">Also pay specific creators per post <small>(optional)</small></label>
-              <div class="wlrow"><span class="ava a1"></span><b>@srinigoes</b><span class="vk">✔</span><span class="sp"></span><span class="lab">per post</span><input class="inp" id="w1p" value="4000" inputmode="numeric" oninput="recalc()"><span class="lab">max</span><input class="inp sm" id="w1m" value="3" inputmode="numeric" oninput="recalc()"></div>
-              <div class="wlrow"><span class="ava a3"></span><b>@holly_web3</b><span class="vk">✔</span><span class="sp"></span><span class="lab">per post</span><input class="inp" id="w2p" value="4000" inputmode="numeric" oninput="recalc()"><span class="lab">max</span><input class="inp sm" id="w2m" value="3" inputmode="numeric" oninput="recalc()"></div>
-              <div style="display:flex; gap:8px; margin-top:10px; align-items:center; flex-wrap:wrap">
-                <button class="btn ghost" onclick="toast('Search your roster or any Rally user')">+ Add creator</button>
-                <button class="btn ghost" onclick="toast('CSV: handle, pay per post, max posts')">⬆ Upload list (CSV)</button>
-                <span style="font-size:10.5px; color:var(--faint)">AI-verified per post · released when the campaign ends</span>
+              <div id="publicnote" style="font-size:10.5px; color:var(--faint)">Public campaigns pay through the reward curve. Fixed pay per post lives in Elite Creators campaigns — pick "Elite creators · exclusive" to see it.</div>
+              <div id="eliteblock" style="display:none">
+                <label class="fl" style="margin-top:0">Payment model <small>— Elite Creators campaigns only</small></label>
+                <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px" id="paymodechips">
+                  <button class="chip on" onclick="paymodeSel(this,'fixed')">Fixed pay per post</button><button class="chip" onclick="paymodeSel(this,'curve')">Curve distribution</button>
+                </div>
+                <div id="fixedrows">
+                  <div class="wlrow"><span class="ava a1"></span><b>@srinigoes</b><span class="vk">✔</span><span class="sp"></span><span class="lab">per post</span><input class="inp" id="w1p" value="4000" inputmode="numeric" oninput="recalc()"><span class="lab">max</span><input class="inp sm" id="w1m" value="3" inputmode="numeric" oninput="recalc()"></div>
+                  <div class="wlrow"><span class="ava a3"></span><b>@holly_web3</b><span class="vk">✔</span><span class="sp"></span><span class="lab">per post</span><input class="inp" id="w2p" value="4000" inputmode="numeric" oninput="recalc()"><span class="lab">max</span><input class="inp sm" id="w2m" value="3" inputmode="numeric" oninput="recalc()"></div>
+                  <div style="display:flex; gap:8px; margin-top:10px; align-items:center; flex-wrap:wrap">
+                    <button class="btn ghost" onclick="toast('Search your Elite Creators roster first, then any Rally user')">+ Add creator</button>
+                    <button class="btn ghost" onclick="toast('CSV: handle, pay per post, max posts')">⬆ Upload list (CSV)</button>
+                    <span style="font-size:10.5px; color:var(--faint)">AI-verified per post · released when the campaign ends</span>
+                  </div>
+                </div>
+                <div id="curvenote" style="display:none; font-size:10.5px; color:var(--faint)">The pool splits across your Elite Creators through the reward curve — same mechanics as a public campaign, restricted to your roster.</div>
               </div>
             </div>
           </div>
@@ -642,8 +662,8 @@
             </div>
             <div class="sums" style="margin-top:12px">
               <div style="font-weight:800; font-size:13px; margin-bottom:6px">Ready to launch</div>
-              <div class="srow"><span>Prize pool</span><b id="s-pool">40,000 RLP</b></div>
-              <div class="srow"><span>Whitelisted creators</span><b id="s-wl">24,000 RLP</b></div>
+              <div class="srow" id="row-pool"><span>Prize pool</span><b id="s-pool">40,000 RLP</b></div>
+              <div class="srow" id="row-wl" style="display:none"><span>Elite creators (fixed)</span><b id="s-wl">24,000 RLP</b></div>
               <div class="srow"><span>Total deposit</span><b id="s-total">64,000 RLP</b></div>
               <div class="srow"><span>Runs</span><b>2 weeks · live now</b></div>
               <div style="margin-top:11px"><button class="btn full" id="depbtn" onclick="deposit()">Deposit &amp; launch</button></div>
@@ -660,11 +680,11 @@
         <div class="fcard">
           <div class="fq">Confirm your deposit</div>
           <div style="margin-top:10px">
-            <div class="srow"><span>Prize pool</span><b id="d-pool">40,000 RLP</b></div>
-            <div class="srow"><span>Whitelisted creators</span><b id="d-wl">24,000 RLP</b></div>
+            <div class="srow" id="drow-pool"><span>Prize pool</span><b id="d-pool">40,000 RLP</b></div>
+            <div class="srow" id="drow-wl" style="display:none"><span>Elite creators (fixed)</span><b id="d-wl">24,000 RLP</b></div>
             <div class="srow"><span>Total</span><b id="d-total">64,000 RLP</b></div>
           </div>
-          <div class="foot-note" style="text-align:left; margin-top:8px">Rewards distribute automatically. Whitelist payments release when the campaign ends. Unused funds return to you.</div>
+          <div class="foot-note" style="text-align:left; margin-top:8px">Rewards distribute automatically. In fixed-pay Elite campaigns, per-post payments release when the campaign ends. Unused funds return to you.</div>
           <div style="margin-top:12px"><button class="btn full" id="depconfirm" onclick="confirmDeposit()">Deposit</button></div>
           <div class="foot-note">Wallet: 0xf5…0AFF12 · GenLayer Rally Testnet</div>
         </div>
@@ -703,7 +723,7 @@
         <div class="panel" style="margin-top:0">
           <div class="phead">⭐ Elite Creator Program <span class="st">Applications open · 4 days left</span></div>
           <div class="pbody">
-            <div style="font-size:12px; color:var(--ink-2); margin-bottom:10px">Official Elite Creators represent GenLayer across their channels. Any community member can apply when applications are open — you’re a member ✓.</div>
+            <div style="font-size:12px; color:var(--ink-2); margin-bottom:10px">Official Elite Creators represent GenLayer across their channels. Any community member can apply when applications are open — you’re a member ✓. Exclusive campaigns pay <b>fixed per post or by curve distribution</b>, paid out when each campaign ends.</div>
             <div class="check on" style="margin:0 0 12px">
               <div class="ch">Your application is your track record</div>
               <div class="pcs">
@@ -726,7 +746,7 @@
       <div class="hero">
         <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
           <div><div class="h1">Whitelisted creators — Internet Court Is Here</div>
-          <div class="sub">Fixed pay per post · AI-verified · funds release when the campaign ends (2d 11h).</div></div>
+          <div class="sub">Payment model: fixed pay per post — this campaign (alternative: curve distribution) · AI-verified · funds release when the campaign ends (2d 11h).</div></div>
           <span class="sp"></span>
           <span class="tchip warn" style="font-size:10px; padding:5px 10px">RESERVED · 60,000 RLP IN ESCROW</span>
         </div>
@@ -741,10 +761,17 @@
         <div class="panel">
           <div class="phead">Creators <span class="st">release: automatic at campaign end</span></div>
           <div class="pbody" style="padding-top:4px">
-            <div class="lrow"><span class="ava a1"></span><b>@srinigoes</b><span class="vk">✔</span><span class="meta">3/3 posts · <span style="color:#15803D">✓ ✓ ✓</span> · 12,000 RLP</span><span class="sp"></span><span class="tchip ok">✓ RELEASES AT END</span><button class="btn ghost" style="padding:5px 10px; font-size:11px" onclick="toast('Their 3 posts, each AI-verified: mentions ✓ · talks about the project ✓')">View posts</button></div>
-            <div class="lrow"><span class="ava a2"></span><b>@grebby</b><span class="vk">✔</span><span class="meta">2/3 posts · <span style="color:#15803D">✓ ✓</span> · 8,000 RLP</span><span class="sp"></span><span class="tchip ok">✓ RELEASES AT END</span><button class="btn ghost" style="padding:5px 10px; font-size:11px" onclick="toast('2 verified · 1 post still available')">View posts</button></div>
-            <div class="lrow"><span class="ava a3"></span><b>@holly_web3</b><span class="vk">✔</span><span class="meta">2/3 posts · <span style="color:#15803D">✓</span> <span style="color:#B45309">✗ no mention</span> · 4,000 RLP</span><span class="sp"></span><span class="tchip warn">1 POST REJECTED</span><button class="btn ghost" style="padding:5px 10px; font-size:11px" onclick="toast('Rejected: missing @GenLayer mention. Doesn’t pay — can retry while the campaign runs.')">Why?</button></div>
+            <div class="lrow"><span class="ava a1"></span><b>@srinigoes</b><span class="vk">✔</span><span class="meta">3/3 posts · <span style="color:#15803D">✓ ✓ ✓</span> · 98K impr · 12,000 RLP</span><span class="sp"></span><span class="tchip ok">✓ RELEASES AT END</span><button class="btn ghost" style="padding:5px 10px; font-size:11px" onclick="toast('Their 3 posts, each AI-verified: mentions ✓ · talks about the project ✓')">View posts</button></div>
+            <div class="lrow"><span class="ava a2"></span><b>@grebby</b><span class="vk">✔</span><span class="meta">2/3 posts · <span style="color:#15803D">✓ ✓</span> · 71K impr · 8,000 RLP</span><span class="sp"></span><span class="tchip ok">✓ RELEASES AT END</span><button class="btn ghost" style="padding:5px 10px; font-size:11px" onclick="toast('2 verified · 1 post still available')">View posts</button></div>
+            <div class="lrow"><span class="ava a3"></span><b>@holly_web3</b><span class="vk">✔</span><span class="meta">2/3 posts · <span style="color:#15803D">✓</span> <span style="color:#B45309">✗ no mention</span> · 64K impr · 4,000 RLP</span><span class="sp"></span><span class="tchip warn">1 POST REJECTED</span><button class="btn ghost" style="padding:5px 10px; font-size:11px" onclick="toast('Rejected: missing @GenLayer mention. Doesn’t pay — can retry while the campaign runs.')">Why?</button></div>
           </div>
+        </div>
+        <div class="rail-h" style="margin:16px 0 4px"><b>Analytics</b><span>impressions &amp; engagement — from AI Evaluation</span></div>
+        <div class="kpis" style="margin-top:0">
+          <div class="kpi"><div class="kl">Impressions</div><div class="kv">233K</div><div class="kd">across 9 verified posts</div></div>
+          <div class="kpi"><div class="kl">Avg / post</div><div class="kv">25.9K</div><div class="kd">impressions</div></div>
+          <div class="kpi"><div class="kl">Engagements</div><div class="kv">11.4K</div><div class="kd">likes · reposts · replies</div></div>
+          <div class="kpi"><div class="kl">Cost / 1K impr.</div><div class="kv">154 RLP</div><div class="kd">36K RLP ÷ 233K impressions</div></div>
         </div>
         <div class="foot-note" style="text-align:left; margin-top:10px">Rejected posts don’t pay and can be retried while the campaign runs. Unused reserve returns to your balance at campaign end.</div>
         <div style="text-align:center; margin-top:16px"><button class="btn green" onclick="startFlow('creator'); toast('↺ Back to the start — creator flow')">↺ Walk through everything again</button></div>
@@ -840,7 +867,7 @@
     if(tcAccepted) toast('T&C accepted — you can create your organization');
   }
   function chooseVerified(v){
-    if(v){ go('pVerForm'); toast('Get Verified — 3 steps: short form · $1,500 · review with Ana'); return; }
+    if(v){ go('pVerForm'); toast('Get Verified — 3 steps: short form · videocall with Ana · $1,500'); return; }
     isVerified = false;
     var chip = document.getElementById('railchip');
     chip.textContent = 'NETWORK · not verified';
@@ -869,22 +896,39 @@
       toast('Connected with ' + how + ' ✓ — name, pfp and bio imported');
     }, 800);
   }
+  function calPick(el, group){
+    el.parentNode.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('on'); });
+    el.classList.add('on');
+    var day = document.querySelector('#caldays .chip.on');
+    var slot = document.querySelector('#calslots .chip.on');
+    document.getElementById('bookbtn').disabled = !(day && slot);
+    if(day && slot){ document.getElementById('booknote').textContent = day.textContent + ' at ' + slot.textContent + ' CET — confirm below.'; }
+  }
+  function bookCall(){
+    var day = document.querySelector('#caldays .chip.on').textContent;
+    var slot = document.querySelector('#calslots .chip.on').textContent;
+    var b = document.getElementById('bookbtn');
+    b.textContent = '✓ Booked — ' + day + ', ' + slot + ' CET';
+    b.disabled = true; b.style.background = 'var(--green)';
+    document.getElementById('booknote').innerHTML = 'Ana will confirm by email. <button class="chip" style="margin-left:6px" onclick="callDone()">⏩ Demo: the call happened</button>';
+    toast('Videocall with Ana booked · ' + day + ', ' + slot + ' CET');
+  }
+  function callDone(){
+    document.getElementById('booknote').textContent = '✓ Call with Ana done — payment unlocked.';
+    document.getElementById('payverbtn').disabled = false;
+    document.getElementById('paynote').textContent = 'Unlocked ✓ — pay to trigger the badge review.';
+    toast('Call with Ana done ✓ — payment unlocked');
+  }
   function payVer(){
     var b = document.getElementById('payverbtn');
     b.textContent = 'Processing…'; b.disabled = true;
     setTimeout(function(){
       b.textContent = '✓ Paid — invoice #INV-2214 sent';
       b.style.background = 'var(--green)';
-      document.getElementById('anatg').disabled = false;
-      document.getElementById('anacal').disabled = false;
-      document.getElementById('ananote').textContent = 'Pick a channel — Ana replies within hours.';
+      document.getElementById('vercont').disabled = false;
+      document.getElementById('paynote').textContent = '✓ Paid. Badge lands in <24h — you can continue now.';
       toast('Payment received · $1,500 — invoice sent to your email');
     }, 900);
-  }
-  function schedAna(how){
-    document.getElementById('ananote').textContent = '✓ Review scheduled via ' + how + ' — badge lands in <24h.';
-    document.getElementById('vercont').disabled = false;
-    toast('Review with Ana scheduled via ' + how);
   }
   function finishVer(){
     isVerified = true;
@@ -925,6 +969,26 @@
     el.classList.add('on');
     toast('Payment method: ' + label);
   }
+  var joinMode = 'everyone', payMode = 'fixed';
+  function joinSel(el, m){
+    groupSel(el);
+    joinMode = m;
+    document.getElementById('eliteblock').style.display = (m === 'elite') ? '' : 'none';
+    document.getElementById('publicnote').style.display = (m === 'elite') ? 'none' : '';
+    recalc();
+    toast(m === 'elite' ? 'Exclusive campaign — choose fixed pay per post or curve distribution' :
+          m === 'wl' ? 'Whitelist only — the pool still pays through the reward curve' :
+          'Open to everyone — the pool pays through the reward curve');
+  }
+  function paymodeSel(el, m){
+    groupSel(el);
+    payMode = m;
+    document.getElementById('fixedrows').style.display = (m === 'fixed') ? '' : 'none';
+    document.getElementById('curvenote').style.display = (m === 'curve') ? '' : 'none';
+    recalc();
+    toast(m === 'fixed' ? 'Fixed: each creator earns their per-post price, released at campaign end' :
+          'Curve: the pool splits across your Elite Creators by the reward curve');
+  }
   function groupSel(el){
     var chips = el.parentNode.querySelectorAll('.chip');
     chips.forEach(function(c){ c.classList.remove('on'); });
@@ -964,23 +1028,34 @@
     el.classList.toggle('off', !on);
   }
   function num(id){ return parseInt((document.getElementById(id).value||'0').replace(/\D/g,''),10) || 0; }
+  function isFixed(){ return joinMode === 'elite' && payMode === 'fixed'; }
   function recalc(){
     var pool = num('f-amount');
     var wl = num('w1p')*num('w1m') + num('w2p')*num('w2m');
+    var fixed = isFixed();
+    var total = fixed ? wl : pool;
+    document.getElementById('row-pool').style.display = fixed ? 'none' : '';
+    document.getElementById('row-wl').style.display = fixed ? '' : 'none';
+    document.getElementById('fixednote').style.display = fixed ? '' : 'none';
+    document.getElementById('f-amount').disabled = fixed;
     document.getElementById('s-pool').textContent = pool.toLocaleString('en-US')+' RLP';
     document.getElementById('s-wl').textContent = wl.toLocaleString('en-US')+' RLP';
-    document.getElementById('s-total').textContent = (pool+wl).toLocaleString('en-US')+' RLP';
-    var over = pool > 180000;
+    document.getElementById('s-total').textContent = total.toLocaleString('en-US')+' RLP';
+    var over = total > 180000;
     document.getElementById('amterr').style.display = over ? '' : 'none';
     var nameOk = document.getElementById('f-name').value.trim().length > 0;
     var askOk = document.getElementById('f-ask').value.trim().length > 0;
-    document.getElementById('depbtn').disabled = over || !nameOk || !askOk || pool <= 0;
+    document.getElementById('depbtn').disabled = over || !nameOk || !askOk || total <= 0;
   }
   var depTotal = '';
   function deposit(){
     var pool = num('f-amount');
     var wl = num('w1p')*num('w1m') + num('w2p')*num('w2m');
-    depTotal = (pool+wl).toLocaleString('en-US')+' RLP';
+    var fixed = isFixed();
+    var total = fixed ? wl : pool;
+    depTotal = total.toLocaleString('en-US')+' RLP';
+    document.getElementById('drow-pool').style.display = fixed ? 'none' : '';
+    document.getElementById('drow-wl').style.display = fixed ? '' : 'none';
     document.getElementById('d-pool').textContent = pool.toLocaleString('en-US')+' RLP';
     document.getElementById('d-wl').textContent = wl.toLocaleString('en-US')+' RLP';
     document.getElementById('d-total').textContent = depTotal;
