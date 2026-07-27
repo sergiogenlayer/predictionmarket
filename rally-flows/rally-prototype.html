@@ -226,13 +226,13 @@
 
   <div class="dsec">
     <h2>The model — organization first, then the campaign</h2>
-    <p class="dl">Anyone can launch. The org is born NOT VERIFIED; paying $1,500 (+ review with Ana) upgrades it to ✔ Verified.</p>
+    <p class="dl">Anyone can launch — as themselves or with an org (optional). Orgs are born NOT VERIFIED; the call with Ana + $1,500 (paid by link after the call) upgrades them to ✔ Verified.</p>
     <div class="lane">
       <div class="node hot"><div class="nbox"><span class="nk">Entry</span><div class="nt">+ Create campaign</div><div class="nd">X bio "create yours" · rally.fun · in-app</div></div></div>
       <div class="node"><div class="nbox"><span class="nk">Login</span><div class="nt">Connect with 𝕏</div><div class="nd">skipped if a session exists</div></div></div>
-      <div class="node hot"><div class="nbox"><span class="nk">Always first</span><div class="nt">CREATE ORGANIZATION</div><div class="nd">name · pfp · banner · links (from X) · accepts T&amp;C · born NOT VERIFIED</div></div></div>
+      <div class="node hot"><div class="nbox"><span class="nk">Who’s launching?</span><div class="nt">YOURSELF or ORGANIZATION</div><div class="nd">individuals launch with their personal account (org optional — how it works today) · orgs: from X, T&amp;C, born NOT VERIFIED</div></div></div>
       <div class="fork">
-        <div class="nbox" style="border-color:#BFD7FF; background:#F6FAFF"><span class="nk" style="color:#2563EB">VERIFIED? YES</span><div class="nt">Call with Ana → $1,500</div><div class="nd">badge &lt;24h · priority placement · promo from Rally’s official channels · own Community · token/points</div></div>
+        <div class="nbox" style="border-color:#BFD7FF; background:#F6FAFF"><span class="nk" style="color:#2563EB">VERIFIED? YES (orgs)</span><div class="nt">Call with Ana → payment link</div><div class="nd">$1,500 by link after the call · badge &lt;24h · priority placement · promo from Rally’s official channels · own Community</div></div>
         <div class="nbox" style="border-color:#F5D9AE; background:#FFFAF2"><span class="nk" style="color:#D97706">NOT NOW</span><div class="nt">Stays NETWORK</div><div class="nd">free · no Community · shown without badge · verify anytime</div></div>
       </div>
       <div class="node"><div class="nbox"><span class="nk">One page</span><div class="nt">Create campaign</div><div class="nd">everything the AI needs + prize + who joins</div></div></div>
@@ -492,6 +492,10 @@
         </div>
       </div>
       <div class="pad" style="max-width:600px; margin:0 auto">
+        <button class="ccard" style="padding:14px 16px; border:2px solid var(--green); background:var(--green-bg); margin-bottom:16px" onclick="launchPersonal()">
+          <div style="font-weight:800; font-size:13.5px">🙋 Launch as yourself — skip the organization</div>
+          <div style="font-size:11.5px; color:var(--ink-2); margin-top:3px">Individuals launch with their personal account — how it works today. An organization is optional: it unlocks Verified, Communities and team admins.</div>
+        </button>
         <div style="height:56px; border-radius:10px; background:var(--lav); border:1px dashed var(--line2); display:grid; place-items:center; font-size:11.5px; color:var(--faint); margin-bottom:14px">⬆ Upload banner (optional — you can do it later)</div>
         <div style="display:flex; gap:12px; align-items:center">
           <div style="width:44px; height:44px; border-radius:11px; background:#14161F; flex:none; margin-top:-32px; border:2px solid #fff"></div>
@@ -534,7 +538,7 @@
     <section class="screen" id="pVerForm">
       <div class="pad" style="max-width:600px; margin:0 auto; padding-top:24px">
         <div class="h1" style="text-align:center">Get Verified <span class="tchip v" style="vertical-align:6px">✔ $1,500</span></div>
-        <div class="sub" style="text-align:center; margin-bottom:14px">Three quick steps — no KYB, no company forms. <b>Payment only opens after your videocall with Ana.</b></div>
+        <div class="sub" style="text-align:center; margin-bottom:14px">Three quick steps — no KYB, no company forms. <b>No in-app payment: after the call, Rally sends you a payment link.</b></div>
         <div class="block">
           <div class="bh"><i>1</i>Short form</div>
           <label class="fl">Website</label>
@@ -560,11 +564,8 @@
           <div class="foot-note" id="booknote">Pick a day and a time.</div>
         </div>
         <div class="block">
-          <div class="bh"><i>3</i>Payment · $1,500 <small>— unlocks after the call · invoice included</small></div>
-          <button class="payrow on" onclick="paySel(this,'Card')"><span>Card<small>Invoice by email</small></span><span class="amt">$1,500</span></button>
-          <button class="payrow" onclick="paySel(this,'Crypto')"><span>Crypto<small>USDC · Base</small></span><span class="amt">$1,500</span></button>
-          <div style="margin-top:10px"><button class="btn full" id="payverbtn" disabled onclick="payVer()">Pay $1,500</button></div>
-          <div class="foot-note" id="paynote">🔒 Locked until your videocall with Ana happens.</div>
+          <div class="bh"><i>3</i>Payment link · $1,500 <small>— sent after the call · no in-app payment</small></div>
+          <div style="font-size:12px; color:var(--ink-2); line-height:1.6" id="paynote">Ana verifies it’s a real person and a real project on the call. Then Rally sends a <b>payment link</b> by email — $1,500, card or crypto, invoice included. The badge lands &lt;24h after payment.</div>
         </div>
         <div><button class="btn full" id="vercont" disabled onclick="finishVer()">Continue to your campaign →</button></div>
         <div class="foot-note">Status meanwhile: ✔ VERIFIED · in review — your campaigns upgrade to the featured rail when the badge lands.</div>
@@ -580,6 +581,12 @@
           <div class="sub">Everything on one page. The meter tells you when the AI can evaluate it.</div></div>
           <span class="sp"></span>
           <span class="tchip n" id="railchip" style="font-size:10.5px; padding:5px 11px">NETWORK · not verified</span>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:10px; align-items:center; flex-wrap:wrap">
+          <button class="btn ghost" style="padding:7px 12px; font-size:11.5px" onclick="toast('Import a draft or JSON — also where the campaign-creation skill (Claude / your agent) hands off pre-filled campaigns')">⬇ Import</button>
+          <button class="btn ghost" style="padding:7px 12px; font-size:11.5px" onclick="toast('Draft exported ✓')">⬆ Export</button>
+          <button class="btn ghost" style="padding:7px 12px; font-size:11.5px" onclick="aiTemplate()">✦ AI Template</button>
+          <span style="font-size:10px; color:var(--faint)">or create from your own AI — Rally campaign-creation skill</span>
         </div>
       </div>
       <div class="pad">
@@ -597,6 +604,13 @@
                 <button class="rulechip" onclick="removeRule(this)" title="Click to remove">✓ Quote the launch post</button>
                 <button class="rulechip" onclick="removeRule(this)" title="Click to remove">✓ Original take — no copy-paste</button>
                 <button class="rulechip add" onclick="addRule()">+ Add rule</button>
+              </div>
+              <div style="margin-top:5px; display:flex; gap:5px; flex-wrap:wrap; align-items:center" id="rulesugg">
+                <span style="font-size:10px; color:var(--faint)">Suggested:</span>
+                <button class="rulechip add" onclick="sugg(this)">+ No em dashes</button>
+                <button class="rulechip add" onclick="sugg(this)">+ Don’t start with a mention</button>
+                <button class="rulechip add" onclick="sugg(this)">+ Any language allowed</button>
+                <button class="rulechip add" onclick="sugg(this)">+ Include the campaign link</button>
               </div>
               <label class="fl">Knowledge base <small>— context so the AI scores accuracy right</small></label>
               <textarea class="inp" id="f-kb" oninput="meter()" placeholder="What should the AI know to judge accuracy?"></textarea>
@@ -616,6 +630,7 @@
               <button class="payrow on" onclick="paySel(this,'RLP pool')"><span>Rally Points (RLP)<small>Your balance: 180000 RLP</small></span><span class="amt">◆</span></button>
               <button class="payrow" onclick="paySel(this,'USDC pool')"><span>USDC<small>From your wallet · Base</small></span><span class="amt">◎</span></button>
               <button class="payrow" id="tok-custom" style="display:none" onclick="paySel(this,'Your project’s token')"><span>Your project’s token<small>Verified orgs only</small></span><span class="amt">◈</span></button>
+              <div style="border:1px dashed #BFE5CC; background:var(--green-bg); border-radius:10px; padding:9px 12px; font-size:11px; color:#14532D; margin-top:8px"><b>🎁 Get matching RLP!</b> <span id="matchtxt">For every 1 USDC, Wingston matches your prize pool with 10 RLP.</span></div>
               <label class="fl">Amount &amp; duration</label>
               <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap">
                 <input class="inp" id="f-amount" value="40000" inputmode="numeric" style="max-width:120px; font-weight:800; font-size:15px" oninput="recalc()">
@@ -884,7 +899,7 @@
   function door3(){
     document.getElementById('ctxstrip').style.display = 'none';
     go('pC');
-    toast('📱 EXISTING USER: logged in + org already created → Login, Org and ¿Verified? SKIPPED. Straight to the form (~1 min)');
+    toast('📱 EXISTING USER: already launched before (personal or org) → Login and the who-launches step SKIPPED. Straight to the form (~1 min)');
   }
   function connectX(btn, how){
     btn.textContent = 'Connecting…';
@@ -910,25 +925,18 @@
     var b = document.getElementById('bookbtn');
     b.textContent = '✓ Booked — ' + day + ', ' + slot + ' CET';
     b.disabled = true; b.style.background = 'var(--green)';
-    document.getElementById('booknote').innerHTML = 'Ana will confirm by email. <button class="chip" style="margin-left:6px" onclick="callDone()">⏩ Demo: the call happened</button>';
-    toast('Videocall with Ana booked · ' + day + ', ' + slot + ' CET');
+    document.getElementById('booknote').innerHTML = 'Ana will confirm by email. You can continue now — the payment link comes after the call. <button class="chip" style="margin-left:6px" onclick="callDone()">⏩ Demo: the call happened</button>';
+    document.getElementById('vercont').disabled = false;
+    toast('Videocall with Ana booked · ' + day + ', ' + slot + ' CET — you can keep going');
   }
   function callDone(){
-    document.getElementById('booknote').textContent = '✓ Call with Ana done — payment unlocked.';
-    document.getElementById('payverbtn').disabled = false;
-    document.getElementById('paynote').textContent = 'Unlocked ✓ — pay to trigger the badge review.';
-    toast('Call with Ana done ✓ — payment unlocked');
+    document.getElementById('booknote').textContent = '✓ Call with Ana done.';
+    document.getElementById('paynote').innerHTML = '✓ Call done — <b>payment link sent to your email</b> ($1,500, card or crypto, invoice included). <button class="chip" style="margin-left:6px" onclick="payLink(this)">⏩ Demo: pay via the link</button>';
+    toast('Call with Ana done ✓ — payment link sent to your email');
   }
-  function payVer(){
-    var b = document.getElementById('payverbtn');
-    b.textContent = 'Processing…'; b.disabled = true;
-    setTimeout(function(){
-      b.textContent = '✓ Paid — invoice #INV-2214 sent';
-      b.style.background = 'var(--green)';
-      document.getElementById('vercont').disabled = false;
-      document.getElementById('paynote').textContent = '✓ Paid. Badge lands in <24h — you can continue now.';
-      toast('Payment received · $1,500 — invoice sent to your email');
-    }, 900);
+  function payLink(el){
+    document.getElementById('paynote').textContent = '✓ Paid via link — invoice #INV-2214. Badge lands in <24h.';
+    toast('Payment received · $1,500 — badge in <24h');
   }
   function finishVer(){
     isVerified = true;
@@ -967,9 +975,52 @@
     var rows = el.parentNode.querySelectorAll('.payrow');
     rows.forEach(function(r){ r.classList.remove('on'); });
     el.classList.add('on');
+    if(label === 'USDC pool'){ prizeToken = 'USDC'; }
+    else if(label === 'RLP pool'){ prizeToken = 'RLP'; }
+    else if(label.indexOf('token') > -1){ prizeToken = 'TOKEN'; }
+    updateMatch();
     toast('Payment method: ' + label);
   }
-  var joinMode = 'everyone', payMode = 'fixed';
+  var joinMode = 'everyone', payMode = 'fixed', prizeToken = 'RLP', isPersonal = false;
+  function launchPersonal(){
+    isPersonal = true; isVerified = false;
+    var chip = document.getElementById('railchip');
+    chip.textContent = 'NETWORK · personal (@holly_web3)';
+    chip.className = 'tchip n';
+    document.getElementById('tok-custom').style.display = 'none';
+    go('pC');
+    toast('🙋 Launching as yourself — no organization needed (how it works today). Org & Verified stay available later.');
+  }
+  function aiTemplate(){
+    aiDraft();
+    var b = document.querySelector('#rules .add');
+    var s = document.createElement('button');
+    s.className = 'rulechip'; s.textContent = '✓ Include the campaign link'; s.title = 'Click to remove';
+    s.onclick = function(){ removeRule(s); };
+    b.parentNode.insertBefore(s, b);
+    meter();
+    toast('✦ Template applied — rules & knowledge base filled from your name and ask');
+  }
+  function sugg(el){
+    var b = document.querySelector('#rules .add');
+    var s = document.createElement('button');
+    s.className = 'rulechip'; s.textContent = '✓ ' + el.textContent.replace('+ ',''); s.title = 'Click to remove';
+    s.onclick = function(){ removeRule(s); };
+    b.parentNode.insertBefore(s, b);
+    el.remove();
+    meter();
+    toast('Rule added — the AI will enforce it on every submission');
+  }
+  function updateMatch(){
+    var t = document.getElementById('matchtxt');
+    if(!t) return;
+    var pool = num('f-amount');
+    if(prizeToken === 'USDC' && pool > 0 && !isFixed()){
+      t.textContent = 'Your ' + pool.toLocaleString('en-US') + ' USDC pool gets +' + (pool*10).toLocaleString('en-US') + ' RLP from Wingston.';
+    } else {
+      t.textContent = 'For every 1 USDC, Wingston matches your prize pool with 10 RLP.';
+    }
+  }
   function joinSel(el, m){
     groupSel(el);
     joinMode = m;
@@ -1046,6 +1097,7 @@
     var nameOk = document.getElementById('f-name').value.trim().length > 0;
     var askOk = document.getElementById('f-ask').value.trim().length > 0;
     document.getElementById('depbtn').disabled = over || !nameOk || !askOk || total <= 0;
+    updateMatch();
   }
   var depTotal = '';
   function deposit(){

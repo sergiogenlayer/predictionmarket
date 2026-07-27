@@ -379,7 +379,7 @@
 <header class="masthead">
   <span class="kicker">app.rally.fun · updated flows · final doc · 2026.07</span>
   <h1>Updated <span class="thin">Flows</span></h1>
-  <p class="lede">The complete doc, fully connected. <b>The model:</b> a user creates an <b>Organization</b> (always before the campaign, born <b>not verified</b>) and decides whether to go <b>Verified (video call with Ana + $1,500)</b> — blue badge, featured rail and <b>Community</b> — or launch on <b>Network</b>, permissionless and free. <b>The creator vs brand difference:</b> a creator plays both sides (participates as a user AND can own an organization); a brand only operates the organization side. Same account, same wallet.</p>
+  <p class="lede">The complete doc, fully connected. <b>The model:</b> a user launches as <b>themselves</b> (individual account — no organization required, exactly how the product works today) or with an <b>Organization</b> (optional; born <b>not verified</b>). Organizations can go <b>Verified (video call with Ana → payment link · $1,500)</b> — blue badge, priority placement, promotion from Rally’s official channels, featured rail and <b>Community</b> — or stay on <b>Network</b>, permissionless and free. <b>Creator vs brand:</b> a creator plays both sides (participates AND launches); a brand only operates the organization side. Same account, same wallet.</p>
   <nav class="toc" aria-label="Sections">
     <a href="#create">01 CREATE A CAMPAIGN <small>the master flow · 3 entries</small></a>
     <a href="#feed">02 THE FEED <small>two rails</small></a>
@@ -395,7 +395,7 @@
 <div class="flow-title" id="create">
   <span class="ft-kicker">01 · the master flow — everything comes in here</span>
   <h2>Create a Campaign</h2>
-  <p>One flow for everyone. <b>Fixed order: Organization first, then the campaign.</b> The only fork is the Verified question. Creator and Brand walk the same path — how they differ, at the end of the section.</p>
+  <p>One flow for everyone. <b>Individuals launch as themselves — no organization required</b> (how it works today). Creating an <b>Organization is optional</b>: it unlocks team admins, Verified and Communities. The only fork is the Verified question (organizations only). Creator and Brand walk the same path — how they differ, at the end of the section.</p>
 </div>
 
 <div class="step new">
@@ -417,10 +417,10 @@
         <div class="col"><div class="state nw">New</div><div class="varr"></div><div class="sq">Connect<br>X / Metamask</div></div>
       </div>
       <div class="varr tall" style="margin-top:20px"></div>
-      <p class="rowlbl" style="margin-top:6px">Step 1 · always before the campaign</p>
+      <p class="rowlbl" style="margin-top:6px">Step 1 · who’s launching? — organization optional</p>
       <div class="bignode hot">
-        <div class="bt">CREATE ORGANIZATION</div>
-        <div class="bd">Org data: <b>name · pfp · banner · description · website &amp; links</b>.<br>Pfp, name and bio are imported from the X account they signed in with — the rest now or later.<br>Creator: their personal X · Brand: the project’s X.<br><b>The organization is created NOT VERIFIED.</b></div>
+        <div class="bt">AS YOURSELF · or CREATE ORGANIZATION</div>
+        <div class="bd"><b>Individuals launch with their personal account — no organization required</b> (how the product works today).<br>Creating an organization is optional: <b>name · pfp · banner · description · links</b> imported from X — and it unlocks team admins, Verified and Communities.<br>Creator: their personal X · Brand: the project’s X.<br><b>Organizations are created NOT VERIFIED.</b></div>
       </div>
       <div class="varr tall" style="margin-top:16px"></div>
       <div class="diamond" style="width:84px; height:84px"><span>WANT TO BE<br>VERIFIED?</span></div>
@@ -428,13 +428,13 @@
         <div class="col">
           <div class="branch v">
             <div class="bh">YES → ✔ VERIFIED</div>
-            <div class="bb"><b>Video call with Ana → $1,500.</b><br>Blue badge in &lt;24h · priority placement · promotion from Rally’s official channels · featured rail · <b>your own Community</b> · custom token/points · invoice.<br>While the badge lands, they keep moving through the flow.</div>
+            <div class="bb"><b>Video call with Ana → payment link · $1,500.</b> No in-app payment — the link arrives after the call.<br>Blue badge in &lt;24h · priority placement · promotion from Rally’s official channels · featured rail · <b>your own Community</b> · custom token/points · invoice.<br>Organizations only. While the badge lands, they keep moving through the flow.</div>
           </div>
         </div>
         <div class="col">
           <div class="branch n">
             <div class="bh">NO → NETWORK</div>
-            <div class="bb">Continues with their <b>not verified</b> organization — no cost, no waiting.<br><b>No Community</b> (a Verified perk).<br>Can verify later, anytime.</div>
+            <div class="bb">Continues as an individual or with their <b>not verified</b> organization — no cost, no waiting.<br><b>No Community</b> (a Verified perk).<br>Can create an org and verify later, anytime.</div>
           </div>
         </div>
       </div>
@@ -481,14 +481,14 @@
       <tr><td class="f">Where they land</td><td><b>Straight into app.rally.fun/create</b> (deep link). Never sees the home or the feed</td><td>/create after the "Launch a campaign" CTA</td><td>The form, from "+ Create campaign" in the feed</td></tr>
       <tr><td class="f">Typical session</td><td>No account → <b>Connect X</b></td><td>Logged out → <b>Login X</b></td><td><b>Already logged in</b> — this step doesn’t exist</td></tr>
       <tr><td class="f">Context we give</td><td><b>1 line above the form</b>: "Fund a pool, AI evaluates every post, winners get paid." Nothing else</td><td><b>Zero</b> — repeating the site’s pitch would be friction</td><td><b>Zero</b> — the feed’s Network rail was already the social proof</td></tr>
-      <tr><td class="f">Steps they take</td><td>Connect X → <b>Org</b> → Verified? → Form → Deposit</td><td>Login → <b>Org</b> → Verified? → Form → Deposit</td><td><b>Form → Deposit.</b> Org and Verified already settled the first time</td></tr>
-      <tr><td class="f">Steps they skip</td><td>None — it’s their first contact</td><td>None — but they arrive convinced</td><td><b>Login, Org and Verified?</b> (if they already own an org)</td></tr>
+      <tr><td class="f">Steps they take</td><td>Connect X → <b>yourself or org</b> → (Verified?) → Form → Deposit</td><td>Login → <b>yourself or org</b> → (Verified?) → Form → Deposit</td><td><b>Form → Deposit.</b> The who-launches question was settled the first time</td></tr>
+      <tr><td class="f">Steps they skip</td><td>None — it’s their first contact (org optional even here)</td><td>None — but they arrive convinced</td><td><b>Login and the who-launches step</b> (returning launcher)</td></tr>
       <tr><td class="f">Time to live</td><td><span class="dft">~3 min</span></td><td><span class="dft">~3 min</span></td><td><span class="dft">~1 min</span></td></tr>
       <tr><td class="f">Design goal</td><td>Don’t lose the click’s momentum — zero detours</td><td>Don’t re-onboard someone already sold</td><td>Zero friction for the repeater — launching becomes routine</td></tr>
     </tbody>
   </table></div>
 
-  <p class="sdesc" style="margin-top:16px">And the three paths, drawn. The rule connecting them: <b>if the user already owns an organization, that step is skipped</b> and they go straight to the form.</p>
+  <p class="sdesc" style="margin-top:16px">And the three paths, drawn. The rule connecting them: <b>returning launchers skip the who-launches step</b> and go straight to the form; new users pick "as yourself" (straight to the form) or "create an organization".</p>
 
   <div class="hlane">
     <div class="hl-head">
@@ -499,8 +499,8 @@
       <div class="hnode"><div class="hbox"><div class="ht">Rally’s bio on X</div><div class="hd">"create yours"</div></div></div>
       <div class="hnode hot"><div class="hbox"><div class="ht">app.rally.fun/create</div><div class="hd">direct deep link</div></div></div>
       <div class="hnode"><div class="hbox"><div class="ht">Login / Connect X</div><div class="hd">if there was no session</div></div></div>
-      <div class="hnode"><div class="hbox"><div class="ht">Create Organization</div><div class="hd">if they don’t have one · born not verified</div></div></div>
-      <div class="hnode dim"><div class="hbox"><div class="ht">Verified?</div><div class="hd">optional · call with Ana + $1,500</div></div></div>
+      <div class="hnode"><div class="hbox"><div class="ht">Yourself — or create an org</div><div class="hd">org optional · orgs born not verified</div></div></div>
+      <div class="hnode dim"><div class="hbox"><div class="ht">Verified?</div><div class="hd">orgs only · call with Ana → payment link</div></div></div>
       <div class="hnode"><div class="hbox"><div class="ht">Launch Campaign</div><div class="hd">1 page + deposit</div></div></div>
       <div class="hnode hend"><div class="hbox"><div class="ht">LIVE</div><div class="hd">Network (or Verified)</div></div></div>
     </div>
@@ -515,8 +515,8 @@
       <div class="hnode"><div class="hbox"><div class="ht">rally.fun</div><div class="hd">landing page</div></div></div>
       <div class="hnode hot"><div class="hbox"><div class="ht">CTA "Launch a campaign"</div><div class="hd">→ app.rally.fun/create</div></div></div>
       <div class="hnode"><div class="hbox"><div class="ht">Login / Connect X</div><div class="hd">if there was no session</div></div></div>
-      <div class="hnode"><div class="hbox"><div class="ht">Create Organization</div><div class="hd">if they don’t have one · born not verified</div></div></div>
-      <div class="hnode dim"><div class="hbox"><div class="ht">Verified?</div><div class="hd">optional · call with Ana + $1,500</div></div></div>
+      <div class="hnode"><div class="hbox"><div class="ht">Yourself — or create an org</div><div class="hd">org optional · orgs born not verified</div></div></div>
+      <div class="hnode dim"><div class="hbox"><div class="ht">Verified?</div><div class="hd">orgs only · call with Ana → payment link</div></div></div>
       <div class="hnode"><div class="hbox"><div class="ht">Launch Campaign</div><div class="hd">1 page + deposit</div></div></div>
       <div class="hnode hend"><div class="hbox"><div class="ht">LIVE</div><div class="hd">Network (or Verified)</div></div></div>
     </div>
@@ -531,8 +531,8 @@
       <div class="hnode"><div class="hbox"><div class="ht">Campaigns feed</div><div class="hd">sees the Network rail — "people like me launch"</div></div></div>
       <div class="hnode hot"><div class="hbox"><div class="ht">+ Create campaign</div><div class="hd">persistent button</div></div></div>
       <div class="hnode dim"><div class="hbox"><div class="ht">Login</div><div class="hd">usually already logged in</div></div></div>
-      <div class="hnode"><div class="hbox"><div class="ht">Create Organization</div><div class="hd">first time only</div></div></div>
-      <div class="hnode dim"><div class="hbox"><div class="ht">Verified?</div><div class="hd">optional · call with Ana + $1,500</div></div></div>
+      <div class="hnode"><div class="hbox"><div class="ht">Yourself — or create an org</div><div class="hd">first time only · org optional</div></div></div>
+      <div class="hnode dim"><div class="hbox"><div class="ht">Verified?</div><div class="hd">orgs only · call with Ana → payment link</div></div></div>
       <div class="hnode"><div class="hbox"><div class="ht">Launch Campaign</div><div class="hd">1 page + deposit</div></div></div>
       <div class="hnode hend"><div class="hbox"><div class="ht">LIVE</div><div class="hd">Network (or Verified)</div></div></div>
     </div>
@@ -542,7 +542,7 @@
 <div class="step new">
   <span class="snum">3</span>
   <div class="shead"><h3>Screen · Create Organization</h3><span class="stag new">NEW SCREEN</span></div>
-  <p class="sdesc">The mandatory first step. Everything importable from X comes pre-filled; banner and links can wait. The <b>Not verified</b> state is visible from second one — with the door to Verified right next to it.</p>
+  <p class="sdesc"><b>Optional</b> — individuals skip this and launch with their personal account, exactly how the product works today. For those who create an org: everything importable from X comes pre-filled; banner and links can wait. The <b>Not verified</b> state is visible from second one — with the door to Verified right next to it.</p>
   <figure class="frame slim" role="img" aria-label="Screen: create organization">
     <div class="screen"><div class="cv">
       <div class="r-hero" style="padding-bottom:14px">
@@ -572,6 +572,7 @@
               <span style="font-size:11.5px; color:#3A4152; line-height:1.5">I have read and accept the <b style="color:var(--r-blue)">Terms &amp; Conditions</b> — including the scam &amp; liability policy: Rally is a permissionless protocol and is not responsible for third-party campaigns.</span>
             </div>
             <div style="margin-top:12px"><button class="btn-blue" style="width:100%">Create organization</button></div>
+            <div style="text-align:center; margin-top:10px; font-size:12.5px; font-weight:700; color:var(--r-blue)">Skip — launch as yourself →</div>
           </div>
         </div>
         <aside>
@@ -580,7 +581,7 @@
             <p><b>Get Verified — $1,500</b> after a video call with Ana. Priority placement, promotion from Rally’s official channels, featured rail, your own Community, custom token/points, invoice. You can also do this later.</p>
             <button class="btn-line">✔ Get Verified</button>
           </div>
-          <div style="font-size:11px; color:var(--ink-2); margin-top:12px; line-height:1.6">Your organization is born <b>not verified</b> and can already launch on Network. Verified is an upgrade, never a requirement.</div>
+          <div style="font-size:11px; color:var(--ink-2); margin-top:12px; line-height:1.6">Your organization is born <b>not verified</b> and can already launch on Network. Verified is an upgrade, never a requirement — and the organization itself is optional: individuals launch as themselves.</div>
         </aside>
       </div>
     </div></div>
@@ -600,6 +601,12 @@
           <span class="r-spacer"></span>
           <span class="tchip comm" style="font-size:11px; padding:6px 12px">NETWORK · GenLayer (not verified)</span>
         </div>
+        <div style="display:flex; gap:8px; margin-top:12px; align-items:center; flex-wrap:wrap">
+          <button class="btn-line">⬇ Import</button>
+          <button class="btn-line">⬆ Export</button>
+          <button class="btn-line">✦ AI Template</button>
+          <span style="font-size:10.5px; color:var(--r-faint)">or create from your own AI — install the Rally campaign-creation skill in Claude or your agent</span>
+        </div>
       </div>
       <div class="grid2">
         <div>
@@ -615,6 +622,12 @@
               <span style="border:1px solid #BFE5CC; background:var(--r-green-bg); color:#14532D; font-size:11.5px; font-weight:600; padding:6px 11px; border-radius:999px">✓ Quote the launch post</span>
               <span style="border:1px solid #BFE5CC; background:var(--r-green-bg); color:#14532D; font-size:11.5px; font-weight:600; padding:6px 11px; border-radius:999px">✓ Original take — no copy-paste</span>
               <span style="border:1px dashed var(--r-line2); color:var(--r-faint); font-size:11.5px; font-weight:600; padding:6px 11px; border-radius:999px">+ Add rule</span>
+            </div>
+            <div style="margin-top:7px; display:flex; gap:6px; flex-wrap:wrap; align-items:center">
+              <span style="font-size:10.5px; color:var(--r-faint)">Suggested:</span>
+              <span style="border:1px dashed var(--r-line2); color:var(--r-dim); font-size:11px; font-weight:600; padding:5px 10px; border-radius:999px">+ No em dashes</span>
+              <span style="border:1px dashed var(--r-line2); color:var(--r-dim); font-size:11px; font-weight:600; padding:5px 10px; border-radius:999px">+ Don’t start with a mention</span>
+              <span style="border:1px dashed var(--r-line2); color:var(--r-dim); font-size:11px; font-weight:600; padding:5px 10px; border-radius:999px">+ Any language allowed</span>
             </div>
             <div class="fl">Knowledge base <span style="font-weight:400; color:var(--r-faint)">— context so the AI scores accuracy right</span></div>
             <div class="inp" style="min-height:52px; line-height:1.5; font-size:12.5px">Internet Court is a neutral dispute-resolution protocol for AI agents, covered by Forbes. GenLayer is the network it runs on…</div>
@@ -633,6 +646,7 @@
             <div class="cbh"><i>2</i>The prize</div>
             <div class="payrow on" style="margin-top:0"><span>Rally Points (RLP)<small>Your balance: 180000 RLP</small></span><span class="amt">◆</span></div>
             <div class="payrow"><span>USDC<small>From your wallet · Base</small></span><span class="amt">◎</span></div>
+            <div style="border:1px dashed #BFE5CC; background:var(--r-green-bg); border-radius:10px; padding:10px 12px; font-size:11.5px; color:#14532D; margin-top:8px"><b>🎁 Get matching RLP!</b> For every 1 USDC, Wingston matches your prize pool with 10 RLP.</div>
             <div class="fl">Amount &amp; duration</div>
             <div style="display:flex; gap:8px; align-items:center">
               <div class="inp" style="font-weight:800; font-size:16px; max-width:140px">40.000</div>
@@ -679,8 +693,14 @@
   <figcaption class="cap">One page, three blocks, one button. Everything the AI needs to evaluate (ask, rules, knowledge base, tone) is in plain sight with AI assistance to draft it; the green meter confirms when the campaign is evaluable; the summary confirms the pool deposit. Fixed per-post payments live only in Elite Creators exclusive campaigns (section 05).</figcaption>
 </div>
 
-<div class="step last">
+<div class="step new">
   <span class="snum">5</span>
+  <div class="shead"><h3>Create from your own AI — the campaign-creation skill</h3><span class="stag new">NEW · AI-NATIVE</span></div>
+  <p class="sdesc">A <b>"campaign creation" skill</b> that campaign creators can install in their Claude or in their own agent — the external version of having an AI assistant. The skill knows Rally’s rules and best practices, drafts <b>name, ask, rules and knowledge base</b> in chat, and hands off a <b>pre-filled /create link</b>: the user lands on the one-page form with everything ready, reviews, and deposits. Inside the app, <b>Wingston</b> plays the same role (the "AI Template" and "Draft with AI" buttons); the skill takes campaign creation to wherever the creator already works.</p>
+</div>
+
+<div class="step last">
+  <span class="snum">6</span>
   <div class="shead"><h3>Creator vs Brand — same path, different face</h3><span class="stag new">THE DISTINCTION</span></div>
   <div class="vs">
     <div class="vscard c">
@@ -908,13 +928,13 @@
 <div class="flow-title" id="verified">
   <span class="ft-kicker">04 · the upgrade — connects flow 01 with communities and elite creators</span>
   <h2>Verified</h2>
-  <p><b>Short form → video call with Ana → $1,500 → blue badge in &lt;24h.</b> Payment doesn’t open until the video call with Ana happens. It can be requested while creating the organization (flow 01) or anytime later, from the org. Never a requirement to launch: while verification runs the org keeps launching on Network, and when the badge lands its campaigns move up to the featured rail.</p>
+  <p><b>Short form → video call with Ana → payment link · $1,500 → blue badge in &lt;24h.</b> There is <b>no in-app payment</b>: the call comes first — Ana verifies it’s a real person and a real project — and only then Rally sends a payment link (card or crypto, invoice included). Organizations only; it can be requested when creating the org or anytime later. Never a requirement to launch: while verification runs the org keeps launching on Network, and when the badge lands its campaigns move up to the featured rail.</p>
 </div>
 
 <div class="step last">
   <span class="snum">·</span>
   <div class="shead"><h3>The package and the process</h3><span class="stag new">NEW PANEL</span></div>
-  <p class="sdesc">What the $1,500 buys: <b>blue badge</b> · <b>priority placement across Rally</b> (featured Verified rail, priority in the feed and discovery) · <b>promotion from Rally’s official channels</b> (features on Rally’s X and its campaigns) · <b>own Community</b> (members, leaderboards, posts — not available to unverified orgs) · <b>rewards in their own token or points</b> · <b>invoice</b> · <b>team admins</b>. The process: short form → <b>video call with Ana</b> → payment.</p>
+  <p class="sdesc">What the $1,500 buys: <b>blue badge</b> · <b>priority placement across Rally</b> (featured Verified rail, priority in the feed and discovery) · <b>promotion from Rally’s official channels</b> (features on Rally’s X and its campaigns) · <b>own Community</b> (members, leaderboards, posts — not available to unverified orgs) · <b>rewards in their own token or points</b> · <b>invoice</b> · <b>team admins</b>. The process: short form → <b>video call with Ana</b> → payment link after the call.</p>
   <figure class="frame slim" role="img" aria-label="Panel: get verified">
     <div class="screen"><div class="cv">
       <div class="mpanel" style="margin-top:16px">
@@ -928,12 +948,12 @@
         </div>
       </div>
       <div class="mpanel" style="margin-top:12px">
-        <div class="mhead">Verification <span class="join" style="color:var(--r-blue)">Videocall with Ana → payment → badge · &lt;24h</span></div>
+        <div class="mhead">Verification <span class="join" style="color:var(--r-blue)">Videocall with Ana → payment link → badge · &lt;24h</span></div>
         <div class="mbody">
           <div class="pchecks" style="margin-top:0">
             <div class="pc ok"><i>1</i><span><b>Short form</b> — website + what you’re building (identity comes from X, nothing else to fill)</span></div>
-            <div class="pc ok"><i>2</i><span><b>Videocall with Ana</b> — pick a slot in the calendar; payment stays locked until the call happens</span></div>
-            <div class="pc ok"><i>3</i><span><b>Payment — $1,500</b> (card or crypto, invoice included) — unlocks after the call</span></div>
+            <div class="pc ok"><i>2</i><span><b>Videocall with Ana</b> — pick a slot in the calendar; Ana verifies it’s a real person and project. No payment on this screen</span></div>
+            <div class="pc ok"><i>3</i><span><b>Payment link — $1,500</b> — sent after the call (card or crypto, invoice included); badge lands &lt;24h after payment</span></div>
           </div>
           <div style="font-size:11px; color:var(--r-faint); margin-top:10px">While in review you keep launching on Network. When approved: badge on your org, campaigns move to the ✔ Verified rail, and your Community goes live.</div>
         </div>
@@ -1109,12 +1129,12 @@
           </div>
 
           <div class="mpanel" style="margin:14px 0 0">
-            <div class="mhead">Verification pipeline <span class="join" style="color:var(--r-blue)">video call with Ana → $1,500 → badge</span></div>
+            <div class="mhead">Verification pipeline <span class="join" style="color:var(--r-blue)">video call with Ana → payment link → badge</span></div>
             <div class="mbody">
               <div class="pchecks" style="margin-top:0">
                 <div class="pc ok"><i>✓</i><span><b>Requested</b> — Jul 20, from the org’s Verified panel</span></div>
                 <div class="pc ok"><i>✓</i><span><b>Videocall with Ana</b> — done Jul 21, 15:00 CET</span></div>
-                <div class="pc ok"><i>✓</i><span><b>Payment $1,500</b> — Jul 21 · ref #INV-2214 (card)</span></div>
+                <div class="pc ok"><i>✓</i><span><b>Payment link sent &amp; paid</b> — $1,500 · Jul 21 · ref #INV-2214 (card)</span></div>
                 <div class="pc" style="opacity:.45"><i style="background:#EEF0F7; color:#9CA1B4">4</i><span><b>Badge granted</b> — pending review</span></div>
               </div>
               <div style="display:flex; gap:9px; margin-top:14px; flex-wrap:wrap">
@@ -1163,10 +1183,10 @@
   <div class="spec-wrap"><table class="spec">
     <thead><tr><th>Entry</th><th>Destination</th><th>Rules</th></tr></thead>
     <tbody>
-      <tr><td class="c">🐦 X bio · "create yours"</td><td>Deep link → <b>app.rally.fun/create</b></td><td>Never touches home/feed. No session → S1 with return to /create. Shows the <b>context strip</b> above S4 (see S4 · comp 0). New user → S2 → S3 → S4.</td></tr>
+      <tr><td class="c">🐦 X bio · "create yours"</td><td>Deep link → <b>app.rally.fun/create</b></td><td>Never touches home/feed. No session → S1 with return to /create. Shows the <b>context strip</b> above S4 (see S4 · comp 0). New user → S2 (as yourself → straight to S4 · or create org → S3 → S4).</td></tr>
       <tr><td class="c">🌐 rally.fun · CTA "Launch a campaign"</td><td>→ app.rally.fun/create</td><td>Same as above but <b>without the context strip</b> (the site already made the pitch). </td></tr>
-      <tr><td class="c">📱 In-app · "+ Create campaign"</td><td>→ /create</td><td>Session already exists. <b>If the user already owns an org: S2 and S3 are skipped</b> → straight to S4. Otherwise → S2.</td></tr>
-      <tr><td class="c">Global rule</td><td colspan="2"><b>existing org ⇒ always skip S2 and S3.</b> "Not now" at S3 is remembered; never re-asked until the user opens Get Verified on their own (S3b reachable from their org and from the S4/S6 upsell).</td></tr>
+      <tr><td class="c">📱 In-app · "+ Create campaign"</td><td>→ /create</td><td>Session already exists. <b>Returning launcher (personal or org): S2 and S3 are skipped</b> → straight to S4. First launch → S2.</td></tr>
+      <tr><td class="c">Global rule</td><td colspan="2"><b>returning launcher ⇒ always skip S2 and S3.</b> At S2 new users choose: <b>launch as yourself</b> (no org — straight to S4, chip NETWORK · personal) or <b>create an organization</b> (→ S3). "Not now" at S3 is remembered; S3b stays reachable from the org and from the S4/S6 upsell.</td></tr>
     </tbody>
   </table></div>
 </section>
@@ -1200,8 +1220,8 @@
 <!-- ================= S2 ================= -->
 <section class="scr" id="s2">
   <div class="scr-head"><span class="scr-id">S2</span><h2>Create Organization</h2></div>
-  <p class="job"><b>Job:</b> create the org (always before the campaign) in ≤30s. Everything importable from X arrives pre-filled; the user just confirms and accepts the T&amp;C. <b>The org is born NOT VERIFIED, visible from the start.</b></p>
-  <div class="rulebox"><span class="rule hot">SKIPPED if the user already owns an org</span><span class="rule">1 column · max-width 600</span><span class="rule">CTA locked without T&amp;C</span></div>
+  <p class="job"><b>Job:</b> settle who launches. <b>Launching as yourself needs no org</b> (skip link — how the product works today); creating the org takes ≤30s with everything from X pre-filled + T&amp;C. <b>Orgs are born NOT VERIFIED, visible from the start.</b></p>
+  <div class="rulebox"><span class="rule hot">OPTIONAL — "Launch as yourself" skips it</span><span class="rule hot">SKIPPED for returning launchers</span><span class="rule">1 column · max-width 600</span><span class="rule">CTA locked without T&amp;C</span></div>
   <figure class="frame slim"><div class="screen"><div class="cv">
     <div class="r-hero"><div style="display:flex; align-items:center; gap:10px">
       <div><div class="r-h1"><span class="mk inmock">1</span>Create your organization</div>
@@ -1216,6 +1236,7 @@
       <div class="fl"><span class="mk inmock">7</span>Website &amp; links <small>(optional)</small></div><div class="inp ph">genlayer.com · t.me/… · discord.gg/…</div>
       <div class="tcbox"><span class="cb">✓</span><span class="t"><span class="mk inmock">8</span>I have read and accept the <b style="color:var(--accent)">Terms &amp; Conditions</b> — including the scam &amp; liability policy: Rally is a permissionless protocol and is not responsible for third-party campaigns.</span></div>
       <div style="margin-top:11px"><button class="btn-blue" style="width:100%"><span class="mk inmock" style="background:#fff; color:var(--accent)">9</span> Create organization</button></div>
+      <div style="text-align:center; margin-top:9px; font-size:11.5px; font-weight:700; color:var(--accent)"><span class="mk inmock">10</span>Skip — launch as yourself →</div>
     </div>
   </div></div></figure>
   <div class="spec-wrap"><table class="spec">
@@ -1230,13 +1251,14 @@
       <tr><td class="n"><span class="mk">7</span></td><td class="c">Links</td><td class="t">input/multi</td><td>label <span class="copy">Website &amp; links (optional)</span> · placeholder <span class="copy">genlayer.com · t.me/… · discord.gg/…</span></td><td>Turns into chips on pasting a valid URL. Optional — never blocks.</td></tr>
       <tr><td class="n"><span class="mk">8</span></td><td class="c">T&amp;C checkbox</td><td class="t">checkbox + rich label</td><td><span class="copy">I have read and accept the Terms &amp; Conditions — including the scam &amp; liability policy: Rally is a permissionless protocol and is not responsible for third-party campaigns.</span></td><td><b>unchecked (default) → CTA 9 disabled.</b> The link opens the T&amp;C in a new tab. Click area: the whole box.</td></tr>
       <tr><td class="n"><span class="mk">9</span></td><td class="c">CTA</td><td class="t">button/primary XL</td><td><span class="copy">Create organization</span></td><td>disabled (no T&amp;C or no name) · default · loading <span class="copy">Creating…</span> → navigates to S3.</td></tr>
+      <tr><td class="n"><span class="mk">10</span></td><td class="c">Skip link</td><td class="t">text link</td><td><span class="copy">Skip — launch as yourself →</span></td><td>Straight to S4 with the <span class="copy">NETWORK · personal</span> chip. No org, no T&amp;C checkbox here (the deposit legal line covers launching). Verified stays available later by creating an org.</td></tr>
     </tbody>
   </table></div>
 </section>
 
 <!-- ================= S3 ================= -->
 <section class="scr" id="s3">
-  <div class="scr-head"><span class="scr-id">S3</span><h2>Verified? — the only fork</h2></div>
+  <div class="scr-head"><span class="scr-id">S3</span><h2>Verified? — the only fork (organizations)</h2></div>
   <p class="job"><b>Job:</b> one binary decision, never blocking. Two cards with equal visual weight; the Verified one sells the package, the Network one removes the fear (free, now, reversible).</p>
   <div class="rulebox"><span class="rule hot">SKIPPED if they already own an org</span><span class="rule">"Not now" is remembered</span><span class="rule">Yes → S3b sub-flow · never blocks S4</span></div>
   <figure class="frame slim"><div class="screen"><div class="cv">
@@ -1261,7 +1283,7 @@
     <tbody>
       <tr><td class="n"><span class="mk">1</span></td><td class="c">Title</td><td class="t">H1 centered</td><td><span class="copy">Do you want to be verified?</span></td><td>—</td></tr>
       <tr><td class="n"><span class="mk">2</span></td><td class="c">Subtitle</td><td class="t">body-s</td><td><span class="copy">Your organization was created — not verified for now. Verification is optional and never blocks launching.</span></td><td>Confirms S2’s success (no separate success screen needed).</td></tr>
-      <tr><td class="n"><span class="mk">3</span></td><td class="c">YES card</td><td class="t">option card / blue</td><td>title <span class="copy">✔ Yes — $1,500</span><br>body <span class="copy">Video call with Ana first, then $1,500 · badge in &lt;24h · priority placement across Rally · promoted by Rally’s official channels · featured rail · your own Community · custom token/points · invoice</span></td><td>hover/selected → opens <b>S3b (sub-flow, 3 steps)</b>: ① short form (website + <span class="copy">What are you building?</span>) ② <b>video call with Ana</b> — booking with a real calendar (day + time); <b>payment stays locked until the call happens</b> ③ $1,500 payment (card or crypto, invoice). Closing S3b → S4 with the "VERIFIED · in review" chip.</td></tr>
+      <tr><td class="n"><span class="mk">3</span></td><td class="c">YES card</td><td class="t">option card / blue</td><td>title <span class="copy">✔ Yes — $1,500</span><br>body <span class="copy">Video call with Ana first, then $1,500 · badge in &lt;24h · priority placement across Rally · promoted by Rally’s official channels · featured rail · your own Community · custom token/points · invoice</span></td><td>hover/selected → opens <b>S3b (sub-flow, 3 steps)</b>: ① short form (website + <span class="copy">What are you building?</span>) ② <b>video call with Ana</b> — booked with a real calendar (day + time); Ana verifies it’s a real person and project ③ <b>payment link</b> — sent after the call ($1,500, card or crypto, invoice included). <b>No in-app payment.</b> Closing S3b → S4 with the "VERIFIED · in review" chip.</td></tr>
       <tr><td class="n"><span class="mk">4</span></td><td class="c">NO card</td><td class="t">option card / amber</td><td>title <span class="copy">Not now → Network</span><br>body <span class="copy">Free · launch immediately · shown without badge · no Community · verify anytime later</span></td><td>click → S4 with the "NETWORK · not verified" chip. Choice remembered.</td></tr>
       <tr><td class="n"><span class="mk">5</span></td><td class="c">Note</td><td class="t">caption</td><td><span class="copy">Booking the call never blocks you — keep launching on Network meanwhile; campaigns upgrade to the Verified rail when the badge lands.</span></td><td>Kills the "this will slow me down" objection.</td></tr>
     </tbody>
@@ -1328,11 +1350,11 @@
     <thead><tr><th style="width:34px">#</th><th style="width:17%">Component</th><th style="width:13%">Type</th><th style="width:33%">Copy (literal)</th><th>States · behavior</th></tr></thead>
     <tbody>
       <tr><td class="n"><span class="mk">0</span></td><td class="c">Context strip</td><td class="t">1-line banner</td><td><span class="copy">Fund a pool, AI evaluates every post, winners get paid.</span></td><td><b>X-bio entry only</b> (S0). Dismissible (×). Never shows for the other entries.</td></tr>
-      <tr><td class="n"><span class="mk">1</span></td><td class="c">Rail chip</td><td class="t">badge</td><td>3 variants: <span class="copy">NETWORK · not verified</span> / <span class="copy">✔ VERIFIED · in review</span> / <span class="copy">✔ VERIFIED</span></td><td>State follows the org (S3). Never clickable here.</td></tr>
+      <tr><td class="n"><span class="mk">1</span></td><td class="c">Rail chip</td><td class="t">badge</td><td>4 variants: <span class="copy">NETWORK · personal</span> / <span class="copy">NETWORK · not verified</span> / <span class="copy">✔ VERIFIED · in review</span> / <span class="copy">✔ VERIFIED</span></td><td>State follows the launcher (individual or org, S2/S3). Never clickable here.</td></tr>
       <tr><td class="n"><span class="mk">2</span></td><td class="c">Block 1 header</td><td class="t">section header</td><td><span class="copy">The campaign</span> + hint <span class="copy">— this is what the AI evaluates against</span></td><td>The hint connects effort to benefit (better input → better evaluation).</td></tr>
       <tr><td class="n"><span class="mk">3</span></td><td class="c">Name</td><td class="t">input/text</td><td>label <span class="copy">Campaign name</span></td><td>max 60 chars, counter from 45 · empty error on Deposit attempt: <span class="copy">Give your campaign a name.</span></td></tr>
       <tr><td class="n"><span class="mk">4</span></td><td class="c">The ask</td><td class="t">textarea</td><td>label <span class="copy">What should creators post?</span> · placeholder <span class="copy">e.g. Quote our launch post and add your own take. Original content only.</span></td><td>min 2 lines, autogrow. Feeds check 1 of the meter.</td></tr>
-      <tr><td class="n"><span class="mk">5</span></td><td class="c">Rules</td><td class="t">chip list editable</td><td>label <span class="copy">Rules</span> + hint <span class="copy">— the AI enforces these on every submission</span> · add chip <span class="copy">+ Add rule</span></td><td>3 generated defaults · clicking a chip = remove (with undo in a toast) · "+ Add rule" = inline input → Enter creates the chip · min 1 for the meter.</td></tr>
+      <tr><td class="n"><span class="mk">5</span></td><td class="c">Rules</td><td class="t">chip list editable</td><td>label <span class="copy">Rules</span> + hint <span class="copy">— the AI enforces these on every submission</span> · add chip <span class="copy">+ Add rule</span> · suggested chips <span class="copy">+ No em dashes</span> <span class="copy">+ Don’t start with a mention</span> <span class="copy">+ Any language allowed</span></td><td>3 generated defaults + a row of <b>suggested presets</b> (dashed chips — click to add) · clicking an active chip = remove (with undo in a toast) · "+ Add rule" = inline input → Enter creates the chip · min 1 for the meter.</td></tr>
       <tr><td class="n"><span class="mk">6</span></td><td class="c">Knowledge base</td><td class="t">textarea</td><td>label <span class="copy">Knowledge base</span> + hint <span class="copy">— context so the AI scores accuracy right</span> · placeholder <span class="copy">What should the AI know to judge accuracy?</span></td><td>empty (meter check off) · filled ≥ ~20 words lights up check 3.</td></tr>
       <tr><td class="n"><span class="mk">7</span></td><td class="c">AI draft</td><td class="t">button/ghost + ✦</td><td><span class="copy">✦ Draft rules &amp; knowledge base with AI</span></td><td>default · loading <span class="copy">✦ Drafting…</span> (shimmer on fields 5 and 6) · done: fills rules + KB, both editable. Disabled while name+ask are empty.</td></tr>
       <tr><td class="n"><span class="mk">8</span></td><td class="c">Tone</td><td class="t">chip select (1 de 3)</td><td><span class="copy">🔥 Hype</span> · <span class="copy">🎓 Educational</span> · <span class="copy">😂 Fun</span></td><td>Single-select, default Hype. Maps to the internal Campaign Style.</td></tr>
@@ -1344,6 +1366,8 @@
       <tr><td class="n"><span class="mk">14</span></td><td class="c">AI meter</td><td class="t">progress + checklist</td><td>title <span class="copy">✦ AI Evaluation ready</span> · checks <span class="copy">Name &amp; ask</span> <span class="copy">Rules — enforceable</span> <span class="copy">Knowledge base — accuracy scoring</span> <span class="copy">Tone — style scoring</span></td><td>4 checks = 25% each, 300ms width animation · state labels: 4/4 → <span class="copy">Wingston can fully evaluate every submission. ✓</span> · no KB → <span class="copy">Add a knowledge base so Wingston can score accuracy.</span> · otherwise → <span class="copy">Complete the highlighted fields to make the campaign evaluable.</span> Never blocks the deposit — it’s an incentive, not a gate.</td></tr>
       <tr><td class="n"><span class="mk">15</span></td><td class="c">Summary</td><td class="t">sticky card</td><td>title <span class="copy">Ready to launch</span> · rows <span class="copy">Prize pool / Elite creators (fixed) / Total deposit / Runs</span></td><td>Recalculates live with 10 and 12. The <span class="copy">Elite creators (fixed)</span> row only exists in exclusive campaigns with the fixed payment model — public deposits are the pool alone.</td></tr>
       <tr><td class="n"><span class="mk">16</span></td><td class="c">Deposit CTA</td><td class="t">button/primary XL</td><td><span class="copy">Deposit &amp; launch</span> · legal <span class="copy">By depositing you accept the Terms &amp; Conditions.</span></td><td>disabled until: name + ask + valid amount · click → S5.</td></tr>
+      <tr><td class="n"><span class="mk">17</span></td><td class="c">Import · Export · AI Template</td><td class="t">button row (header)</td><td><span class="copy">⬇ Import</span> · <span class="copy">⬆ Export</span> · <span class="copy">✦ AI Template</span></td><td>Same actions as today’s admin form. AI Template fills name, ask, rules and knowledge base in one shot (meter → 4/4). Import accepts a draft/JSON — also the handoff point for the <b>campaign-creation skill</b> (Claude/agents) via pre-filled /create links.</td></tr>
+      <tr><td class="n"><span class="mk">18</span></td><td class="c">Matching RLP box</td><td class="t">promo box (block 2)</td><td><span class="copy">🎁 Get matching RLP! For every 1 USDC, Wingston matches your prize pool with 10 RLP.</span></td><td>Always visible in The prize. With USDC selected and an amount set, it turns dynamic: <span class="copy">Your 250 USDC pool gets +2,500 RLP from Wingston.</span></td></tr>
     </tbody>
   </table></div>
 </section>
