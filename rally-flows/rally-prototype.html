@@ -451,13 +451,13 @@
         <div class="h1">Launch a campaign — where from?</div>
         <div class="sub" style="margin-bottom:6px">Three doors, one flow. Anyone can launch — creator or brand.</div>
         <div style="display:grid; gap:10px; margin-top:16px">
-          <button class="ccard" style="padding:16px; border:2px solid #F59E0B; background:#FFFBF4" onclick="entryDoor(true,'🐦 NEW USER · deep link to /create · Connect X → Org → ¿Verified? → Campaign (~3 min)')">
+          <button class="ccard" style="padding:16px; border:2px solid #F59E0B; background:#FFFBF4" onclick="entryDoor(true,'🐦 NEW USER · deep link to /create · Connect X → campaign as yourself · org optional (~2 min)')">
             <div style="font-weight:800; font-size:14px">🐦 From Rally’s X bio <span class="tchip warn" style="margin-left:6px">NEW USER · ~3 MIN</span></div>
-            <div style="font-size:12px; color:var(--ink-2); margin-top:3px">"create yours" → deep link to /create · never sees home · context = 1 line above the form · does EVERY step: Connect X → Org → ¿Verified? → Campaign</div>
+            <div style="font-size:12px; color:var(--ink-2); margin-top:3px">"create yours" → deep link to /create · never sees home · context = 1 line above the form · Connect X → straight to the campaign form <b>as yourself</b> — organization &amp; Verified only if you want them</div>
           </button>
-          <button class="ccard" style="padding:16px; border-width:1.5px" onclick="entryDoor(false,'🌐 The website did the pitch — same path, but no context strip needed (~3 min)')">
+          <button class="ccard" style="padding:16px; border-width:1.5px" onclick="entryDoor(false,'🌐 The website did the pitch — same path as yourself, no context strip needed (~2 min)')">
             <div style="font-weight:800; font-size:14px">🌐 From rally.fun <span class="tchip warn" style="margin-left:6px">NEW · SOLD · ~3 MIN</span></div>
-            <div style="font-size:12px; color:var(--ink-2); margin-top:3px">CTA "Launch a campaign" → /create · same steps as the tweet door, but no context needed — the landing already sold it</div>
+            <div style="font-size:12px; color:var(--ink-2); margin-top:3px">CTA "Launch a campaign" → /create · same path as the tweet door (as yourself, org optional) — no context needed, the landing already sold it</div>
           </button>
           <button class="ccard" style="padding:16px; border:2px solid var(--green); background:var(--green-bg)" onclick="door3()">
             <div style="font-weight:800; font-size:14px">📱 Browsing app.rally.fun <span class="tchip ok" style="margin-left:6px">EXISTING · ~1 MIN</span></div>
@@ -486,7 +486,7 @@
       <div class="hero">
         <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
           <div><div class="h1">Create your organization</div>
-          <div class="sub">Campaigns are launched by organizations. Yours takes 30 seconds — we pre-filled it from X.</div></div>
+          <div class="sub">Optional — for brands and projects; individuals launch as themselves. Yours takes 30 seconds — we pre-filled it from X.</div></div>
           <span class="sp"></span>
           <span class="tchip warn" style="font-size:10.5px; padding:5px 11px">NOT VERIFIED</span>
         </div>
@@ -580,8 +580,9 @@
           <div><div class="h1">Create campaign</div>
           <div class="sub">Everything on one page. The meter tells you when the AI can evaluate it.</div></div>
           <span class="sp"></span>
-          <span class="tchip n" id="railchip" style="font-size:10.5px; padding:5px 11px">NETWORK · not verified</span>
+          <span class="tchip n" id="railchip" style="font-size:10.5px; padding:5px 11px">NETWORK · personal (@holly_web3)</span>
         </div>
+        <div style="font-size:11px; color:var(--ink-2); margin-top:8px" id="whobar">Launching as <b>@holly_web3</b> · personal account — no organization needed. <button style="background:none; border:none; color:var(--blue); font-weight:700; cursor:pointer; font-size:11px; padding:0" onclick="go('pOrg')">For a brand or project? Create an organization →</button></div>
         <div style="display:flex; gap:8px; margin-top:10px; align-items:center; flex-wrap:wrap">
           <button class="btn ghost" style="padding:7px 12px; font-size:11.5px" onclick="toast('Import a draft or JSON — also where the campaign-creation skill (Claude / your agent) hands off pre-filled campaigns')">⬇ Import</button>
           <button class="btn ghost" style="padding:7px 12px; font-size:11.5px" onclick="toast('Draft exported ✓')">⬆ Export</button>
@@ -907,8 +908,8 @@
     setTimeout(function(){
       btn.textContent = 'Continue with ' + how;
       btn.disabled = false;
-      go('pOrg');
-      toast('Connected with ' + how + ' ✓ — name, pfp and bio imported');
+      launchPersonal();
+      toast('Connected with ' + how + ' ✓ — launching as yourself. An organization is optional.');
     }, 800);
   }
   function calPick(el, group){
@@ -988,8 +989,8 @@
     chip.textContent = 'NETWORK · personal (@holly_web3)';
     chip.className = 'tchip n';
     document.getElementById('tok-custom').style.display = 'none';
+    document.getElementById('whobar').innerHTML = 'Launching as <b>@holly_web3</b> · personal account — no organization needed. <button style="background:none; border:none; color:var(--blue); font-weight:700; cursor:pointer; font-size:11px; padding:0" onclick="go(\'pOrg\')">For a brand or project? Create an organization →</button>';
     go('pC');
-    toast('🙋 Launching as yourself — no organization needed (how it works today). Org & Verified stay available later.');
   }
   function aiTemplate(){
     aiDraft();
@@ -1130,6 +1131,7 @@
     var chip = document.getElementById('railchip');
     chip.textContent = 'NETWORK · not verified';
     chip.className = 'tchip n';
+    document.getElementById('whobar').innerHTML = 'Launching as <b>GenLayer</b> · organization — not verified. Verified, Community and team admins unlock here.';
     go('pVer');
     toast('Organization created — NOT VERIFIED. Now the only fork: do you want the badge?');
   }
