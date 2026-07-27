@@ -1125,6 +1125,10 @@
       goLive();
     }, 1500);
   }
+  function goVerified(){
+    go('pVerForm');
+    toast('Get Verified — 3 steps: short form · videocall with Ana · payment link after the call');
+  }
   function goLive(){
     var name = (document.getElementById('f-name').value || 'my-campaign').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
     document.getElementById('livelink').textContent = 'app.rally.fun/campaigns/' + name;
@@ -1135,7 +1139,7 @@
       card.innerHTML = '<div class="pbody" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap"><div style="width:34px; height:34px; border-radius:9px; background:#14161F; flex:none"></div><div style="flex:1; min-width:220px"><div style="font-weight:800; font-size:12.5px">Your Community goes live with your badge <span class="tchip v">✔ VERIFIED PERK</span></div><div style="font-size:11.5px; color:var(--ink-2); margin-top:2px">Members, leaderboards and your Elite Creator program will live there.</div></div><button class="btn ghost" onclick="toast(\'Community preview — live when the badge lands\')">Preview →</button></div>';
     } else {
       sub.innerHTML = 'On the <b style="color:#B45309">Network rail</b> — your org shows without badge.';
-      card.innerHTML = '<div class="pbody" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap"><div style="flex:1; min-width:220px"><div style="font-weight:800; font-size:12.5px">Want the blue badge? <span class="tchip v">✔ VERIFIED · $1,500</span></div><div style="font-size:11.5px; color:var(--ink-2); margin-top:2px">Featured rail · your own Community · custom token/points · invoice. Review with Ana, badge in &lt;24h.</div></div><button class="btn" onclick="toast(\'$1,500 + short form → review with Ana → badge in <24h\')">Get Verified</button></div>';
+      card.innerHTML = '<div class="pbody" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap"><div style="flex:1; min-width:220px"><div style="font-weight:800; font-size:12.5px">Want the blue badge? <span class="tchip v">✔ VERIFIED · $1,500</span></div><div style="font-size:11.5px; color:var(--ink-2); margin-top:2px">Featured rail · your own Community · custom token/points · invoice. Review with Ana, badge in &lt;24h.</div></div><button class="btn" onclick="goVerified()">Get Verified</button></div>';
     }
     go('pLive');
     toast('✓ Deposited ' + depTotal + ' — campaign live');
