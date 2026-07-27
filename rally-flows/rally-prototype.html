@@ -511,7 +511,7 @@
           <span class="cb" id="tccb"></span>
           <span class="t">I have read and accept the <b style="color:var(--blue)">Terms &amp; Conditions</b> — including the scam &amp; liability policy: Rally is a permissionless protocol and is not responsible for third-party campaigns.</span>
         </button>
-        <div style="margin-top:12px"><button class="btn full" id="orgbtn" disabled onclick="go('pVer')">Create organization</button></div>
+        <div style="margin-top:12px"><button class="btn full" id="orgbtn" disabled onclick="createOrg()">Create organization</button></div>
       </div>
     </section>
 
@@ -1125,7 +1125,20 @@
       goLive();
     }, 1500);
   }
+  function createOrg(){
+    isPersonal = false;
+    var chip = document.getElementById('railchip');
+    chip.textContent = 'NETWORK · not verified';
+    chip.className = 'tchip n';
+    go('pVer');
+    toast('Organization created — NOT VERIFIED. Now the only fork: do you want the badge?');
+  }
   function goVerified(){
+    if(isPersonal){
+      go('pOrg');
+      toast('Verified is for organizations — create yours first (30 seconds, pre-filled from X)');
+      return;
+    }
     go('pVerForm');
     toast('Get Verified — 3 steps: short form · videocall with Ana · payment link after the call');
   }
