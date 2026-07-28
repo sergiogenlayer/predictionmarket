@@ -1,0 +1,6 @@
+{
+  "keywords": ["genlayer", "$gen", "#genlayer", "rally"],
+  "descubrir_timelines": true,
+  "max_tweets_timeline": 20,
+  "dias_refresco_metricas": 30
+}

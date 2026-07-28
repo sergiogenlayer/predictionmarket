@@ -1,26 +1,54 @@
 # KOL Tracker — GenLayer Ambassadors & Rally
 
-`KOL_Tracker.xlsx` es la hoja de seguimiento de KOLs/embajadores: posts publicados, dinero invertido, pagado y pendiente.
+Seguimiento automatizado de KOLs/embajadores: posts publicados en X, métricas (views/likes/RTs), dinero invertido, pagado y pendiente.
 
-Se puede usar en Excel o subir tal cual a Google Sheets (Archivo → Importar).
+## Cómo funciona
 
-## Hojas
+```
+kols.csv (roster) ──┐
+                    ├─► update_tracker.py ──► posts.csv + pagos.csv ──► KOL_Tracker.xlsx (informe)
+API de X ───────────┘        ▲
+(oficial o twitterapi.io)    └── GitHub Action, cada noche a las 03:00 UTC
+```
 
-| Hoja | Qué contiene |
+- **`data/*.csv` son la fuente de verdad.** El Excel `KOL_Tracker.xlsx` es un informe que se regenera solo — no lo edites a mano.
+- El script vigila el timeline de cada KOL **Activo**, añade los posts que mencionan las keywords de campaña (`automation/config.json`), refresca métricas de los últimos 30 días y genera las filas de pago del mes.
+- Sin API key configurada, funciona en modo manual: solo ingiere los links de `data/submitted_links.csv` y genera pagos.
+
+## Puesta en marcha (5 minutos)
+
+1. **Rellena `data/kols.csv`** con los embajadores reales (las filas "(ejemplo)" se borran). Columnas clave: `tipo_acuerdo` (`Fijo mensual`, `Por post`, `Por hilo`, `Mixto`), `tarifa` (en $) y `estado` (`Activo`/`Inactivo`).
+2. **Consigue una API key** (una de las dos):
+   - **twitterapi.io** (~$5–30/mes según volumen): date de alta en https://twitterapi.io, copia la key.
+   - **API oficial de X** (tier Basic, ~$200/mes): https://developer.x.com, crea un proyecto y copia el *Bearer Token*.
+3. **Añádela como secret del repo**: Settings → Secrets and variables → Actions → New repository secret, con nombre `TWITTERAPI_IO_KEY` o `X_BEARER_TOKEN`.
+4. **Ajusta las keywords** de campaña en `automation/config.json`.
+5. Listo: la Action corre cada noche (o lánzala a mano desde la pestaña **Actions → KOL Tracker → Run workflow**).
+
+## Operativa del día a día
+
+- **Pagos**: el script crea cada mes las filas `Fijo mensual YYYY-MM` (tarifa fija) y `Posts YYYY-MM` (nº posts × tarifa, recalculado mientras esté `Pendiente`). Cuando pagues, cambia `estado` a `Pagado` en `data/pagos.csv` (los pagados no se tocan nunca).
+- **Posts que el script no pilla** (p. ej. un Space, u otro idioma sin keyword): añade el link a `data/submitted_links.csv` y el script hará el resto, métricas incluidas.
+- **Dashboard**: abre `KOL_Tracker.xlsx` (o impórtalo a Google Sheets) — totales, desglose GenLayer vs Rally, coste por post y CPM, todo calculado.
+
+## Ejecutar en local
+
+```bash
+pip install -r kol-tracker/automation/requirements.txt
+export TWITTERAPI_IO_KEY=...   # o X_BEARER_TOKEN=...
+python kol-tracker/automation/update_tracker.py
+```
+
+## Estructura
+
+| Fichero | Qué es |
 |---|---|
-| **Guía** | Instrucciones y código de colores |
-| **Dashboard** | Totales generales y desglose por programa (GenLayer Ambassador vs Rally) — todo automático |
-| **KOLs** | Alta de cada embajador: handle de X, programa, tipo de acuerdo, tarifa. Incluye columnas calculadas (nº posts, views, pagado, pendiente, CPM) |
-| **Posts** | Un registro por publicación: fecha, KOL, link, tipo, métricas (views/likes/RTs) y coste atribuido |
-| **Pagos** | Un registro por pago: fecha, KOL, importe, concepto y estado (Pagado / Pendiente) |
-
-## Uso
-
-1. Da de alta al KOL en **KOLs** (el programa y el estado tienen desplegable).
-2. Añade cada publicación en **Posts** — el KOL se elige de un desplegable y el programa se rellena solo.
-3. Registra cada pago en **Pagos** con estado `Pagado` o `Pendiente`.
-4. El **Dashboard** y las columnas calculadas se actualizan solos.
-
-Las filas marcadas `(ejemplo)` son de muestra: bórralas o sobreescríbelas.
-
-Las fórmulas cubren hasta la fila 300 de cada hoja. Las métricas de X se introducen a mano (la API de X es de pago).
+| `data/kols.csv` | Roster de embajadores (lo editas tú) |
+| `data/posts.csv` | Posts detectados con métricas (lo mantiene el script) |
+| `data/pagos.csv` | Pagos generados/registrados (el script crea, tú marcas `Pagado`) |
+| `data/submitted_links.csv` | Links reportados a mano (opcional) |
+| `automation/config.json` | Keywords de campaña y parámetros |
+| `automation/update_tracker.py` | Orquestador (ingesta → descubrimiento → métricas → pagos → Excel) |
+| `automation/sources.py` | Clientes de la API oficial de X y de twitterapi.io |
+| `automation/build_xlsx.py` | Generador del informe Excel |
+| `KOL_Tracker.xlsx` | Informe generado (no editar a mano) |

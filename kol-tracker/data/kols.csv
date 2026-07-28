@@ -1,0 +1,4 @@
+nombre,handle,link,programa,tipo_acuerdo,tarifa,fecha_inicio,estado,pago_metodo,notas
+Ana Ejemplo,@ana_web3,https://x.com/ana_web3,GenLayer Ambassador,Fijo mensual,500,2026-06-01,Activo,USDC 0x1234…abcd,(ejemplo) borrar
+Bruno Ejemplo,@brunocripto,https://x.com/brunocripto,GenLayer Ambassador,Por post,60,2026-06-15,Activo,PayPal bruno@mail.com,(ejemplo) borrar
+Carla Ejemplo,@carla_defi,https://x.com/carla_defi,Rally,Fijo mensual,800,2026-07-01,Activo,USDT 0x9876…ff00,(ejemplo) borrar

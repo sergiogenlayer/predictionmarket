@@ -1,0 +1,42 @@
+name: KOL Tracker — actualización automática
+
+on:
+  schedule:
+    - cron: "0 3 * * *"   # cada noche a las 03:00 UTC
+  workflow_dispatch: {}    # y bajo demanda desde la pestaña Actions
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: pip install -r kol-tracker/automation/requirements.txt
+
+      - name: Actualizar tracker (posts, métricas, pagos, Excel)
+        env:
+          # Definir UNO de los dos como secret del repo (Settings → Secrets):
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          TWITTERAPI_IO_KEY: ${{ secrets.TWITTERAPI_IO_KEY }}
+        run: python kol-tracker/automation/update_tracker.py
+
+      - name: Recalcular fórmulas del Excel
+        run: python kol-tracker/automation/recalc_lo.py kol-tracker/KOL_Tracker.xlsx
+        continue-on-error: true   # si LibreOffice falla, el Excel sigue siendo válido (Excel/Sheets recalculan al abrir)
+
+      - name: Commit de los cambios
+        run: |
+          git config user.name "kol-tracker-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add kol-tracker
+          git diff --cached --quiet && echo "Sin cambios" && exit 0
+          git commit -m "chore(kol-tracker): actualización automática de posts, métricas y pagos"
+          git push

@@ -1,0 +1,5 @@
+tweet_id,fecha,kol,link,tipo,views,likes,rts,replies,coste,notas
+111,2026-07-05,Ana Ejemplo,https://x.com/ana_web3/status/111,Hilo,12400,310,85,40,0,(ejemplo) incluido en fijo mensual
+222,2026-07-10,Bruno Ejemplo,https://x.com/brunocripto/status/222,Post,4300,120,22,9,60,(ejemplo) pagado por post
+333,2026-07-12,Carla Ejemplo,https://x.com/carla_defi/status/333,Post,20100,540,130,55,0,(ejemplo) incluido en fijo mensual
+444,2026-07-20,Ana Ejemplo,https://x.com/ana_web3/status/444,Space,2100,60,10,5,0,(ejemplo)

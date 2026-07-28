@@ -1,0 +1,4 @@
+fecha,kol,importe,concepto,estado,metodo,notas
+2026-07-01,Ana Ejemplo,500,Fijo mensual 2026-07,Pagado,USDC tx 0xaaa…,(ejemplo)
+2026-07-15,Bruno Ejemplo,60,Posts 2026-07,Pagado,PayPal,(ejemplo)
+2026-07-28,Carla Ejemplo,800,Fijo mensual 2026-07,Pendiente,,(ejemplo)
