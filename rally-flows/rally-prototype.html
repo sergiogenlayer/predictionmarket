@@ -225,6 +225,18 @@
 <div class="view on" id="view-d">
 
   <div class="dsec">
+    <h2>Onboarding — 3 doors, split by profile</h2>
+    <p class="dl">rally.fun splits Creator vs Brand. X ("create yours") and the app skip onboarding entirely. Creator onboarding = 2 screens after login, and skippable.</p>
+    <div class="lane">
+      <div class="node hot"><div class="nbox"><span class="nk">rally.fun</span><div class="nt">Creator or Brand profile</div><div class="nd">"Get Paid for Posting" vs "Launch Campaigns for Your Brand"</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">Login</span><div class="nt">Connect X</div><div class="nd">already registered → straight to the app</div></div></div>
+      <div class="node hot"><div class="nbox"><span class="nk">1 screen · skippable</span><div class="nt">Creator profile</div><div class="nd">vertical · language · audience geo · creator type · how found us — all chips</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">Get paid</span><div class="nt">Wallet + guidelines</div><div class="nd">connect or create embedded · "I have read the Creator Guidelines" ✓</div></div></div>
+      <div class="node pay end"><div class="nbox"><span class="nk">Done</span><div class="nt">Campaigns feed</div><div class="nd">Brand path → the launch flow below · in-app: the feed IS the onboarding</div></div></div>
+    </div>
+  </div>
+
+  <div class="dsec">
     <h2>The model — organization first, then the campaign</h2>
     <p class="dl">Anyone can launch — as themselves or with an org (optional). Orgs are born NOT VERIFIED; the call with Ana + $1,500 (paid by link after the call) upgrades them to ✔ Verified.</p>
     <div class="lane">
@@ -275,6 +287,7 @@
   <div class="proto-bar">
     <span class="pb-lbl">Prototype · pick a flow</span>
     <div class="flowpick">
+      <button class="fp" id="fp-onb" onclick="startFlow('onb')">Onboarding</button>
       <button class="fp on" id="fp-creator" onclick="startFlow('creator')">Creator</button>
       <button class="fp" id="fp-launch" onclick="startFlow('launch')">Launch a campaign</button>
       <button class="fp" id="fp-amb" onclick="startFlow('amb')">Whitelist &amp; payments</button>
@@ -296,6 +309,112 @@
       <button class="wing" onclick="toast('✦ Wingston — your AI copilot: drafts briefs, checks rules, answers questions')">✦ Wingston</button>
       <button class="wallet" onclick="toast('Wallet connected · 0xf5…0AFF12 · 180,000 RLP — one wallet for both roles')">▣ 0xf5…0AFF12</button>
     </div>
+
+    <!-- ========== ONBOARDING 1: doors ========== -->
+    <section class="screen" id="ob1">
+      <div class="pad" style="text-align:center; padding-top:30px; max-width:620px; margin:0 auto">
+        <div class="h1">Onboarding — who’s arriving?</div>
+        <div class="sub" style="margin-bottom:6px">rally.fun splits by profile; X and the app skip straight in. Every door below works.</div>
+        <div style="display:grid; gap:10px; margin-top:14px">
+          <button class="ccard" style="padding:16px; border:2px solid var(--blue); background:#F6FAFF" onclick="go('ob2'); toast('🎨 rally.fun · Creator profile — Get Paid for Posting as a Creator')">
+            <div style="font-weight:800; font-size:14px">🎨 rally.fun → Get Paid for Posting as a Creator</div>
+            <div style="font-size:12px; color:var(--ink-2); margin-top:3px">Creator onboarding: Connect X → profile in 1 screen (skippable) → wallet &amp; guidelines → Campaigns</div>
+          </button>
+          <button class="ccard" style="padding:16px" onclick="go('pLogin'); toast('🚀 rally.fun · Brand profile — Launch a campaign goes straight into the campaign flow')">
+            <div style="font-weight:800; font-size:14px">🚀 rally.fun → Launch Campaigns for Your Brand</div>
+            <div style="font-size:12px; color:var(--ink-2); margin-top:3px">Brand path: login → campaign form (organization opt-in) — no creator onboarding in between</div>
+          </button>
+          <button class="ccard" style="padding:16px; border:2px solid #F59E0B; background:#FFFBF4" onclick="go('pLogin'); document.getElementById('ctxstrip').style.display=''; toast('🐦 From X create yours → deep link to /create — the launch flow, zero onboarding')">
+            <div style="font-weight:800; font-size:14px">🐦 From Rally’s X — "create yours"</div>
+            <div style="font-size:12px; color:var(--ink-2); margin-top:3px">Deep link to /create · straight to the launch flow — context is 1 line above the form</div>
+          </button>
+          <button class="ccard" style="padding:16px; border:2px solid var(--green); background:var(--green-bg)" onclick="startFlow('creator'); toast('📱 Already in the app — the feed IS the onboarding')">
+            <div style="font-weight:800; font-size:14px">📱 Already in app.rally.fun</div>
+            <div style="font-size:12px; color:var(--ink-2); margin-top:3px">No onboarding screens — the feed (Network rail) is the social proof</div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ONBOARDING 2: connect X ========== -->
+    <section class="screen" id="ob2">
+      <div class="pad" style="max-width:400px; margin:0 auto; padding-top:40px">
+        <div class="fcard" style="text-align:center">
+          <div class="fq">Create your creator account</div>
+          <div class="fsub">Already registered? You go straight to the app — this screen never shows twice.</div>
+          <div style="margin-top:14px"><button class="btn full" onclick="obConnect(this)">Continue with 𝕏</button></div>
+          <div class="foot-note">By continuing you agree to Rally’s Terms &amp; Conditions.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ONBOARDING 3: profile (1 screen, skippable) ========== -->
+    <section class="screen" id="ob3">
+      <div class="hero">
+        <div class="h1">Tell us about your content</div>
+        <div class="sub">Everything on one screen, all chips — ~20 seconds. Or skip and finish later.</div>
+      </div>
+      <div class="pad" style="max-width:620px; margin:0 auto">
+        <label class="fl" style="margin-top:0">What do you post about? <small>(pick any)</small></label>
+        <div>
+          <button class="chip on" onclick="chipToggle(this)">AI</button>
+          <button class="chip" onclick="chipToggle(this)">DeFi</button>
+          <button class="chip" onclick="chipToggle(this)">NFTs</button>
+          <button class="chip" onclick="chipToggle(this)">Gaming</button>
+          <button class="chip" onclick="chipToggle(this)">Memes</button>
+        </div>
+        <label class="fl">Language <small>(pick any)</small></label>
+        <div>
+          <button class="chip on" onclick="chipToggle(this)">English</button>
+          <button class="chip" onclick="chipToggle(this)">Español</button>
+          <button class="chip" onclick="chipToggle(this)">Other</button>
+        </div>
+        <label class="fl">Audience geography <small>(pick any)</small></label>
+        <div>
+          <button class="chip" onclick="chipToggle(this)">North America</button>
+          <button class="chip on" onclick="chipToggle(this)">Europe</button>
+          <button class="chip" onclick="chipToggle(this)">LATAM</button>
+          <button class="chip" onclick="chipToggle(this)">Asia</button>
+        </div>
+        <label class="fl">What type of creator are you? <small>(pick one)</small></label>
+        <div>
+          <button class="chip" onclick="groupSel(this)">Large KOL</button>
+          <button class="chip on" onclick="groupSel(this)">Micro KOL</button>
+          <button class="chip" onclick="groupSel(this)">Clipper</button>
+          <button class="chip" onclick="groupSel(this)">UGC Faceless</button>
+          <button class="chip" onclick="groupSel(this)">UGC Face</button>
+        </div>
+        <label class="fl">How did you find us? <small>(pick one)</small></label>
+        <div>
+          <button class="chip on" onclick="groupSel(this)">On X</button>
+          <button class="chip" onclick="groupSel(this)">A friend</button>
+          <button class="chip" onclick="groupSel(this)">A community</button>
+          <button class="chip" onclick="groupSel(this)">Other</button>
+        </div>
+        <div style="display:flex; gap:9px; margin-top:16px">
+          <button class="btn ghost" style="flex:1" onclick="go('ob4'); toast('Skipped — you can finish your profile later; it’s required before your first submission')">Skip for now</button>
+          <button class="btn" style="flex:1" onclick="go('ob4'); toast('Profile saved ✓ — this powers targeting and the Elite Creators roster')">Continue</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ONBOARDING 4: wallet + guidelines ========== -->
+    <section class="screen" id="ob4">
+      <div class="pad" style="max-width:480px; margin:0 auto; padding-top:26px">
+        <div class="fcard">
+          <div class="fq">Connect your wallet</div>
+          <div class="fsub">This is how you get paid. One wallet for everything — earning and launching.</div>
+          <div style="margin-top:12px"><button class="btn full" id="obwbtn" onclick="obWallet(this)">Connect Metamask</button></div>
+          <div style="margin-top:8px"><button class="btn ghost full" id="obwbtn2" onclick="obWallet(this)">Create wallet — 10 seconds, without leaving Rally</button></div>
+          <button class="tcbox" id="gdbox" onclick="toggleGuide()">
+            <span class="cb" id="gdcb"></span>
+            <span class="t">I have read the <b style="color:var(--blue)">Creator Guidelines</b> — what the AI rewards, what gets a post rejected, and how payouts work.</span>
+          </button>
+          <div style="margin-top:11px"><button class="btn full" id="obenter" disabled onclick="obEnter()">Enter Rally →</button></div>
+          <div class="foot-note">The checkbox unlocks the button — the wallet can also be connected later, at your first payout.</div>
+        </div>
+      </div>
+    </section>
 
     <!-- ========== CREATOR 1: discover ========== -->
     <section class="screen" id="c1">
@@ -803,6 +922,7 @@
 
 <script>
   var FLOWS = {
+    onb:     ['ob1','ob2','ob3','ob4'],
     creator: ['c1','c2','c3','c4'],
     launch:  ['pE','pLogin','pOrg','pVer','pVerForm','pC','pDep','pLive'],
     amb:     ['a1','a2']
@@ -825,7 +945,7 @@
     showView('p');
   }
   function syncPick(){
-    ['creator','launch','amb'].forEach(function(k){
+    ['onb','creator','launch','amb'].forEach(function(k){
       document.getElementById('fp-'+k).classList.toggle('on', k===current);
     });
   }
@@ -983,6 +1103,37 @@
     toast('Payment method: ' + label);
   }
   var joinMode = 'everyone', payMode = 'fixed', prizeToken = 'RLP', isPersonal = false;
+  var guideOK = false, obWalletOK = false;
+  function chipToggle(el){ el.classList.toggle('on'); }
+  function obConnect(btn){
+    btn.textContent = 'Connecting…';
+    btn.disabled = true;
+    setTimeout(function(){
+      btn.textContent = 'Continue with 𝕏';
+      btn.disabled = false;
+      go('ob3');
+      toast('Connected ✓ — pfp, name and bio imported from X');
+    }, 800);
+  }
+  function obWallet(btn){
+    obWalletOK = true;
+    btn.textContent = '✓ 0xf5…0AFF12 connected';
+    btn.style.background = 'var(--green)';
+    btn.style.color = '#fff';
+    btn.style.borderColor = 'var(--green)';
+    toast('Wallet ready — the same one works for launching campaigns');
+  }
+  function toggleGuide(){
+    guideOK = !guideOK;
+    document.getElementById('gdbox').classList.toggle('on', guideOK);
+    document.getElementById('gdcb').textContent = guideOK ? '✓' : '';
+    document.getElementById('obenter').disabled = !guideOK;
+    if(guideOK) toast('Guidelines read ✓ — you’re set');
+  }
+  function obEnter(){
+    startFlow('creator');
+    toast(obWalletOK ? 'Welcome to Rally ✓ — pick a campaign and earn' : 'Welcome to Rally ✓ — connect your wallet before your first payout');
+  }
   function launchPersonal(){
     isPersonal = true; isVerified = false;
     var chip = document.getElementById('railchip');
