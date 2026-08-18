@@ -32,7 +32,9 @@ WHITE        = (0xFF, 0xFF, 0xFF)
 DISPLAY = os.path.join(F, "archivo_it900.ttf")   # Archivo Condensed Black Italic
 UI      = os.path.join(F, "archivo_600.ttf")     # Archivo SemiBold
 
-W, H = 675, 450                    # design space (3:2)
+H = 450                            # design height; W varies with the aspect being rendered
+W_3_2 = 675                        # 675x450 -> 1080x720 at 1.6x  (agreed in-wallet spec)
+W_16_9 = 800                       # 800x450 -> 1280x720 at 1.6x  (Benefit Simulator: 16:9)
 SAFE_W = 450                       # safe zone is the centred square, full height
 DPI = (150, 150)
 
@@ -71,7 +73,7 @@ def draw_tracked(d, xy, txt, f, fill, tracking=0, centred=False):
         x += d.textlength(ch, font=f) + tracking
 
 
-def background(s):
+def background(s, W):
     """Diagonal violet gradient + glow + speed streaks + vignette + film grain."""
     px = make_px(s)
     w, h = px(W), px(H)
@@ -108,10 +110,10 @@ def background(s):
     return Image.blend(img, grained, 0.30)
 
 
-def compose(variant, s):
+def compose(variant, s, W):
     px = make_px(s)
     cfg = VARIANTS[variant]
-    img = background(s)
+    img = background(s, W)
     d = ImageDraw.Draw(img)
     cx = px(W) // 2
 
@@ -175,19 +177,27 @@ def safezone_proof(banner):
 
 def main():
     for v in VARIANTS:
-        master = compose(v, 3.2)                                   # 2160x1440
+        # --- 3:2, the agreed in-wallet banner spec
+        master = compose(v, 3.2, W_3_2)                             # 2160x1440
         master.convert("RGB").save(f"{OUT}/rally_inwallet_2160x1440_{v}.png", dpi=DPI)
 
         banner = master.resize((1080, 720), Image.LANCZOS).convert("RGB")
         banner.save(f"{OUT}/rally_inwallet_1080x720_{v}.png", dpi=DPI)
         banner.save(f"{OUT}/rally_inwallet_1080x720_{v}.jpg", quality=92, dpi=DPI)
 
+        # --- 16:9, the ratio the Benefit Simulator asks for
+        wide = compose(v, 3.2, W_16_9).resize((1280, 720), Image.LANCZOS).convert("RGB")
+        wide.save(f"{OUT}/rally_benefit_1280x720_{v}.png", dpi=DPI)
+        wide.save(f"{OUT}/rally_benefit_1280x720_{v}.jpg", quality=92, dpi=DPI)
+
         # square list-card thumbnail = exactly the safe zone
         banner.crop(((1080 - 720) // 2, 0, (1080 + 720) // 2, 720)).save(
             f"{OUT}/rally_inwallet_720x720_{v}.png", dpi=DPI)
 
-    proof = safezone_proof(Image.open(f"{OUT}/rally_inwallet_1080x720_a.png"))
-    proof.convert("RGB").save(f"{OUT}/proof_safezone_a.png", dpi=DPI)
+    safezone_proof(Image.open(f"{OUT}/rally_inwallet_1080x720_a.png")).convert("RGB").save(
+        f"{OUT}/proof_safezone_a.png", dpi=DPI)
+    safezone_proof(Image.open(f"{OUT}/rally_benefit_1280x720_a.png")).convert("RGB").save(
+        f"{OUT}/proof_safezone_wide_a.png", dpi=DPI)
 
     a = Image.open(f"{OUT}/rally_inwallet_1080x720_a.png").resize((810, 540), Image.LANCZOS)
     b = Image.open(f"{OUT}/rally_inwallet_1080x720_b.png").resize((810, 540), Image.LANCZOS)

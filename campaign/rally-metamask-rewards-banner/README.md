@@ -14,6 +14,7 @@ Join Rally. Get 400 Rally Points.* CTA goes to **app.rally.fun**.
 | In-wallet banner **1080×720 px (3:2)** | `rally_inwallet_1080x720_{a,b}.png` / `.jpg` |
 | All key content inside the centred **720×720 safe zone** | logo, mascot, headline, sub and CTA all sit inside it — only gradient, grain and speed streaks bleed into the 180 px side bands |
 | **PNG or JPG**, 150 dpi recommended | both, with 150 dpi metadata |
+| Benefit Simulator image: **16:9**, min width 400 px (800+ recommended), safe zone the centred square | `rally_benefit_1280x720_{a,b}.png` / `.jpg` — 1280×720 with the same centred 720×720 safe zone (720/1280 = 450/800, the ratio the requirements page specifies) |
 | Benefit list card uses a square thumbnail | `rally_inwallet_720x720_{a,b}.png` (an exact cut of the safe zone) |
 | Title ≤ 50 characters | 44 — see copy deck |
 | Description: first line ≤ 70 chars (short), full text ≤ 700 | 65 / 615 — see copy deck |
@@ -26,8 +27,11 @@ Join Rally. Get 400 Rally Points.* CTA goes to **app.rally.fun**.
 out/rally_inwallet_2160x1440_{a,b}.png   master @2x
 out/rally_inwallet_1080x720_{a,b}.png    delivery, PNG 150 dpi
 out/rally_inwallet_1080x720_{a,b}.jpg    delivery, JPG q92 150 dpi
+out/rally_benefit_1280x720_{a,b}.png     Benefit Simulator image field, 16:9
+out/rally_benefit_1280x720_{a,b}.jpg     same, JPG q92
 out/rally_inwallet_720x720_{a,b}.png     square list-card thumbnail
-out/proof_safezone_a.png                 safe-zone proof
+out/proof_safezone_a.png                 safe-zone proof, 3:2
+out/proof_safezone_wide_a.png            safe-zone proof, 16:9
 out/preview_sheet.png                    A/B comparison sheet
 ```
 
@@ -71,7 +75,7 @@ and sign-off from MetaMask.
 | **Action URL** | `https://app.rally.fun` |
 | **Category** | `Earn Rewards` |
 | **Provider Name** | `Rally` |
-| **Image** | `out/rally_inwallet_1080x720_a.png` |
+| **Image** | `out/rally_benefit_1280x720_a.png` (16:9, what the simulator asks for); the 3:2 `rally_inwallet_1080x720_a.png` is the in-wallet banner itself |
 
 ### Description
 
@@ -111,3 +115,7 @@ python3 make_banner.py    # writes every deliverable into out/
 
 Copy lives in the `VARIANTS` dict at the top of `make_banner.py`; every headline line
 auto-shrinks to stay inside the safe zone, so new copy can be dropped straight in.
+
+Both aspects come out of one layout: the design space is 450 tall and its width switches
+between `W_3_2` (675 → 1080×720) and `W_16_9` (800 → 1280×720). The centred 720×720 safe
+zone is identical in both, so the artwork never has to be re-composed per placement.
