@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
-"""Rally x Solflare in-wallet benefit banner.
-Specs (themiracle.io Benefit Simulator -> Solflare Asset Requirements):
-  ratio 16:9, min width 400px (800px+ recommended), JPG/PNG,
-  safe zone = centred 450x450 square of an 800x450 image.
-All logos/text stay inside the safe zone; only decoration bleeds outside.
+"""Rally in-wallet campaign banner (theMiracle / Solflare benefit card).
+
+Spec (Campaign Services Agreement + Benefit Simulator):
+  * in-wallet banner: 1080x720 px (3:2)
+  * all key content inside the CENTRED 720x720 safe zone
+  * PNG or JPG, 150 dpi recommended
+  * list-card thumbnail is square -> a 720x720 cut is exported too
+
+Design space is 675x450 (= the delivery size / 1.6); every coordinate below is
+in that space and multiplied by SCALE at render time.
 """
-import os, math
+import os
 from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageChops
 
 BASE = os.path.dirname(os.path.abspath(__file__))
@@ -23,17 +28,22 @@ WHITE        = (0xFF, 0xFF, 0xFF)
 DISPLAY = os.path.join(F, "archivo_it900.ttf")   # Archivo Condensed Black Italic
 UI      = os.path.join(F, "archivo_600.ttf")     # Archivo SemiBold
 
-W, H = 800, 450                 # design space
-SAFE = (175, 0, 625, 450)       # centred 450x450 safe zone
+W, H = 675, 450                    # design space (3:2)
+SAFE_W = 450                       # safe zone is the centred square, full height
+DPI = (150, 150)
 
 VARIANTS = {
-    "a": dict(headline="JOIN THE RALLY", sub="Prediction markets, in your wallet", cta="Enter App"),
-    "b": dict(headline="TRADE THE FUTURE", sub="Live markets \u00b7 rally.fun", cta="Claim your reward"),
+    "a": dict(headline="JOIN THE RALLY",   sub="Prediction markets, in your wallet", cta="Enter App"),
+    "b": dict(headline="TRADE THE FUTURE", sub="Live markets · rally.fun",      cta="Claim your reward"),
 }
 
 
-def font(path, px):
-    return ImageFont.truetype(path, px)
+def make_px(s):
+    return lambda v: int(round(v * s))
+
+
+def font(path, size):
+    return ImageFont.truetype(path, max(size, 1))
 
 
 def text_size(d, txt, f, tracking=0):
@@ -41,12 +51,11 @@ def text_size(d, txt, f, tracking=0):
     return (b[2] - b[0]) + tracking * max(len(txt) - 1, 0), b[3] - b[1]
 
 
-def draw_tracked(d, xy, txt, f, fill, tracking=0, anchor_center=False):
-    """Draw text with letter-spacing; xy is left/top of the ink box (or centre-x if anchor_center)."""
+def draw_tracked(d, xy, txt, f, fill, tracking=0, centred=False):
+    """Draw text with letter-spacing. xy is the ink-box top-left, or centre-x if centred."""
     x, y = xy
-    if anchor_center:
-        w, _ = text_size(d, txt, f, tracking)
-        x = x - w / 2
+    if centred:
+        x -= text_size(d, txt, f, tracking)[0] / 2
     b0 = d.textbbox((0, 0), txt, font=f)
     x -= b0[0]
     y -= b0[1]
@@ -56,127 +65,133 @@ def draw_tracked(d, xy, txt, f, fill, tracking=0, anchor_center=False):
 
 
 def background(s):
-    """Diagonal violet gradient + glow + grain + speed streaks."""
-    w, h = W * s, H * s
-    # gradient (rendered small, upscaled = perfectly smooth)
-    g = Image.new("RGB", (32, 18))
+    """Diagonal violet gradient + glow + speed streaks + vignette + film grain."""
+    px = make_px(s)
+    w, h = px(W), px(H)
+
+    g = Image.new("RGB", (32, 21))
     gd = ImageDraw.Draw(g)
-    for y in range(18):
+    for y in range(21):
         for x in range(32):
-            t = (x / 31 * 0.65 + (1 - y / 17) * 0.35)
-            c = tuple(int(DARK_VIOLET[i] + (RALLY_VIOLET[i] - DARK_VIOLET[i]) * (t ** 1.7) * 0.9) for i in range(3))
-            gd.point((x, y), c)
-    img = g.resize((w, h), Image.BICUBIC)
+            t = (x / 31 * 0.65 + (1 - y / 20) * 0.35) ** 1.7
+            gd.point((x, y), tuple(int(DARK_VIOLET[i] + (RALLY_VIOLET[i] - DARK_VIOLET[i]) * t * 0.9)
+                                   for i in range(3)))
+    img = g.resize((w, h), Image.BICUBIC).convert("RGBA")
 
-    # radial glow behind the mascot
     glow = Image.new("L", (w, h), 0)
-    ImageDraw.Draw(glow).ellipse(
-        [int(w * 0.5 - 0.30 * w), int(h * 0.04), int(w * 0.5 + 0.30 * w), int(h * 0.72)], fill=185)
-    glow = glow.filter(ImageFilter.GaussianBlur(70 * s))
-    img = Image.composite(Image.new("RGB", (w, h), RALLY_VIOLET), img, glow)
+    ImageDraw.Draw(glow).ellipse([int(w * 0.20), int(h * 0.04), int(w * 0.80), int(h * 0.72)], fill=185)
+    glow = glow.filter(ImageFilter.GaussianBlur(px(44)))
+    img = Image.composite(Image.new("RGBA", (w, h), RALLY_VIOLET + (255,)), img, glow)
 
-    # diagonal speed streaks (decoration, allowed to bleed outside the safe zone)
     streaks = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     sd = ImageDraw.Draw(streaks)
-    for i in range(-6, 18):
-        x0 = i * 96 * s
-        sd.polygon([(x0, h), (x0 + 18 * s, h), (x0 + 18 * s + 150 * s, 0), (x0 + 150 * s, 0)],
+    for i in range(-6, 20):
+        x0 = px(i * 81)
+        sd.polygon([(x0, h), (x0 + px(15), h), (x0 + px(15 + 127), 0), (x0 + px(127), 0)],
                    fill=(255, 255, 255, 7))
-    img = Image.alpha_composite(img.convert("RGBA"), streaks)
+    img = Image.alpha_composite(img, streaks)
 
-    # vignette
     vig = Image.new("L", (w, h), 0)
     ImageDraw.Draw(vig).ellipse([-int(w * 0.05), -int(h * 0.28), int(w * 1.05), int(h * 1.28)], fill=255)
-    vig = vig.filter(ImageFilter.GaussianBlur(85 * s))
+    vig = vig.filter(ImageFilter.GaussianBlur(px(53)))
     img = Image.composite(img, Image.new("RGBA", (w, h), DARK_VIOLET + (255,)), vig)
 
-    # film grain
     noise = Image.effect_noise((w, h), 26).convert("L").point(lambda v: 128 + (v - 128) * 0.5)
-    img = Image.blend(img, ImageChops.overlay(img.convert("RGB"), noise.convert("RGB")).convert("RGBA"), 0.30)
-    return img
+    grained = ImageChops.overlay(img.convert("RGB"), noise.convert("RGB")).convert("RGBA")
+    return Image.blend(img, grained, 0.30)
 
 
-def compose(variant, s=2, square=False):
+def compose(variant, s):
+    px = make_px(s)
     cfg = VARIANTS[variant]
     img = background(s)
     d = ImageDraw.Draw(img)
-    cx = W * s // 2
+    cx = px(W) // 2
 
-    # --- wordmark (placeholder type-set; swap for the official Rally SVG when available)
-    f_mark = font(DISPLAY, int(31 * s))
-    draw_tracked(d, (cx, int(20 * s)), "RALLY", f_mark, WHITE, tracking=int(2.5 * s), anchor_center=True)
+    # --- wordmark (type-set stand-in; swap for the official Rally lockup)
+    draw_tracked(d, (cx, px(20)), "RALLY", font(DISPLAY, px(31)), WHITE, tracking=px(2.5), centred=True)
 
-    # --- mascot (cropped to its alpha box so the artwork fills the layout)
+    # --- mascot, cropped to its alpha box so the artwork actually fills the layout
     m = Image.open(os.path.join(BASE, "assets", "paloma03.png")).convert("RGBA")
     m = m.crop(m.getbbox())
-    target_h = int(226 * s)
-    m = m.resize((int(m.width * target_h / m.height), target_h), Image.LANCZOS)
-    my = int(56 * s)
-    sh = Image.new("RGBA", img.size, (0, 0, 0, 0))
-    alpha = m.split()[3].point(lambda v: int(v * 0.5))
-    sh.paste(Image.new("RGBA", m.size, (10, 2, 22, 255)), (cx - m.width // 2, my + int(10 * s)), alpha)
-    img = Image.alpha_composite(img, sh.filter(ImageFilter.GaussianBlur(16 * s)))
+    th = px(226)
+    m = m.resize((max(int(m.width * th / m.height), 1), th), Image.LANCZOS)
+    my = px(56)
+    shadow = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    shadow.paste(Image.new("RGBA", m.size, (10, 2, 22, 255)),
+                 (cx - m.width // 2, my + px(10)), m.split()[3].point(lambda v: int(v * 0.5)))
+    img = Image.alpha_composite(img, shadow.filter(ImageFilter.GaussianBlur(px(16))))
     img.paste(m, (cx - m.width // 2, my), m)
     d = ImageDraw.Draw(img)
 
-    # --- headline (auto-fit inside the safe zone)
+    # --- headline, auto-fitted to the safe zone
     size = 48
     while size > 26:
-        f_h = font(DISPLAY, int(size * s))
-        if text_size(d, cfg["headline"], f_h, int(0.5 * s))[0] <= 410 * s:
+        f_h = font(DISPLAY, px(size))
+        if text_size(d, cfg["headline"], f_h, px(0.5))[0] <= px(SAFE_W - 40):
             break
         size -= 1
-    draw_tracked(d, (cx, int(298 * s)), cfg["headline"], f_h, WHITE, tracking=int(0.5 * s), anchor_center=True)
+    draw_tracked(d, (cx, px(298)), cfg["headline"], f_h, WHITE, tracking=px(0.5), centred=True)
 
     # --- sub
-    f_s = font(UI, int(15 * s))
-    draw_tracked(d, (cx, int(352 * s)), cfg["sub"], f_s, LIGHT_VIOLET, tracking=int(0.4 * s), anchor_center=True)
+    draw_tracked(d, (cx, px(352)), cfg["sub"], font(UI, px(15)), LIGHT_VIOLET, tracking=px(0.4), centred=True)
 
     # --- CTA pill
-    f_c = font(UI, int(19 * s))
-    tw, th = text_size(d, cfg["cta"], f_c)
-    pw, ph = tw + int(58 * s), int(46 * s)
-    px0, py0 = cx - pw // 2, int(382 * s)
+    f_c = font(UI, px(19))
+    tw, th_ = text_size(d, cfg["cta"], f_c)
+    pw, ph = tw + px(58), px(46)
+    x0, y0 = cx - pw // 2, px(382)
     glow = Image.new("RGBA", img.size, (0, 0, 0, 0))
-    ImageDraw.Draw(glow).rounded_rectangle([px0, py0, px0 + pw, py0 + ph], ph // 2, fill=ORANGE + (150,))
-    img = Image.alpha_composite(img, glow.filter(ImageFilter.GaussianBlur(11 * s)))
+    ImageDraw.Draw(glow).rounded_rectangle([x0, y0, x0 + pw, y0 + ph], ph // 2, fill=ORANGE + (150,))
+    img = Image.alpha_composite(img, glow.filter(ImageFilter.GaussianBlur(px(11))))
     d = ImageDraw.Draw(img)
-    d.rounded_rectangle([px0, py0, px0 + pw, py0 + ph], ph // 2, fill=ORANGE + (255,))
-    draw_tracked(d, (cx, py0 + (ph - th) // 2 - int(1 * s)), cfg["cta"], f_c, WHITE, anchor_center=True)
-
-    if square:  # 1:1 crop, subject centred — allowed fallback per the spec
-        side = H * s
-        img = img.crop((cx - side // 2, 0, cx + side // 2, side))
+    d.rounded_rectangle([x0, y0, x0 + pw, y0 + ph], ph // 2, fill=ORANGE + (255,))
+    draw_tracked(d, (cx, y0 + (ph - th_) // 2 - px(1)), cfg["cta"], f_c, WHITE, centred=True)
     return img
 
 
-def safezone_proof(img800):
-    p = img800.convert("RGBA").copy()
+def safezone_proof(banner):
+    """Red outline of the centred square safe zone, for review only."""
+    p = banner.convert("RGBA").copy()
     d = ImageDraw.Draw(p)
-    d.rectangle([SAFE[0], SAFE[1], SAFE[2] - 1, SAFE[3] - 1], outline=(255, 0, 0, 255), width=3)
-    f = font(UI, 13)
-    d.text((SAFE[0] + 8, 6), "safe zone 450x450", font=f, fill=(255, 0, 0, 255))
+    side = p.height
+    x0 = (p.width - side) // 2
+    d.rectangle([x0, 0, x0 + side - 1, side - 1], outline=(255, 0, 0, 255), width=4)
+    d.text((x0 + 12, 10), f"safe zone {side}x{side}", font=font(UI, 20), fill=(255, 0, 0, 255))
     return p
 
 
-for v in VARIANTS:
-    master = compose(v, s=2)                                   # 1600x900
-    master.convert("RGB").save(f"{OUT}/rally_solflare_1600x900_{v}.png")
-    small = master.resize((W, H), Image.LANCZOS).convert("RGB")
-    small.save(f"{OUT}/rally_solflare_800x450_{v}.png")
-    small.save(f"{OUT}/rally_solflare_800x450_{v}.jpg", quality=92)
-    sq = compose(v, s=2, square=True).resize((900, 900), Image.LANCZOS).convert("RGB")
-    sq.save(f"{OUT}/rally_solflare_900x900_{v}.png")
+def main():
+    for v in VARIANTS:
+        master = compose(v, 3.2)                                   # 2160x1440
+        master.convert("RGB").save(f"{OUT}/rally_inwallet_2160x1440_{v}.png", dpi=DPI)
 
-safezone_proof(Image.open(f"{OUT}/rally_solflare_800x450_a.png")).convert("RGB").save(f"{OUT}/proof_safezone_a.png")
+        banner = master.resize((1080, 720), Image.LANCZOS).convert("RGB")
+        banner.save(f"{OUT}/rally_inwallet_1080x720_{v}.png", dpi=DPI)
+        banner.save(f"{OUT}/rally_inwallet_1080x720_{v}.jpg", quality=92, dpi=DPI)
 
-# side-by-side preview sheet
-a = Image.open(f"{OUT}/rally_solflare_800x450_a.png"); b = Image.open(f"{OUT}/rally_solflare_800x450_b.png")
-sheet = Image.new("RGB", (800, 930), (245, 243, 250))
-sheet.paste(a, (0, 0)); sheet.paste(b, (0, 480))
-sd = ImageDraw.Draw(sheet)
-f = font(UI, 18)
-sd.text((10, 455), "Variante A", font=f, fill=(0x25, 0x04, 0x3A))
-sd.text((10, 452 + 483), "Variante B", font=f, fill=(0x25, 0x04, 0x3A))
-sheet.save(f"{OUT}/preview_sheet.png")
-print("\n".join(sorted(os.listdir(OUT))))
+        # square list-card thumbnail = exactly the safe zone
+        banner.crop(((1080 - 720) // 2, 0, (1080 + 720) // 2, 720)).save(
+            f"{OUT}/rally_inwallet_720x720_{v}.png", dpi=DPI)
+
+    proof = safezone_proof(Image.open(f"{OUT}/rally_inwallet_1080x720_a.png"))
+    proof.convert("RGB").save(f"{OUT}/proof_safezone_a.png", dpi=DPI)
+
+    a = Image.open(f"{OUT}/rally_inwallet_1080x720_a.png").resize((810, 540), Image.LANCZOS)
+    b = Image.open(f"{OUT}/rally_inwallet_1080x720_b.png").resize((810, 540), Image.LANCZOS)
+    sheet = Image.new("RGB", (810, 1122), (245, 243, 250))
+    sheet.paste(a, (0, 0))
+    sheet.paste(b, (0, 582))
+    sd = ImageDraw.Draw(sheet)
+    f = font(UI, 18)
+    sd.text((10, 552), "Variante A", font=f, fill=DARK_VIOLET)
+    sd.text((10, 1134 - 12 - 30), "Variante B", font=f, fill=DARK_VIOLET)
+    sheet.save(f"{OUT}/preview_sheet.png")
+
+    for n in sorted(os.listdir(OUT)):
+        im = Image.open(os.path.join(OUT, n))
+        print(f"{n:38} {im.size[0]}x{im.size[1]}  {os.path.getsize(os.path.join(OUT, n)) // 1024}KB")
+
+
+if __name__ == "__main__":
+    main()
