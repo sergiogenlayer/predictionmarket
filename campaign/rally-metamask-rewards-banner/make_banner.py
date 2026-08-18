@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
-"""Rally in-wallet campaign banner (theMiracle / Solflare benefit card).
+"""Rally x MetaMask Rewards in-wallet banner (distributed via theMiracle).
 
-Spec (Campaign Services Agreement + Benefit Simulator):
+Brief: for one week Rally is featured inside MetaMask Rewards; new Rally users
+who connect with MetaMask get 400 Rally Points. Key message:
+"Connect with MetaMask. Join Rally. Get 400 Rally Points."
+
+Spec (agreed with theMiracle):
   * in-wallet banner: 1080x720 px (3:2)
   * all key content inside the CENTRED 720x720 safe zone
   * PNG or JPG, 150 dpi recommended
@@ -32,9 +36,12 @@ W, H = 675, 450                    # design space (3:2)
 SAFE_W = 450                       # safe zone is the centred square, full height
 DPI = (150, 150)
 
+# headline = [(text, size), ...] rendered as stacked lines, auto-shrunk to the safe zone
 VARIANTS = {
-    "a": dict(headline="JOIN THE RALLY",   sub="Prediction markets, in your wallet", cta="Enter App"),
-    "b": dict(headline="TRADE THE FUTURE", sub="Live markets · rally.fun",      cta="Claim your reward"),
+    "a": dict(headline=[("GET 400", 62), ("RALLY POINTS", 40)],
+              sub="Connect with MetaMask · New Rally users", cta="Join Rally"),
+    "b": dict(headline=[("CONNECT WITH", 34), ("METAMASK", 58)],
+              sub="New Rally users get 400 Rally Points", cta="Join Rally"),
 }
 
 
@@ -108,15 +115,18 @@ def compose(variant, s):
     d = ImageDraw.Draw(img)
     cx = px(W) // 2
 
-    # --- wordmark (type-set stand-in; swap for the official Rally lockup)
-    draw_tracked(d, (cx, px(20)), "RALLY", font(DISPLAY, px(31)), WHITE, tracking=px(2.5), centred=True)
+    # --- official Rally lockup (iso + wordmark), white
+    logo = Image.open(os.path.join(BASE, "assets", "rally_logo_blanco.png")).convert("RGBA")
+    lh = px(30)
+    logo = logo.resize((max(int(logo.width * lh / logo.height), 1), lh), Image.LANCZOS)
+    img.paste(logo, (cx - logo.width // 2, px(18)), logo)
 
     # --- mascot, cropped to its alpha box so the artwork actually fills the layout
     m = Image.open(os.path.join(BASE, "assets", "paloma03.png")).convert("RGBA")
     m = m.crop(m.getbbox())
-    th = px(226)
+    th = px(184)
     m = m.resize((max(int(m.width * th / m.height), 1), th), Image.LANCZOS)
-    my = px(56)
+    my = px(58)
     shadow = Image.new("RGBA", img.size, (0, 0, 0, 0))
     shadow.paste(Image.new("RGBA", m.size, (10, 2, 22, 255)),
                  (cx - m.width // 2, my + px(10)), m.split()[3].point(lambda v: int(v * 0.5)))
@@ -124,17 +134,19 @@ def compose(variant, s):
     img.paste(m, (cx - m.width // 2, my), m)
     d = ImageDraw.Draw(img)
 
-    # --- headline, auto-fitted to the safe zone
-    size = 48
-    while size > 26:
-        f_h = font(DISPLAY, px(size))
-        if text_size(d, cfg["headline"], f_h, px(0.5))[0] <= px(SAFE_W - 40):
-            break
-        size -= 1
-    draw_tracked(d, (cx, px(298)), cfg["headline"], f_h, WHITE, tracking=px(0.5), centred=True)
+    # --- headline, each line auto-fitted to the safe zone
+    y = 250
+    for text, size in cfg["headline"]:
+        while size > 20:
+            f_h = font(DISPLAY, px(size))
+            if text_size(d, text, f_h, px(0.5))[0] <= px(SAFE_W - 40):
+                break
+            size -= 1
+        draw_tracked(d, (cx, px(y)), text, f_h, WHITE, tracking=px(0.5), centred=True)
+        y += size * 0.86 + 6
 
     # --- sub
-    draw_tracked(d, (cx, px(352)), cfg["sub"], font(UI, px(15)), LIGHT_VIOLET, tracking=px(0.4), centred=True)
+    draw_tracked(d, (cx, px(354)), cfg["sub"], font(UI, px(15)), LIGHT_VIOLET, tracking=px(0.4), centred=True)
 
     # --- CTA pill
     f_c = font(UI, px(19))
