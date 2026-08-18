@@ -31,7 +31,7 @@ out/proof_safezone_a.png                 safe-zone proof
 out/preview_sheet.png                    A/B comparison sheet
 ```
 
-**Variant A** — reward-first: `GET 400 / RALLY POINTS` · *Connect with MetaMask · New Rally users* · **Join Rally**
+**Variant A** — reward-first: `GET 400 / RALLY POINTS` · *Connect with MetaMask* · **Join Rally**
 **Variant B** — action-first: `CONNECT WITH / METAMASK` · *New Rally users get 400 Rally Points* · **Join Rally**
 
 Variant A is the recommended one: the number is the offer, and the benefit list card shows

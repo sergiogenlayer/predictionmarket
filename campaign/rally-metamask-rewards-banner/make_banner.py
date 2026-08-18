@@ -39,7 +39,7 @@ DPI = (150, 150)
 # headline = [(text, size), ...] rendered as stacked lines, auto-shrunk to the safe zone
 VARIANTS = {
     "a": dict(headline=[("GET 400", 62), ("RALLY POINTS", 40)],
-              sub="Connect with MetaMask · New Rally users", cta="Join Rally"),
+              sub="Connect with MetaMask", cta="Join Rally"),
     "b": dict(headline=[("CONNECT WITH", 34), ("METAMASK", 58)],
               sub="New Rally users get 400 Rally Points", cta="Join Rally"),
 }
