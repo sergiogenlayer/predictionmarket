@@ -1,0 +1,10 @@
+{
+  "0x0000000000000000000000000000000000000000": {
+    "label": "Nombre del destinatario",
+    "category": "Marketing – agencia"
+  },
+  "0x1111111111111111111111111111111111111111": {
+    "label": "Campaña KOL enero",
+    "category": "Marketing – influencers"
+  }
+}
