@@ -225,14 +225,25 @@
 <div class="view on" id="view-d">
 
   <div class="dsec">
-    <h2>Onboarding — 3 doors, split by profile</h2>
-    <p class="dl">rally.fun splits Creator vs Brand. X ("create yours") and the app skip onboarding entirely. Creator onboarding = 2 screens after login, and skippable.</p>
+    <h2>Creator onboarding — 6 steps (rally.fun · Creator, or app first-timers)</h2>
+    <p class="dl">Faithful to the Rally UX map: skips where marked, "already registered → straight to the app", and "Go to the App" kept on the landing.</p>
     <div class="lane">
-      <div class="node hot"><div class="nbox"><span class="nk">rally.fun</span><div class="nt">Creator or Brand profile</div><div class="nd">"Get Paid for Posting" vs "Launch Campaigns for Your Brand"</div></div></div>
-      <div class="node"><div class="nbox"><span class="nk">Login</span><div class="nt">Connect X</div><div class="nd">already registered → straight to the app</div></div></div>
-      <div class="node hot"><div class="nbox"><span class="nk">1 screen · skippable</span><div class="nt">Creator profile</div><div class="nd">vertical · language · audience geo · creator type · how found us — all chips</div></div></div>
-      <div class="node"><div class="nbox"><span class="nk">Get paid</span><div class="nt">Wallet + guidelines</div><div class="nd">connect or create embedded · "I have read the Creator Guidelines" ✓</div></div></div>
-      <div class="node pay end"><div class="nbox"><span class="nk">Done</span><div class="nt">Campaigns feed</div><div class="nd">Brand path → the launch flow below · in-app: the feed IS the onboarding</div></div></div>
+      <div class="node hot"><div class="nbox"><span class="nk">1 · Landing</span><div class="nt">Creator Profile</div><div class="nd">"Get Paid for Posting as the Creator" · keeps the Go-to-the-App button</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">2 · Skippable</span><div class="nt">Connect X Account</div><div class="nd">already registered → straight to the app</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">3 · Skippable</span><div class="nt">Tell us about your content</div><div class="nd">language · vertical (NFTs, DeFi, Gaming…) · audience geography</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">4</span><div class="nt">Creator type + source</div><div class="nd">Large KOL · Micro KOL · Clipper · UGC Faceless · UGC Face + how did you find us</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">5 · Verified screen</span><div class="nt">Connect Wallet</div><div class="nd">+ "I have read the guidelines" ✓</div></div></div>
+      <div class="node pay end"><div class="nbox"><span class="nk">6</span><div class="nt">Campaigns</div><div class="nd">skips land here too — participating requires coming back to finish</div></div></div>
+    </div>
+  </div>
+
+  <div class="dsec">
+    <h2>Brand onboarding — 3 steps (rally.fun · Brand)</h2>
+    <p class="dl">The brand never sees creator onboarding. rally.fun splits by profile; app.rally.fun splits by user state (first time → creator onboarding · registered → Campaigns → + Create campaign).</p>
+    <div class="lane">
+      <div class="node hot"><div class="nbox"><span class="nk">1 · Landing</span><div class="nt">Brand Profile</div><div class="nd">"Find Creators That Boost Your Campaigns" → Launch Campaign</div></div></div>
+      <div class="node"><div class="nbox"><span class="nk">2 · Skippable</span><div class="nt">Sign in / Sign up</div><div class="nd">SKIP → list of campaigns</div></div></div>
+      <div class="node pay end"><div class="nbox"><span class="nk">3</span><div class="nt">Create Campaign</div><div class="nd">the one-page launch flow — org optional</div></div></div>
     </div>
   </div>
 
@@ -310,29 +321,91 @@
       <button class="wallet" onclick="toast('Wallet connected · 0xf5…0AFF12 · 180,000 RLP — one wallet for both roles')">▣ 0xf5…0AFF12</button>
     </div>
 
-    <!-- ========== ONBOARDING 1: doors ========== -->
-    <section class="screen" id="ob1">
-      <div class="pad" style="text-align:center; padding-top:30px; max-width:620px; margin:0 auto">
-        <div class="h1">Onboarding — who’s arriving?</div>
-        <div class="sub" style="margin-bottom:6px">rally.fun splits by profile; X and the app skip straight in. Every door below works.</div>
-        <div style="display:grid; gap:10px; margin-top:14px">
-          <button class="ccard" style="padding:16px; border:2px solid var(--blue); background:#F6FAFF" onclick="go('ob2'); toast('🎨 rally.fun · Creator profile — Get Paid for Posting as a Creator')">
-            <div style="font-weight:800; font-size:14px">🎨 rally.fun → Get Paid for Posting as a Creator</div>
-            <div style="font-size:12px; color:var(--ink-2); margin-top:3px">Creator onboarding: Connect X → profile in 1 screen (skippable) → wallet &amp; guidelines → Campaigns</div>
-          </button>
-          <button class="ccard" style="padding:16px" onclick="go('pLogin'); toast('🚀 rally.fun · Brand profile — Launch a campaign goes straight into the campaign flow')">
-            <div style="font-weight:800; font-size:14px">🚀 rally.fun → Launch Campaigns for Your Brand</div>
-            <div style="font-size:12px; color:var(--ink-2); margin-top:3px">Brand path: login → campaign form (organization opt-in) — no creator onboarding in between</div>
-          </button>
-          <button class="ccard" style="padding:16px; border:2px solid #F59E0B; background:#FFFBF4" onclick="go('pLogin'); document.getElementById('ctxstrip').style.display=''; toast('🐦 From X create yours → deep link to /create — the launch flow, zero onboarding')">
-            <div style="font-weight:800; font-size:14px">🐦 From Rally’s X — "create yours"</div>
-            <div style="font-size:12px; color:var(--ink-2); margin-top:3px">Deep link to /create · straight to the launch flow — context is 1 line above the form</div>
-          </button>
-          <button class="ccard" style="padding:16px; border:2px solid var(--green); background:var(--green-bg)" onclick="startFlow('creator'); toast('📱 Already in the app — the feed IS the onboarding')">
-            <div style="font-weight:800; font-size:14px">📱 Already in app.rally.fun</div>
-            <div style="font-size:12px; color:var(--ink-2); margin-top:3px">No onboarding screens — the feed (Network rail) is the social proof</div>
-          </button>
+    <!-- ========== ONBOARDING 0: the two entry maps ========== -->
+    <section class="screen" id="ob0">
+      <div class="pad" style="max-width:640px; margin:0 auto; padding-top:24px">
+        <div class="h1" style="text-align:center">Onboarding — the two entry maps</div>
+        <div class="sub" style="text-align:center; margin-bottom:14px">rally.fun splits by <b>profile</b>; app.rally.fun splits by <b>user state</b>. Every branch below is clickable.</div>
+        <div class="fcard" style="margin-bottom:12px">
+          <div class="fq" style="font-size:14.5px">1 · User clicks <span style="color:var(--blue)">rally.fun</span></div>
+          <div style="display:grid; gap:8px; margin-top:10px">
+            <button class="ccard" style="padding:13px 15px; border:2px solid #F59E0B; background:#FFFBF4" onclick="go('obL')">
+              <div style="font-weight:800; font-size:13px">🎨 Creator</div>
+              <div style="font-size:11.5px; color:var(--ink-2); margin-top:2px">→ Creator Profile landing → content creator onboarding (6 steps)</div>
+            </button>
+            <button class="ccard" style="padding:13px 15px; border:2px solid var(--blue); background:#F6FAFF" onclick="go('obB')">
+              <div style="font-weight:800; font-size:13px">🚀 Brand</div>
+              <div style="font-size:11.5px; color:var(--ink-2); margin-top:2px">→ Brand Profile landing → "Launch Campaign" → sign in (skippable) → campaign creation</div>
+            </button>
+          </div>
         </div>
+        <div class="fcard">
+          <div class="fq" style="font-size:14.5px">2 · User clicks <span style="color:var(--blue)">app.rally.fun</span></div>
+          <div style="display:grid; gap:8px; margin-top:10px">
+            <button class="ccard" style="padding:13px 15px" onclick="go('obL'); toast('First time user → content creator onboarding')">
+              <div style="font-weight:800; font-size:13px">✨ First time user</div>
+              <div style="font-size:11.5px; color:var(--ink-2); margin-top:2px">→ content creator onboarding</div>
+            </button>
+            <button class="ccard" style="padding:13px 15px; border:2px solid var(--green); background:var(--green-bg)" onclick="startFlow('creator'); toast('Registered user → Campaigns → + Create campaign → the campaign flow')">
+              <div style="font-weight:800; font-size:13px">✓ Registered user</div>
+              <div style="font-size:11.5px; color:var(--ink-2); margin-top:2px">→ Campaigns → "+ Create campaign" → campaign flow</div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ONBOARDING · Creator Profile landing ========== -->
+    <section class="screen" id="obL">
+      <div class="pad" style="max-width:640px; margin:0 auto; padding-top:22px">
+        <div style="border-radius:14px; overflow:hidden; border:1px solid var(--line); background:linear-gradient(120deg,#1A1023,#4A1D0E); padding:26px 24px; color:#fff">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px">
+            <span style="font-style:italic; font-weight:900; font-size:15px">⚡ RALLY</span>
+            <span class="sp"></span>
+            <button class="btn ghost" style="background:transparent; color:#fff; border-color:rgba(255,255,255,.4); padding:6px 13px; font-size:11.5px" onclick="startFlow('creator'); toast('Go to the App — kept for registered users, straight to Campaigns')">Go to the App</button>
+          </div>
+          <div style="font-size:25px; font-weight:900; font-style:italic; text-transform:uppercase; line-height:1.08">Get Paid for Posting<br>as the <span style="color:#F59E0B">Creator</span></div>
+          <div style="font-size:12.5px; opacity:.85; margin-top:7px; max-width:46ch">Post about campaigns you like. The AI scores every post. Winners get paid — automatically.</div>
+          <div style="display:flex; gap:9px; margin-top:18px; flex-wrap:wrap">
+            <button class="btn" style="background:#F59E0B" onclick="go('ob2')">Create Creator Account</button>
+            <button class="btn ghost" style="background:transparent; color:#fff; border-color:rgba(255,255,255,.4)" onclick="startFlow('creator'); toast('Exploring first — onboarding stays one click away')">Explore campaigns</button>
+          </div>
+        </div>
+        <div class="foot-note">1 · Creator Profile landing — the "Go to the App" button stays.</div>
+      </div>
+    </section>
+
+    <!-- ========== ONBOARDING · Brand Profile landing ========== -->
+    <section class="screen" id="obB">
+      <div class="pad" style="max-width:640px; margin:0 auto; padding-top:22px">
+        <div style="border-radius:14px; overflow:hidden; border:1px solid var(--line); background:linear-gradient(120deg,#121024,#2A1D4A); padding:26px 24px; color:#fff">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px">
+            <span style="font-style:italic; font-weight:900; font-size:15px">⚡ RALLY</span>
+            <span class="sp"></span>
+            <button class="btn ghost" style="background:transparent; color:#fff; border-color:rgba(255,255,255,.4); padding:6px 13px; font-size:11.5px" onclick="startFlow('creator'); toast('Go to the App — straight to Campaigns')">Go to the App</button>
+          </div>
+          <div style="font-size:25px; font-weight:900; font-style:italic; text-transform:uppercase; line-height:1.08">Find Creators That<br><span style="color:#8B5CF6">Boost</span> Your Campaigns</div>
+          <div style="font-size:12.5px; opacity:.85; margin-top:7px; max-width:46ch">Fund a pool, AI evaluates every post, winners get paid. Launch in minutes.</div>
+          <div style="display:flex; gap:9px; margin-top:18px; flex-wrap:wrap">
+            <button class="btn" style="background:#8B5CF6" onclick="go('obSign')">Launch Campaign</button>
+            <button class="btn ghost" style="background:transparent; color:#fff; border-color:rgba(255,255,255,.4)" onclick="startFlow('creator'); toast('Skip to see campaigns — Launch a campaign stays one click away')">See campaigns</button>
+          </div>
+        </div>
+        <div class="foot-note">1 · Brand Profile landing → "Launch Campaign".</div>
+      </div>
+    </section>
+
+    <!-- ========== ONBOARDING · Brand sign in / sign up ========== -->
+    <section class="screen" id="obSign">
+      <div class="pad" style="max-width:400px; margin:0 auto; padding-top:36px">
+        <div class="fcard" style="text-align:center">
+          <div class="fq">Sign in / Sign up</div>
+          <div class="fsub">Brand path — from here, straight into campaign creation. Organization is optional.</div>
+          <div style="margin-top:14px"><button class="btn full" onclick="connectX(this,'𝕏')">Continue with 𝕏</button></div>
+          <div style="margin-top:8px"><button class="btn ghost full" onclick="connectX(this,'Metamask')">Continue with Metamask</button></div>
+          <div style="margin-top:10px"><button style="background:none; border:none; color:var(--blue); font-weight:700; font-size:12px; cursor:pointer" onclick="startFlow('creator'); toast('Skipped → list of campaigns. Launch a campaign stays one click away')">Skip → see campaigns</button></div>
+        </div>
+        <div class="foot-note">2 · Skippable — SKIP goes to the list of campaigns.</div>
       </div>
     </section>
 
@@ -340,11 +413,13 @@
     <section class="screen" id="ob2">
       <div class="pad" style="max-width:400px; margin:0 auto; padding-top:40px">
         <div class="fcard" style="text-align:center">
-          <div class="fq">Create your creator account</div>
-          <div class="fsub">Already registered? You go straight to the app — this screen never shows twice.</div>
+          <div class="fq">Create Your Creator Account</div>
+          <div class="fsub">If it’s already registered, goes directly to the app.</div>
           <div style="margin-top:14px"><button class="btn full" onclick="obConnect(this)">Continue with 𝕏</button></div>
+          <div style="margin-top:10px"><button style="background:none; border:none; color:var(--blue); font-weight:700; font-size:12px; cursor:pointer" onclick="startFlow('creator'); toast('Skipped — to participate in a campaign you’ll need to come back and finish onboarding')">Skip for now →</button></div>
           <div class="foot-note">By continuing you agree to Rally’s Terms &amp; Conditions.</div>
         </div>
+        <div class="foot-note">2 · Connect X Account — skippable.</div>
       </div>
     </section>
 
@@ -352,7 +427,7 @@
     <section class="screen" id="ob3">
       <div class="hero">
         <div class="h1">Tell us about your content</div>
-        <div class="sub">Everything on one screen, all chips — ~20 seconds. Or skip and finish later.</div>
+        <div class="sub">Language · vertical · audience geography — all chips, ~15 seconds. Or skip.</div>
       </div>
       <div class="pad" style="max-width:620px; margin:0 auto">
         <label class="fl" style="margin-top:0">What do you post about? <small>(pick any)</small></label>
@@ -376,7 +451,22 @@
           <button class="chip" onclick="chipToggle(this)">LATAM</button>
           <button class="chip" onclick="chipToggle(this)">Asia</button>
         </div>
-        <label class="fl">What type of creator are you? <small>(pick one)</small></label>
+        <div style="display:flex; gap:9px; margin-top:16px">
+          <button class="btn ghost" style="flex:1" onclick="startFlow('creator'); toast('Skipped → Campaigns. To participate in a campaign you’ll need to get back to the flow')">Skip</button>
+          <button class="btn" style="flex:1" onclick="go('ob3b'); toast('Saved ✓')">Continue</button>
+        </div>
+        <div class="foot-note">3 · Tell us about your content — skippable (skip lands on Campaigns; participating requires coming back).</div>
+      </div>
+    </section>
+
+    <!-- ========== ONBOARDING 3b: creator type + source ========== -->
+    <section class="screen" id="ob3b">
+      <div class="hero">
+        <div class="h1">What type of creator are you?</div>
+        <div class="sub">This powers targeting and the Elite Creators roster.</div>
+      </div>
+      <div class="pad" style="max-width:620px; margin:0 auto">
+        <label class="fl" style="margin-top:0">Creator type <small>(pick one)</small></label>
         <div>
           <button class="chip" onclick="groupSel(this)">Large KOL</button>
           <button class="chip on" onclick="groupSel(this)">Micro KOL</button>
@@ -391,10 +481,8 @@
           <button class="chip" onclick="groupSel(this)">A community</button>
           <button class="chip" onclick="groupSel(this)">Other</button>
         </div>
-        <div style="display:flex; gap:9px; margin-top:16px">
-          <button class="btn ghost" style="flex:1" onclick="go('ob4'); toast('Skipped — you can finish your profile later; it’s required before your first submission')">Skip for now</button>
-          <button class="btn" style="flex:1" onclick="go('ob4'); toast('Profile saved ✓ — this powers targeting and the Elite Creators roster')">Continue</button>
-        </div>
+        <div style="margin-top:16px"><button class="btn full" onclick="go('ob4'); toast('Profile saved ✓')">Continue</button></div>
+        <div class="foot-note">4 · Creator type + how did you find us.</div>
       </div>
     </section>
 
@@ -413,6 +501,7 @@
           <div style="margin-top:11px"><button class="btn full" id="obenter" disabled onclick="obEnter()">Enter Rally →</button></div>
           <div class="foot-note">The checkbox unlocks the button — the wallet can also be connected later, at your first payout.</div>
         </div>
+        <div class="foot-note">5 · Connect Wallet + guidelines (the verified screen) → 6 · Campaigns.</div>
       </div>
     </section>
 
@@ -922,7 +1011,7 @@
 
 <script>
   var FLOWS = {
-    onb:     ['ob1','ob2','ob3','ob4'],
+    onb:     ['ob0','obL','ob2','ob3','ob3b','ob4'],
     creator: ['c1','c2','c3','c4'],
     launch:  ['pE','pLogin','pOrg','pVer','pVerForm','pC','pDep','pLive'],
     amb:     ['a1','a2']
