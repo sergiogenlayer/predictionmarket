@@ -74,7 +74,7 @@ const silhouette = async (file, size, rgb = [16, 5, 24], rot = 0) => {
     ${display(M, 360, "SOMETHING", 128, WHITE, 5, -4)}
     ${display(M, 500, "PERMISSIONLESS", 128, ORANGE, 5, -4)}
     ${display(M, 640, "IS COMING.", 128, WHITE, 5, -4)}
-    <text x="${M}" y="${H - 70}" ${FB} font-size="30" fill="${LAV}" fill-opacity="0.7">AUG 17 · app.rally.fun</text>
+    <text x="${M}" y="${H - 70}" ${FB} font-size="30" fill="${LAV}" fill-opacity="0.7">AUG 26 · app.rally.fun</text>
     ${eggMark(1462, 64, 100, WHITE, "#20092C")}`;
     const sil = await silhouette("wingston5.png", 700, [58, 32, 82], -8);
     await compose("teaser_coming_1600x900.png", W, H, svg, [{ input: sil, left: 950, top: 380 }], overlay);
@@ -185,7 +185,7 @@ const silhouette = async (file, size, rgb = [16, 5, 24], rot = 0) => {
   // ════ G · X SPACE COVER — LIVE DEMO ═════════════════════════════════════
   {
     const svg = `${zigzag(W, H)}
-    ${badge(M, 150, "X SPACE · THU AUG 20", ORANGE, WHITE, 28)}
+    ${badge(M, 150, "X SPACE · MON AUG 31", ORANGE, WHITE, 28)}
     ${display(M, 355, "LAUNCH A CAMPAIGN", 116, WHITE, 5, -4)}
     ${display(M, 486, "IN 10 MINUTES.", 116, ORANGE, 5, -4)}
     ${pill(M, 560, 700, 76, PURPLE, "Live build, on stream", WHITE, "REAL $", WHITE, 30)}
@@ -205,7 +205,7 @@ const silhouette = async (file, size, rgb = [16, 5, 24], rot = 0) => {
   {
     const svg = `${zigzag(W, H)}`;
     const overlay = `
-    ${badge(M, 150, "X SPACE · SAT AUG 22", PURPLE, WHITE, 28)}
+    ${badge(M, 150, "X SPACE · SAT AUG 29", PURPLE, WHITE, 28)}
     ${display(M, 360, "CREATORS &", 140, WHITE, 6, -4)}
     ${display(M, 510, "PARTNERS AMA", 140, ORANGE, 6, -4)}
     <text x="${M}" y="595" ${FB} font-size="36" fill="${LAV}">First campaigns debrief — the people who launched, on stage.</text>
@@ -251,7 +251,7 @@ const silhouette = async (file, size, rgb = [16, 5, 24], rot = 0) => {
       <text x="${x + 220}" y="695" ${FB} font-size="34" fill="${LAV}" text-anchor="middle">${l2}</text>`;
     });
     const svg = `${zigzag(W, H)}
-    ${badge(M, 140, "10 DAYS AFTER THE VIDEO", PURPLE, WHITE, 28)}
+    ${badge(M, 140, "ONE WEEK AFTER THE VIDEO", PURPLE, WHITE, 28)}
     ${display(M, 330, "THE RECEIPTS.", 150, WHITE, 6, -4)}
     ${statSvg}
     <g transform="translate(${M} ${H - 90}) skewX(-6)"><rect width="620" height="70" rx="14" fill="${ORANGE}"/>
@@ -279,7 +279,7 @@ const silhouette = async (file, size, rgb = [16, 5, 24], rot = 0) => {
       <text x="90" y="55" ${FB} font-size="30" fill="${WHITE}" text-anchor="middle">WINNER</text>
       <text x="90" y="100" ${FB} font-size="36" fill="${WHITE}" text-anchor="middle">FUNDED</text></g>`;
     const svg = `${zigzag(w, h)}
-    ${badge(m, 110, "COMMUNITY DAY · SAT AUG 29", ORANGE, WHITE, 26)}
+    ${badge(m, 110, "COMMUNITY DAY · SAT SEP 5", ORANGE, WHITE, 26)}
     ${display(m, 210, "CAMPAIGN IDEA", 86, WHITE, 4, -4)}
     ${display(m, 302, "BATTLE", 120, ORANGE, 5, -4)}
     <g transform="translate(0 60)">${bracket}</g>
@@ -297,7 +297,7 @@ const silhouette = async (file, size, rgb = [16, 5, 24], rot = 0) => {
     <image x="80" y="70" width="300" height="72" href="data:image/png;base64,${logoW}"/>
     ${display(84, 250, "THE NEXT EVOLUTION", 62, WHITE, 2, -4)}
     ${display(84, 320, "OF RALLY.", 62, ORANGE, 2, -4)}
-    ${badge(850, 130, "AUG 17", ORANGE, WHITE, 26)}
+    ${badge(850, 130, "AUG 26", ORANGE, WHITE, 26)}
     <text x="84" y="366" ${FB} font-size="22" fill="${LAV}" fill-opacity="0.7">PERMISSIONLESS CAMPAIGNS</text>
     ${eggMark(1080, 240, 96)}`;
     await compose("email_header_rally_1200x400.png", w, h, svg);

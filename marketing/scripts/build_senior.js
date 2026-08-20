@@ -39,7 +39,7 @@ function iconCircle(s, x, y, d, iconFile, color) {
   s.addImage({ path: path.join(__dirname, "brand/rally_white.png"), x: 0.7, y: 0.7, w: 2.72, h: 0.65 });
   s.addShape("ellipse", { x: 9.55, y: 2.15, w: 2.6, h: 2.6, fill: { color: P1 } });
   s.addImage({ data: img("play-d.png"), x: 10.58, y: 3.15, w: 0.62, h: 0.62 });
-  s.addText("GO-TO-MARKET · AUG 2026", { x: 0.7, y: 1.85, w: 8, h: 0.35, fontFace: F, fontSize: 12.5, bold: true, color: P1, charSpacing: 3, margin: 0 });
+  s.addText("GO-TO-MARKET · AUG–SEP 2026", { x: 0.7, y: 1.85, w: 8, h: 0.35, fontFace: F, fontSize: 12.5, bold: true, color: P1, charSpacing: 3, margin: 0 });
   s.addText("Permissionless Campaigns", { x: 0.7, y: 2.25, w: 8.4, h: 0.95, fontFace: F, fontSize: 44, bold: true, color: WHITE, margin: 0 });
   s.addText("2-week launch campaign · 4 activation pillars · every piece already written",
     { x: 0.7, y: 3.25, w: 8.2, h: 0.45, fontFace: F, fontSize: 18, color: "E8DCEF", margin: 0 });
@@ -118,12 +118,12 @@ const pillars = [
       "The hook carries the whole story: “Every campaign you've seen here was ours. That ends today.”",
     ],
     contents: [
-      ["THU 13", "Teaser 15s — “Something permissionless is coming”"],
-      ["FRI 14", "Countdown post — launch date reveal"],
-      ["MON 17", "DEMO VIDEO (100s, script locked) + launch thread pinned + mailing"],
-      ["MON 17→", "KOL activation: real RLP-funded campaigns + coordinated QT push"],
+      ["AUG 24", "Teaser 15s — “Something permissionless is coming”"],
+      ["AUG 25", "Countdown post — launch date reveal"],
+      ["AUG 26", "DEMO VIDEO (100s, script locked) + launch thread pinned + mailing"],
+      ["AUG 26→", "KOL activation: real RLP-funded campaigns + coordinated QT push"],
       ["W1–W2", "Cutdowns 15s / 30s — fresh angles keep it circulating"],
-      ["FRI 28", "“Anatomy of a Campaign” receipts thread — the video, proven with screenshots"],
+      ["SEP 8", "“Anatomy of a Campaign” receipts thread — the video, proven with screenshots"],
     ], ref: "Master Doc §4–5, 11.5",
   },
   {
@@ -135,12 +135,12 @@ const pillars = [
       "Everything doubles as sales material: one-pager, comparison visual, use cases, case study",
     ],
     contents: [
-      ["TUE 18", "Verified thread + “Why Verified — 5 Use Cases” + one-pager → pipeline"],
-      ["WED 19", "Network thread + Verified vs Network visual + CALL FOR PROJECTS (first cohort)"],
-      ["FRI 21", "Flagship co-created campaign goes live (partner community)"],
+      ["AUG 27", "Verified thread + “Why Verified — 5 Use Cases” + one-pager → pipeline"],
+      ["AUG 28", "Network thread + Verified vs Network visual + CALL FOR PROJECTS (first cohort)"],
+      ["SEP 1", "Flagship co-created campaign goes live (partner community)"],
       ["W1–W2", "1:1 outreach to Sept–Oct launches — the video is the pitch"],
-      ["WED 26", "Case study “10 days after the video” + sales article → pipeline"],
-      ["THU 27", "Vision: “Rally, the Hub of Communities” — the story that closes communities"],
+      ["SEP 4", "Case study “the receipts” + sales article → pipeline"],
+      ["SEP 3", "Vision: “Rally, the Hub of Communities” — the story that closes communities"],
     ], ref: "Master Doc §6–7, 11.3–11.4",
   },
   {
@@ -152,11 +152,11 @@ const pillars = [
       "Community content compounds: every spotlight makes the next creator want in",
     ],
     contents: [
-      ["FRI 21", "Creator video #1 — “I launched a campaign, here's what happened” (their words)"],
-      ["MON 24", "Spotlight thread: best community campaigns (recurring every Monday)"],
-      ["TUE 25", "Partner video #2 — community-lead POV"],
+      ["SEP 1", "Creator video #1 — “I launched a campaign, here's what happened” (their words)"],
+      ["SEP 7", "Spotlight thread: best community campaigns (recurring every Monday)"],
+      ["SEP 2", "Partner video #2 — community-lead POV"],
       ["W2", "Poll feeds the Battle: “What would you launch a campaign for?”"],
-      ["SAT 29", "Campaign Idea Battle — the winning community idea gets funded for real"],
+      ["SEP 5", "Campaign Idea Battle — the winning community idea gets funded for real"],
     ], ref: "Master Doc §9, 11.1–11.2, 11.6",
   },
   {
@@ -168,10 +168,10 @@ const pillars = [
       "Objections answered in public build trust faster than any ad",
     ],
     contents: [
-      ["MON 17", "Article: “Permissionless Campaigns — How It Works” (evergreen explainer)"],
-      ["WED 19", "Article: “Why RLPs Matter” — points become working capital"],
-      ["THU 20", "Live demo: “Launch a campaign in 10 minutes” + guide “How to Write a Campaign Brief”"],
-      ["SAT 22", "X Space: Creators & Partners AMA — first campaigns debrief"],
+      ["AUG 26", "Article: “Permissionless Campaigns — How It Works” (evergreen explainer)"],
+      ["AUG 28", "Article: “Why RLPs Matter” — points become working capital"],
+      ["AUG 31", "Live demo: “Launch a campaign in 10 minutes” + guide “How to Write a Campaign Brief”"],
+      ["AUG 29", "X Space: Creators & Partners AMA — first campaigns debrief"],
       ["ALWAYS", "Objections cheat sheet + tagline bank (Spaces, AMAs, replies)"],
     ], ref: "Master Doc §5.4, 7.5, 8, 10, 13",
   },
@@ -216,23 +216,23 @@ pillars.forEach((p) => {
     s.addShape("ellipse", { x, y: 1.42, w: 0.16, h: 0.16, fill: { color: c } });
     s.addText(l, { x: x + 0.22, y: 1.33, w: 1.0, h: 0.3, fontFace: F, fontSize: 10.5, color: MUT, margin: 0 });
   });
-  s.addText("PRE-LAUNCH: Thu 13 teaser · Fri 14 countdown", { x: 7.3, y: 1.33, w: 5.5, h: 0.3, fontFace: F, fontSize: 10.5, bold: true, color: P2, align: "right", margin: 0 });
+  s.addText("PRE-LAUNCH: Mon Aug 24 teaser · Tue 25 countdown", { x: 7.3, y: 1.33, w: 5.5, h: 0.3, fontFace: F, fontSize: 10.5, bold: true, color: P2, align: "right", margin: 0 });
 
   const days = [
-    ["MON 17", "THE DROP", "Demo Video + thread + mailing + KOL campaigns + How-It-Works", [P1, P4], true],
-    ["TUE 18", "Verified", "thread $1,500 + use cases + one-pager → pipeline", [P2]],
-    ["WED 19", "Network", "thread + comparison visual + Call for Projects + RLPs article", [P2, P4]],
-    ["THU 20", "Live Demo", "“10 minutes” live build + brief guide", [P4]],
-    ["FRI 21", "Creator Video #1", "testimonial + flagship co-created campaign live", [P3, P2]],
-    ["SAT 22", "Debrief", "X Space: creators & partners AMA", [P4]],
-    ["MON 24", "Spotlight", "best community campaigns (every Monday)", [P3]],
-    ["TUE 25", "Partner Video #2", "community-lead testimonial", [P3]],
-    ["WED 26", "Case Study", "“10 days after” + sales article → pipeline + KOL push", [P2]],
-    ["THU 27", "Vision", "“Rally, the Hub of Communities”", [P2]],
-    ["FRI 28", "Anatomy", "receipts thread (screenshots) + cutdown", [P1]],
-    ["SAT 29", "Community Day", "AMA + Campaign Idea Battle (winner funded)", [P3]],
+    ["WED 26", "THE DROP", "Demo Video + thread + mailing + KOL campaigns + How-It-Works", [P1, P4], true],
+    ["THU 27", "Verified", "thread $1,500 + use cases + one-pager → pipeline", [P2]],
+    ["FRI 28", "Network", "thread + comparison visual + Call for Projects + RLPs article", [P2, P4]],
+    ["SAT 29", "Debrief", "X Space: creators & partners AMA", [P4]],
+    ["MON 31", "Live Demo", "“10 minutes” live build + brief guide", [P4]],
+    ["TUE 1", "Creator Video #1", "testimonial + flagship co-created campaign live", [P3, P2]],
+    ["WED 2", "Partner Video #2", "community-lead testimonial", [P3]],
+    ["THU 3", "Vision", "“Rally, the Hub of Communities”", [P2]],
+    ["FRI 4", "Case Study", "“the receipts” + sales article → pipeline + KOL push", [P2]],
+    ["SAT 5", "Community Day", "AMA + Campaign Idea Battle (winner funded)", [P3]],
+    ["MON 7", "Spotlight", "best community campaigns (every Monday)", [P3]],
+    ["TUE 8", "Anatomy", "receipts thread (screenshots) + cutdown", [P1]],
   ];
-  const wk = ["WEEK 1 · LAUNCH", "WEEK 2 · SOCIAL PROOF"];
+  const wk = ["LAUNCH · AUG 26 – SEP 1", "SOCIAL PROOF · SEP 2 – 8"];
   for (let r = 0; r < 2; r++) {
     s.addText(wk[r], { x: 0.55, y: 1.78 + r * 2.55, w: 6, h: 0.28, fontFace: F, fontSize: 11, bold: true, color: P2, charSpacing: 2, margin: 0 });
     for (let c = 0; c < 6; c++) {
@@ -255,19 +255,19 @@ pillars.forEach((p) => {
   head(s, "The ask", "What I need from design — all copy is final, design never waits for text");
   docChip(s, "Design requests");
   const groups = [
-    ["WAVE 1 · BEFORE THE DROP", "due Aug 12–14", P2, [
+    ["WAVE 1 · BEFORE THE DROP", "due Aug 21–25", P2, [
       "Demo Video edit (script locked) — the only heavy lift",
       "Teaser 15s + countdown graphic",
       "QT kit for communities, creators & KOLs",
       "OG images (thread + article) + email header",
     ]],
-    ["WAVE 2 · LAUNCH WEEK", "due Aug 17–21", P3, [
+    ["WAVE 2 · LAUNCH WEEK", "due Aug 26–31", P3, [
       "Verified one-pager PDF (the sales asset)",
       "Verified vs Network comparison visual",
       "Call for Projects banner + form header",
       "2 X Space covers · 2 cutdowns · video lower-thirds",
     ]],
-    ["WAVE 3 · SOCIAL PROOF", "due Aug 24–26", P4, [
+    ["WAVE 3 · SOCIAL PROOF", "due Sep 1–3", P4, [
       "Spotlight template (reusable every Monday)",
       "Big-number stat template (case study + numbers posts)",
       "AMA cover + Idea Battle bracket",
@@ -298,26 +298,26 @@ function thumb(s, file, x, y, w, h, label) {
   head(s, "Design kit · already produced", "Pre-launch & launch day — ready to post");
   docChip(s, "Design kit");
   const W169 = 3.95, H169 = 2.22;
-  thumb(s, "teaser_coming_1600x900.png", 0.55, 1.75, W169, H169, "TEASER · THU 13");
-  thumb(s, "countdown_rally_3days_1600x900.png", 4.70, 1.75, W169, H169, "COUNTDOWN 3·2·1 · FRI 14 →");
-  thumb(s, "launch_og_rally_1600x900.png", 8.85, 1.75, W169, H169, "LAUNCH THREAD OG · MON 17");
-  thumb(s, "howitworks_og_rally_1600x900.png", 0.55, 4.42, W169, H169, "“HOW IT WORKS” ARTICLE OG · MON 17");
-  thumb(s, "campaigns_are_live_1080x1080.png", 4.70, 4.42, 2.22, 2.22, "LIVE POST · MON 17");
-  thumb(s, "email_header_rally_1200x400.png", 7.12, 4.60, 5.55, 1.85, "EMAIL HEADER · MON 17");
+  thumb(s, "teaser_coming_1600x900.png", 0.55, 1.75, W169, H169, "TEASER · MON AUG 24");
+  thumb(s, "countdown_rally_3days_1600x900.png", 4.70, 1.75, W169, H169, "COUNTDOWN 3·2·1 · AUG 24–25");
+  thumb(s, "launch_og_rally_1600x900.png", 8.85, 1.75, W169, H169, "LAUNCH THREAD OG · WED AUG 26");
+  thumb(s, "howitworks_og_rally_1600x900.png", 0.55, 4.42, W169, H169, "“HOW IT WORKS” ARTICLE OG · WED AUG 26");
+  thumb(s, "campaigns_are_live_1080x1080.png", 4.70, 4.42, 2.22, 2.22, "LIVE POST · WED AUG 26");
+  thumb(s, "email_header_rally_1200x400.png", 7.12, 4.60, 5.55, 1.85, "EMAIL HEADER · WED AUG 26");
 }
 {
   const s = pres.addSlide({ masterName: "LIGHT" });
   head(s, "Design kit · already produced", "Sales, Spaces & weekly templates");
   docChip(s, "Design kit");
-  thumb(s, "verified_onepager_1080x1350.png", 0.55, 1.7, 3.7, 4.63, "VERIFIED ONE-PAGER · TUE 18");
+  thumb(s, "verified_onepager_1080x1350.png", 0.55, 1.7, 3.7, 4.63, "VERIFIED ONE-PAGER · THU AUG 27");
   const w = 2.66, h = 1.5, xs = [4.55, 7.37, 10.19], ys = [1.7, 3.62, 5.54];
-  thumb(s, "call_for_projects_1600x900.png", xs[0], ys[0], w, h, "CALL FOR PROJECTS · WED 19");
-  thumb(s, "space_livedemo_1600x900.png", xs[1], ys[0], w, h, "SPACE LIVE DEMO · THU 20");
-  thumb(s, "space_ama_1600x900.png", xs[2], ys[0], w, h, "CREATORS & PARTNERS AMA · SAT 22");
+  thumb(s, "call_for_projects_1600x900.png", xs[0], ys[0], w, h, "CALL FOR PROJECTS · FRI AUG 28");
+  thumb(s, "space_livedemo_1600x900.png", xs[1], ys[0], w, h, "SPACE LIVE DEMO · MON AUG 31");
+  thumb(s, "space_ama_1600x900.png", xs[2], ys[0], w, h, "CREATORS & PARTNERS AMA · AUG 29");
   thumb(s, "spotlight_template_1600x900.png", xs[0], ys[1], w, h, "SPOTLIGHT TEMPLATE · EVERY MON");
-  thumb(s, "casestudy_numbers_template_1600x900.png", xs[1], ys[1], w, h, "CASE STUDY “RECEIPTS” · WED 26");
-  thumb(s, "network_vs_verified_1920x1080.png", xs[2], ys[1], w, h, "NETWORK VS VERIFIED · WED 19");
-  thumb(s, "idea_battle_1080x1080.png", xs[0] + 0.58, ys[2], 1.5, 1.5, "IDEA BATTLE · SAT 29");
+  thumb(s, "casestudy_numbers_template_1600x900.png", xs[1], ys[1], w, h, "CASE STUDY “RECEIPTS” · FRI SEP 4");
+  thumb(s, "network_vs_verified_1920x1080.png", xs[2], ys[1], w, h, "NETWORK VS VERIFIED · FRI AUG 28");
+  thumb(s, "idea_battle_1080x1080.png", xs[0] + 0.58, ys[2], 1.5, 1.5, "IDEA BATTLE · SAT SEP 5");
   thumb(s, "why_permissionless_1920x1080.png", xs[1], ys[2], w, h, "WHY PERMISSIONLESS · W1");
   s.addShape("roundRect", { x: xs[2], y: ys[2], w, h, rectRadius: 0.06, fill: { color: DARK } });
   s.addText([
@@ -334,7 +334,7 @@ function thumb(s, file, x, y, w, h, label) {
   s.addImage({ path: path.join(__dirname, "brand/rally_white.png"), x: 5.36, y: 1.35, w: 2.6, h: 0.62 });
   s.addText("“The campaign button belongs\nto everyone now.”", { x: 1.2, y: 2.6, w: 10.9, h: 1.7, fontFace: F, fontSize: 38, bold: true, color: WHITE, align: "center", margin: 0, lineSpacing: 46 });
   s.addText("4 pillars · 3 objectives · 12 days · everything written.", { x: 1.2, y: 4.4, w: 10.9, h: 0.45, fontFace: F, fontSize: 17, color: "E8DCEF", align: "center", margin: 0 });
-  s.addText("Greenlight this week = we ship Monday Aug 17.", { x: 1.2, y: 4.95, w: 10.9, h: 0.45, fontFace: F, fontSize: 17, italic: true, color: P1, align: "center", margin: 0 });
+  s.addText("Greenlight this week = we ship Wednesday Aug 26.", { x: 1.2, y: 4.95, w: 10.9, h: 0.45, fontFace: F, fontSize: 17, italic: true, color: P1, align: "center", margin: 0 });
   s.addText("Master Doc — plan, copy, scripts, design  ▸", { x: 1.2, y: 6.0, w: 10.9, h: 0.4, fontFace: F, fontSize: 13, bold: true, color: "B79ACB", align: "center", margin: 0, hyperlink: { url: DOC } });
 }
 
