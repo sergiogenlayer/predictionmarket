@@ -66,8 +66,8 @@ function row(x, y, w, label, value, valueC, opts = {}) {
 
   const svg = `${zigzag(W, H)}
   ${badge(96, 130, "PRICING", PURPLE, WHITE, 30)}
-  ${display(96, 238, "ONE BUTTON.", 92, WHITE, 4, -4)}
-  ${display(742, 238, "TWO STAGES.", 92, ORANGE, 4, -4)}
+  ${display(96, 240, "PERMISSIONLESS", 100, WHITE, 5, -4)}
+  ${display(966, 240, "CAMPAIGNS", 100, ORANGE, 5, -4)}
 
   <!-- ── NETWORK ─────────────────────────────────────── -->
   <rect x="${x1}" y="${cardY}" width="${cardW}" height="${cardH}" rx="30" fill="${INKP}" fill-opacity="0.9" stroke="${PURPLE}" stroke-width="6"/>
