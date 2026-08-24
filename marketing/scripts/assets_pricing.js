@@ -60,9 +60,9 @@ function row(x, y, w, label, value, valueC, opts = {}) {
 
 (async () => {
   const W = 1920, H = 1080;
-  const cardY = 285, cardH = 672, cardW = 836;
+  const cardY = 272, cardH = 736, cardW = 836;
   const x1 = 96, x2 = 988;
-  const rowsY = cardY + 190, rowGap = 70, rowW = cardW - 72;
+  const rowsY = cardY + 186, rowGap = 70, rowW = cardW - 72;
 
   const svg = `${zigzag(W, H)}
   ${badge(96, 130, "PRICING", PURPLE, WHITE, 30)}
@@ -80,7 +80,8 @@ function row(x, y, w, label, value, valueC, opts = {}) {
   ${row(x1 + 36, rowsY + 2 * rowGap, rowW, "Rewards", "USDC | RLPs", LAV)}
   ${row(x1 + 36, rowsY + 3 * rowGap, rowW, "Visibility", "STANDARD", LAV, { dim: true })}
   ${row(x1 + 36, rowsY + 4 * rowGap, rowW, "Marketing from Rally socials", "—", LAV, { dim: true })}
-  ${row(x1 + 36, rowsY + 5 * rowGap, rowW, "Community & elite creators", "OPEN POOL", LAV, { dim: true })}
+  ${row(x1 + 36, rowsY + 5 * rowGap, rowW, "Community", "—", LAV, { dim: true })}
+  ${row(x1 + 36, rowsY + 6 * rowGap, rowW, "Elite creators", "—", LAV, { dim: true })}
   <text x="${x1 + 40}" y="${cardY + cardH - 26}" ${FB} font-size="25" fill="${LAV}" fill-opacity="0.85">✓  Write it. Fund it. Launch it. No permission.</text>
 
   <!-- ── VERIFIED ────────────────────────────────────── -->
@@ -92,10 +93,11 @@ function row(x, y, w, label, value, valueC, opts = {}) {
   <text x="${x2 + 40}" y="${cardY + 150}" ${FB} font-size="27" fill="${ORANGE}" letter-spacing="2">EVERYTHING IN NETWORK, PLUS:</text>
   ${row(x2 + 36, rowsY + 0 * rowGap, rowW, "Campaigns", "UNLIMITED", WHITE)}
   ${row(x2 + 36, rowsY + 1 * rowGap, rowW, "Organizations", "UNLIMITED", ORANGE, { star: true })}
-  ${row(x2 + 36, rowsY + 2 * rowGap, rowW, "Rewards", "USDC | RLPs", WHITE)}
+  ${row(x2 + 36, rowsY + 2 * rowGap, rowW, "Rewards", "USDC | RLPs | TOKENS", ORANGE)}
   ${row(x2 + 36, rowsY + 3 * rowGap, rowW, "Visibility", "PRIORITY + BADGE", ORANGE)}
   ${row(x2 + 36, rowsY + 4 * rowGap, rowW, "Marketing from Rally socials", "INCLUDED", ORANGE)}
-  ${row(x2 + 36, rowsY + 5 * rowGap, rowW, "Community & elite creators", "UNLOCKED", ORANGE)}
+  ${row(x2 + 36, rowsY + 5 * rowGap, rowW, "Community", "YOUR OWN", ORANGE)}
+  ${row(x2 + 36, rowsY + 6 * rowGap, rowW, "Elite creators", "UNLOCKED", ORANGE)}
   <text x="${x2 + 40}" y="${cardY + cardH - 26}" ${FB} font-size="25" fill="#FFD9C7" fill-opacity="0.95">✓  Your project on the main stage, from day one.</text>
 
   <!-- VS chip between cards -->
